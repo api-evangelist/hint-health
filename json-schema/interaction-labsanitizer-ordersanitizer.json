@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/interaction-labsanitizer-ordersanitizer",
+  "title": "Interaction.LabSanitizer.OrderSanitizer",
+  "type": "object",
+  "properties": {
+    "lab_reference_id": {
+      "type": "string",
+      "description": "External reference ID for the lab order"
+    },
+    "ordered_from": {
+      "type": "string",
+      "description": "Lab provider name (e.g., \"LabCorp\")"
+    },
+    "authored_on": {
+      "type": "string",
+      "description": "When the order was authored"
+    },
+    "collected_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the specimen was collected"
+    },
+    "author": {
+      "type": "string",
+      "description": "Name or ID of the ordering provider"
+    },
+    "author_reference": {
+      "type": "string",
+      "description": "Reference identifier for the author"
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Interaction.LabSanitizer.ActionSanitizer"
+      },
+      "description": "Ordered tests/panels"
+    },
+    "intent": {
+      "type": "string",
+      "description": "Order intent"
+    },
+    "subject": {
+      "$ref": "#/components/schemas/Interaction.LabSanitizer.SubjectSanitizer",
+      "description": "Subject of the lab order"
+    },
+    "lab_account_id": {
+      "type": "string",
+      "description": "Lab account identifier"
+    }
+  }
+}

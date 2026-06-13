@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-membershipmemberblueprint_all",
+  "title": "Public.MembershipMemberBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "end_date": {
+        "type": "string"
+      },
+      "fixed_period_rate_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "list_price_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "member_type": {
+        "type": "string"
+      },
+      "period_rate_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "revenue_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "start_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "status": {
+        "type": "string"
+      },
+      "patient": {
+        "$ref": "#/components/schemas/Public.PatientBlueprint_leaf"
+      }
+    }
+  }
+}

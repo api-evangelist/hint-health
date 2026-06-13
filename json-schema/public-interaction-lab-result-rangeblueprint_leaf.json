@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-interaction-lab-result-rangeblueprint_leaf",
+  "title": "Public.Interaction.Lab.Result.RangeBlueprint_leaf",
+  "type": "object",
+  "properties": {
+    "text": {
+      "type": "string"
+    },
+    "low": {
+      "$ref": "#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf"
+    },
+    "high": {
+      "$ref": "#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf"
+    }
+  }
+}

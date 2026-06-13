@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-userblueprint_all",
+  "title": "Public.UserBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "last_name": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "phones": {
+        "$ref": "#/components/schemas/Public.PhoneBlueprint_leaf"
+      },
+      "product_users": {
+        "$ref": "#/components/schemas/Public.PartnerAppUserBlueprint_leaf"
+      }
+    }
+  }
+}

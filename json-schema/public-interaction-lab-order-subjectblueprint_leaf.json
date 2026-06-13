@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-interaction-lab-order-subjectblueprint_leaf",
+  "title": "Public.Interaction.Lab.Order.SubjectBlueprint_leaf",
+  "type": "object",
+  "properties": {
+    "reference": {
+      "type": "string"
+    },
+    "display": {
+      "type": "string"
+    }
+  }
+}

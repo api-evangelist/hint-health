@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-supplementblueprint_one",
+  "title": "Public.SupplementBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "sig_text": {
+      "type": "string"
+    },
+    "strength": {
+      "type": "string"
+    },
+    "strength_uom": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "blogs": [
+    {
+      "name": "Hint Health Blog",
+      "url": "https://blog.hint.com/",
+      "type": "Blog",
+      "last_fetched": null,
+      "posts": []
+    }
+  ]
+}

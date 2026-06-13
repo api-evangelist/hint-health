@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-patients-paymentmethodscontroller-create_body",
+  "title": "Provider.Patients.PaymentMethodsController.create_body",
+  "type": "object",
+  "properties": {
+    "rainforest_id": {
+      "type": "string",
+      "description": "Tokenized payment method id from Rainforest. Required if the practice uses Hint Payments."
+    },
+    "stripe_id": {
+      "type": "string",
+      "description": "Tokenized payment method id from Stripe. Required if the practice uses Stripe."
+    }
+  }
+}

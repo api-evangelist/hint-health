@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-patients-interactions-partnercontroller-update_body",
+  "title": "Update_PartnerInteraction",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": " The status of the interaction.",
+      "enum": [
+        "draft",
+        "signed",
+        "addended",
+        "deleted",
+        "failed"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of the interaction."
+    },
+    "integration_record_id": {
+      "type": "string"
+    },
+    "integration_error_message": {
+      "type": "string"
+    },
+    "integration_web_link": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

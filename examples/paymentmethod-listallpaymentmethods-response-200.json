@@ -1,0 +1,58 @@
+{
+  "operationId": "PaymentMethod.ListAllPaymentMethods",
+  "method": "GET",
+  "path": "/provider/patients/{patient_id}/payment_methods",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "card-ab12C345DeF6",
+      "default": false,
+      "last_four": "4242",
+      "name": "Visa",
+      "type": "card",
+      "bank_account": null,
+      "card": {
+        "id": "card-ab12C345DeF6",
+        "card_type": "visa",
+        "last_four": "4242",
+        "name": "Visa",
+        "type": "Card",
+        "exp_month": 7,
+        "exp_year": 2017
+      }
+    },
+    {
+      "id": "card-ab12C345DeF6",
+      "default": false,
+      "last_four": "4242",
+      "name": "Visa",
+      "type": "card",
+      "bank_account": null,
+      "card": {
+        "id": "card-ab12C345DeF6",
+        "card_type": "visa",
+        "last_four": "4242",
+        "name": "Visa",
+        "type": "Card",
+        "exp_month": 7,
+        "exp_year": 2017
+      }
+    },
+    {
+      "id": "bnk-ab12C345DeF6",
+      "default": true,
+      "last_four": "4242",
+      "name": "Bank of America NA",
+      "type": "bank_account",
+      "bank_account": {
+        "id": "bnk-ab12C345DeF6",
+        "last_four": "4242",
+        "name": "Bank of America NA",
+        "stripe_token": "tok_1234",
+        "type": "BankAccount"
+      },
+      "card": null
+    }
+  ]
+}

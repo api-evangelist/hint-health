@@ -1,0 +1,314 @@
+vocabulary:
+  name: Hint Health API Vocabulary
+  description: Domain terms and concepts used across the Hint Health direct primary care API platform
+  url: https://developers.hint.com
+  version: "1.0"
+  updated: "2026-06-13"
+
+terms:
+  - term: Direct Primary Care (DPC)
+    definition: A healthcare practice model where patients pay a monthly membership fee directly to a primary care practice, bypassing insurance for routine care.
+    tags:
+      - business-model
+      - healthcare
+
+  - term: Patient
+    definition: An individual enrolled or seeking enrollment in a Direct Primary Care practice through the Hint platform. Identified by a prefixed ID (e.g. pat-ab12C345DeF6).
+    tags:
+      - core-resource
+      - clinical
+
+  - term: Membership
+    definition: A recurring subscription contract between a patient and a DPC practice, tracking enrollment status, billing schedule, and plan assignment.
+    tags:
+      - core-resource
+      - billing
+    status_options:
+      - pending
+      - unconfirmed
+      - active
+      - unpaid
+      - ended
+
+  - term: MembershipMember
+    definition: An individual member (patient) attached to a membership contract, supporting dependent or family membership structures.
+    tags:
+      - core-resource
+      - billing
+
+  - term: MembershipContract
+    definition: The formal contractual record of a membership, supporting renewal and update operations.
+    tags:
+      - core-resource
+      - billing
+
+  - term: Plan
+    definition: A membership plan template defining pricing tiers, terms, and eligibility rules available within a practice.
+    tags:
+      - core-resource
+      - billing
+
+  - term: Company
+    definition: An employer or organization that sponsors memberships for its employees through Hint's platform. Supports company plan management and employee divisions.
+    tags:
+      - core-resource
+      - employer
+
+  - term: CompanyPlan
+    definition: A plan offering assigned to a company, linking employer groups to specific membership plan configurations.
+    tags:
+      - billing
+      - employer
+
+  - term: EmployeeDivision
+    definition: A sub-grouping within a company used to organize employees by department, location, or benefit tier.
+    tags:
+      - employer
+
+  - term: Invoice
+    definition: A billing record generated for membership dues, representing amounts owed by a patient or company to a practice.
+    tags:
+      - financial
+      - billing
+
+  - term: CustomerInvoice
+    definition: A manually created invoice for non-membership charges, supporting PDF generation, issuance, payment collection, and voiding.
+    tags:
+      - financial
+      - billing
+    status_options:
+      - draft
+      - issued
+      - sent
+      - cancelled
+      - retrying
+      - bad_debt
+      - paid
+      - disputed
+
+  - term: Payment
+    definition: A transaction recording the collection of funds against an invoice or customer invoice.
+    tags:
+      - financial
+
+  - term: PaymentMethod
+    definition: A stored payment instrument (card or ACH) for a patient, supporting both Rainforest (Hint Payments) and Stripe processors.
+    tags:
+      - financial
+      - payments
+
+  - term: SetupIntent
+    definition: A preparatory object used to securely collect and tokenize a new payment method via Rainforest or Stripe before attaching it to a patient.
+    tags:
+      - financial
+      - payments
+
+  - term: Charge
+    definition: A billable item posted to a patient or practice account, routed through Hint's pricing engine.
+    tags:
+      - financial
+
+  - term: ChargeItem
+    definition: A catalog item (service, product) that can be added to a charge, optionally tracking inventory quantities.
+    tags:
+      - financial
+      - catalog
+
+  - term: Credit
+    definition: A monetary credit applied to a patient account to offset future invoices.
+    tags:
+      - financial
+
+  - term: CreditCategory
+    definition: A classification label for credits, used for reporting and accounting purposes.
+    tags:
+      - financial
+
+  - term: CreditLine
+    definition: A running credit balance record for a patient, tracking available credit across billing cycles.
+    tags:
+      - financial
+
+  - term: Coupon
+    definition: A discount code or promotional offer that can be applied to reduce membership or invoice amounts.
+    tags:
+      - financial
+      - promotions
+
+  - term: Sponsorship
+    definition: A funding arrangement where a third party (employer or affiliate) covers or subsidizes a patient's membership cost.
+    tags:
+      - financial
+      - employer
+
+  - term: Practitioner
+    definition: A licensed healthcare provider (physician, NP, PA) associated with a practice location in the Hint platform.
+    tags:
+      - clinical
+      - provider
+
+  - term: Location
+    definition: A physical or virtual clinic site where a practice operates and patients receive care.
+    tags:
+      - practice-management
+
+  - term: Practice
+    definition: The primary organizational unit in Hint — a DPC clinic with its own configuration, practitioners, plans, and patient roster.
+    tags:
+      - practice-management
+
+  - term: Interaction
+    definition: A clinical encounter or care event logged for a patient, including clinical notes, lab results, and documents.
+    tags:
+      - clinical
+
+  - term: ClinicalNoteInteraction
+    definition: An interaction record representing a clinical note created during a patient encounter.
+    tags:
+      - clinical
+
+  - term: DocumentInteraction
+    definition: An interaction record linking a clinical document (e.g. imaging, referral) to a patient encounter.
+    tags:
+      - clinical
+
+  - term: LabInteraction
+    definition: An interaction record capturing laboratory order or result data for a patient.
+    tags:
+      - clinical
+
+  - term: PartnerInteraction
+    definition: An interaction record created by a Hint Marketplace partner application on behalf of a patient.
+    tags:
+      - clinical
+      - integration
+
+  - term: Supplement
+    definition: A patient-specific supplement or wellness product tracked within the clinical record.
+    tags:
+      - clinical
+
+  - term: FormResponse
+    definition: A completed intake or clinical form submitted by or for a patient.
+    tags:
+      - clinical
+
+  - term: Affiliate
+    definition: A referral source or partnership entity that can be credited for patient acquisition.
+    tags:
+      - marketing
+      - partner
+
+  - term: AffiliateBill
+    definition: A billing record generated for an affiliate based on referred patient memberships.
+    tags:
+      - financial
+      - partner
+
+  - term: LeadSource
+    definition: The acquisition channel or campaign through which a patient discovered and joined a practice.
+    tags:
+      - marketing
+
+  - term: CancellationReason
+    definition: A configured reason code explaining why a membership was cancelled, used for analytics and retention reporting.
+    tags:
+      - membership
+
+  - term: Webhook
+    definition: An HTTP callback endpoint registered to receive real-time event notifications when resources change in the Hint platform.
+    tags:
+      - integration
+      - events
+
+  - term: WebhookEndpoint
+    definition: A registered URL that receives Hint webhook event payloads. Supports signature validation for security.
+    tags:
+      - integration
+      - events
+
+  - term: Integration
+    definition: A Marketplace partner application that has been connected to a practice, enabling data exchange and embedded workflows.
+    tags:
+      - integration
+
+  - term: IntegrationRecord
+    definition: A record linking a Hint patient to an external system's identifier, managed by an integration partner.
+    tags:
+      - integration
+
+  - term: OAuth Token
+    definition: An access token issued through the OAuth 2.0 authorization code flow, granting a partner application access to a specific practice's data.
+    tags:
+      - authentication
+      - integration
+
+  - term: Partner
+    definition: A technology company in the Hint Marketplace that builds integrations or embedded apps for DPC practices.
+    tags:
+      - integration
+      - marketplace
+
+  - term: PartnerCharge
+    definition: A charge created directly by a partner application on behalf of a patient or practice.
+    tags:
+      - financial
+      - integration
+
+  - term: Quote
+    definition: A pre-enrollment cost estimate generated for a prospective patient based on selected plans.
+    tags:
+      - membership
+      - billing
+
+  - term: SignupAttempt
+    definition: A record of a prospective patient's enrollment attempt through a practice's custom signup flow.
+    tags:
+      - membership
+      - onboarding
+
+  - term: AccessToken
+    definition: A short-lived token generated to grant a patient temporary access to the Hint Patient Portal. Must not be cached or transmitted via email.
+    tags:
+      - authentication
+      - patient-portal
+
+  - term: SocialSecurityNumber
+    definition: A sensitive patient identifier accessed through a dedicated endpoint with enhanced security controls.
+    tags:
+      - clinical
+      - security
+
+  - term: User
+    definition: A staff member or administrator account associated with a practice in the Hint platform.
+    tags:
+      - practice-management
+
+  - term: Provider Endpoints
+    description: API paths prefixed with /api/provider/* that operate on practice-specific data using practice access tokens (PHI scope).
+    tags:
+      - api-architecture
+
+  - term: Partner Resources
+    description: API resources managing OAuth flows, integration metadata, and webhook configuration using a Partner API key.
+    tags:
+      - api-architecture
+      - integration
+
+  - term: Rainforest
+    definition: Hint's native payment processor (also called Hint Payments), used for card and ACH collection via Rainforest Payment Component.
+    tags:
+      - payments
+      - fintech
+
+  - term: Stripe
+    definition: An alternative payment processor supported by Hint for practices that prefer Stripe for card tokenization and payment collection.
+    tags:
+      - payments
+      - fintech
+
+  - term: MCP Server
+    definition: A Model Context Protocol server provided by Hint that allows AI coding assistants to access the developer documentation programmatically.
+    tags:
+      - developer-tools
+      - ai

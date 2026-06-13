@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-formblueprint_leaf",
+  "title": "Public.FormBlueprint_leaf",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "form_items": {
+      "$ref": "#/components/schemas/Public.FormItemBlueprint_leaf"
+    }
+  }
+}

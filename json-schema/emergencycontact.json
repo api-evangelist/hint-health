@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/emergencycontact",
+  "title": "EmergencyContact",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "relationship": {
+      "type": "string",
+      "enum": [
+        "spouse",
+        "parent",
+        "sibling",
+        "child",
+        "grandparent",
+        "guardian",
+        "other"
+      ]
+    },
+    "relationship_other": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "us_formattable": {
+          "type": "boolean",
+          "description": "Make this false if your number is not exactly 10 digits"
+        }
+      },
+      "required": [
+        "number",
+        "type"
+      ]
+    }
+  }
+}

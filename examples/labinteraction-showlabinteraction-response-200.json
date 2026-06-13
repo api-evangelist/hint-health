@@ -1,0 +1,115 @@
+{
+  "operationId": "LabInteraction.ShowLabInteraction",
+  "method": "GET",
+  "path": "/provider/patients/{patient_id}/interactions/lab/{id}",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "inter-2f93f9da35eb293f",
+    "event_timestamp": "2017-02-05T14:23:00Z",
+    "status": "fulfilled",
+    "type": "lab",
+    "vendor_order_id": "123456",
+    "order": {
+      "lab_reference_id": "ord-ref-123456",
+      "ordered_from": "San Francisco Lab",
+      "authored_on": "2017-02-05T14:23:00Z",
+      "collected_at": "2017-02-05T14:23:00Z",
+      "author": "John Doe",
+      "author_reference": "aut-ref-123456",
+      "intent": "diagnostic",
+      "lab_account_id": "lab-acc-123456",
+      "actions": [
+        {
+          "reference": "act-ref-123",
+          "display": "LabCorp"
+        }
+      ],
+      "subject": {
+        "reference": "sub-ref-456",
+        "display": "John Doe"
+      }
+    },
+    "report": {
+      "issued": "2017-02-05T14:23:00Z",
+      "status": "final",
+      "lab_reference_id": "lab-ref-123456",
+      "order_reference": "order-ref-123456"
+    },
+    "results": [
+      {
+        "id": "res-id-123",
+        "code_text": "lab-code-text-123",
+        "issued": "2017-02-05T14:23:00Z",
+        "value_string": "100 mg/dL",
+        "text": "Normal",
+        "interpretation": [
+          "normal"
+        ],
+        "subject": "John Doe",
+        "code": [
+          {
+            "code": "lab-code-123",
+            "display": "lab-code-display-123"
+          }
+        ],
+        "value_quantity": {
+          "value": 100,
+          "unit": "mg/dL"
+        },
+        "ranges": [
+          {
+            "text": "120-140 mg/dL",
+            "low": {
+              "value": 120,
+              "unit": "mg/dL"
+            },
+            "high": {
+              "value": 140,
+              "unit": "mg/dL"
+            }
+          }
+        ]
+      },
+      {
+        "id": "res-id-456",
+        "code_text": "lab-code-text-456",
+        "issued": "2017-02-05T14:23:00Z",
+        "value_string": "110 mg/dL",
+        "text": "Normal",
+        "interpretation": [
+          "normal"
+        ],
+        "subject": "John Doe",
+        "code": [
+          {
+            "code": "lab-code-456",
+            "display": "lab-code-display-456"
+          }
+        ],
+        "value_quantity": {
+          "value": 110,
+          "unit": "mg/dL"
+        },
+        "ranges": [
+          {
+            "text": "100-120 mg/dL",
+            "low": {
+              "value": 100,
+              "unit": "mg/dL"
+            },
+            "high": {
+              "value": 120,
+              "unit": "mg/dL"
+            }
+          }
+        ]
+      }
+    ],
+    "integration_error_message": null,
+    "integration_last_synced_at": null,
+    "integration_record_id": null,
+    "integration_sync_status": "enabled",
+    "integration_web_link": null
+  }
+}

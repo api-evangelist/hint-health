@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/platform-webhookendpointscontroller-create_body",
+  "title": "Platform.WebhookEndpointsController.create_body",
+  "type": "object",
+  "properties": {
+    "webhook_url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "webhook_url"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-chargeblueprint_one",
+  "title": "Public.ChargeBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "amount_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "description": {
+      "type": "string"
+    },
+    "is_persisted": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string"
+    },
+    "price_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "service_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string"
+    },
+    "subtotal_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "tax_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "total_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "category": {
+      "$ref": "#/components/schemas/Public.CategoryBlueprint_one"
+    },
+    "charge_item": {
+      "$ref": "#/components/schemas/Public.ChargeItemBlueprint_one"
+    },
+    "location": {
+      "$ref": "#/components/schemas/Public.LocationBlueprint_shared"
+    },
+    "patient": {
+      "$ref": "#/components/schemas/Public.PatientBlueprint_one"
+    },
+    "practitioner": {
+      "$ref": "#/components/schemas/Public.PractitionerBlueprint_one"
+    }
+  }
+}

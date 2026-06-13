@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-locationblueprint_one",
+  "title": "Public.LocationBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "address_city": {
+      "type": "string"
+    },
+    "address_country": {
+      "type": "string"
+    },
+    "address_latitude": {
+      "type": "number",
+      "format": "float"
+    },
+    "address_line1": {
+      "type": "string"
+    },
+    "address_line2": {
+      "type": "string"
+    },
+    "address_longitude": {
+      "type": "number",
+      "format": "float"
+    },
+    "address_state": {
+      "type": "string"
+    },
+    "address_zip": {
+      "type": "string"
+    },
+    "distance": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "virtual": {
+      "type": "boolean"
+    },
+    "location_group": {
+      "$ref": "#/components/schemas/Public.LocationGroupBlueprint_leaf"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-patientblueprint_account",
+  "title": "Public.PatientBlueprint_account",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "past_due_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    }
+  }
+}

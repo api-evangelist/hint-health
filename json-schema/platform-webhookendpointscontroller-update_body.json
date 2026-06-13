@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/platform-webhookendpointscontroller-update_body",
+  "title": "Update_WebhookEndpoint_Legacy",
+  "type": "object",
+  "properties": {
+    "webhook_url": {
+      "type": "string"
+    }
+  }
+}

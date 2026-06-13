@@ -1,0 +1,45 @@
+{
+  "operationId": "Quote.CreateQuote",
+  "method": "POST",
+  "path": "/provider/quotes",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "billing_period": "month",
+    "members": [
+      {
+        "type": "primary",
+        "age": 27,
+        "uses_tobacco": true,
+        "dob": null,
+        "start_date": null,
+        "rate_in_cents": 1100
+      },
+      {
+        "type": "spouse",
+        "age": 23,
+        "uses_tobacco": false,
+        "dob": null,
+        "start_date": null,
+        "rate_in_cents": 1100
+      },
+      {
+        "type": "child",
+        "age": 4,
+        "uses_tobacco": false,
+        "dob": null,
+        "start_date": null,
+        "rate_in_cents": 1100
+      }
+    ],
+    "coupon_discount_in_cents": null,
+    "ongoing_amount_in_cents": 3300,
+    "registration_fee_in_cents": 5034,
+    "plan": {
+      "id": "pln-ab12C345DeF6",
+      "name": "Membership",
+      "plan_type": "retail"
+    },
+    "coupon": null
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-creditscontroller-create_body",
+  "title": "Create_Credit",
+  "type": "object",
+  "properties": {
+    "credit_category": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "amount_in_cents": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Value must be positive"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "integration_record_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "credit_category",
+    "amount_in_cents"
+  ]
+}

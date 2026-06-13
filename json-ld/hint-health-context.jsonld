@@ -1,0 +1,323 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "hint": "https://api.hint.com/vocab#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "fhir": "http://hl7.org/fhir/",
+
+    "id": "@id",
+    "type": "@type",
+
+    "Patient": {
+      "@id": "hint:Patient",
+      "@type": "@id",
+      "comment": "An individual enrolled or seeking enrollment in a DPC practice"
+    },
+    "Membership": {
+      "@id": "hint:Membership",
+      "@type": "@id",
+      "comment": "A recurring subscription contract between a patient and a DPC practice"
+    },
+    "MembershipMember": {
+      "@id": "hint:MembershipMember",
+      "@type": "@id"
+    },
+    "MembershipContract": {
+      "@id": "hint:MembershipContract",
+      "@type": "@id"
+    },
+    "Plan": {
+      "@id": "hint:Plan",
+      "@type": "@id",
+      "comment": "A membership plan template defining pricing and terms"
+    },
+    "Company": {
+      "@id": "hint:Company",
+      "@type": "@id",
+      "comment": "An employer or organization sponsoring memberships"
+    },
+    "CompanyPlan": {
+      "@id": "hint:CompanyPlan",
+      "@type": "@id"
+    },
+    "EmployeeDivision": {
+      "@id": "hint:EmployeeDivision",
+      "@type": "@id"
+    },
+    "Practitioner": {
+      "@id": "hint:Practitioner",
+      "@type": "@id",
+      "sameAs": "schema:Physician"
+    },
+    "Location": {
+      "@id": "hint:Location",
+      "@type": "@id",
+      "sameAs": "schema:Place"
+    },
+    "Practice": {
+      "@id": "hint:Practice",
+      "@type": "@id",
+      "sameAs": "schema:MedicalOrganization"
+    },
+    "Invoice": {
+      "@id": "hint:Invoice",
+      "@type": "@id",
+      "sameAs": "schema:Invoice"
+    },
+    "CustomerInvoice": {
+      "@id": "hint:CustomerInvoice",
+      "@type": "@id"
+    },
+    "Payment": {
+      "@id": "hint:Payment",
+      "@type": "@id",
+      "sameAs": "schema:PayAction"
+    },
+    "PaymentMethod": {
+      "@id": "hint:PaymentMethod",
+      "@type": "@id",
+      "sameAs": "schema:PaymentMethod"
+    },
+    "SetupIntent": {
+      "@id": "hint:SetupIntent",
+      "@type": "@id"
+    },
+    "Charge": {
+      "@id": "hint:Charge",
+      "@type": "@id"
+    },
+    "ChargeItem": {
+      "@id": "hint:ChargeItem",
+      "@type": "@id",
+      "sameAs": "fhir:ChargeItem"
+    },
+    "Credit": {
+      "@id": "hint:Credit",
+      "@type": "@id"
+    },
+    "CreditCategory": {
+      "@id": "hint:CreditCategory",
+      "@type": "@id"
+    },
+    "CreditLine": {
+      "@id": "hint:CreditLine",
+      "@type": "@id"
+    },
+    "Coupon": {
+      "@id": "hint:Coupon",
+      "@type": "@id",
+      "sameAs": "schema:Offer"
+    },
+    "Sponsorship": {
+      "@id": "hint:Sponsorship",
+      "@type": "@id"
+    },
+    "Interaction": {
+      "@id": "hint:Interaction",
+      "@type": "@id",
+      "sameAs": "fhir:Encounter"
+    },
+    "ClinicalNoteInteraction": {
+      "@id": "hint:ClinicalNoteInteraction",
+      "@type": "@id",
+      "sameAs": "fhir:ClinicalImpression"
+    },
+    "DocumentInteraction": {
+      "@id": "hint:DocumentInteraction",
+      "@type": "@id",
+      "sameAs": "fhir:DocumentReference"
+    },
+    "LabInteraction": {
+      "@id": "hint:LabInteraction",
+      "@type": "@id",
+      "sameAs": "fhir:Observation"
+    },
+    "PartnerInteraction": {
+      "@id": "hint:PartnerInteraction",
+      "@type": "@id"
+    },
+    "Supplement": {
+      "@id": "hint:Supplement",
+      "@type": "@id",
+      "sameAs": "fhir:MedicationStatement"
+    },
+    "FormResponse": {
+      "@id": "hint:FormResponse",
+      "@type": "@id",
+      "sameAs": "fhir:QuestionnaireResponse"
+    },
+    "Affiliate": {
+      "@id": "hint:Affiliate",
+      "@type": "@id"
+    },
+    "AffiliateBill": {
+      "@id": "hint:AffiliateBill",
+      "@type": "@id"
+    },
+    "LeadSource": {
+      "@id": "hint:LeadSource",
+      "@type": "@id"
+    },
+    "CancellationReason": {
+      "@id": "hint:CancellationReason",
+      "@type": "@id"
+    },
+    "WebhookEndpoint": {
+      "@id": "hint:WebhookEndpoint",
+      "@type": "@id"
+    },
+    "Integration": {
+      "@id": "hint:Integration",
+      "@type": "@id"
+    },
+    "IntegrationRecord": {
+      "@id": "hint:IntegrationRecord",
+      "@type": "@id"
+    },
+    "Partner": {
+      "@id": "hint:Partner",
+      "@type": "@id"
+    },
+    "PartnerCharge": {
+      "@id": "hint:PartnerCharge",
+      "@type": "@id"
+    },
+    "Quote": {
+      "@id": "hint:Quote",
+      "@type": "@id"
+    },
+    "SignupAttempt": {
+      "@id": "hint:SignupAttempt",
+      "@type": "@id"
+    },
+    "User": {
+      "@id": "hint:User",
+      "@type": "@id",
+      "sameAs": "schema:Person"
+    },
+    "AccessToken": {
+      "@id": "hint:AccessToken",
+      "@type": "@id"
+    },
+
+    "patient_id": {
+      "@id": "hint:patientId",
+      "@type": "xsd:string"
+    },
+    "membership_status": {
+      "@id": "hint:membershipStatus",
+      "@type": "xsd:string"
+    },
+    "enrollment_status": {
+      "@id": "hint:enrollmentStatus",
+      "@type": "xsd:string"
+    },
+    "dob": {
+      "@id": "schema:birthDate",
+      "@type": "xsd:date"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "first_name": {
+      "@id": "schema:givenName",
+      "@type": "xsd:string"
+    },
+    "last_name": {
+      "@id": "schema:familyName",
+      "@type": "xsd:string"
+    },
+    "gender": {
+      "@id": "schema:gender",
+      "@type": "xsd:string"
+    },
+    "address_line1": {
+      "@id": "schema:streetAddress",
+      "@type": "xsd:string"
+    },
+    "address_city": {
+      "@id": "schema:addressLocality",
+      "@type": "xsd:string"
+    },
+    "address_state": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "address_zip": {
+      "@id": "schema:postalCode",
+      "@type": "xsd:string"
+    },
+    "address_country": {
+      "@id": "schema:addressCountry",
+      "@type": "xsd:string"
+    },
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "amount_in_cents": {
+      "@id": "hint:amountInCents",
+      "@type": "xsd:integer",
+      "comment": "Monetary amount expressed in cents (USD)"
+    },
+    "payment_processor": {
+      "@id": "hint:paymentProcessor",
+      "@type": "xsd:string",
+      "comment": "Either 'rainforest' (Hint Payments) or 'stripe'"
+    },
+    "provider_web_link": {
+      "@id": "hint:providerWebLink",
+      "@type": "xsd:anyURI"
+    },
+    "hipaa_authorization_accepted": {
+      "@id": "hint:hipaaAuthorizationAccepted",
+      "@type": "xsd:boolean"
+    },
+    "electronic_communication_consent_accepted": {
+      "@id": "hint:electronicCommunicationConsentAccepted",
+      "@type": "xsd:boolean"
+    },
+    "health_insurance_payer_id": {
+      "@id": "hint:healthInsurancePayerId",
+      "@type": "xsd:string"
+    },
+    "health_insurance_member_id": {
+      "@id": "hint:healthInsuranceMemberId",
+      "@type": "xsd:string"
+    },
+    "joined_practice_date": {
+      "@id": "hint:joinedPracticeDate",
+      "@type": "xsd:date"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://api.hint.com/",
+      "@type": "schema:WebAPI",
+      "schema:name": "Hint Health API",
+      "schema:description": "REST API for Hint Health's direct primary care platform, providing programmatic access to patient enrollment, membership billing, clinical data, practice configuration, and partner integrations.",
+      "schema:url": "https://developers.hint.com",
+      "schema:documentation": "https://developers.hint.com/docs/overview",
+      "schema:termsOfService": "https://www.hint.com/terms",
+      "schema:provider": {
+        "@type": "schema:Organization",
+        "schema:name": "Hint Health",
+        "schema:url": "https://www.hint.com",
+        "schema:email": "devsupport@hint.com"
+      },
+      "schema:category": [
+        "Direct Primary Care",
+        "Healthcare",
+        "Membership Management",
+        "Medical Billing",
+        "EMR"
+      ]
+    }
+  ]
+}

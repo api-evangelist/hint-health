@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-formresponseitemblueprint_leaf",
+  "title": "Public.FormResponseItemBlueprint_leaf",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "string"
+    },
+    "respondent": {
+      "$ref": "#/components/schemas/Common.RecordBlueprint_min"
+    }
+  }
+}

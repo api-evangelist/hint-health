@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-quoteblueprint_one",
+  "title": "Public.QuoteBlueprint_one",
+  "type": "object",
+  "properties": {
+    "billing_period": {
+      "type": "string"
+    },
+    "members": {
+      "type": "string"
+    },
+    "coupon_discount_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "ongoing_amount_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "registration_fee_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "plan": {
+      "$ref": "#/components/schemas/Public.PlanBlueprint_min"
+    },
+    "coupon": {
+      "$ref": "#/components/schemas/Public.CouponBlueprint_one"
+    }
+  }
+}

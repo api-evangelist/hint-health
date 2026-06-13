@@ -1,0 +1,38 @@
+{
+  "operationId": "FormResponse.ShowFormResponse",
+  "method": "GET",
+  "path": "/provider/patients/{patient_id}/form_responses/{id}",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "frmr-ab12C345DeF6",
+    "created_at": "2017-02-05T06:23:00.000000-08:00",
+    "form": {
+      "id": "form-ab12C345DeF6",
+      "description": null,
+      "name": "Form 2",
+      "created_at": "2017-02-05T06:23:00.000000-08:00",
+      "form_items": [
+        {
+          "id": "frmi-ab12C345DeF6",
+          "description": null,
+          "help_text": null,
+          "item_type": "string",
+          "title": "Question 2"
+        }
+      ]
+    },
+    "form_response_items": [
+      {
+        "id": "frmri-ab12C345DeF6",
+        "answer": "Answer 2",
+        "respondent": {
+          "id": "pat-ab12C345DeF6"
+        }
+      }
+    ],
+    "subject": {
+      "id": "pat-ab12C345DeF6"
+    }
+  }
+}

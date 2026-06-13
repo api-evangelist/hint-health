@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-partnerappuserblueprint_leaf",
+  "title": "Public.PartnerAppUserBlueprint_leaf",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "roles": {
+      "type": "string"
+    },
+    "product": {
+      "$ref": "#/components/schemas/Public.PartnerProductBlueprint_leaf"
+    }
+  }
+}

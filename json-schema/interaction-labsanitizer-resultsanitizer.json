@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/interaction-labsanitizer-resultsanitizer",
+  "title": "Interaction.LabSanitizer.ResultSanitizer",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique result identifier"
+    },
+    "code": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Interaction.LabSanitizer.ResultCodeSanitizer"
+      },
+      "description": "At least one coding entry (min 1)"
+    },
+    "code_text": {
+      "type": "string",
+      "description": "Human-readable name for the result"
+    },
+    "issued": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the result was issued"
+    },
+    "value_quantity": {
+      "$ref": "#/components/schemas/Interaction.LabSanitizer.ResultQuantitySanitizer",
+      "description": "Numeric result value with unit"
+    },
+    "value_string": {
+      "type": "string",
+      "description": "String result value"
+    },
+    "text": {
+      "type": "string",
+      "description": "Additional narrative text"
+    },
+    "interpretation": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Interpretation codes (e.g., [\"normal\"])"
+    },
+    "ranges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Interaction.LabSanitizer.ResultRangeSanitizer"
+      },
+      "description": "Reference ranges"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject reference"
+    }
+  },
+  "required": [
+    "id",
+    "code",
+    "code_text",
+    "issued"
+  ]
+}

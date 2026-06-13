@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-membershippatientblueprint_one",
+  "title": "Public.MembershipPatientBlueprint_one",
+  "type": "object",
+  "properties": {
+    "end_date": {
+      "type": "string"
+    },
+    "enrollment_requested_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "enrollment_status": {
+      "type": "string"
+    },
+    "member_type": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string"
+    },
+    "uses_tobacco": {
+      "type": "boolean"
+    },
+    "company": {
+      "$ref": "#/components/schemas/Public.CompanyBlueprint_leaf"
+    },
+    "division": {
+      "$ref": "#/components/schemas/Public.EmployeeDivisionBlueprint_leaf"
+    },
+    "payer": {
+      "$ref": "#/components/schemas/Public.PatientBlueprint_min"
+    },
+    "plan": {
+      "$ref": "#/components/schemas/Public.PlanBlueprint_min"
+    }
+  }
+}

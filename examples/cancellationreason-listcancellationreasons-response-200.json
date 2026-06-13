@@ -1,0 +1,13 @@
+{
+  "operationId": "CancellationReason.ListCancellationReasons",
+  "method": "GET",
+  "path": "/provider/cancellation_reasons",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "cnr-ab12C345DeF6",
+      "description": "Moving away"
+    }
+  ]
+}

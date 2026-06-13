@@ -1,0 +1,11 @@
+{
+  "operationId": "SocialSecurityNumber.ShowSocialSecurityNumber",
+  "method": "GET",
+  "path": "/provider/patients/{patient_id}/social_security_number",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "formatted_number": "808-56-1234",
+    "number": "808561234"
+  }
+}

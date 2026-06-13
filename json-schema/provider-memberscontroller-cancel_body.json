@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-memberscontroller-cancel_body",
+  "title": "Provider.MembersController.cancel_body",
+  "type": "object",
+  "properties": {
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "If an end date is not provided, we will default to ending after the most recently billed month. Date must be formatted as YYYY-MM-DD."
+    },
+    "cancellation_reason": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "cancellation_reason_other": {
+      "type": "string",
+      "description": "Description required when sending cancellation_reason of \"Other\""
+    }
+  },
+  "required": [
+    "cancellation_reason"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-patients-paymentmethods-setupcontroller-create_body",
+  "title": "Provider.Patients.PaymentMethods.SetupController.create_body",
+  "type": "object",
+  "properties": {
+    "user_is_owner": {
+      "type": "boolean"
+    },
+    "accepts_bank": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "user_is_owner",
+    "accepts_bank"
+  ]
+}

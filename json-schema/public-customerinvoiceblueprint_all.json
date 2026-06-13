@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-customerinvoiceblueprint_all",
+  "title": "Public.CustomerInvoiceBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "amount_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "charges_count": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "date": {
+        "type": "string",
+        "format": "date"
+      },
+      "due_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "human_status": {
+        "type": "string"
+      },
+      "integration_record_id": {
+        "type": "string"
+      },
+      "invoice_number": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "last_sent_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "last_viewed_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "paid_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "paid_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "payment_status": {
+        "type": "string"
+      },
+      "payments_count": {
+        "type": "string"
+      },
+      "provider_web_link": {
+        "type": "string"
+      },
+      "received_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "status": {
+        "type": "string"
+      },
+      "subtotal_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "tax_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "total_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "charges": {
+        "$ref": "#/components/schemas/Public.ChargeBlueprint_one"
+      },
+      "owner": {
+        "$ref": "#/components/schemas/Public.PatientBlueprint_one"
+      }
+    }
+  }
+}

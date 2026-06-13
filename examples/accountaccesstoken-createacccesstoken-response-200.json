@@ -1,0 +1,11 @@
+{
+  "operationId": "AccountAccessToken.CreateAcccessToken",
+  "method": "POST",
+  "path": "/provider/patients/{patient_id}/account_access_tokens",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "token": "example_token",
+    "url": "https://examplepractice.hint.com/account?exchange_token=example_token"
+  }
+}

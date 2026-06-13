@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-paymentscontroller-create_body",
+  "title": "Create Payment",
+  "type": "object",
+  "properties": {
+    "amount_in_cents": {
+      "type": "number",
+      "format": "double",
+      "description": "When creating a payment you can add an amount_in_cents, if no amount is included, we will set the payment amount = due_in_cents."
+    },
+    "external": {
+      "type": "boolean",
+      "description": "When creating a payment, processed payments are required to include `process: true`, mark-as-paid payments are required to include `external: true` as an attribute. The request fails if it does not contain only one of these attributes."
+    },
+    "memo": {
+      "type": "string"
+    },
+    "process": {
+      "type": "boolean",
+      "description": "When creating a payment, processed payments are required to include `process: true`, mark-as-paid payments are required to include `external: true` as an attribute. The request fails if it does not contain only one of these attributes."
+    },
+    "paid_at": {
+      "type": "string",
+      "format": "date",
+      "description": "When creating a payment you can specify the date, if no a date is included, we will set it to the `Hint.today` date. Date must be formatted as YYYY-MM-DD."
+    },
+    "source": {
+      "$ref": "#/components/schemas/PaymentSource",
+      "description": "A payment source to process the payment can be specified, if empty the patient's default payment source will be used. The request fails if the patient has no default payment source and source is not specified."
+    }
+  }
+}

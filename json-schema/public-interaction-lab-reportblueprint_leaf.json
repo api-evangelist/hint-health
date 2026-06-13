@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-interaction-lab-reportblueprint_leaf",
+  "title": "Public.Interaction.Lab.ReportBlueprint_leaf",
+  "type": "object",
+  "properties": {
+    "issued": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "lab_reference_id": {
+      "type": "string"
+    },
+    "order_reference": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "operationId": "Plan.ListAllPlans",
+  "method": "GET",
+  "path": "/provider/plans",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "pln-ab12C345DeF6",
+      "name": "Memberships",
+      "plan_type": "retail"
+    }
+  ]
+}

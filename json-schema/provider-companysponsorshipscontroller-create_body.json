@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-companysponsorshipscontroller-create_body",
+  "title": "Create_Sponsorship",
+  "type": "object",
+  "properties": {
+    "is_subscriber": {
+      "type": "boolean",
+      "description": "Currently only employees may be subscribers"
+    },
+    "type": {
+      "type": "string",
+      "description": "May be one of \"employee\", \"spouse\", or \"child\""
+    },
+    "external_id": {
+      "type": "string"
+    },
+    "patient": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "family": {
+      "$ref": "#/components/schemas/Association",
+      "description": "This will be returned to you upon creation of the employee. This is only required when creating dependents."
+    }
+  },
+  "required": [
+    "is_subscriber",
+    "type",
+    "patient"
+  ]
+}

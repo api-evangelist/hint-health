@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/interaction-clinicalnotesanitizer",
+  "title": "Interaction.ClinicalNoteSanitizer",
+  "type": "object",
+  "properties": {
+    "": {
+      "type": "string",
+      "description": "status [draft, signed, addended, deleted, failed] The status of the interaction."
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of the interaction."
+    },
+    "text": {
+      "type": "string",
+      "description": "The plain text body of the interaction."
+    },
+    "formatted_text": {
+      "type": "string",
+      "description": "The formatted text body (markdown). Converted to HTML server-side."
+    },
+    "event_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The event timestamp of the interaction."
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "File attachment paths. Files will be downloaded as part of the request."
+    },
+    "provider_name": {
+      "type": "string",
+      "description": "Name of the signing provider. When provided with status \"signed\", the API resolves it to a provider user ID for the signed field."
+    },
+    "integration_record_id": {
+      "type": "string"
+    },
+    "integration_error_message": {
+      "type": "string"
+    },
+    "integration_web_link": {
+      "type": "string"
+    }
+  }
+}

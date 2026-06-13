@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-partnerchargescontroller-create_body",
+  "title": "Create_PartnerCharge",
+  "type": "object",
+  "properties": {
+    "amount_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "description": {
+      "type": "string"
+    },
+    "patient": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "integration_record_id": {
+      "type": "string"
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PartnerChargeLine"
+      }
+    },
+    "cost_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    }
+  },
+  "required": [
+    "amount_in_cents",
+    "description",
+    "integration_record_id"
+  ]
+}

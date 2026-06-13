@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-practitionerscontroller-update_body",
+  "title": "Create_Practitioner",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "male",
+        "female",
+        "other"
+      ]
+    },
+    "gender_other": {
+      "type": "string"
+    },
+    "photo": {
+      "type": "string",
+      "description": "Base64 encoded photo."
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "integration_record_id": {
+      "type": "string"
+    },
+    "npi": {
+      "$ref": "#/components/schemas/Npi"
+    },
+    "practitioner_group": {
+      "$ref": "#/components/schemas/Association"
+    }
+  }
+}

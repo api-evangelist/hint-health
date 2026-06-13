@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-practiceblueprint_one",
+  "title": "Public.PracticeBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "address_city": {
+      "type": "string"
+    },
+    "address_country": {
+      "type": "string"
+    },
+    "address_line1": {
+      "type": "string"
+    },
+    "address_line2": {
+      "type": "string"
+    },
+    "address_state": {
+      "type": "string"
+    },
+    "address_zip": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "logo_url": {
+      "type": "string"
+    },
+    "integration_record_id": {
+      "type": "string"
+    },
+    "phones": {
+      "$ref": "#/components/schemas/Common.PhoneBlueprint_shared"
+    }
+  }
+}

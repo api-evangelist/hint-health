@@ -1,0 +1,37 @@
+{
+  "operationId": "Company.ShowCompany",
+  "method": "GET",
+  "path": "/provider/companies/{id}",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "com-ab12C345DeF6",
+    "employee_divisions_count": 0,
+    "name": "Schmoogle Inc.",
+    "status": "active",
+    "address": {
+      "id": "add-ab12C345DeF6",
+      "city": "New York",
+      "country": "United States",
+      "line1": "157 E Houston St",
+      "line2": "Suite 2402",
+      "state": "NY",
+      "zip": "10002",
+      "latitude": 40.7227998,
+      "longitude": -73.9892241
+    },
+    "default_location": null,
+    "default_plan": {
+      "id": "pln-ab12C345DeF6",
+      "name": "Membership",
+      "plan_type": "company"
+    },
+    "default_practitioner": null,
+    "phones": [
+      {
+        "number": "5553050005",
+        "type": "mobile"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-companyplanscontroller-create_body",
+  "title": "Create_Company_Plan",
+  "type": "object",
+  "description": "Plan Id must be provided.",
+  "properties": {
+    "plan": {
+      "$ref": "#/components/schemas/Association",
+      "description": "You must use plans of type \"company\""
+    },
+    "available_for_enrollment": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "plan",
+    "available_for_enrollment"
+  ]
+}

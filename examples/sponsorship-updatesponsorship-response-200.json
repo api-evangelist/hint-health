@@ -1,0 +1,20 @@
+{
+  "operationId": "Sponsorship.UpdateSponsorship",
+  "method": "PATCH",
+  "path": "/provider/companies/{company_id}/sponsorships/{id}",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "creg-ab12C345DeF6",
+    "external_id": "ext_id_from_another_system012345",
+    "is_subscriber": false,
+    "type": "spouse",
+    "family": {
+      "id": "cac-ab12C345DeF6"
+    },
+    "patient": {
+      "id": "pat-ab12C345DeF6",
+      "name": "oxana renquist"
+    }
+  }
+}

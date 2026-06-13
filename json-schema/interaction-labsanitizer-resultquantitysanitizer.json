@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/interaction-labsanitizer-resultquantitysanitizer",
+  "title": "Interaction.LabSanitizer.ResultQuantitySanitizer",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "integer",
+      "format": "int32",
+      "description": "The measured value"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measure (e.g., \"mg/dL\")"
+    }
+  },
+  "required": [
+    "value",
+    "unit"
+  ]
+}

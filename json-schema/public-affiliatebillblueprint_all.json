@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-affiliatebillblueprint_all",
+  "title": "Public.AffiliateBillBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "amount_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "human_status": {
+        "type": "string"
+      },
+      "invoice_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "invoice_number": {
+        "type": "string"
+      },
+      "paid_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "paid_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "company": {
+        "$ref": "#/components/schemas/Public.CompanyBlueprint_leaf"
+      }
+    }
+  }
+}

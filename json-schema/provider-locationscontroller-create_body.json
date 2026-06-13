@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-locationscontroller-create_body",
+  "title": "Provider.LocationsController.create_body",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "address_line1": {
+      "type": "string"
+    },
+    "address_line2": {
+      "type": "string"
+    },
+    "address_city": {
+      "type": "string"
+    },
+    "address_state": {
+      "type": "string"
+    },
+    "address_zip": {
+      "type": "string"
+    },
+    "address_country": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "virtual": {
+      "type": "boolean"
+    },
+    "location_group": {
+      "$ref": "#/components/schemas/Association"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

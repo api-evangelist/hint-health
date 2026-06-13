@@ -1,0 +1,20 @@
+{
+  "operationId": "PartnerInteraction.ShowPartnerInteraction",
+  "method": "GET",
+  "path": "/provider/patients/{patient_id}/interactions/partner/{id}",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "inter-ab12C345DeF6",
+    "body": "This is a test body",
+    "patient_id": "pat-123456",
+    "status": "draft",
+    "title": "Lab #123456",
+    "type": "partner",
+    "integration_error_message": null,
+    "integration_last_synced_at": null,
+    "integration_record_id": null,
+    "integration_sync_status": "enabled",
+    "integration_web_link": null
+  }
+}

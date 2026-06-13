@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/platform-partnerscontroller-update_body",
+  "title": "Update_Partner_Legacy",
+  "type": "object",
+  "properties": {
+    "webhook_url": {
+      "type": "string"
+    },
+    "marketing_url": {
+      "type": "string"
+    },
+    "support_url": {
+      "type": "string"
+    },
+    "product_description": {
+      "type": "string"
+    },
+    "integration_description": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "logo_url": {
+      "type": "string"
+    }
+  }
+}

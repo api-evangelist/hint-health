@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-interactions-notificationscontroller-create_body",
+  "title": "Create_InteractionNotification",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The title of the interaction notification."
+    }
+  }
+}

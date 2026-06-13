@@ -1,0 +1,22 @@
+{
+  "operationId": "PaymentMethod.ShowPaymentMethod",
+  "method": "GET",
+  "path": "/provider/patients/{patient_id}/payment_methods/{id}",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "bnk-ab12C345DeF6",
+    "default": true,
+    "last_four": "4242",
+    "name": "Bank of America NA",
+    "type": "bank_account",
+    "bank_account": {
+      "id": "bnk-ab12C345DeF6",
+      "last_four": "4242",
+      "name": "Bank of America NA",
+      "stripe_token": "tok_1234",
+      "type": "BankAccount"
+    },
+    "card": null
+  }
+}

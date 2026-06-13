@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-customerinvoices-chargescontroller-create_body",
+  "title": "Provider.CustomerInvoices.ChargesController.create_body",
+  "type": "object",
+  "properties": {
+    "quantity": {
+      "type": "number",
+      "format": "double"
+    },
+    "price_in_cents": {
+      "type": "number",
+      "format": "double"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "patient": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "practitioner": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "category": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "charge_item": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "location": {
+      "$ref": "#/components/schemas/Association"
+    }
+  },
+  "required": [
+    "quantity",
+    "price_in_cents",
+    "name"
+  ]
+}

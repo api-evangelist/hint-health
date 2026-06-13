@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-npiblueprint_shared",
+  "title": "Public.NpiBlueprint_shared",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "organization_name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}

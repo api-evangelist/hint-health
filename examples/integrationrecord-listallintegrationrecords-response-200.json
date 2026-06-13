@@ -1,0 +1,16 @@
+{
+  "operationId": "IntegrationRecord.ListAllIntegrationRecords",
+  "method": "GET",
+  "path": "/provider/patients/{patient_id}/integration_records",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "integration_record_id": "ABCD0012027",
+      "partner": {
+        "id": "ptr-ab12C345DeF6",
+        "name": "HealthifyEMR24"
+      }
+    }
+  ]
+}

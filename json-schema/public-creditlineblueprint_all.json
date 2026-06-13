@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-creditlineblueprint_all",
+  "title": "Public.CreditLineBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "amount_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "transaction_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "type": {
+        "type": "string"
+      },
+      "credit": {
+        "$ref": "#/components/schemas/Public.CreditBlueprint_min"
+      },
+      "invoice": {
+        "$ref": "#/components/schemas/Public.Payable.InvoiceBlueprint_min_with_owner"
+      }
+    }
+  }
+}

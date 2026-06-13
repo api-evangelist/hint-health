@@ -1,0 +1,14 @@
+{
+  "operationId": "Partner.UpdatePartnerLegacy",
+  "method": "PATCH",
+  "path": "/partner",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "ptr-ab12C345DeF6",
+    "email": "jane.doe@hint-partner-emr.com",
+    "logo_url": null,
+    "name": "Hint-Partner EMR",
+    "webhook_url": "https://hint-partner-emr.com/webhooks/hint"
+  }
+}

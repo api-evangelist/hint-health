@@ -1,0 +1,39 @@
+{
+  "operationId": "OAuth.OauthTokens",
+  "method": "POST",
+  "path": "/oauth/tokens",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "int-ab12C345DeF6",
+    "access_token": "i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3",
+    "expires_in": null,
+    "refresh_token": null,
+    "status": "active",
+    "token_type": "bearer",
+    "webhook_url_default": null,
+    "webhook_url_override": "https://integration.example.hint.com",
+    "activated_by": {
+      "id": "user-ab12C345DeF6",
+      "name": "Joe Blogs",
+      "email": "joe_170@example.com"
+    },
+    "api_keys": [
+      {
+        "deactivated_at": null,
+        "description": "Hint-Partner EMR",
+        "last_used_at": null,
+        "token": "i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3"
+      }
+    ],
+    "practice": {
+      "id": "pra-ab12C345DeF6",
+      "name": "Dr. Phil"
+    },
+    "product": {
+      "id": "ppro-ab12C345DeF6",
+      "name": "Hint-Partner EMR",
+      "slug": "hint-partner-emr-oauth-example"
+    }
+  }
+}

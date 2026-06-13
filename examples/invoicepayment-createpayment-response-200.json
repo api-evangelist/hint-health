@@ -1,0 +1,19 @@
+{
+  "operationId": "InvoicePayment.CreatePayment",
+  "method": "POST",
+  "path": "/provider/companies/{company_id}/invoices/{invoice_id}/payments",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "pmt-ab12C345DeF6",
+    "error_message": null,
+    "memo": null,
+    "status": "unattempted",
+    "date": "2017-02-05T06:23:00.000000-08:00",
+    "amount_in_cents": 4999,
+    "source": {
+      "id": "card-ab12C345DeF6",
+      "type": "Card"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "operationId": "Affiliate.ListAffiliates",
+  "method": "GET",
+  "path": "/provider/affiliates",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "aff-ab12C345DeF6",
+      "name": "Dr. Phil"
+    }
+  ]
+}

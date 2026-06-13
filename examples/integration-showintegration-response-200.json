@@ -1,0 +1,20 @@
+{
+  "operationId": "Integration.ShowIntegration",
+  "method": "GET",
+  "path": "/integrations/{id}",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "int-ab12C345DeF6",
+    "expires_in": null,
+    "refresh_token": null,
+    "status": "requested",
+    "token_type": "bearer",
+    "webhook_url_default": null,
+    "webhook_url_override": "https://integration.example.hint.com",
+    "practice": {
+      "id": "pra-ab12C345DeF6",
+      "name": "Dr. Phil"
+    }
+  }
+}

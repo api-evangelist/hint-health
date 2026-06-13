@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-patients-supplementscontroller-create_body",
+  "title": "Create_Supplement",
+  "type": "object",
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "description": "The name of the supplement."
+    },
+    "strength": {
+      "type": "string",
+      "description": "The strength of the supplement."
+    },
+    "strength_uom": {
+      "type": "string",
+      "description": "The unit of measure for the strength."
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32",
+      "description": "The quantity of the supplement."
+    },
+    "sig_text": {
+      "type": "string",
+      "description": "The dosage and usage directions for the supplement (e.g. \"Take 1 capsule daily with food\")."
+    },
+    "integration_record_id": {
+      "type": "string"
+    },
+    "integration_error_message": {
+      "type": "string"
+    },
+    "integration_web_link": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_name"
+  ]
+}

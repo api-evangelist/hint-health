@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/interaction-labsanitizer",
+  "title": "Interaction.LabSanitizer",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "The status of the interaction. Defaults to \"SENT\"",
+      "enum": [
+        "sent",
+        "fulfilled"
+      ]
+    },
+    "vendor_order_id": {
+      "type": "string",
+      "description": "External vendor order ID (used for idempotency)"
+    },
+    "event_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Defaults to current time"
+    },
+    "order": {
+      "$ref": "#/components/schemas/Interaction.LabSanitizer.OrderSanitizer",
+      "description": "Lab order details"
+    },
+    "report": {
+      "$ref": "#/components/schemas/Interaction.LabSanitizer.ReportSanitizer",
+      "description": "Diagnostic report details"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Interaction.LabSanitizer.ResultSanitizer"
+      },
+      "description": "Lab result observations"
+    },
+    "integration_record_id": {
+      "type": "string"
+    },
+    "integration_error_message": {
+      "type": "string"
+    },
+    "integration_web_link": {
+      "type": "string"
+    }
+  }
+}

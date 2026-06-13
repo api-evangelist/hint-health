@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/platform-oauthscontroller-tokens_body",
+  "title": "OAuth",
+  "type": "object",
+  "properties": {
+    "grant_type": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "activate": {
+      "type": "boolean",
+      "description": "Defaults to true. Pass false to keep the integration pending after token exchange."
+    }
+  },
+  "required": [
+    "grant_type",
+    "code"
+  ]
+}

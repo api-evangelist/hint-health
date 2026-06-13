@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-companysponsorshipscontroller-update_body",
+  "title": "Update_Sponsorship",
+  "type": "object",
+  "description": "Subscribers type can not be updated.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "May be one of \"spouse\", or \"child\""
+    },
+    "external_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

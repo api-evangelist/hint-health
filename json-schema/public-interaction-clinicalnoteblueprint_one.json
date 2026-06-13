@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-interaction-clinicalnoteblueprint_one",
+  "title": "Public.Interaction.ClinicalNoteBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "event_timestamp": {
+      "type": "string"
+    },
+    "files": {
+      "type": "string"
+    },
+    "formatted_text": {
+      "type": "string"
+    },
+    "patient_id": {
+      "type": "string"
+    },
+    "signed": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-interaction-labblueprint_one",
+  "title": "Public.Interaction.LabBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "event_timestamp": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "vendor_order_id": {
+      "type": "string"
+    },
+    "order": {
+      "$ref": "#/components/schemas/Public.Interaction.Lab.OrderBlueprint_leaf"
+    },
+    "report": {
+      "$ref": "#/components/schemas/Public.Interaction.Lab.ReportBlueprint_leaf"
+    },
+    "results": {
+      "$ref": "#/components/schemas/Public.Interaction.Lab.ResultBlueprint_leaf"
+    }
+  }
+}

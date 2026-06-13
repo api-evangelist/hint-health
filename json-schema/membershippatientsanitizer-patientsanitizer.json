@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/membershippatientsanitizer-patientsanitizer",
+  "title": "MembershipPatientSanitizer.PatientSanitizer",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "uses_tobacco": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

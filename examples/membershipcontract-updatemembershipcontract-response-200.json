@@ -1,0 +1,13 @@
+{
+  "operationId": "MembershipContract.UpdateMembershipContract",
+  "method": "PATCH",
+  "path": "/provider/memberships/{membership_id}/contracts/{id}",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "cntr-ab12C345DeF6",
+    "end_date": "2018-02-05",
+    "memo": null,
+    "start_date": "2016-08-05"
+  }
+}

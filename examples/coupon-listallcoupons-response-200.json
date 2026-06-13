@@ -1,0 +1,24 @@
+{
+  "operationId": "Coupon.ListAllCoupons",
+  "method": "GET",
+  "path": "/provider/coupons",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "cou-ab12C345DeF6",
+      "amount_off_in_cents": null,
+      "apply_to_each_patient": true,
+      "code": "GETHEALTHYNOWFORCHEAPER1",
+      "created_at": "2017-02-05T06:23:00.000000-08:00",
+      "description": null,
+      "duration_in_months": null,
+      "is_archived": false,
+      "is_redeemable": false,
+      "percent_off": "15.0",
+      "redeemable_from": "2020-01-01",
+      "redeemable_until": null,
+      "updated_at": "2017-02-05T06:23:00.000000-08:00"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/interaction-labsanitizer-resultrangesanitizer",
+  "title": "Interaction.LabSanitizer.ResultRangeSanitizer",
+  "type": "object",
+  "properties": {
+    "low": {
+      "$ref": "#/components/schemas/Interaction.LabSanitizer.ResultQuantitySanitizer",
+      "description": "Lower bound of range"
+    },
+    "high": {
+      "$ref": "#/components/schemas/Interaction.LabSanitizer.ResultQuantitySanitizer",
+      "description": "Upper bound of range"
+    },
+    "text": {
+      "type": "string",
+      "description": "Textual range description"
+    }
+  }
+}

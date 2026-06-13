@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-couponblueprint_all",
+  "title": "Public.CouponBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "amount_off_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "apply_to_each_patient": {
+        "type": "boolean"
+      },
+      "code": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "description": {
+        "type": "string"
+      },
+      "duration_in_months": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "is_archived": {
+        "type": "boolean"
+      },
+      "is_redeemable": {
+        "type": "boolean"
+      },
+      "percent_off": {
+        "type": "number",
+        "format": "float"
+      },
+      "redeemable_from": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "redeemable_until": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "date-time"
+      }
+    }
+  }
+}

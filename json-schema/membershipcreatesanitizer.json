@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/membershipcreatesanitizer",
+  "title": "MembershipCreateSanitizer",
+  "type": "object",
+  "properties": {
+    "membership_patients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MembershipUpdateSanitizer.MembershipPatient"
+      },
+      "description": "Members can be used as an alias for membership_patients"
+    },
+    "plan": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "owner": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "sponsorship": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD."
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date must be formatted as YYYY-MM-DD."
+    },
+    "period_in_months": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually",
+      "enum": [
+        "1",
+        "3",
+        "6",
+        "12"
+      ]
+    },
+    "fixed_period_rate_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "fixed_registration_fee_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    }
+  },
+  "required": [
+    "membership_patients",
+    "plan",
+    "start_date",
+    "period_in_months"
+  ]
+}

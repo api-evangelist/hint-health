@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/interaction-labsanitizer-actionsanitizer",
+  "title": "Interaction.LabSanitizer.ActionSanitizer",
+  "type": "object",
+  "properties": {
+    "reference": {
+      "type": "string",
+      "description": "Reference code for the test"
+    },
+    "display": {
+      "type": "string",
+      "description": "Human-readable test name"
+    }
+  },
+  "required": [
+    "reference",
+    "display"
+  ]
+}

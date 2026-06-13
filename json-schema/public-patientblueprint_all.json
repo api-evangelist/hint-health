@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-patientblueprint_all",
+  "title": "Public.PatientBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "address_city": {
+        "type": "string"
+      },
+      "address_country": {
+        "type": "string"
+      },
+      "address_line1": {
+        "type": "string"
+      },
+      "address_line2": {
+        "type": "string"
+      },
+      "address_state": {
+        "type": "string"
+      },
+      "address_zip": {
+        "type": "string"
+      },
+      "age": {
+        "type": "string"
+      },
+      "chosen_first_name": {
+        "type": "string"
+      },
+      "chosen_last_name": {
+        "type": "string"
+      },
+      "chosen_middle_name": {
+        "type": "string"
+      },
+      "chosen_suffix": {
+        "type": "string"
+      },
+      "chosen_title": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "dob": {
+        "type": "string",
+        "format": "date"
+      },
+      "electronic_communication_consent_accepted": {
+        "type": "string"
+      },
+      "electronic_communication_consent_accepted_at": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "engaged": {
+        "type": "boolean"
+      },
+      "external_link_id": {
+        "type": "string"
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "gender": {
+        "type": "string"
+      },
+      "gender_identity": {
+        "type": "string"
+      },
+      "gender_other": {
+        "type": "string"
+      },
+      "health_insurance_group_id": {
+        "type": "string"
+      },
+      "health_insurance_member_id": {
+        "type": "string"
+      },
+      "health_insurance_payer_id": {
+        "type": "string"
+      },
+      "health_insurance_payer_name": {
+        "type": "string"
+      },
+      "hipaa_authorization_accepted": {
+        "type": "boolean"
+      },
+      "hipaa_authorization_accepted_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "import_id": {
+        "type": "string"
+      },
+      "import_source": {
+        "type": "string"
+      },
+      "joined_practice_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "last_engagement_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "last_name": {
+        "type": "string"
+      },
+      "lead_source_other": {
+        "type": "string"
+      },
+      "master_record_sponsor": {
+        "type": "string"
+      },
+      "membership_status": {
+        "type": "string"
+      },
+      "middle_name": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "patient_agreement_accepted": {
+        "type": "boolean"
+      },
+      "patient_agreement_accepted_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "preferred_language": {
+        "type": "string"
+      },
+      "pronouns": {
+        "type": "string"
+      },
+      "provider_web_link": {
+        "type": "string"
+      },
+      "sex": {
+        "type": "string"
+      },
+      "suffix": {
+        "type": "string"
+      },
+      "terms_accepted": {
+        "type": "boolean"
+      },
+      "terms_accepted_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "uses_tobacco": {
+        "type": "boolean"
+      },
+      "account": {
+        "$ref": "#/components/schemas/Public.PatientBlueprint_account"
+      },
+      "company": {
+        "$ref": "#/components/schemas/Public.CompanyBlueprint_leaf"
+      },
+      "emergency_contact": {
+        "$ref": "#/components/schemas/Common.EmergencyContactBlueprint_shared"
+      },
+      "external_records": {
+        "$ref": "#/components/schemas/Public.ExternalRecordBlueprint_min"
+      },
+      "known_practice": {
+        "$ref": "#/components/schemas/Public.KnownPracticeBlueprint_min"
+      },
+      "lead_source": {
+        "$ref": "#/components/schemas/Public.LeadSourceBlueprint_one"
+      },
+      "location": {
+        "$ref": "#/components/schemas/Public.LocationBlueprint_one"
+      },
+      "location_group": {
+        "$ref": "#/components/schemas/Public.LocationGroupBlueprint_leaf"
+      },
+      "membership_members": {
+        "$ref": "#/components/schemas/Public.MembershipMemberBlueprint_for_patient"
+      },
+      "memberships": {
+        "$ref": "#/components/schemas/Public.MembershipPatientBlueprint_one"
+      },
+      "merged_into": {
+        "$ref": "#/components/schemas/Public.PatientBlueprint_min"
+      },
+      "phones": {
+        "$ref": "#/components/schemas/Public.PhoneBlueprint_leaf"
+      },
+      "practitioner": {
+        "$ref": "#/components/schemas/Public.PractitionerBlueprint_one"
+      },
+      "practitioner_group": {
+        "$ref": "#/components/schemas/Public.LocationGroupBlueprint_leaf"
+      },
+      "sponsorships": {
+        "$ref": "#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient"
+      },
+      "ssn": {
+        "$ref": "#/components/schemas/Common.SocialSecurityNumberBlueprint_masked"
+      }
+    }
+  }
+}

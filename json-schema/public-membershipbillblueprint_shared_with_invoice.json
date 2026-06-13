@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-membershipbillblueprint_shared_with_invoice",
+  "title": "Public.MembershipBillBlueprint_shared_with_invoice",
+  "type": "object",
+  "properties": {
+    "amount_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "charges_amount_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "coupon_discount_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "coupon_discount_months": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "coupon_percent_off": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "list_price_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "membership_amount_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "period_in_months": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "rate_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "registration_fee_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "customer_invoice": {
+      "$ref": "#/components/schemas/Public.Payable.InvoiceBlueprint_for_membership_bill"
+    }
+  }
+}

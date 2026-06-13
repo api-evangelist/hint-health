@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-signupattemptblueprint_one",
+  "title": "Public.SignupAttemptBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "email": {
+      "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "lead_source_other": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "lead_source": {
+      "$ref": "#/components/schemas/Public.LeadSourceBlueprint_leaf"
+    },
+    "signup_page": {
+      "$ref": "#/components/schemas/Public.SignupPageBlueprint_leaf"
+    }
+  }
+}

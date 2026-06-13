@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-companysponsorshipblueprint_for_patient",
+  "title": "Public.CompanySponsorshipBlueprint_for_patient",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "external_id": {
+      "type": "string"
+    },
+    "is_subscriber": {
+      "type": "boolean"
+    },
+    "type": {
+      "type": "string"
+    },
+    "company": {
+      "$ref": "#/components/schemas/Public.CompanyBlueprint_leaf"
+    },
+    "family": {
+      "$ref": "#/components/schemas/Public.CompanyAccountBlueprint_min"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "operationId": "EmployeeDivision.ListAllEmployeeDivisions",
+  "method": "GET",
+  "path": "/provider/companies/{company_id}/employee_divisions",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "div-ab12C345DeF6",
+      "name": "Accounting"
+    }
+  ]
+}

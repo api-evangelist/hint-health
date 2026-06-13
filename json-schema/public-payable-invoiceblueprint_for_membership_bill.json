@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-payable-invoiceblueprint_for_membership_bill",
+  "title": "Public.Payable.InvoiceBlueprint_for_membership_bill",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "human_status": {
+      "type": "string"
+    },
+    "invoice_number": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "amount_in_cents": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "payment_scheduled_on": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-creditscontroller-update_body",
+  "title": "Update_Credit",
+  "type": "object",
+  "properties": {
+    "amount_in_cents": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Value must be greater than or equal to 0"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "amount_in_cents"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "operationId": "CustomerInvoice.CreatePDF",
+  "method": "POST",
+  "path": "/provider/customer_invoices/{customer_invoice_id}/pdf",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "url": "https://api.hint.com/api/files/0jlsWoWWS2M6?account_token=example_token"
+  }
+}

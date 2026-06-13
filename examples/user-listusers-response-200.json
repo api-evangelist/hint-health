@@ -1,0 +1,18 @@
+{
+  "operationId": "User.ListUsers",
+  "method": "GET",
+  "path": "/provider/users",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "user-ab12C345DeF6",
+      "email": "joe_372@example.com",
+      "first_name": "Joe",
+      "last_name": "Blogs",
+      "name": "Joe Blogs",
+      "phones": [],
+      "product_users": []
+    }
+  ]
+}

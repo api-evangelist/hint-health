@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/quotesanitizer",
+  "title": "QuoteSanitizer",
+  "type": "object",
+  "properties": {
+    "plan": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/QuoteSanitizer.MemberSanitizer"
+      }
+    },
+    "period_in_months": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually",
+      "enum": [
+        "1",
+        "3",
+        "6",
+        "12"
+      ]
+    },
+    "coupon": {
+      "$ref": "#/components/schemas/Association",
+      "description": "The coupon to apply to the quote (optional)"
+    },
+    "coupon_code": {
+      "type": "string",
+      "description": "The coupon code to apply to the quote (alternative to coupon object)"
+    }
+  },
+  "required": [
+    "plan",
+    "members"
+  ]
+}

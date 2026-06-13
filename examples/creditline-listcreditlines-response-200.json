@@ -1,0 +1,28 @@
+{
+  "operationId": "CreditLine.ListCreditLines",
+  "method": "GET",
+  "path": "/provider/credit_lines",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "cln-ab12C345DeF6",
+      "amount_in_cents": -1000,
+      "created_at": "2017-02-05T06:23:00.000000-08:00",
+      "transaction_date": "2017-02-05",
+      "type": "applied",
+      "credit": {
+        "id": "crd-ab12C345DeF6"
+      },
+      "invoice": {
+        "id": "inv-ab12C345DeF6",
+        "invoice_number": 1,
+        "type": "customer_invoice",
+        "owner": {
+          "id": "pat-ab12C345DeF6",
+          "type": "patient"
+        }
+      }
+    }
+  ]
+}

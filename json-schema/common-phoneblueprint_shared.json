@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/common-phoneblueprint_shared",
+  "title": "Common.PhoneBlueprint_shared",
+  "type": "object",
+  "properties": {
+    "number": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "us_formattable": {
+      "type": "string"
+    }
+  }
+}

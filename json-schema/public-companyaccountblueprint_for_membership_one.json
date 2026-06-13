@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-companyaccountblueprint_for_membership_one",
+  "title": "Public.CompanyAccountBlueprint_for_membership_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "company": {
+      "$ref": "#/components/schemas/Public.CompanyBlueprint_leaf"
+    }
+  }
+}

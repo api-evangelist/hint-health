@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-membershipcontractscontroller-update_body",
+  "title": "Provider.MembershipContractsController.update_body",
+  "type": "object",
+  "properties": {
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "billing_end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

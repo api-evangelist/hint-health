@@ -34,7 +34,7 @@ apis:
       - type: Documentation
         url: https://developers.hint.com/docs/overview
       - type: OpenAPI
-        url: https://developers.hint.com/llms.txt
+        url: https://raw.githubusercontent.com/api-evangelist/hint-health/refs/heads/main/openapi/hint-health-hint-health-api-openapi.yml
 
 common:
   - type: Website

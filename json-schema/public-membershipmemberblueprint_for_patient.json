@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-membershipmemberblueprint_for_patient",
+  "title": "Public.MembershipMemberBlueprint_for_patient",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "enrollment_status": {
+      "type": "string"
+    },
+    "member_type": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "enrollment_requested_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string"
+    },
+    "membership": {
+      "$ref": "#/components/schemas/Public.MembershipBlueprint_min"
+    }
+  }
+}

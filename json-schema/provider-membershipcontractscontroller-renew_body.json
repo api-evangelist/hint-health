@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-membershipcontractscontroller-renew_body",
+  "title": "Provider.MembershipContractsController.renew_body",
+  "type": "object",
+  "properties": {
+    "memo": {
+      "type": "string"
+    }
+  }
+}

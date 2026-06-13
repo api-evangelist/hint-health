@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-interaction-lab-resultblueprint_leaf",
+  "title": "Public.Interaction.Lab.ResultBlueprint_leaf",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "code_text": {
+      "type": "string"
+    },
+    "issued": {
+      "type": "string"
+    },
+    "value_string": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "interpretation": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "code": {
+      "$ref": "#/components/schemas/Public.Interaction.Lab.Result.CodeBlueprint_leaf"
+    },
+    "value_quantity": {
+      "$ref": "#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf"
+    },
+    "ranges": {
+      "$ref": "#/components/schemas/Public.Interaction.Lab.Result.RangeBlueprint_leaf"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "operationId": "WebhookEndpoint.WebhookEndpointsLegacy",
+  "method": "GET",
+  "path": "/integrations/{integration_id}/webhook_endpoints",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "whep-ab12C345DeF6",
+      "created_at": "2017-02-05T06:23:00.000000-08:00",
+      "last_delivered_at": null,
+      "localhost_webhook_url": "http://localhost:3000/hint/webhook",
+      "updated_at": "2017-02-05T06:23:00.000000-08:00",
+      "webhook_url": "https://api.partner/webhook_endpoint_url",
+      "partner_backend": {
+        "id": "pbnd-ab12C345DeF6",
+        "name": "Default"
+      }
+    },
+    {
+      "id": "whep-ab12C345DeF6",
+      "created_at": "2017-02-05T06:23:00.000000-08:00",
+      "last_delivered_at": null,
+      "localhost_webhook_url": "http://localhost:3000/hint/webhook",
+      "updated_at": "2017-02-05T06:23:00.000000-08:00",
+      "webhook_url": "https://api.partner/webhook_endpoint_url",
+      "partner_backend": {
+        "id": "pbnd-ab12C345DeF6",
+        "name": "Default"
+      }
+    },
+    {
+      "id": "whep-ab12C345DeF6",
+      "created_at": "2017-02-05T06:23:00.000000-08:00",
+      "last_delivered_at": null,
+      "localhost_webhook_url": "http://localhost:3000/hint/webhook",
+      "updated_at": "2017-02-05T06:23:00.000000-08:00",
+      "webhook_url": "https://api.partner/webhook_endpoint_url",
+      "partner_backend": {
+        "id": "pbnd-ab12C345DeF6",
+        "name": "Default"
+      }
+    }
+  ]
+}

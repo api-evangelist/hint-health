@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-chargescontroller-create_body",
+  "title": "Provider.ChargesController.create_body",
+  "type": "object",
+  "properties": {
+    "charge_item": {
+      "$ref": "#/components/schemas/ChargeItem"
+    },
+    "patient": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "price_in_cents": {
+      "type": "number",
+      "format": "double"
+    },
+    "description": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "category": {
+      "$ref": "#/components/schemas/Category"
+    },
+    "practitioner": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "location": {
+      "$ref": "#/components/schemas/Association"
+    }
+  },
+  "required": [
+    "charge_item",
+    "patient"
+  ]
+}

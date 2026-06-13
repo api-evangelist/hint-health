@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/quotesanitizer-membersanitizer",
+  "title": "QuoteSanitizer.MemberSanitizer",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Choose one below. You can think of \"spouse\" as \"adult\". This is a naming issue that will hopefully be addressed in the future",
+      "enum": [
+        "primary",
+        "child",
+        "spouse"
+      ]
+    },
+    "age": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "uses_tobacco": {
+      "type": "boolean"
+    },
+    "dob": {
+      "type": "string",
+      "format": "date",
+      "description": "Date must be formatted as YYYY-MM-DD."
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date must be formatted as YYYY-MM-DD."
+    }
+  },
+  "required": [
+    "type",
+    "uses_tobacco"
+  ]
+}

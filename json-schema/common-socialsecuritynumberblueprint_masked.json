@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/common-socialsecuritynumberblueprint_masked",
+  "title": "Common.SocialSecurityNumberBlueprint_masked",
+  "type": "object",
+  "properties": {
+    "masked_number": {
+      "type": "string"
+    }
+  }
+}

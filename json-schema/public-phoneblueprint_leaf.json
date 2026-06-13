@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-phoneblueprint_leaf",
+  "title": "Public.PhoneBlueprint_leaf",
+  "type": "object",
+  "properties": {
+    "number": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}

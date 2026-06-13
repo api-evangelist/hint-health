@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/partnerchargeline",
+  "title": "PartnerChargeLine",
+  "type": "object",
+  "properties": {
+    "quantity": {
+      "type": "integer"
+    },
+    "price_in_cents": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "string"
+    },
+    "charge_item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Optional if name, code and code_type are specified"
+        },
+        "name": {
+          "type": "string",
+          "description": "Required if no ID"
+        },
+        "code": {
+          "type": "string",
+          "description": "Required if no ID"
+        },
+        "code_type": {
+          "type": "string",
+          "description": "Required if no ID",
+          "enum": [
+            "cpt",
+            "ndc",
+            "loinc",
+            "snowmed"
+          ]
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "days_supply": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "code",
+        "code_type"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

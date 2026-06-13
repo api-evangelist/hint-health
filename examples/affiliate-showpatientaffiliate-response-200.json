@@ -1,0 +1,11 @@
+{
+  "operationId": "Affiliate.ShowPatientAffiliate",
+  "method": "GET",
+  "path": "/provider/patients/{patient_id}/affiliate",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "aff-ab12C345DeF6",
+    "name": "Dr. Phil"
+  }
+}

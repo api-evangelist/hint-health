@@ -1,0 +1,19 @@
+{
+  "operationId": "ChargeItem.CreateChargeItem",
+  "method": "POST",
+  "path": "/provider/charge_items",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "item-ab12C345DeF6",
+    "code": "",
+    "description": "Diagnostic lab test for Hemaglobin A1C",
+    "name": "HbA1c #3",
+    "provider_web_link": "https://app.hint.com/admin/charge_items/item-ab12C345DeF6",
+    "created_at": "2017-02-05T06:23:00.000000-08:00",
+    "price_in_cents": "500.0",
+    "quantity_in_stock": 50,
+    "updated_at": "2017-02-05T06:23:00.000000-08:00",
+    "category": null
+  }
+}

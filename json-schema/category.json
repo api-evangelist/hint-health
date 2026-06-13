@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/category",
+  "title": "Category",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Optional if type is specified"
+    },
+    "type": {
+      "type": "string",
+      "description": "Ignored if ID is specified",
+      "enum": [
+        "memberships",
+        "labs",
+        "medications",
+        "vitamins_and_supplements",
+        "vaccines",
+        "imaging",
+        "supplies_and_dme",
+        "retail_items",
+        "office_visits",
+        "procedures",
+        "fees"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-patientscontroller-matching_body",
+  "title": "Match_Patients",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "middle_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "dob": {
+      "type": "string",
+      "format": "date",
+      "description": "Date must be formatted as YYYY-MM-DD."
+    },
+    "phones": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PhoneNumber"
+      }
+    }
+  },
+  "required": [
+    "first_name",
+    "last_name"
+  ]
+}

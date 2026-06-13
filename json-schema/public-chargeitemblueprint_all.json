@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-chargeitemblueprint_all",
+  "title": "Public.ChargeItemBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "code": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "description": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "price_in_cents": {
+        "type": "number",
+        "format": "float"
+      },
+      "provider_web_link": {
+        "type": "string"
+      },
+      "quantity_in_stock": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "category": {
+        "$ref": "#/components/schemas/Public.CategoryBlueprint_one"
+      }
+    }
+  }
+}

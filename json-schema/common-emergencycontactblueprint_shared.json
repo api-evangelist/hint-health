@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/common-emergencycontactblueprint_shared",
+  "title": "Common.EmergencyContactBlueprint_shared",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "relationship": {
+      "type": "string"
+    },
+    "phone": {
+      "$ref": "#/components/schemas/Common.PhoneBlueprint_shared"
+    }
+  }
+}

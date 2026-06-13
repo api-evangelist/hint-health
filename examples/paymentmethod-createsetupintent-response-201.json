@@ -1,0 +1,13 @@
+{
+  "operationId": "PaymentMethod.CreateSetupIntent",
+  "method": "POST",
+  "path": "/provider/patients/{patient_id}/payment_methods/setup",
+  "status": "201",
+  "mediaType": "application/json",
+  "example": {
+    "payment_processor": "rainforest",
+    "payment_method_config_id": "pmc_1234567890",
+    "session_key": "skey_1234",
+    "allowed_methods": "ACH,CARD"
+  }
+}

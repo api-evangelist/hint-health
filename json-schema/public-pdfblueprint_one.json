@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-pdfblueprint_one",
+  "title": "Public.PdfBlueprint_one",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string"
+    }
+  }
+}

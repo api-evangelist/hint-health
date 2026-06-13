@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-companyblueprint_one",
+  "title": "Public.CompanyBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "employee_divisions_count": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "address": {
+      "$ref": "#/components/schemas/Public.AddressBlueprint_leaf"
+    },
+    "default_location": {
+      "$ref": "#/components/schemas/Public.LocationBlueprint_min"
+    },
+    "default_plan": {
+      "$ref": "#/components/schemas/Public.PlanBlueprint_min"
+    },
+    "default_practitioner": {
+      "$ref": "#/components/schemas/Public.PractitionerBlueprint_min"
+    },
+    "employee_divisions": {
+      "$ref": "#/components/schemas/Public.EmployeeDivisionBlueprint_leaf"
+    },
+    "phones": {
+      "$ref": "#/components/schemas/Public.PhoneBlueprint_leaf"
+    }
+  }
+}

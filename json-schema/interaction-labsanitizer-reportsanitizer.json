@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/interaction-labsanitizer-reportsanitizer",
+  "title": "Interaction.LabSanitizer.ReportSanitizer",
+  "type": "object",
+  "properties": {
+    "issued": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the report was issued"
+    },
+    "status": {
+      "type": "string",
+      "description": "Report status (e.g., \"final\", \"preliminary\")"
+    },
+    "lab_reference_id": {
+      "type": "string",
+      "description": "External lab reference ID"
+    },
+    "order_reference": {
+      "type": "string",
+      "description": "Reference to the originating order"
+    }
+  },
+  "required": [
+    "issued",
+    "status"
+  ]
+}

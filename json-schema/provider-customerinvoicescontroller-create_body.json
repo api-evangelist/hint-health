@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-customerinvoicescontroller-create_body",
+  "title": "Create_Customer_Invoice",
+  "type": "object",
+  "description": "Owner or patient or both must be provided. If you do not specify owner, we will either use the patient's last payer, or the patient themselves",
+  "properties": {
+    "integration_record_id": {
+      "type": "string"
+    },
+    "owner": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "patient": {
+      "$ref": "#/components/schemas/Association"
+    }
+  }
+}

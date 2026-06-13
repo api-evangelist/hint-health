@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/interaction-labsanitizer-resultcodesanitizer",
+  "title": "Interaction.LabSanitizer.ResultCodeSanitizer",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "LOINC code value (only LOINC is supported)"
+    },
+    "display": {
+      "type": "string",
+      "description": "Human-readable name"
+    }
+  },
+  "required": [
+    "code",
+    "display"
+  ]
+}

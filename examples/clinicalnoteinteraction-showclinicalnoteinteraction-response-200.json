@@ -1,0 +1,25 @@
+{
+  "operationId": "ClinicalNoteInteraction.ShowClinicalNoteInteraction",
+  "method": "GET",
+  "path": "/provider/patients/{patient_id}/interactions/clinical_note/{id}",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "inter-cN12x345AbC6",
+    "author": "Dr. Jane Smith",
+    "event_timestamp": "2017-02-05T14:23:00Z",
+    "files": [],
+    "formatted_text": "<p>Patient presented for annual wellness exam. All vitals within normal range.</p>",
+    "patient_id": "pat-123456",
+    "signed": true,
+    "status": "completed",
+    "text": "Patient presented for annual wellness exam. All vitals within normal range.",
+    "title": "Visit Note \u2013 Annual Physical",
+    "type": "note",
+    "integration_error_message": null,
+    "integration_last_synced_at": null,
+    "integration_record_id": null,
+    "integration_sync_status": "enabled",
+    "integration_web_link": null
+  }
+}

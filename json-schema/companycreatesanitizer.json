@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/companycreatesanitizer",
+  "title": "CompanyCreateSanitizer",
+  "type": "object",
+  "properties": {
+    "default_plan": {
+      "$ref": "#/components/schemas/Association",
+      "description": "You must use plans of type \"company\""
+    },
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "phones": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PhoneNumber"
+      }
+    }
+  }
+}

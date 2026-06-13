@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-socialsecuritynumberblueprint_one",
+  "title": "Public.SocialSecurityNumberBlueprint_one",
+  "type": "object",
+  "properties": {
+    "formatted_number": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    }
+  }
+}

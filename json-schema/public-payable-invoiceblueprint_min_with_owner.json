@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-payable-invoiceblueprint_min_with_owner",
+  "title": "Public.Payable.InvoiceBlueprint_min_with_owner",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "invoice_number": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "owner": {
+      "$ref": "#/components/schemas/Public.Payable.OwnerBlueprint_min"
+    }
+  }
+}

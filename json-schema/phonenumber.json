@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/phonenumber",
+  "title": "PhoneNumber",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "number": {
+      "type": "number"
+    },
+    "type": {
+      "type": "string"
+    },
+    "us_formattable": {
+      "type": "boolean",
+      "description": "Make this false if your number is not exactly 10 digits"
+    }
+  },
+  "required": [
+    "number",
+    "type"
+  ]
+}

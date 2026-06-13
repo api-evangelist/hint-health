@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-practitionerblueprint_one",
+  "title": "Public.PractitionerBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "accepts_enrollments_from_employer": {
+      "type": "string"
+    },
+    "accepts_enrollments_from_retail": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "education": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "gender_other": {
+      "type": "string"
+    },
+    "integration_record_id": {
+      "type": "string"
+    },
+    "max_patient_age": {
+      "type": "string"
+    },
+    "min_patient_age": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "online_signup_visibility": {
+      "type": "string"
+    },
+    "panel_size": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "panel_size_limit": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Public.LocationBlueprint_one"
+      }
+    },
+    "npi": {
+      "$ref": "#/components/schemas/Public.NpiBlueprint_shared"
+    },
+    "specialties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Public.SpecialtyBlueprint_all"
+      }
+    }
+  }
+}

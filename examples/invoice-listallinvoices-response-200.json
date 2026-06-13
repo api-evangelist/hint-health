@@ -1,0 +1,30 @@
+{
+  "operationId": "Invoice.ListAllInvoices",
+  "method": "GET",
+  "path": "/provider/companies/{company_id}/invoices",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "inv-ab12C345DeF6",
+      "amount_in_cents": 20000,
+      "human_status": "issued",
+      "invoice_date": "2017-02-01",
+      "invoice_number": 1,
+      "paid_at": null,
+      "paid_in_cents": 0,
+      "company": {
+        "id": "com-ab12C345DeF6",
+        "name": "Schmoogle Inc.",
+        "owner": {
+          "id": "user-ab12C345DeF6",
+          "email": "fixture@example.com",
+          "first_name": "Joe",
+          "last_name": "Blogs",
+          "name": "Joe Blogs",
+          "phones": []
+        }
+      }
+    }
+  ]
+}

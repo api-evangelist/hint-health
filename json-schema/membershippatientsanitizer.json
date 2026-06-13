@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/membershippatientsanitizer",
+  "title": "MembershipPatientSanitizer",
+  "type": "object",
+  "properties": {
+    "patient": {
+      "$ref": "#/components/schemas/MembershipPatientSanitizer.PatientSanitizer"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Defaults to Membership start date if not given. Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD."
+    },
+    "member_type": {
+      "type": "string",
+      "description": "Choose one below. You can think of \"spouse\" as \"adult\". This is a naming issue that will hopefully be addressed in the future. Note: \"employee\" is not an accepted value as you cannot add employees to existing memberships.",
+      "enum": [
+        "child",
+        "spouse"
+      ]
+    },
+    "fixed_period_rate_in_cents": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Use this to override the standard rates that the membership plan would generate"
+    }
+  },
+  "required": [
+    "patient",
+    "member_type"
+  ]
+}

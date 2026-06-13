@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-formresponseblueprint_one",
+  "title": "Public.FormResponseBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "form": {
+      "$ref": "#/components/schemas/Public.FormBlueprint_leaf"
+    },
+    "form_response_items": {
+      "$ref": "#/components/schemas/Public.FormResponseItemBlueprint_leaf"
+    },
+    "subject": {
+      "$ref": "#/components/schemas/Common.RecordBlueprint_min"
+    }
+  }
+}

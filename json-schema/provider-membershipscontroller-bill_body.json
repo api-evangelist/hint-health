@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-membershipscontroller-bill_body",
+  "title": "Provider.MembershipsController.bill_body",
+  "type": "object",
+  "properties": {
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date must be formatted as YYYY-MM-DD."
+    }
+  },
+  "required": [
+    "start_date"
+  ]
+}

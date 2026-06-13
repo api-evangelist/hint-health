@@ -1,0 +1,11 @@
+{
+  "operationId": "InteractionNotifications.CreateInteractionNotification",
+  "method": "POST",
+  "path": "/provider/interactions/{interaction_id}/notifications",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "inter-ab12C345DeF6",
+    "title": "Lab #123456"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-chargeitemscontroller-create_body",
+  "title": "Create_Charge_Item",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "price_in_cents": {
+      "type": "number",
+      "format": "double"
+    },
+    "type": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "price_in_cents",
+    "type"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-companyplanblueprint_all",
+  "title": "Public.CompanyPlanBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "available_for_enrollment": {
+        "type": "boolean"
+      },
+      "is_default": {
+        "type": "boolean"
+      },
+      "plan": {
+        "$ref": "#/components/schemas/Public.PlanBlueprint_min"
+      }
+    }
+  }
+}

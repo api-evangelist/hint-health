@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/interaction-labsanitizer-subjectsanitizer",
+  "title": "Interaction.LabSanitizer.SubjectSanitizer",
+  "type": "object",
+  "properties": {
+    "reference": {
+      "type": "string",
+      "description": "Subject reference ID"
+    },
+    "display": {
+      "type": "string",
+      "description": "Subject display name"
+    }
+  }
+}

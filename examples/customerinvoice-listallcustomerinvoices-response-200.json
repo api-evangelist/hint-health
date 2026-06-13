@@ -1,0 +1,237 @@
+{
+  "operationId": "CustomerInvoice.ListAllCustomerInvoices",
+  "method": "GET",
+  "path": "/provider/customer_invoices",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "inv-ab12C345DeF6",
+      "amount_in_cents": 4999,
+      "charges_count": 1,
+      "created_at": "2017-02-05T06:23:00.000000-08:00",
+      "date": "2017-02-05",
+      "due_in_cents": 4999,
+      "human_status": "draft",
+      "integration_record_id": "ABCD0012011",
+      "invoice_number": 1,
+      "last_sent_at": null,
+      "last_viewed_at": null,
+      "paid_at": null,
+      "paid_in_cents": 0,
+      "payment_status": null,
+      "payments_count": 0,
+      "provider_web_link": "https://app.hint.com/patients/pat-ab12C345DeF6/charges/inv-ab12C345DeF6",
+      "received_in_cents": 0,
+      "status": "draft",
+      "subtotal_in_cents": 4999,
+      "tax_in_cents": 0,
+      "total_in_cents": 4999,
+      "updated_at": "2017-02-05T06:23:00.000000-08:00",
+      "owner": {
+        "id": "pat-ab12C345DeF6",
+        "address_city": "New York",
+        "address_country": "United States",
+        "address_line1": "157 E Houston St",
+        "address_line2": "Suite 2402",
+        "address_state": "NY",
+        "address_zip": "10002",
+        "age": 65,
+        "chosen_first_name": null,
+        "chosen_last_name": null,
+        "chosen_middle_name": null,
+        "chosen_suffix": null,
+        "chosen_title": null,
+        "created_at": "2017-02-05T06:23:00.000000-08:00",
+        "dob": "1952-01-01",
+        "electronic_communication_consent_accepted": true,
+        "electronic_communication_consent_accepted_at": "2017-01-29T06:23:00.000000-08:00",
+        "email": "bass_man@bumblebeeinc.com",
+        "engaged": false,
+        "external_link_id": null,
+        "first_name": "Gordon",
+        "gender": "male",
+        "gender_identity": "man",
+        "gender_other": null,
+        "health_insurance_group_id": "12345",
+        "health_insurance_member_id": "A22222222",
+        "health_insurance_payer_id": "00039",
+        "health_insurance_payer_name": "Anthem Blue Cross California",
+        "hipaa_authorization_accepted": true,
+        "hipaa_authorization_accepted_at": "2017-01-29T06:23:00.000000-08:00",
+        "import_id": null,
+        "import_source": null,
+        "joined_practice_date": "2017-02-05",
+        "last_engagement_date": null,
+        "last_name": "Sumner",
+        "lead_source_other": "Downtown marketing event",
+        "master_record_sponsor": null,
+        "membership_status": "active",
+        "middle_name": "Thomas",
+        "name": "Gordon Thomas Sumner",
+        "patient_agreement_accepted": false,
+        "patient_agreement_accepted_at": null,
+        "preferred_language": "en",
+        "pronouns": null,
+        "provider_web_link": "https://app.hint.com/patients/pat-ab12C345DeF6",
+        "sex": "male",
+        "suffix": null,
+        "terms_accepted": false,
+        "terms_accepted_at": null,
+        "updated_at": "2017-02-05T06:23:00.000000-08:00",
+        "uses_tobacco": false,
+        "account": {
+          "name": "Gordon Thomas Sumner",
+          "past_due_in_cents": 0
+        },
+        "company": {
+          "id": "com-ab12C345DeF6",
+          "name": "Schmoogle Inc."
+        },
+        "emergency_contact": {
+          "id": "emc-ab12C345DeF6",
+          "first_name": "Eliot",
+          "last_name": "Sumner",
+          "email": "bass_eliot@iblamecoco.com",
+          "name": "Eliot Sumner",
+          "relationship": "sibling",
+          "phone": {
+            "number": "5553050051",
+            "type": "mobile",
+            "us_formattable": true
+          }
+        },
+        "external_records": [],
+        "known_practice": null,
+        "lead_source": {
+          "id": "lds-ab12C345DeF6",
+          "name": "Other",
+          "created_at": "2017-02-05T06:23:00.000000-08:00",
+          "updated_at": "2017-02-05T06:23:00.000000-08:00"
+        },
+        "location": {
+          "id": "loc-ab12C345DeF6",
+          "address_city": "New York",
+          "address_country": "United States",
+          "address_latitude": 40.7227998,
+          "address_line1": "157 E Houston St",
+          "address_line2": "Suite 2402",
+          "address_longitude": -73.9892241,
+          "address_state": "NY",
+          "address_zip": "10002",
+          "distance": null,
+          "name": "San Francisco HQ",
+          "phone_number": null,
+          "virtual": false,
+          "location_group": {
+            "id": "prg-ab12C345DeF6",
+            "created_at": "2017-02-05T06:23:00.000000-08:00",
+            "integration_record_id": null,
+            "name": "Downtown Location Group",
+            "updated_at": "2017-02-05T06:23:00.000000-08:00"
+          }
+        },
+        "location_group": {
+          "id": "prg-ab12C345DeF6",
+          "created_at": "2017-02-05T06:23:00.000000-08:00",
+          "integration_record_id": null,
+          "name": "Downtown Location Group",
+          "updated_at": "2017-02-05T06:23:00.000000-08:00"
+        },
+        "membership_members": [],
+        "memberships": [],
+        "merged_into": null,
+        "phones": [],
+        "practitioner": {
+          "id": "pct-ab12C345DeF6",
+          "accepts_enrollments_from_employer": true,
+          "accepts_enrollments_from_retail": true,
+          "bio": "Reginalds biography...",
+          "created_at": "2017-02-05T06:23:00.000000-08:00",
+          "education": [
+            "The University of Hint"
+          ],
+          "email": "rocket_man@emi.com",
+          "gender": "male",
+          "gender_other": null,
+          "integration_record_id": null,
+          "max_patient_age": 50,
+          "min_patient_age": 0,
+          "name": "Reginald Dwight",
+          "online_signup_visibility": true,
+          "panel_size": 150,
+          "panel_size_limit": 200,
+          "photo_url": "practitioners/000/000/115/photos/original.png",
+          "updated_at": "2017-02-05T06:23:00.000000-08:00",
+          "locations": [
+            {
+              "id": "loc-ab12C345DeF6",
+              "address_city": "New York",
+              "address_country": "United States",
+              "address_latitude": 40.7227998,
+              "address_line1": "157 E Houston St",
+              "address_line2": "Suite 2402",
+              "address_longitude": -73.9892241,
+              "address_state": "NY",
+              "address_zip": "10002",
+              "distance": null,
+              "name": "San Francisco HQ",
+              "phone_number": "5553050019",
+              "virtual": false,
+              "location_group": {
+                "id": "prg-ab12C345DeF6",
+                "created_at": "2017-02-05T06:23:00.000000-08:00",
+                "integration_record_id": null,
+                "name": "Downtown Location Group",
+                "updated_at": "2017-02-05T06:23:00.000000-08:00"
+              }
+            }
+          ],
+          "npi": {
+            "first_name": "REGINALD",
+            "last_name": "DWIGHT",
+            "number": "0123456879",
+            "organization_name": "HINT HEALTH",
+            "type": "individual"
+          },
+          "specialties": [
+            {
+              "id": "spe-ab12C345DeF6",
+              "name": "Internal Medicine"
+            }
+          ]
+        },
+        "practitioner_group": {
+          "id": "prg-ab12C345DeF6",
+          "created_at": "2017-02-05T06:23:00.000000-08:00",
+          "integration_record_id": null,
+          "name": "Downtown Location Group",
+          "updated_at": "2017-02-05T06:23:00.000000-08:00"
+        },
+        "sponsorships": [
+          {
+            "id": "creg-ab12C345DeF6",
+            "external_id": "ext_id_from_another_system012345",
+            "is_subscriber": true,
+            "type": "employee",
+            "company": {
+              "id": "com-ab12C345DeF6",
+              "name": "Schmoogle Inc."
+            },
+            "family": {
+              "id": "cac-ab12C345DeF6"
+            }
+          }
+        ],
+        "ssn": {
+          "masked_number": "***-**-1234"
+        },
+        "integration_error_message": null,
+        "integration_last_synced_at": null,
+        "integration_record_id": null,
+        "integration_sync_status": "enabled",
+        "integration_web_link": null
+      }
+    }
+  ]
+}

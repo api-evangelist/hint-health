@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-creditcategoriescontroller-update_body",
+  "title": "Provider.CreditCategoriesController.update_body",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Value is case sensitive. If you delete a Credit Category, you can restore it by POSTing with the same name."
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

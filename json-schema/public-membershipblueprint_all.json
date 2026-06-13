@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-membershipblueprint_all",
+  "title": "Public.MembershipBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "bill_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "billed_through_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "billing_start_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "bills_at_end_of_period": {
+        "type": "boolean"
+      },
+      "contract_expiration_action": {
+        "type": "string"
+      },
+      "contract_expires": {
+        "type": "string",
+        "format": "date"
+      },
+      "contract_period_in_months": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "end_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "enrollment_status": {
+        "type": "string"
+      },
+      "fixed_period_rate_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "fixed_registration_fee_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "group_code": {
+        "type": "string"
+      },
+      "is_confirmed": {
+        "type": "string"
+      },
+      "is_current": {
+        "type": "boolean"
+      },
+      "is_processing": {
+        "type": "boolean"
+      },
+      "is_restartable": {
+        "type": "boolean"
+      },
+      "last_bill_amount_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "last_bill_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "list_price_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "never_been_billed": {
+        "type": "boolean"
+      },
+      "next_bill_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "period_in_months": {
+        "type": "string"
+      },
+      "period_rate_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "rate_in_cents": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "source_status": {
+        "type": "string"
+      },
+      "start_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "status": {
+        "type": "string"
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "coupon": {
+        "$ref": "#/components/schemas/Public.CouponBlueprint_one"
+      },
+      "membership_patients": {
+        "$ref": "#/components/schemas/Public.MembershipPatientBlueprint_leaf_with_patient"
+      },
+      "owner": {
+        "$ref": "#/components/schemas/Public.PatientBlueprint_leaf"
+      },
+      "plan": {
+        "$ref": "#/components/schemas/Public.PlanBlueprint_min"
+      },
+      "sponsorship": {
+        "$ref": "#/components/schemas/Public.CompanyAccountBlueprint_for_membership_one"
+      },
+      "upcoming_bills": {
+        "$ref": "#/components/schemas/Public.MembershipBillBlueprint_shared_with_invoice"
+      }
+    }
+  }
+}

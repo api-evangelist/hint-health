@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/public-partnerchargeblueprint_one",
+  "title": "Public.PartnerChargeBlueprint_one",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "amount_in_cents": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

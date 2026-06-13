@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-affiliates-patientscontroller-create_body",
+  "title": "Provider.Affiliates.PatientsController.create_body",
+  "type": "object",
+  "properties": {
+    "patient_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "patient_id"
+  ]
+}

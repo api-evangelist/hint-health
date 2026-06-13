@@ -1,0 +1,19 @@
+{
+  "operationId": "CompanyPlan.ListCompanyPlans",
+  "method": "GET",
+  "path": "/provider/companies/{company_id}/company_plans",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": [
+    {
+      "id": "cmpl-ab12C345DeF6",
+      "available_for_enrollment": true,
+      "is_default": false,
+      "plan": {
+        "id": "pln-ab12C345DeF6",
+        "name": "Memberships",
+        "plan_type": "company"
+      }
+    }
+  ]
+}

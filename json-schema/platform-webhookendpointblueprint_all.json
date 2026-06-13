@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/platform-webhookendpointblueprint_all",
+  "title": "Platform.WebhookEndpointBlueprint_all",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "string"
+      },
+      "last_delivered_at": {
+        "type": "string"
+      },
+      "updated_at": {
+        "type": "string"
+      },
+      "webhook_url": {
+        "type": "string"
+      }
+    }
+  }
+}

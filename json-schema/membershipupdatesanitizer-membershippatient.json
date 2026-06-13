@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/membershipupdatesanitizer-membershippatient",
+  "title": "MembershipUpdateSanitizer.MembershipPatient",
+  "type": "object",
+  "properties": {
+    "patient": {
+      "$ref": "#/components/schemas/MembershipUpdateSanitizer.Patient"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Defaults to Membership start date if not given. Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD."
+    },
+    "member_type": {
+      "type": "string",
+      "description": "Choose one below. \"employee\" should only be used on sponsored memberships. Only one employee may be designated per sponsored membership. For non-sponsored memberships, all adults may be sent as \"spouse\" (naming convention may be updated in the future). All child dependents on all memberships may be sent as \"child\"",
+      "enum": [
+        "child",
+        "spouse",
+        "employee"
+      ]
+    },
+    "fixed_period_rate_in_cents": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Use this to override the standard rates that the membership plan would generate"
+    }
+  },
+  "required": [
+    "patient",
+    "member_type"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/platform-integrationscontroller-update_body",
+  "title": "Update_Integration",
+  "type": "object",
+  "properties": {
+    "webhook_url_override": {
+      "type": "string",
+      "deprecated": true
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-membershipscontroller-cancel_body",
+  "title": "Provider.MembershipsController.cancel_body",
+  "type": "object",
+  "properties": {
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "It must line up with the membership's bill_date (not next_bill_date). Eg. A membership that bills on the 5th must end on the 5th. Date must be formatted as YYYY-MM-DD."
+    },
+    "cancellation_reason": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "cancellation_reason_other": {
+      "type": "string",
+      "description": "Description required when sending cancellation_reason of \"Other\""
+    }
+  },
+  "required": [
+    "end_date",
+    "cancellation_reason"
+  ]
+}

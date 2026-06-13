@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.hint.com/schemas/provider-patientscontroller-update_body",
+  "title": "Create_Patient",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "description": "This should be the patients legal first name."
+    },
+    "last_name": {
+      "type": "string",
+      "description": "This should be the patients legal last name."
+    },
+    "middle_name": {
+      "type": "string",
+      "description": "This should be the patients legal middle name."
+    },
+    "title": {
+      "type": "string"
+    },
+    "suffix": {
+      "type": "string"
+    },
+    "chosen_first_name": {
+      "type": "string"
+    },
+    "chosen_last_name": {
+      "type": "string"
+    },
+    "chosen_middle_name": {
+      "type": "string"
+    },
+    "chosen_title": {
+      "type": "string"
+    },
+    "chosen_suffix": {
+      "type": "string"
+    },
+    "pronouns": {
+      "type": "string",
+      "description": "May be one of `He/Him/His`, `She/Her/Hers` or `They/Them/Theirs`. Other values sent will be stored as free text."
+    },
+    "email": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "string",
+      "description": "May send `male`, `female`, or `intersex`."
+    },
+    "gender": {
+      "type": "string",
+      "description": "This field will be deprecated on March 31st 2021."
+    },
+    "gender_identity": {
+      "type": "string",
+      "description": "May send `man`, `woman`, `trans man`, `trans woman`, `nonbinary`, or `not listed`. If you send `not listed`, please include a description in the `gender_other` field."
+    },
+    "gender_other": {
+      "type": "string",
+      "description": "Used to specify gender identity, when not listed."
+    },
+    "dob": {
+      "type": "string",
+      "format": "date",
+      "description": "Date must be formatted as YYYY-MM-DD."
+    },
+    "lead_source": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "practitioner": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "location": {
+      "$ref": "#/components/schemas/Association"
+    },
+    "emergency_contact": {
+      "$ref": "#/components/schemas/EmergencyContact"
+    },
+    "phones": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PhoneNumber"
+      }
+    },
+    "ssn": {
+      "$ref": "#/components/schemas/SocialSecurityNumber"
+    },
+    "health_insurance_group_id": {
+      "type": "string"
+    },
+    "health_insurance_member_id": {
+      "type": "string"
+    },
+    "health_insurance_payer_name": {
+      "type": "string"
+    },
+    "health_insurance_payer_id": {
+      "type": "string"
+    },
+    "address_line1": {
+      "type": "string"
+    },
+    "address_line2": {
+      "type": "string"
+    },
+    "address_city": {
+      "type": "string"
+    },
+    "address_state": {
+      "type": "string"
+    },
+    "address_zip": {
+      "type": "string"
+    },
+    "address_country": {
+      "type": "string"
+    },
+    "import_id": {
+      "type": "string",
+      "description": "(deprecated)"
+    },
+    "import_source": {
+      "type": "string",
+      "description": "(deprecated)"
+    },
+    "external_link_id": {
+      "type": "string",
+      "description": "(deprecated)"
+    },
+    "integration_record_id": {
+      "type": "string"
+    },
+    "integration_error_message": {
+      "type": "string"
+    },
+    "integration_web_link": {
+      "type": "string"
+    },
+    "last_engagement_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date must be formatted as YYYY-MM-DD."
+    },
+    "electronic_communication_consent_accepted": {
+      "type": "boolean"
+    },
+    "patient_agreement_accepted": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "first_name",
+    "last_name"
+  ]
+}

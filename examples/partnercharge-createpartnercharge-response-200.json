@@ -1,0 +1,12 @@
+{
+  "operationId": "PartnerCharge.CreatePartnerCharge",
+  "method": "POST",
+  "path": "/provider/partner_charges",
+  "status": "200",
+  "mediaType": "application/json",
+  "example": {
+    "id": "ptrchg-ab12C345DeF6",
+    "amount_in_cents": 1000,
+    "description": "Partner charge"
+  }
+}
