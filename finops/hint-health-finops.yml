@@ -1,0 +1,80 @@
+name: Hint Health FinOps
+description: Financial operations guidance for teams integrating with or subscribing to Hint Health's direct primary care platform, covering API access costs, transaction fees, add-on pricing, and cost optimization strategies.
+url: https://www.hint.com/core/pricing
+created: 2026-06-13
+modified: 2026-06-13
+
+overview:
+  description: Hint Health's pricing model combines monthly subscription fees (per plan tier) with per-transaction payment processing fees and optional add-on charges. API access is an add-on fee on Core Growth and Core Scale plans ($100/month) but is included without limit in Core Enterprise.
+
+apiAccessCosts:
+  - tier: Core Growth
+    apiAccess: Add-on at $100/month
+    note: Basic API access; specific rate limits not publicly disclosed
+  - tier: Core Scale
+    apiAccess: Add-on at $100/month
+    note: API access; specific rate limits not publicly disclosed
+  - tier: Core Enterprise
+    apiAccess: Included (Unlimited)
+    note: Best choice for high-volume integrations; custom pricing
+
+costDrivers:
+  - name: Monthly Platform Subscription
+    description: Base monthly fee varies by plan tier (Core Growth $110/mo → Core Enterprise custom). Scales with member count.
+    type: fixed
+
+  - name: API Access Add-On
+    description: $100/month surcharge on Core Growth and Core Scale for programmatic access. Included in Core Enterprise.
+    type: fixed
+
+  - name: Payment Processing Fees
+    description: Per-transaction fees apply to all membership billing processed through Hint Payments (Rainforest) or Stripe. Debit/credit at 2.50%–2.75% + $0.30; ACH at 0.50%–0.75% + $0.25 (capped at $5).
+    type: variable
+
+  - name: Member Overage
+    description: Additional members beyond the base plan allowance are billed in increments (e.g., $45/mo per 50 additional members on Core Growth).
+    type: variable
+
+  - name: Eligibility Autosync Feeds
+    description: $75/month per feed for automated insurance eligibility verification. Core Scale includes 3 feeds; Core Enterprise includes 10.
+    type: fixed
+
+  - name: Data Exporter
+    description: $500/month add-on for bulk data export, relevant for BI/analytics pipelines and data warehouse integrations.
+    type: fixed
+
+  - name: Additional Clinicians (Clinical plans)
+    description: Full-time clinicians billed at $232–$290/month each; part-time at $112–$140/month each.
+    type: fixed
+
+costOptimization:
+  - recommendation: Upgrade to Core Enterprise for high-volume API usage
+    rationale: The $100/month API add-on on Growth/Scale plans pairs with undisclosed rate limits. Core Enterprise includes unlimited API access and may be more cost-effective for integrations touching many practices.
+
+  - recommendation: Use ACH over card payments where possible
+    rationale: ACH processing fees (0.50%–0.75% + $0.25, $5 cap) are significantly lower than debit/credit card rates (2.50%–2.75% + $0.30), especially for larger monthly membership payments.
+
+  - recommendation: Batch API calls and use webhooks for event-driven workflows
+    rationale: Webhook-based event delivery reduces polling overhead and potential rate limit exposure. Hint's API uses webhooks as the "primary push channel" for lifecycle events.
+
+  - recommendation: Leverage the Sandbox environment for development
+    rationale: Separate sandbox credentials allow full integration testing without consuming production API quota or incurring transaction fees.
+
+  - recommendation: Negotiate member increment pricing at scale
+    rationale: Core Enterprise pricing is custom. Organizations managing large member populations should negotiate member increment fees during contract discussions.
+
+  - recommendation: Evaluate startup promotion
+    rationale: New practices receive 1 free month post-launch with no upfront costs before practice launch — useful for estimating real-world API and transaction costs before full commitment.
+
+budgetingGuidelines:
+  - For a mid-sized DPC practice integrating via API on Core Scale + API add-on: budget approximately $775/month in platform fees ($675 + $100) plus variable transaction fees.
+  - For enterprise networks building multi-practice integrations: negotiate Core Enterprise pricing inclusive of unlimited API access and custom BAA/MSA terms.
+  - Transaction fee budgeting: estimate based on average membership fee × member count × applicable card/ACH split to project monthly processing costs.
+
+references:
+  - name: Hint Core Pricing
+    url: https://www.hint.com/core/pricing
+  - name: Hint Clinical Pricing
+    url: https://www.hint.com/clinical/pricing
+  - name: Hint Developer Portal
+    url: https://developers.hint.com/

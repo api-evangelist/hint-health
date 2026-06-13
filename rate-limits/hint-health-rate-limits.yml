@@ -1,0 +1,38 @@
+name: Hint Health API Rate Limits
+description: Rate limiting information for the Hint Health REST API. The API documentation references rate limits in the Making Requests section; specific numeric thresholds are not publicly disclosed and may vary by plan and partner tier.
+url: https://developers.hint.com/docs/overview
+created: 2026-06-13
+modified: 2026-06-13
+
+notes:
+  - Hint Health's developer documentation references pagination and rate limits in the "Making Requests" section but does not publicly disclose specific numeric thresholds.
+  - Rate limits may differ between Practice API access tokens and Partner API keys.
+  - Core Enterprise plan includes "Unlimited API access," implying lower-tier plans (Core Growth, Core Scale with API add-on) have defined limits.
+  - Contact Hint Health at developers.hint.com or via the partner program for plan-specific rate limit details.
+
+environments:
+  - name: Production
+    description: Live environment with practice-specific access tokens and real patient data. PHI access requires compliance-managed token rotation.
+    url: https://developers.hint.com/docs/overview
+    rateLimit: Not publicly disclosed
+
+  - name: Sandbox
+    description: Testing environment with separate credentials from production. Used for development and integration testing without affecting live practice data.
+    url: https://developers.hint.com/docs/overview
+    rateLimit: Not publicly disclosed
+
+pagination:
+  description: The API supports pagination for list endpoints. Specific pagination parameters (page size, cursor style) are documented in the Making Requests section of the developer portal.
+  url: https://developers.hint.com/docs/overview
+
+authentication:
+  type: Bearer Token
+  description: All requests use HTTPS with Bearer tokens. Practice resources use practice-specific access tokens; partner resources use Partner API keys. OAuth token exchange is supported via /api/oauth/* endpoints.
+
+headers:
+  description: Required request headers are documented in the Making Requests section of the developer portal.
+  url: https://developers.hint.com/docs/overview
+
+contact:
+  description: For rate limit specifics and partner API access inquiries, contact the Hint Health developer team through the developer portal.
+  url: https://www.hint.com/developers

@@ -1,0 +1,65 @@
+aid: hint-health
+name: Hint Health
+description: Hint Health is the leading direct primary care (DPC) technology platform, powering thousands of DPC practices with software for membership management, automated billing, clinical workflows, and provider networks. The Hint REST API provides programmatic access to clinic operations including patient enrollment, membership billing, practice configuration, clinical data management, charges, invoices, webhooks, and OAuth-based partner integrations.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/hint-health/refs/heads/main/apis.yml
+created: 2026-06-13
+modified: 2026-06-13
+specificationVersion: "0.19"
+tags:
+  - Direct Primary Care
+  - DPC
+  - Healthcare
+  - Membership Management
+  - Patient Enrollment
+  - Medical Billing
+  - EMR
+  - Health Plans
+
+apis:
+  - aid: hint-health:hint-health-api
+    name: Hint Health API
+    description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.hint.com/
+    baseURL: https://api.hint.com
+    tags:
+      - Direct Primary Care
+      - Membership
+      - Billing
+      - Patients
+      - Webhooks
+      - OAuth
+    properties:
+      - type: Documentation
+        url: https://developers.hint.com/docs/overview
+      - type: OpenAPI
+        url: https://developers.hint.com/llms.txt
+
+common:
+  - type: Website
+    url: https://www.hint.com/
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+  - type: GitHubOrg
+    url: https://github.com/hinthealth
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/hint-health
+  - type: Blog
+    url: https://blog.hint.com/
+  - type: Pricing
+    url: https://www.hint.com/core/pricing
+  - type: StatusPage
+    url: https://status.hint.com/
+  - type: X
+    url: https://twitter.com/HintHealth
+  - type: Plans
+    url: plans/hint-health-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/hint-health-rate-limits.yml
+  - type: FinOps
+    url: finops/hint-health-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

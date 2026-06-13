@@ -1,0 +1,163 @@
+name: Hint Health Plans and Pricing
+description: Pricing plans for Hint Health's direct primary care platform, covering Core (billing/membership management) and Clinical (EMR) product lines, along with API access add-ons.
+url: https://www.hint.com/core/pricing
+created: 2026-06-13
+modified: 2026-06-13
+
+plans:
+
+  - name: Core Growth
+    description: Membership and billing management for smaller DPC practices with up to 100 members.
+    url: https://www.hint.com/core/pricing
+    price: 110.00
+    unit: month
+    currency: USD
+    features:
+      - 100 members included
+      - Member onboarding
+      - Membership management
+      - Automated billing
+      - EMR integrations
+      - Employer management
+      - Additional members at $45/mo per 50 members
+
+  - name: Core Scale
+    description: Full-featured membership and billing management for growing DPC practices with up to 500 members, including network management and Hint Connect.
+    url: https://www.hint.com/core/pricing
+    price: 675.00
+    unit: month
+    currency: USD
+    features:
+      - 500 members included
+      - All Core Growth features
+      - Network management
+      - Hint Connect
+      - Commission tracking
+      - Engagement tracking
+      - 3 eligibility autosync feeds
+      - Additional members at $175/mo per 250 members
+
+  - name: Core Enterprise
+    description: Enterprise-grade membership and billing for large DPC networks with 1,000+ members, unlimited API access, white labeling, and dedicated support.
+    url: https://www.hint.com/core/pricing
+    price: 0.00
+    unit: month
+    currency: USD
+    features:
+      - 1,000+ members minimum
+      - All Core Scale features
+      - Custom MSA/BAA
+      - Unlimited API access
+      - Dedicated account management
+      - 10 eligibility autosync feeds
+      - White labeling
+      - Custom pricing — contact sales
+
+  - name: Clinical
+    description: Full EMR plus membership management for individual DPC clinicians with unlimited members.
+    url: https://www.hint.com/clinical/pricing
+    price: 290.00
+    unit: month
+    currency: USD
+    features:
+      - 1 clinician included
+      - Unlimited members
+      - EMR
+      - Member onboarding
+      - Automated billing
+      - Patient portal
+      - Additional full-time clinicians at $290/mo
+      - Additional part-time clinicians at $140/mo
+
+  - name: Clinical Growth
+    description: EMR and membership management for growing DPC clinics with up to 100 members, including Hint AI.
+    url: https://www.hint.com/clinical/pricing
+    price: 320.00
+    unit: month
+    currency: USD
+    features:
+      - 1 clinician included
+      - 100 members included
+      - All Clinical features
+      - Hint AI included
+      - Employer management
+      - Eligibility autosync
+      - Package and bundle functionality
+      - Additional members at $36/mo per 50-member increment
+      - Additional full-time clinicians at $232/mo
+      - Additional part-time clinicians at $112/mo
+
+  - name: Clinical Scale
+    description: Full-featured EMR and membership management for large DPC clinics with up to 500 members, including network management and data export.
+    url: https://www.hint.com/clinical/pricing
+    price: 770.00
+    unit: month
+    currency: USD
+    features:
+      - 1 clinician included
+      - 500 members included
+      - All Clinical Growth features
+      - Network management
+      - Data exporter
+      - Commissions
+      - Additional members at $140/mo per 250-member increment
+      - Additional full-time clinicians at $232/mo
+      - Additional part-time clinicians at $112/mo
+
+addons:
+  - name: Core API Access
+    description: Programmatic access to Hint Core membership, billing, and patient management APIs. Required for custom integrations on Core Growth and Core Scale plans; included in Core Enterprise.
+    url: https://www.hint.com/core/pricing
+    price: 100.00
+    unit: month
+    currency: USD
+
+  - name: Clinical API Access
+    description: Programmatic access to Hint Clinical APIs for EMR data, patient records, and clinical workflows.
+    url: https://www.hint.com/clinical/pricing
+    price: 100.00
+    unit: month
+    currency: USD
+
+  - name: Data Exporter
+    description: Bulk data export capability for reporting and analytics integrations.
+    url: https://www.hint.com/core/pricing
+    price: 500.00
+    unit: month
+    currency: USD
+
+  - name: Eligibility Autosync
+    description: Automated eligibility verification feed integration with health plans and employers.
+    url: https://www.hint.com/core/pricing
+    price: 75.00
+    unit: month
+    currency: USD
+    note: Per feed per month
+
+  - name: Hint AI
+    description: AI-powered assistant for DPC providers, powered by OpenAI. Included in Clinical Growth and above; available as add-on for Clinical base plan.
+    url: https://www.hint.com/copilot
+    price: 100.00
+    unit: month
+    currency: USD
+
+  - name: Paid Onboarding
+    description: Guided onboarding assistance from the Hint team.
+    url: https://www.hint.com/core/pricing
+    price: 500.00
+    unit: once
+    currency: USD
+
+transactionFees:
+  - type: Debit/Credit Card
+    rate: "2.50%–2.75% + $0.30"
+    note: Plus 1% AMEX surcharge
+  - type: ACH
+    rate: "0.50%–0.75% + $0.25"
+    note: $5 cap per transaction
+  - type: Dispute/Chargeback
+    flat: 7.50
+    currency: USD
+  - type: ACH Return
+    flat: 1.00
+    currency: USD
