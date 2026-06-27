@@ -1,23 +1,18 @@
 {
-  "blogs": [
-    {
-      "name": "Hint Health Blog",
-      "url": "https://blog.hint.com/",
-      "type": "Blog",
-      "last_fetched": null,
-      "posts": []
-    }
-  ],
   "repo": "hint-health",
   "feeds": [
     {
-      "source": "https://www.linkedin.com/company/hint-health",
-      "feed_url": "https://www.linkedin.com/company/hint-health",
+      "source": "https://blog.hint.com/rss.xml",
+      "feed_url": "https://blog.hint.com/rss.xml",
       "title": "",
-      "saved": 0,
-      "method": "none"
+      "saved": 1,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.linkedin.com/company/hint-health",
+      "error": "HTTPError"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 1,
+  "fetched": "2026-06-27T12:03:07Z"
 }
