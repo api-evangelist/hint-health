@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/hint-health-hint-health-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: Practice access token or Partner API key (Bearer authentication)
+  sources:
+  - openapi/hint-health-hint-health-api-openapi.yml
