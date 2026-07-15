@@ -37,6 +37,8 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/hint-health/refs/heads/main/openapi/hint-health-hint-health-api-openapi.yml
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/hint-health-agentic-access.yml
   - type: TrustCenter
     url: security/hint-health-trust-center.yml
   - type: DomainSecurity
