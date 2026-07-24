@@ -1,0 +1,192 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken FormResponse API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: FormResponse
+paths:
+  /provider/patients/{patient_id}/form_responses:
+    get:
+      tags:
+      - FormResponse
+      operationId: FormResponse.ListAllFormResponses
+      summary: List All Form Responses
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.FormResponseBlueprint_all'
+              example:
+              - id: frmr-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                form:
+                  id: form-ab12C345DeF6
+                  description: null
+                  name: Form 1
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  form_items:
+                  - id: frmi-ab12C345DeF6
+                    description: null
+                    help_text: null
+                    item_type: string
+                    title: Question 1
+                form_response_items:
+                - id: frmri-ab12C345DeF6
+                  answer: Answer 1
+                  respondent:
+                    id: pat-ab12C345DeF6
+                subject:
+                  id: pat-ab12C345DeF6
+  /provider/patients/{patient_id}/form_responses/{id}:
+    get:
+      tags:
+      - FormResponse
+      operationId: FormResponse.ShowFormResponse
+      summary: Show Form Response
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Form Response ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.FormResponseBlueprint_one'
+              example:
+                id: frmr-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                form:
+                  id: form-ab12C345DeF6
+                  description: null
+                  name: Form 2
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  form_items:
+                  - id: frmi-ab12C345DeF6
+                    description: null
+                    help_text: null
+                    item_type: string
+                    title: Question 2
+                form_response_items:
+                - id: frmri-ab12C345DeF6
+                  answer: Answer 2
+                  respondent:
+                    id: pat-ab12C345DeF6
+                subject:
+                  id: pat-ab12C345DeF6
+components:
+  schemas:
+    Public.FormResponseBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        form:
+          $ref: '#/components/schemas/Public.FormBlueprint_leaf'
+        form_response_items:
+          $ref: '#/components/schemas/Public.FormResponseItemBlueprint_leaf'
+        subject:
+          $ref: '#/components/schemas/Common.RecordBlueprint_min'
+    Public.FormBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        form_items:
+          $ref: '#/components/schemas/Public.FormItemBlueprint_leaf'
+    Common.RecordBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.FormResponseItemBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        answer:
+          type: string
+        respondent:
+          $ref: '#/components/schemas/Common.RecordBlueprint_min'
+    Public.FormItemBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        help_text:
+          type: string
+        item_type:
+          type: string
+        title:
+          type: string
+    Public.FormResponseBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          form:
+            $ref: '#/components/schemas/Public.FormBlueprint_leaf'
+          form_response_items:
+            $ref: '#/components/schemas/Public.FormResponseItemBlueprint_leaf'
+          subject:
+            $ref: '#/components/schemas/Common.RecordBlueprint_min'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

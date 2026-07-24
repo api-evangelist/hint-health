@@ -1,0 +1,926 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Charge API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Charge
+paths:
+  /provider/charges:
+    post:
+      tags:
+      - Charge
+      operationId: Charge.CreateCharge
+      summary: Create Charge
+      description: ''
+      parameters: []
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ChargeBlueprint_one_with_invoice'
+              example:
+                id: cha-ab12C345DeF6
+                amount_in_cents: 1000
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                description: ''
+                is_persisted: true
+                name: Lab fee
+                price_in_cents: 1000
+                quantity: 1
+                service_date: '2017-02-05'
+                status: draft
+                subtotal_in_cents: 1000
+                tax_in_cents: 0
+                total_in_cents: 1000
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                category: null
+                charge_item: null
+                invoice:
+                  id: inv-ab12C345DeF6
+                  amount_in_cents: 1000
+                  date: '2017-02-05'
+                  human_status: draft
+                  invoice_number: 1
+                  status: draft
+                  type: customer_invoice
+                  url: https://app.hint.com/patients/pat-ab12C345DeF6/charges/inv-ab12C345DeF6
+                location:
+                  id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  name: San Francisco HQ
+                patient:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: i_heart_rufus@chaka.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Yvette
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Stevens
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: active
+                  middle_name: Thomas
+                  name: Yvette Thomas Stevens
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  account:
+                    name: Yvette Thomas Stevens
+                    past_due_in_cents: 0
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  emergency_contact:
+                    id: emc-ab12C345DeF6
+                    first_name: Eliot
+                    last_name: Sumner
+                    email: bass_eliot@iblamecoco.com
+                    name: Eliot Sumner
+                    relationship: sibling
+                    phone:
+                      number: '5553050051'
+                      type: mobile
+                      us_formattable: true
+                  external_records: []
+                  known_practice: null
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  location:
+                    id: loc-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_latitude: 40.7227998
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_longitude: -73.9892241
+                    address_state: NY
+                    address_zip: '10002'
+                    distance: null
+                    name: San Francisco HQ
+                    phone_number: null
+                    virtual: false
+                    location_group:
+                      id: prg-ab12C345DeF6
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      integration_record_id: null
+                      name: Downtown Location Group
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  location_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  membership_members: []
+                  memberships: []
+                  merged_into: null
+                  phones: []
+                  practitioner:
+                    id: pct-ab12C345DeF6
+                    accepts_enrollments_from_employer: true
+                    accepts_enrollments_from_retail: true
+                    bio: Reginalds biography...
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    education:
+                    - The University of Hint
+                    email: rocket_man@emi.com
+                    gender: male
+                    gender_other: null
+                    integration_record_id: null
+                    max_patient_age: 50
+                    min_patient_age: 0
+                    name: Reginald Dwight
+                    online_signup_visibility: true
+                    panel_size: 150
+                    panel_size_limit: 200
+                    photo_url: practitioners/000/000/115/photos/original.png
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    locations:
+                    - id: loc-ab12C345DeF6
+                      address_city: New York
+                      address_country: United States
+                      address_latitude: 40.7227998
+                      address_line1: 157 E Houston St
+                      address_line2: Suite 2402
+                      address_longitude: -73.9892241
+                      address_state: NY
+                      address_zip: '10002'
+                      distance: null
+                      name: San Francisco HQ
+                      phone_number: '5553050019'
+                      virtual: false
+                      location_group:
+                        id: prg-ab12C345DeF6
+                        created_at: '2017-02-05T06:23:00.000000-08:00'
+                        integration_record_id: null
+                        name: Downtown Location Group
+                        updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    npi:
+                      first_name: REGINALD
+                      last_name: DWIGHT
+                      number: 0123456879
+                      organization_name: HINT HEALTH
+                      type: individual
+                    specialties:
+                    - id: spe-ab12C345DeF6
+                      name: Internal Medicine
+                  practitioner_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: employee
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  ssn:
+                    masked_number: '***-**-1234'
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: null
+                  integration_sync_status: enabled
+                  integration_web_link: null
+                practitioner: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.ChargesController.create_body'
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Optional if type is specified
+        type:
+          type: string
+          description: Ignored if ID is specified
+          enum:
+          - memberships
+          - labs
+          - medications
+          - vitamins_and_supplements
+          - vaccines
+          - imaging
+          - supplies_and_dme
+          - retail_items
+          - office_visits
+          - procedures
+          - fees
+      required:
+      - id
+      - type
+    Public.ChargeBlueprint_one_with_invoice:
+      type: object
+      properties:
+        id:
+          type: string
+        amount_in_cents:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        is_persisted:
+          type: boolean
+        name:
+          type: string
+        price_in_cents:
+          type: integer
+          format: int32
+        quantity:
+          type: integer
+          format: int32
+        service_date:
+          type: string
+          format: date
+        status:
+          type: string
+        subtotal_in_cents:
+          type: integer
+          format: int32
+        tax_in_cents:
+          type: integer
+          format: int32
+        total_in_cents:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+        category:
+          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
+        charge_item:
+          $ref: '#/components/schemas/Public.ChargeItemBlueprint_one'
+        invoice:
+          $ref: '#/components/schemas/Public.Payable.InvoiceBlueprint_one'
+        location:
+          $ref: '#/components/schemas/Public.LocationBlueprint_shared'
+        patient:
+          $ref: '#/components/schemas/Public.PatientBlueprint_one'
+        practitioner:
+          $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
+    Public.LocationBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_latitude:
+          type: number
+          format: float
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_longitude:
+          type: number
+          format: float
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        distance:
+          type: string
+        name:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+    Public.MembershipBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.CompanySponsorshipBlueprint_for_patient:
+      type: object
+      properties:
+        id:
+          type: string
+        external_id:
+          type: string
+        is_subscriber:
+          type: boolean
+        type:
+          type: string
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        family:
+          $ref: '#/components/schemas/Public.CompanyAccountBlueprint_min'
+    Public.PatientBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.CategoryBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        default_for_memberships:
+          type: boolean
+    Public.MembershipMemberBlueprint_for_patient:
+      type: object
+      properties:
+        id:
+          type: string
+        enrollment_status:
+          type: string
+        member_type:
+          type: string
+        status:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+        membership:
+          $ref: '#/components/schemas/Public.MembershipBlueprint_min'
+    Public.LocationGroupBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        integration_record_id:
+          type: string
+        name:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    Public.ExternalRecordBlueprint_min:
+      type: object
+      properties:
+        source:
+          type: string
+        external_id:
+          type: string
+    Public.CompanyAccountBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.LocationBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        name:
+          type: string
+    Provider.ChargesController.create_body:
+      type: object
+      properties:
+        charge_item:
+          $ref: '#/components/schemas/ChargeItem'
+        patient:
+          $ref: '#/components/schemas/Association'
+        quantity:
+          type: integer
+          format: int32
+        price_in_cents:
+          type: number
+          format: double
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+        category:
+          $ref: '#/components/schemas/Category'
+        practitioner:
+          $ref: '#/components/schemas/Association'
+        location:
+          $ref: '#/components/schemas/Association'
+      required:
+      - charge_item
+      - patient
+    Public.NpiBlueprint_shared:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        number:
+          type: string
+        organization_name:
+          type: string
+        type:
+          type: string
+    Public.PractitionerBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        accepts_enrollments_from_employer:
+          type: string
+        accepts_enrollments_from_retail:
+          type: string
+        bio:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        education:
+          type: string
+        email:
+          type: string
+        gender:
+          type: string
+        gender_other:
+          type: string
+        integration_record_id:
+          type: string
+        max_patient_age:
+          type: string
+        min_patient_age:
+          type: string
+        name:
+          type: string
+        online_signup_visibility:
+          type: string
+        panel_size:
+          type: integer
+          format: int32
+        panel_size_limit:
+          type: integer
+          format: int32
+        photo_url:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.LocationBlueprint_one'
+        npi:
+          $ref: '#/components/schemas/Public.NpiBlueprint_shared'
+        specialties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
+    Public.ChargeItemBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        provider_web_link:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        price_in_cents:
+          type: number
+          format: float
+        quantity_in_stock:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+        category:
+          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+    Public.SpecialtyBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+    Public.KnownPracticeBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.EmployeeDivisionBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    ChargeItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Optional if name, code and code_type are specified
+        name:
+          type: string
+          description: Required if no ID
+        code:
+          type: string
+          description: Required if no ID
+        code_type:
+          type: string
+          description: Required if no ID
+          enum:
+          - cpt
+          - ndc
+          - loinc
+          - snowmed
+        manufacturer:
+          type: string
+        days_supply:
+          type: integer
+      required:
+      - id
+      - name
+      - code
+      - code_type
+    Common.PhoneBlueprint_shared:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+        us_formattable:
+          type: string
+    Public.CompanyBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.PatientBlueprint_account:
+      type: object
+      properties:
+        name:
+          type: string
+        past_due_in_cents:
+          type: integer
+          format: int32
+    Common.EmergencyContactBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        relationship:
+          type: string
+        phone:
+          $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
+    Public.LeadSourceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Public.MembershipPatientBlueprint_one:
+      type: object
+      properties:
+        end_date:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        enrollment_status:
+          type: string
+        member_type:
+          type: string
+        start_date:
+          type: string
+          format: date
+        status:
+          type: string
+        uses_tobacco:
+          type: boolean
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        division:
+          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
+        payer:
+          $ref: '#/components/schemas/Public.PatientBlueprint_min'
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+    Public.Payable.InvoiceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        amount_in_cents:
+          type: integer
+          format: int32
+        date:
+          type: string
+          format: date
+        human_status:
+          type: string
+        invoice_number:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+    Common.SocialSecurityNumberBlueprint_masked:
+      type: object
+      properties:
+        masked_number:
+          type: string
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+    Public.PatientBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        age:
+          type: string
+        chosen_first_name:
+          type: string
+        chosen_last_name:
+          type: string
+        chosen_middle_name:
+          type: string
+        chosen_suffix:
+          type: string
+        chosen_title:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        dob:
+          type: string
+          format: date
+        electronic_communication_consent_accepted:
+          type: string
+        electronic_communication_consent_accepted_at:
+          type: string
+        email:
+          type: string
+        engaged:
+          type: boolean
+        external_link_id:
+          type: string
+        first_name:
+          type: string
+        gender:
+          type: string
+        gender_identity:
+          type: string
+        gender_other:
+          type: string
+        health_insurance_group_id:
+          type: string
+        health_insurance_member_id:
+          type: string
+        health_insurance_payer_id:
+          type: string
+        health_insurance_payer_name:
+          type: string
+        hipaa_authorization_accepted:
+          type: boolean
+        hipaa_authorization_accepted_at:
+          type: string
+          format: date-time
+        import_id:
+          type: string
+        import_source:
+          type: string
+        joined_practice_date:
+          type: string
+          format: date
+        last_engagement_date:
+          type: string
+          format: date
+        last_name:
+          type: string
+        lead_source_other:
+          type: string
+        master_record_sponsor:
+          type: string
+        membership_status:
+          type: string
+        middle_name:
+          type: string
+        name:
+          type: string
+        patient_agreement_accepted:
+          type: boolean
+        patient_agreement_accepted_at:
+          type: string
+          format: date-time
+        preferred_language:
+          type: string
+        pronouns:
+          type: string
+        provider_web_link:
+          type: string
+        sex:
+          type: string
+        suffix:
+          type: string
+        terms_accepted:
+          type: boolean
+        terms_accepted_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        uses_tobacco:
+          type: boolean
+        account:
+          $ref: '#/components/schemas/Public.PatientBlueprint_account'
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        emergency_contact:
+          $ref: '#/components/schemas/Common.EmergencyContactBlueprint_shared'
+        external_records:
+          $ref: '#/components/schemas/Public.ExternalRecordBlueprint_min'
+        known_practice:
+          $ref: '#/components/schemas/Public.KnownPracticeBlueprint_min'
+        lead_source:
+          $ref: '#/components/schemas/Public.LeadSourceBlueprint_one'
+        location:
+          $ref: '#/components/schemas/Public.LocationBlueprint_one'
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+        membership_members:
+          $ref: '#/components/schemas/Public.MembershipMemberBlueprint_for_patient'
+        memberships:
+          $ref: '#/components/schemas/Public.MembershipPatientBlueprint_one'
+        merged_into:
+          $ref: '#/components/schemas/Public.PatientBlueprint_min'
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+        practitioner:
+          $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
+        practitioner_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+        sponsorships:
+          $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
+        ssn:
+          $ref: '#/components/schemas/Common.SocialSecurityNumberBlueprint_masked'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

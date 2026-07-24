@@ -1,0 +1,190 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Coupon API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Coupon
+paths:
+  /provider/coupons:
+    get:
+      tags:
+      - Coupon
+      operationId: Coupon.ListAllCoupons
+      summary: List All Coupons
+      description: ''
+      parameters:
+      - name: archived
+        in: query
+        required: false
+        description: Allows filtering by archived status. May be "true" to show only archived coupons, "false" to show only unarchived coupons. If not given all resources will be returned.
+        schema:
+          type: string
+      - name: redeemable
+        in: query
+        required: false
+        description: Allows filtering by redeemable status. May be "true" to show only currently redeemable coupons. If not given all resources will be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.CouponBlueprint_all'
+              example:
+              - id: cou-ab12C345DeF6
+                amount_off_in_cents: null
+                apply_to_each_patient: true
+                code: GETHEALTHYNOWFORCHEAPER1
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                description: null
+                duration_in_months: null
+                is_archived: false
+                is_redeemable: false
+                percent_off: '15.0'
+                redeemable_from: '2020-01-01'
+                redeemable_until: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /provider/coupons/{id}:
+    get:
+      tags:
+      - Coupon
+      operationId: Coupon.ShowCoupon
+      summary: Show Coupon
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Coupon ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CouponBlueprint_one'
+              example:
+                id: cou-ab12C345DeF6
+                code: GETHEALTHYNOWFORCHEAPER2
+                description: null
+                amount_off_in_cents: null
+                apply_to_each_patient: true
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                duration_in_months: null
+                percent_off: '15.0'
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                is_redeemable: false
+                is_archived: false
+                redeemable_from: '2020-01-01'
+                redeemable_until: null
+components:
+  schemas:
+    Public.CouponBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        amount_off_in_cents:
+          type: integer
+          format: int32
+        apply_to_each_patient:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        duration_in_months:
+          type: integer
+          format: int32
+        percent_off:
+          type: number
+          format: float
+        updated_at:
+          type: string
+          format: date-time
+        is_redeemable:
+          type: boolean
+        is_archived:
+          type: boolean
+        redeemable_from:
+          type: string
+          format: date-time
+        redeemable_until:
+          type: string
+          format: date-time
+    Public.CouponBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          amount_off_in_cents:
+            type: integer
+            format: int32
+          apply_to_each_patient:
+            type: boolean
+          code:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          description:
+            type: string
+          duration_in_months:
+            type: integer
+            format: int32
+          is_archived:
+            type: boolean
+          is_redeemable:
+            type: boolean
+          percent_off:
+            type: number
+            format: float
+          redeemable_from:
+            type: string
+            format: date-time
+          redeemable_until:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

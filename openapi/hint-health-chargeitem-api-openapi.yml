@@ -1,0 +1,284 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken ChargeItem API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: ChargeItem
+paths:
+  /provider/charge_items:
+    post:
+      tags:
+      - ChargeItem
+      operationId: ChargeItem.CreateChargeItem
+      summary: Create Charge Item
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ChargeItemBlueprint_one'
+              example:
+                id: item-ab12C345DeF6
+                code: ''
+                description: Diagnostic lab test for Hemaglobin A1C
+                name: 'HbA1c #3'
+                provider_web_link: https://app.hint.com/admin/charge_items/item-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                price_in_cents: '500.0'
+                quantity_in_stock: 50
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                category: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.ChargeItemsController.create_body'
+    get:
+      tags:
+      - ChargeItem
+      operationId: ChargeItem.ListAllChargeItems
+      summary: List All Charge Items
+      description: Charges will only include the 'quantity_in_stock' if their charge item is configured to track inventory
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.ChargeItemBlueprint_all'
+              example:
+              - id: item-ab12C345DeF6
+                code: ''
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                description: Diagnostic lab test for Hemaglobin A1C
+                name: 'HbA1c #2'
+                price_in_cents: '500.0'
+                provider_web_link: https://app.hint.com/admin/charge_items/item-ab12C345DeF6
+                quantity_in_stock: 50
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                category: null
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /provider/charge_items/{id}:
+    delete:
+      tags:
+      - ChargeItem
+      operationId: ChargeItem.DeleteChargeItem
+      summary: Delete Charge Item
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Charge Item ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+    get:
+      tags:
+      - ChargeItem
+      operationId: ChargeItem.ShowChargeItem
+      summary: Show Charge Item
+      description: Charge will only include the 'quantity_in_stock' if its charge item is configured to track inventory.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Charge Item ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ChargeItemBlueprint_one'
+              example:
+                id: item-ab12C345DeF6
+                code: ''
+                description: Diagnostic lab test for Hemaglobin A1C
+                name: 'HbA1c #3'
+                provider_web_link: https://app.hint.com/admin/charge_items/item-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                price_in_cents: '500.0'
+                quantity_in_stock: 50
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                category: null
+    patch:
+      tags:
+      - ChargeItem
+      operationId: ChargeItem.UpdateChargeItem
+      summary: Update Charge Item
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Charge Item ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ChargeItemBlueprint_one'
+              example:
+                id: item-ab12C345DeF6
+                code: ''
+                description: Diagnostic lab test for Hemaglobin A1C
+                name: 'HbA1c #3'
+                provider_web_link: https://app.hint.com/admin/charge_items/item-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                price_in_cents: '500.0'
+                quantity_in_stock: 50
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                category: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.ChargeItemsController.update_body'
+components:
+  schemas:
+    Public.ChargeItemBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        provider_web_link:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        price_in_cents:
+          type: number
+          format: float
+        quantity_in_stock:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+        category:
+          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
+    Provider.ChargeItemsController.create_body:
+      title: Create_Charge_Item
+      type: object
+      properties:
+        name:
+          type: string
+        price_in_cents:
+          type: number
+          format: double
+        type:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - price_in_cents
+      - type
+    Public.CategoryBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        default_for_memberships:
+          type: boolean
+    Public.ChargeItemBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          code:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          description:
+            type: string
+          name:
+            type: string
+          price_in_cents:
+            type: number
+            format: float
+          provider_web_link:
+            type: string
+          quantity_in_stock:
+            type: integer
+            format: int32
+          updated_at:
+            type: string
+            format: date-time
+          category:
+            $ref: '#/components/schemas/Public.CategoryBlueprint_one'
+    Provider.ChargeItemsController.update_body:
+      title: Create_Charge_Item
+      type: object
+      properties:
+        name:
+          type: string
+        price_in_cents:
+          type: number
+          format: double
+        type:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - price_in_cents
+      - type
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

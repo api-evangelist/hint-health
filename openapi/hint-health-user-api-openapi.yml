@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken User API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: User
+paths:
+  /provider/users:
+    get:
+      tags:
+      - User
+      operationId: User.ListUsers
+      summary: List Users
+      description: ''
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of results (default 10, min 1, max 100)
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        required: false
+        description: Pagination offset (default 0)
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        required: false
+        description: Sort field (e.g. +first_name+, +-first_name+ for descending)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.UserBlueprint_all'
+              example:
+              - id: user-ab12C345DeF6
+                email: joe_372@example.com
+                first_name: Joe
+                last_name: Blogs
+                name: Joe Blogs
+                phones: []
+                product_users: []
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available
+              schema:
+                type: integer
+components:
+  schemas:
+    Public.PartnerAppUserBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        roles:
+          type: string
+        product:
+          $ref: '#/components/schemas/Public.PartnerProductBlueprint_leaf'
+    Public.PartnerProductBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+    Public.UserBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          email:
+            type: string
+          first_name:
+            type: string
+          last_name:
+            type: string
+          name:
+            type: string
+          phones:
+            $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+          product_users:
+            $ref: '#/components/schemas/Public.PartnerAppUserBlueprint_leaf'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

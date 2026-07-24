@@ -1,0 +1,2078 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Patient API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Patient
+paths:
+  /provider/patients:
+    post:
+      tags:
+      - Patient
+      operationId: Patient.CreatePatient
+      summary: Create Patient
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PatientBlueprint_one'
+              example:
+                id: pat-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_state: NY
+                address_zip: '10002'
+                age: 60
+                chosen_first_name: null
+                chosen_last_name: null
+                chosen_middle_name: null
+                chosen_suffix: null
+                chosen_title: null
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                dob: '1956-04-24'
+                electronic_communication_consent_accepted: true
+                electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                email: bass_man@bumblebeeinc.com
+                engaged: false
+                external_link_id: null
+                first_name: Gordon
+                gender: male
+                gender_identity: man
+                gender_other: null
+                health_insurance_group_id: '12345'
+                health_insurance_member_id: A22222222
+                health_insurance_payer_id: 00039
+                health_insurance_payer_name: Anthem Blue Cross California
+                hipaa_authorization_accepted: true
+                hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                import_id: null
+                import_source: null
+                joined_practice_date: '2017-02-05'
+                last_engagement_date: null
+                last_name: Sumner
+                lead_source_other: Downtown marketing event
+                master_record_sponsor: null
+                membership_status: active
+                middle_name: Thomas
+                name: Gordon Thomas Sumner
+                patient_agreement_accepted: false
+                patient_agreement_accepted_at: null
+                preferred_language: en
+                pronouns: null
+                provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                sex: male
+                suffix: null
+                terms_accepted: false
+                terms_accepted_at: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                uses_tobacco: false
+                account:
+                  name: Gordon Thomas Sumner
+                  past_due_in_cents: 0
+                company:
+                  id: com-ab12C345DeF6
+                  name: Schmoogle Inc.
+                emergency_contact:
+                  id: emc-ab12C345DeF6
+                  first_name: Eliot
+                  last_name: Sumner
+                  email: bass_eliot@iblamecoco.com
+                  name: Eliot Sumner
+                  relationship: sibling
+                  phone:
+                    number: '5553050051'
+                    type: mobile
+                    us_formattable: true
+                external_records: []
+                known_practice: null
+                lead_source:
+                  id: lds-ab12C345DeF6
+                  name: Other
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                location:
+                  id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_latitude: 40.7227998
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_longitude: -73.9892241
+                  address_state: NY
+                  address_zip: '10002'
+                  distance: null
+                  name: San Francisco HQ
+                  phone_number: null
+                  virtual: false
+                  location_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                location_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                membership_members:
+                - id: mp-ab12C345DeF6
+                  enrollment_status: active
+                  member_type: spouse
+                  status: active
+                  enrollment_requested_on: '2017-02-05'
+                  start_date: '2017-02-01'
+                  end_date: null
+                  membership:
+                    id: mem-ab12C345DeF6
+                memberships:
+                - end_date: null
+                  enrollment_requested_on: '2017-02-05'
+                  enrollment_status: active
+                  member_type: spouse
+                  start_date: '2017-02-01'
+                  status: active
+                  uses_tobacco: false
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  division:
+                    id: div-ab12C345DeF6
+                    name: division 20
+                  payer:
+                    id: pat-ab12C345DeF6
+                    name: Gordon Thomas Sumner
+                  plan:
+                    id: pln-ab12C345DeF6
+                    name: Membership
+                    plan_type: retail
+                merged_into: null
+                phones: []
+                practitioner:
+                  id: pct-ab12C345DeF6
+                  accepts_enrollments_from_employer: true
+                  accepts_enrollments_from_retail: true
+                  bio: Reginalds biography...
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  education:
+                  - The University of Hint
+                  email: rocket_man@emi.com
+                  gender: male
+                  gender_other: null
+                  integration_record_id: null
+                  max_patient_age: 50
+                  min_patient_age: 0
+                  name: Reginald Dwight
+                  online_signup_visibility: true
+                  panel_size: 150
+                  panel_size_limit: 200
+                  photo_url: practitioners/000/000/115/photos/original.png
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  locations:
+                  - id: loc-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_latitude: 40.7227998
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_longitude: -73.9892241
+                    address_state: NY
+                    address_zip: '10002'
+                    distance: null
+                    name: San Francisco HQ
+                    phone_number: '5553050019'
+                    virtual: false
+                    location_group:
+                      id: prg-ab12C345DeF6
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      integration_record_id: null
+                      name: Downtown Location Group
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  npi:
+                    first_name: REGINALD
+                    last_name: DWIGHT
+                    number: 0123456879
+                    organization_name: HINT HEALTH
+                    type: individual
+                  specialties:
+                  - id: spe-ab12C345DeF6
+                    name: Internal Medicine
+                practitioner_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                sponsorships:
+                - id: creg-ab12C345DeF6
+                  external_id: ext_id_from_another_system012345
+                  is_subscriber: true
+                  type: spouse
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  family:
+                    id: cac-ab12C345DeF6
+                - id: creg-ab12C345DeF6
+                  external_id: ext_id_from_another_system012345
+                  is_subscriber: true
+                  type: employee
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  family:
+                    id: cac-ab12C345DeF6
+                ssn:
+                  masked_number: '***-**-1234'
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.PatientsController.create_body'
+    get:
+      tags:
+      - Patient
+      operationId: Patient.ListAllPatients
+      summary: List All Patients
+      description: '**Note:** Archived patients are excluded from responses by default.
+
+        Use `filter=archived` to return only archived patients.'
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        description: Allows limiting the number of patients returned.
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        required: false
+        description: Allows offsetting the number of patients returned.
+        schema:
+          type: integer
+          format: int32
+      - name: filter
+        in: query
+        required: false
+        description: Show only archived patients.
+        schema:
+          type: string
+          enum:
+          - archived
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PatientBlueprint_all'
+              example:
+              - id: pat-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_state: NY
+                address_zip: '10002'
+                age: 65
+                chosen_first_name: null
+                chosen_last_name: null
+                chosen_middle_name: null
+                chosen_suffix: null
+                chosen_title: null
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                dob: '1952-01-01'
+                electronic_communication_consent_accepted: true
+                electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                email: bass_man@bumblebeeinc.com
+                engaged: false
+                external_link_id: null
+                first_name: Gordon
+                gender: male
+                gender_identity: man
+                gender_other: null
+                health_insurance_group_id: '12345'
+                health_insurance_member_id: A22222222
+                health_insurance_payer_id: 00039
+                health_insurance_payer_name: Anthem Blue Cross California
+                hipaa_authorization_accepted: true
+                hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                import_id: null
+                import_source: null
+                joined_practice_date: '2017-02-05'
+                last_engagement_date: null
+                last_name: Sumner
+                lead_source_other: Downtown marketing event
+                master_record_sponsor: null
+                membership_status: active
+                middle_name: Thomas
+                name: Gordon Thomas Sumner
+                patient_agreement_accepted: false
+                patient_agreement_accepted_at: null
+                preferred_language: en
+                pronouns: null
+                provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                sex: male
+                suffix: null
+                terms_accepted: false
+                terms_accepted_at: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                uses_tobacco: false
+                account:
+                  name: Gordon Thomas Sumner
+                  past_due_in_cents: 0
+                company:
+                  id: com-ab12C345DeF6
+                  name: Schmoogle Inc.
+                emergency_contact:
+                  id: emc-ab12C345DeF6
+                  first_name: Eliot
+                  last_name: Sumner
+                  email: bass_eliot@iblamecoco.com
+                  name: Eliot Sumner
+                  relationship: sibling
+                  phone:
+                    number: '5553050051'
+                    type: mobile
+                    us_formattable: true
+                external_records: []
+                known_practice: null
+                lead_source:
+                  id: lds-ab12C345DeF6
+                  name: Other
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                location:
+                  id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_latitude: 40.7227998
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_longitude: -73.9892241
+                  address_state: NY
+                  address_zip: '10002'
+                  distance: null
+                  name: San Francisco HQ
+                  phone_number: null
+                  virtual: false
+                  location_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                location_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                membership_members: []
+                memberships: []
+                merged_into: null
+                phones: []
+                practitioner:
+                  id: pct-ab12C345DeF6
+                  accepts_enrollments_from_employer: true
+                  accepts_enrollments_from_retail: true
+                  bio: Reginalds biography...
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  education:
+                  - The University of Hint
+                  email: rocket_man@emi.com
+                  gender: male
+                  gender_other: null
+                  integration_record_id: null
+                  max_patient_age: 50
+                  min_patient_age: 0
+                  name: Reginald Dwight
+                  online_signup_visibility: true
+                  panel_size: 150
+                  panel_size_limit: 200
+                  photo_url: practitioners/000/000/115/photos/original.png
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  locations:
+                  - id: loc-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_latitude: 40.7227998
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_longitude: -73.9892241
+                    address_state: NY
+                    address_zip: '10002'
+                    distance: null
+                    name: San Francisco HQ
+                    phone_number: '5553050019'
+                    virtual: false
+                    location_group:
+                      id: prg-ab12C345DeF6
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      integration_record_id: null
+                      name: Downtown Location Group
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  npi:
+                    first_name: REGINALD
+                    last_name: DWIGHT
+                    number: 0123456879
+                    organization_name: HINT HEALTH
+                    type: individual
+                  specialties:
+                  - id: spe-ab12C345DeF6
+                    name: Internal Medicine
+                practitioner_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                sponsorships:
+                - id: creg-ab12C345DeF6
+                  external_id: ext_id_from_another_system012345
+                  is_subscriber: true
+                  type: employee
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  family:
+                    id: cac-ab12C345DeF6
+                ssn:
+                  masked_number: '***-**-1234'
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /provider/patients/{id}:
+    delete:
+      tags:
+      - Patient
+      operationId: Patient.DeletePatient
+      summary: Delete Patient
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+    get:
+      tags:
+      - Patient
+      operationId: Patient.ShowPatient
+      summary: Show Patient
+      description: '**Membership Status Options:** unconfirmed, pending, active, unpaid, inactive, archived'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PatientBlueprint_one'
+              example:
+                id: pat-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_state: NY
+                address_zip: '10002'
+                age: 60
+                chosen_first_name: null
+                chosen_last_name: null
+                chosen_middle_name: null
+                chosen_suffix: null
+                chosen_title: null
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                dob: '1956-04-24'
+                electronic_communication_consent_accepted: true
+                electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                email: bass_man@bumblebeeinc.com
+                engaged: false
+                external_link_id: null
+                first_name: Gordon
+                gender: male
+                gender_identity: man
+                gender_other: null
+                health_insurance_group_id: '12345'
+                health_insurance_member_id: A22222222
+                health_insurance_payer_id: 00039
+                health_insurance_payer_name: Anthem Blue Cross California
+                hipaa_authorization_accepted: true
+                hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                import_id: null
+                import_source: null
+                joined_practice_date: '2017-02-05'
+                last_engagement_date: null
+                last_name: Sumner
+                lead_source_other: Downtown marketing event
+                master_record_sponsor: null
+                membership_status: active
+                middle_name: Thomas
+                name: Gordon Thomas Sumner
+                patient_agreement_accepted: false
+                patient_agreement_accepted_at: null
+                preferred_language: en
+                pronouns: null
+                provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                sex: male
+                suffix: null
+                terms_accepted: false
+                terms_accepted_at: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                uses_tobacco: false
+                account:
+                  name: Gordon Thomas Sumner
+                  past_due_in_cents: 0
+                company:
+                  id: com-ab12C345DeF6
+                  name: Schmoogle Inc.
+                emergency_contact:
+                  id: emc-ab12C345DeF6
+                  first_name: Eliot
+                  last_name: Sumner
+                  email: bass_eliot@iblamecoco.com
+                  name: Eliot Sumner
+                  relationship: sibling
+                  phone:
+                    number: '5553050051'
+                    type: mobile
+                    us_formattable: true
+                external_records: []
+                known_practice: null
+                lead_source:
+                  id: lds-ab12C345DeF6
+                  name: Other
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                location:
+                  id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_latitude: 40.7227998
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_longitude: -73.9892241
+                  address_state: NY
+                  address_zip: '10002'
+                  distance: null
+                  name: San Francisco HQ
+                  phone_number: null
+                  virtual: false
+                  location_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                location_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                membership_members:
+                - id: mp-ab12C345DeF6
+                  enrollment_status: active
+                  member_type: spouse
+                  status: active
+                  enrollment_requested_on: '2017-02-05'
+                  start_date: '2017-02-01'
+                  end_date: null
+                  membership:
+                    id: mem-ab12C345DeF6
+                memberships:
+                - end_date: null
+                  enrollment_requested_on: '2017-02-05'
+                  enrollment_status: active
+                  member_type: spouse
+                  start_date: '2017-02-01'
+                  status: active
+                  uses_tobacco: false
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  division:
+                    id: div-ab12C345DeF6
+                    name: division 20
+                  payer:
+                    id: pat-ab12C345DeF6
+                    name: Gordon Thomas Sumner
+                  plan:
+                    id: pln-ab12C345DeF6
+                    name: Membership
+                    plan_type: retail
+                merged_into: null
+                phones: []
+                practitioner:
+                  id: pct-ab12C345DeF6
+                  accepts_enrollments_from_employer: true
+                  accepts_enrollments_from_retail: true
+                  bio: Reginalds biography...
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  education:
+                  - The University of Hint
+                  email: rocket_man@emi.com
+                  gender: male
+                  gender_other: null
+                  integration_record_id: null
+                  max_patient_age: 50
+                  min_patient_age: 0
+                  name: Reginald Dwight
+                  online_signup_visibility: true
+                  panel_size: 150
+                  panel_size_limit: 200
+                  photo_url: practitioners/000/000/115/photos/original.png
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  locations:
+                  - id: loc-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_latitude: 40.7227998
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_longitude: -73.9892241
+                    address_state: NY
+                    address_zip: '10002'
+                    distance: null
+                    name: San Francisco HQ
+                    phone_number: '5553050019'
+                    virtual: false
+                    location_group:
+                      id: prg-ab12C345DeF6
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      integration_record_id: null
+                      name: Downtown Location Group
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  npi:
+                    first_name: REGINALD
+                    last_name: DWIGHT
+                    number: 0123456879
+                    organization_name: HINT HEALTH
+                    type: individual
+                  specialties:
+                  - id: spe-ab12C345DeF6
+                    name: Internal Medicine
+                practitioner_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                sponsorships:
+                - id: creg-ab12C345DeF6
+                  external_id: ext_id_from_another_system012345
+                  is_subscriber: true
+                  type: spouse
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  family:
+                    id: cac-ab12C345DeF6
+                - id: creg-ab12C345DeF6
+                  external_id: ext_id_from_another_system012345
+                  is_subscriber: true
+                  type: employee
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  family:
+                    id: cac-ab12C345DeF6
+                ssn:
+                  masked_number: '***-**-1234'
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+    patch:
+      tags:
+      - Patient
+      operationId: Patient.UpdatePatient
+      summary: Update Patient
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PatientBlueprint_one'
+              example:
+                id: pat-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_state: NY
+                address_zip: '10002'
+                age: 60
+                chosen_first_name: null
+                chosen_last_name: null
+                chosen_middle_name: null
+                chosen_suffix: null
+                chosen_title: null
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                dob: '1956-04-24'
+                electronic_communication_consent_accepted: true
+                electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                email: bass_man@bumblebeeinc.com
+                engaged: false
+                external_link_id: null
+                first_name: Gordon
+                gender: male
+                gender_identity: man
+                gender_other: null
+                health_insurance_group_id: '12345'
+                health_insurance_member_id: A22222222
+                health_insurance_payer_id: 00039
+                health_insurance_payer_name: Anthem Blue Cross California
+                hipaa_authorization_accepted: true
+                hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                import_id: null
+                import_source: null
+                joined_practice_date: '2017-02-05'
+                last_engagement_date: null
+                last_name: Sumner
+                lead_source_other: Downtown marketing event
+                master_record_sponsor: null
+                membership_status: active
+                middle_name: Thomas
+                name: Gordon Thomas Sumner
+                patient_agreement_accepted: false
+                patient_agreement_accepted_at: null
+                preferred_language: en
+                pronouns: null
+                provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                sex: male
+                suffix: null
+                terms_accepted: false
+                terms_accepted_at: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                uses_tobacco: false
+                account:
+                  name: Gordon Thomas Sumner
+                  past_due_in_cents: 0
+                company:
+                  id: com-ab12C345DeF6
+                  name: Schmoogle Inc.
+                emergency_contact:
+                  id: emc-ab12C345DeF6
+                  first_name: Eliot
+                  last_name: Sumner
+                  email: bass_eliot@iblamecoco.com
+                  name: Eliot Sumner
+                  relationship: sibling
+                  phone:
+                    number: '5553050051'
+                    type: mobile
+                    us_formattable: true
+                external_records: []
+                known_practice: null
+                lead_source:
+                  id: lds-ab12C345DeF6
+                  name: Other
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                location:
+                  id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_latitude: 40.7227998
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_longitude: -73.9892241
+                  address_state: NY
+                  address_zip: '10002'
+                  distance: null
+                  name: San Francisco HQ
+                  phone_number: null
+                  virtual: false
+                  location_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                location_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                membership_members:
+                - id: mp-ab12C345DeF6
+                  enrollment_status: active
+                  member_type: spouse
+                  status: active
+                  enrollment_requested_on: '2017-02-05'
+                  start_date: '2017-02-01'
+                  end_date: null
+                  membership:
+                    id: mem-ab12C345DeF6
+                memberships:
+                - end_date: null
+                  enrollment_requested_on: '2017-02-05'
+                  enrollment_status: active
+                  member_type: spouse
+                  start_date: '2017-02-01'
+                  status: active
+                  uses_tobacco: false
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  division:
+                    id: div-ab12C345DeF6
+                    name: division 20
+                  payer:
+                    id: pat-ab12C345DeF6
+                    name: Gordon Thomas Sumner
+                  plan:
+                    id: pln-ab12C345DeF6
+                    name: Membership
+                    plan_type: retail
+                merged_into: null
+                phones: []
+                practitioner:
+                  id: pct-ab12C345DeF6
+                  accepts_enrollments_from_employer: true
+                  accepts_enrollments_from_retail: true
+                  bio: Reginalds biography...
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  education:
+                  - The University of Hint
+                  email: rocket_man@emi.com
+                  gender: male
+                  gender_other: null
+                  integration_record_id: null
+                  max_patient_age: 50
+                  min_patient_age: 0
+                  name: Reginald Dwight
+                  online_signup_visibility: true
+                  panel_size: 150
+                  panel_size_limit: 200
+                  photo_url: practitioners/000/000/115/photos/original.png
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  locations:
+                  - id: loc-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_latitude: 40.7227998
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_longitude: -73.9892241
+                    address_state: NY
+                    address_zip: '10002'
+                    distance: null
+                    name: San Francisco HQ
+                    phone_number: '5553050019'
+                    virtual: false
+                    location_group:
+                      id: prg-ab12C345DeF6
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      integration_record_id: null
+                      name: Downtown Location Group
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  npi:
+                    first_name: REGINALD
+                    last_name: DWIGHT
+                    number: 0123456879
+                    organization_name: HINT HEALTH
+                    type: individual
+                  specialties:
+                  - id: spe-ab12C345DeF6
+                    name: Internal Medicine
+                practitioner_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                sponsorships:
+                - id: creg-ab12C345DeF6
+                  external_id: ext_id_from_another_system012345
+                  is_subscriber: true
+                  type: spouse
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  family:
+                    id: cac-ab12C345DeF6
+                - id: creg-ab12C345DeF6
+                  external_id: ext_id_from_another_system012345
+                  is_subscriber: true
+                  type: employee
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  family:
+                    id: cac-ab12C345DeF6
+                ssn:
+                  masked_number: '***-**-1234'
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.PatientsController.update_body'
+  /provider/patients/matching:
+    post:
+      tags:
+      - Patient
+      operationId: Patient.MatchPatients
+      summary: Match Patients
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PatientBlueprint_all'
+              example:
+              - id: pat-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_state: NY
+                address_zip: '10002'
+                age: 65
+                chosen_first_name: null
+                chosen_last_name: null
+                chosen_middle_name: null
+                chosen_suffix: null
+                chosen_title: null
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                dob: '1952-01-01'
+                electronic_communication_consent_accepted: true
+                electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                email: bass_man@bumblebeeinc.com
+                engaged: false
+                external_link_id: null
+                first_name: Gordon
+                gender: male
+                gender_identity: man
+                gender_other: null
+                health_insurance_group_id: '12345'
+                health_insurance_member_id: A22222222
+                health_insurance_payer_id: 00039
+                health_insurance_payer_name: Anthem Blue Cross California
+                hipaa_authorization_accepted: true
+                hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                import_id: null
+                import_source: null
+                joined_practice_date: '2017-02-05'
+                last_engagement_date: null
+                last_name: Sumner
+                lead_source_other: Downtown marketing event
+                master_record_sponsor: null
+                membership_status: active
+                middle_name: Thomas
+                name: Gordon Thomas Sumner
+                patient_agreement_accepted: false
+                patient_agreement_accepted_at: null
+                preferred_language: en
+                pronouns: null
+                provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                sex: male
+                suffix: null
+                terms_accepted: false
+                terms_accepted_at: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                uses_tobacco: false
+                account:
+                  name: Gordon Thomas Sumner
+                  past_due_in_cents: 0
+                company:
+                  id: com-ab12C345DeF6
+                  name: Schmoogle Inc.
+                emergency_contact:
+                  id: emc-ab12C345DeF6
+                  first_name: Eliot
+                  last_name: Sumner
+                  email: bass_eliot@iblamecoco.com
+                  name: Eliot Sumner
+                  relationship: sibling
+                  phone:
+                    number: '5553050051'
+                    type: mobile
+                    us_formattable: true
+                external_records: []
+                known_practice: null
+                lead_source:
+                  id: lds-ab12C345DeF6
+                  name: Other
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                location:
+                  id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_latitude: 40.7227998
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_longitude: -73.9892241
+                  address_state: NY
+                  address_zip: '10002'
+                  distance: null
+                  name: San Francisco HQ
+                  phone_number: null
+                  virtual: false
+                  location_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                location_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                membership_members: []
+                memberships: []
+                merged_into: null
+                phones: []
+                practitioner:
+                  id: pct-ab12C345DeF6
+                  accepts_enrollments_from_employer: true
+                  accepts_enrollments_from_retail: true
+                  bio: Reginalds biography...
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  education:
+                  - The University of Hint
+                  email: rocket_man@emi.com
+                  gender: male
+                  gender_other: null
+                  integration_record_id: null
+                  max_patient_age: 50
+                  min_patient_age: 0
+                  name: Reginald Dwight
+                  online_signup_visibility: true
+                  panel_size: 150
+                  panel_size_limit: 200
+                  photo_url: practitioners/000/000/115/photos/original.png
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  locations:
+                  - id: loc-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_latitude: 40.7227998
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_longitude: -73.9892241
+                    address_state: NY
+                    address_zip: '10002'
+                    distance: null
+                    name: San Francisco HQ
+                    phone_number: '5553050019'
+                    virtual: false
+                    location_group:
+                      id: prg-ab12C345DeF6
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      integration_record_id: null
+                      name: Downtown Location Group
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  npi:
+                    first_name: REGINALD
+                    last_name: DWIGHT
+                    number: 0123456879
+                    organization_name: HINT HEALTH
+                    type: individual
+                  specialties:
+                  - id: spe-ab12C345DeF6
+                    name: Internal Medicine
+                practitioner_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                sponsorships:
+                - id: creg-ab12C345DeF6
+                  external_id: ext_id_from_another_system012345
+                  is_subscriber: true
+                  type: employee
+                  company:
+                    id: com-ab12C345DeF6
+                    name: Schmoogle Inc.
+                  family:
+                    id: cac-ab12C345DeF6
+                ssn:
+                  masked_number: '***-**-1234'
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.PatientsController.matching_body'
+components:
+  schemas:
+    Public.MembershipBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.LocationBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_latitude:
+          type: number
+          format: float
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_longitude:
+          type: number
+          format: float
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        distance:
+          type: string
+        name:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+    Public.CompanySponsorshipBlueprint_for_patient:
+      type: object
+      properties:
+        id:
+          type: string
+        external_id:
+          type: string
+        is_subscriber:
+          type: boolean
+        type:
+          type: string
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        family:
+          $ref: '#/components/schemas/Public.CompanyAccountBlueprint_min'
+    Public.PatientBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.MembershipMemberBlueprint_for_patient:
+      type: object
+      properties:
+        id:
+          type: string
+        enrollment_status:
+          type: string
+        member_type:
+          type: string
+        status:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+        membership:
+          $ref: '#/components/schemas/Public.MembershipBlueprint_min'
+    Public.LocationGroupBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        integration_record_id:
+          type: string
+        name:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    Public.ExternalRecordBlueprint_min:
+      type: object
+      properties:
+        source:
+          type: string
+        external_id:
+          type: string
+    Public.CompanyAccountBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.PatientBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          address_city:
+            type: string
+          address_country:
+            type: string
+          address_line1:
+            type: string
+          address_line2:
+            type: string
+          address_state:
+            type: string
+          address_zip:
+            type: string
+          age:
+            type: string
+          chosen_first_name:
+            type: string
+          chosen_last_name:
+            type: string
+          chosen_middle_name:
+            type: string
+          chosen_suffix:
+            type: string
+          chosen_title:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          dob:
+            type: string
+            format: date
+          electronic_communication_consent_accepted:
+            type: string
+          electronic_communication_consent_accepted_at:
+            type: string
+          email:
+            type: string
+          engaged:
+            type: boolean
+          external_link_id:
+            type: string
+          first_name:
+            type: string
+          gender:
+            type: string
+          gender_identity:
+            type: string
+          gender_other:
+            type: string
+          health_insurance_group_id:
+            type: string
+          health_insurance_member_id:
+            type: string
+          health_insurance_payer_id:
+            type: string
+          health_insurance_payer_name:
+            type: string
+          hipaa_authorization_accepted:
+            type: boolean
+          hipaa_authorization_accepted_at:
+            type: string
+            format: date-time
+          import_id:
+            type: string
+          import_source:
+            type: string
+          joined_practice_date:
+            type: string
+            format: date
+          last_engagement_date:
+            type: string
+            format: date
+          last_name:
+            type: string
+          lead_source_other:
+            type: string
+          master_record_sponsor:
+            type: string
+          membership_status:
+            type: string
+          middle_name:
+            type: string
+          name:
+            type: string
+          patient_agreement_accepted:
+            type: boolean
+          patient_agreement_accepted_at:
+            type: string
+            format: date-time
+          preferred_language:
+            type: string
+          pronouns:
+            type: string
+          provider_web_link:
+            type: string
+          sex:
+            type: string
+          suffix:
+            type: string
+          terms_accepted:
+            type: boolean
+          terms_accepted_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+          uses_tobacco:
+            type: boolean
+          account:
+            $ref: '#/components/schemas/Public.PatientBlueprint_account'
+          company:
+            $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+          emergency_contact:
+            $ref: '#/components/schemas/Common.EmergencyContactBlueprint_shared'
+          external_records:
+            $ref: '#/components/schemas/Public.ExternalRecordBlueprint_min'
+          known_practice:
+            $ref: '#/components/schemas/Public.KnownPracticeBlueprint_min'
+          lead_source:
+            $ref: '#/components/schemas/Public.LeadSourceBlueprint_one'
+          location:
+            $ref: '#/components/schemas/Public.LocationBlueprint_one'
+          location_group:
+            $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+          membership_members:
+            $ref: '#/components/schemas/Public.MembershipMemberBlueprint_for_patient'
+          memberships:
+            $ref: '#/components/schemas/Public.MembershipPatientBlueprint_one'
+          merged_into:
+            $ref: '#/components/schemas/Public.PatientBlueprint_min'
+          phones:
+            $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+          practitioner:
+            $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
+          practitioner_group:
+            $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+          sponsorships:
+            $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
+          ssn:
+            $ref: '#/components/schemas/Common.SocialSecurityNumberBlueprint_masked'
+    SocialSecurityNumber:
+      title: Create_SSN
+      type: object
+      properties:
+        number:
+          type: string
+    Public.NpiBlueprint_shared:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        number:
+          type: string
+        organization_name:
+          type: string
+        type:
+          type: string
+    Public.PractitionerBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        accepts_enrollments_from_employer:
+          type: string
+        accepts_enrollments_from_retail:
+          type: string
+        bio:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        education:
+          type: string
+        email:
+          type: string
+        gender:
+          type: string
+        gender_other:
+          type: string
+        integration_record_id:
+          type: string
+        max_patient_age:
+          type: string
+        min_patient_age:
+          type: string
+        name:
+          type: string
+        online_signup_visibility:
+          type: string
+        panel_size:
+          type: integer
+          format: int32
+        panel_size_limit:
+          type: integer
+          format: int32
+        photo_url:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.LocationBlueprint_one'
+        npi:
+          $ref: '#/components/schemas/Public.NpiBlueprint_shared'
+        specialties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
+    PhoneNumber:
+      type: object
+      properties:
+        id:
+          type: string
+        number:
+          type: number
+        type:
+          type: string
+        us_formattable:
+          type: boolean
+          description: Make this false if your number is not exactly 10 digits
+      required:
+      - number
+      - type
+    Provider.PatientsController.create_body:
+      title: Create_Patient
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: This should be the patients legal first name.
+        last_name:
+          type: string
+          description: This should be the patients legal last name.
+        middle_name:
+          type: string
+          description: This should be the patients middle name.
+        title:
+          type: string
+        suffix:
+          type: string
+        chosen_first_name:
+          type: string
+        chosen_last_name:
+          type: string
+        chosen_middle_name:
+          type: string
+        chosen_title:
+          type: string
+        chosen_suffix:
+          type: string
+        pronouns:
+          type: string
+          description: May be one of `He/Him/His`, `She/Her/Hers` or `They/Them/Theirs`. Other values sent will be stored as free text.
+        email:
+          type: string
+        sex:
+          type: string
+          description: May send `male`, `female`, or `intersex`.
+        gender:
+          type: string
+          description: This field will be deprecated on March 31st 2021.
+        gender_identity:
+          type: string
+          description: May send `man`, `woman`, `trans man`, `trans woman`, `nonbinary`, or `not listed`. If you send `not listed`, please include a description in the `gender_other` field.
+        gender_other:
+          type: string
+          description: Used to specify gender identity, when not listed.
+        dob:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        lead_source:
+          $ref: '#/components/schemas/Association'
+        practitioner:
+          $ref: '#/components/schemas/Association'
+        location:
+          $ref: '#/components/schemas/Association'
+        emergency_contact:
+          $ref: '#/components/schemas/EmergencyContact'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+        ssn:
+          $ref: '#/components/schemas/SocialSecurityNumber'
+        health_insurance_group_id:
+          type: string
+        health_insurance_member_id:
+          type: string
+        health_insurance_payer_name:
+          type: string
+        health_insurance_payer_id:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        address_country:
+          type: string
+        import_id:
+          type: string
+          description: (deprecated)
+        import_source:
+          type: string
+          description: (deprecated)
+        external_link_id:
+          type: string
+          description: (deprecated)
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+        preferred_language:
+          type: string
+          description: May send `en` or `es`.
+        last_engagement_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        electronic_communication_consent_accepted:
+          type: boolean
+        patient_agreement_accepted:
+          type: boolean
+      required:
+      - first_name
+      - last_name
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+    Provider.PatientsController.update_body:
+      title: Create_Patient
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: This should be the patients legal first name.
+        last_name:
+          type: string
+          description: This should be the patients legal last name.
+        middle_name:
+          type: string
+          description: This should be the patients legal middle name.
+        title:
+          type: string
+        suffix:
+          type: string
+        chosen_first_name:
+          type: string
+        chosen_last_name:
+          type: string
+        chosen_middle_name:
+          type: string
+        chosen_title:
+          type: string
+        chosen_suffix:
+          type: string
+        pronouns:
+          type: string
+          description: May be one of `He/Him/His`, `She/Her/Hers` or `They/Them/Theirs`. Other values sent will be stored as free text.
+        email:
+          type: string
+        sex:
+          type: string
+          description: May send `male`, `female`, or `intersex`.
+        gender:
+          type: string
+          description: This field will be deprecated on March 31st 2021.
+        gender_identity:
+          type: string
+          description: May send `man`, `woman`, `trans man`, `trans woman`, `nonbinary`, or `not listed`. If you send `not listed`, please include a description in the `gender_other` field.
+        gender_other:
+          type: string
+          description: Used to specify gender identity, when not listed.
+        dob:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        lead_source:
+          $ref: '#/components/schemas/Association'
+        practitioner:
+          $ref: '#/components/schemas/Association'
+        location:
+          $ref: '#/components/schemas/Association'
+        emergency_contact:
+          $ref: '#/components/schemas/EmergencyContact'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+        ssn:
+          $ref: '#/components/schemas/SocialSecurityNumber'
+        health_insurance_group_id:
+          type: string
+        health_insurance_member_id:
+          type: string
+        health_insurance_payer_name:
+          type: string
+        health_insurance_payer_id:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        address_country:
+          type: string
+        import_id:
+          type: string
+          description: (deprecated)
+        import_source:
+          type: string
+          description: (deprecated)
+        external_link_id:
+          type: string
+          description: (deprecated)
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+        last_engagement_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        electronic_communication_consent_accepted:
+          type: boolean
+        patient_agreement_accepted:
+          type: boolean
+      required:
+      - first_name
+      - last_name
+    Public.SpecialtyBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+    Public.KnownPracticeBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.EmployeeDivisionBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    EmergencyContact:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        relationship:
+          type: string
+          enum:
+          - spouse
+          - parent
+          - sibling
+          - child
+          - grandparent
+          - guardian
+          - other
+        relationship_other:
+          type: string
+        phone:
+          type: object
+          properties:
+            number:
+              type: number
+            type:
+              type: string
+            us_formattable:
+              type: boolean
+              description: Make this false if your number is not exactly 10 digits
+          required:
+          - number
+          - type
+    Common.PhoneBlueprint_shared:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+        us_formattable:
+          type: string
+    Public.CompanyBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.PatientBlueprint_account:
+      type: object
+      properties:
+        name:
+          type: string
+        past_due_in_cents:
+          type: integer
+          format: int32
+    Provider.PatientsController.matching_body:
+      title: Match_Patients
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        middle_name:
+          type: string
+        email:
+          type: string
+        dob:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+      required:
+      - first_name
+      - last_name
+    Common.EmergencyContactBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        relationship:
+          type: string
+        phone:
+          $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
+    Public.LeadSourceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Public.MembershipPatientBlueprint_one:
+      type: object
+      properties:
+        end_date:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        enrollment_status:
+          type: string
+        member_type:
+          type: string
+        start_date:
+          type: string
+          format: date
+        status:
+          type: string
+        uses_tobacco:
+          type: boolean
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        division:
+          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
+        payer:
+          $ref: '#/components/schemas/Public.PatientBlueprint_min'
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+    Common.SocialSecurityNumberBlueprint_masked:
+      type: object
+      properties:
+        masked_number:
+          type: string
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+    Public.PatientBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        age:
+          type: string
+        chosen_first_name:
+          type: string
+        chosen_last_name:
+          type: string
+        chosen_middle_name:
+          type: string
+        chosen_suffix:
+          type: string
+        chosen_title:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        dob:
+          type: string
+          format: date
+        electronic_communication_consent_accepted:
+          type: string
+        electronic_communication_consent_accepted_at:
+          type: string
+        email:
+          type: string
+        engaged:
+          type: boolean
+        external_link_id:
+          type: string
+        first_name:
+          type: string
+        gender:
+          type: string
+        gender_identity:
+          type: string
+        gender_other:
+          type: string
+        health_insurance_group_id:
+          type: string
+        health_insurance_member_id:
+          type: string
+        health_insurance_payer_id:
+          type: string
+        health_insurance_payer_name:
+          type: string
+        hipaa_authorization_accepted:
+          type: boolean
+        hipaa_authorization_accepted_at:
+          type: string
+          format: date-time
+        import_id:
+          type: string
+        import_source:
+          type: string
+        joined_practice_date:
+          type: string
+          format: date
+        last_engagement_date:
+          type: string
+          format: date
+        last_name:
+          type: string
+        lead_source_other:
+          type: string
+        master_record_sponsor:
+          type: string
+        membership_status:
+          type: string
+        middle_name:
+          type: string
+        name:
+          type: string
+        patient_agreement_accepted:
+          type: boolean
+        patient_agreement_accepted_at:
+          type: string
+          format: date-time
+        preferred_language:
+          type: string
+        pronouns:
+          type: string
+        provider_web_link:
+          type: string
+        sex:
+          type: string
+        suffix:
+          type: string
+        terms_accepted:
+          type: boolean
+        terms_accepted_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        uses_tobacco:
+          type: boolean
+        account:
+          $ref: '#/components/schemas/Public.PatientBlueprint_account'
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        emergency_contact:
+          $ref: '#/components/schemas/Common.EmergencyContactBlueprint_shared'
+        external_records:
+          $ref: '#/components/schemas/Public.ExternalRecordBlueprint_min'
+        known_practice:
+          $ref: '#/components/schemas/Public.KnownPracticeBlueprint_min'
+        lead_source:
+          $ref: '#/components/schemas/Public.LeadSourceBlueprint_one'
+        location:
+          $ref: '#/components/schemas/Public.LocationBlueprint_one'
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+        membership_members:
+          $ref: '#/components/schemas/Public.MembershipMemberBlueprint_for_patient'
+        memberships:
+          $ref: '#/components/schemas/Public.MembershipPatientBlueprint_one'
+        merged_into:
+          $ref: '#/components/schemas/Public.PatientBlueprint_min'
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+        practitioner:
+          $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
+        practitioner_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+        sponsorships:
+          $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
+        ssn:
+          $ref: '#/components/schemas/Common.SocialSecurityNumberBlueprint_masked'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

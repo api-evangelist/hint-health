@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken CreditLine API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: CreditLine
+paths:
+  /provider/credit_lines:
+    get:
+      tags:
+      - CreditLine
+      operationId: CreditLine.ListCreditLines
+      summary: List All Credit Lines
+      description: ''
+      parameters:
+      - name: credit
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: credit_category
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.CreditLineBlueprint_all'
+              example:
+              - id: cln-ab12C345DeF6
+                amount_in_cents: -1000
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                transaction_date: '2017-02-05'
+                type: applied
+                credit:
+                  id: crd-ab12C345DeF6
+                invoice:
+                  id: inv-ab12C345DeF6
+                  invoice_number: 1
+                  type: customer_invoice
+                  owner:
+                    id: pat-ab12C345DeF6
+                    type: patient
+components:
+  schemas:
+    Public.Payable.InvoiceBlueprint_min_with_owner:
+      type: object
+      properties:
+        id:
+          type: string
+        invoice_number:
+          type: string
+        type:
+          type: string
+        owner:
+          $ref: '#/components/schemas/Public.Payable.OwnerBlueprint_min'
+    Public.CreditBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.Payable.OwnerBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    Public.CreditLineBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          amount_in_cents:
+            type: integer
+            format: int32
+          created_at:
+            type: string
+            format: date-time
+          transaction_date:
+            type: string
+            format: date
+          type:
+            type: string
+          credit:
+            $ref: '#/components/schemas/Public.CreditBlueprint_min'
+          invoice:
+            $ref: '#/components/schemas/Public.Payable.InvoiceBlueprint_min_with_owner'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

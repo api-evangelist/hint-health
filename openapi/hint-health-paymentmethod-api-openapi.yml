@@ -1,0 +1,243 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken PaymentMethod API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: PaymentMethod
+paths:
+  /provider/patients/{patient_id}/payment_methods:
+    post:
+      tags:
+      - PaymentMethod
+      operationId: PaymentMethod.CreatePaymentMethod
+      summary: Create Payment Method
+      description: 'Exactly one of `rainforest_id` or `stripe_id` must be provided. Practices on Hint Payments
+
+        (Rainforest) submit a `rainforest_id`; practices on Stripe submit a `stripe_id`.'
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: bnk-ab12C345DeF6
+                default: true
+                last_four: '4242'
+                name: Bank of America NA
+                type: bank_account
+                bank_account:
+                  id: bnk-ab12C345DeF6
+                  last_four: '4242'
+                  name: Bank of America NA
+                  stripe_token: tok_1234
+                  type: BankAccount
+                card: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.Patients.PaymentMethodsController.create_body'
+    get:
+      tags:
+      - PaymentMethod
+      operationId: PaymentMethod.ListAllPaymentMethods
+      summary: List All Payment Methods
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+              - id: card-ab12C345DeF6
+                default: false
+                last_four: '4242'
+                name: Visa
+                type: card
+                bank_account: null
+                card:
+                  id: card-ab12C345DeF6
+                  card_type: visa
+                  last_four: '4242'
+                  name: Visa
+                  type: Card
+                  exp_month: 7
+                  exp_year: 2017
+              - id: card-ab12C345DeF6
+                default: false
+                last_four: '4242'
+                name: Visa
+                type: card
+                bank_account: null
+                card:
+                  id: card-ab12C345DeF6
+                  card_type: visa
+                  last_four: '4242'
+                  name: Visa
+                  type: Card
+                  exp_month: 7
+                  exp_year: 2017
+              - id: bnk-ab12C345DeF6
+                default: true
+                last_four: '4242'
+                name: Bank of America NA
+                type: bank_account
+                bank_account:
+                  id: bnk-ab12C345DeF6
+                  last_four: '4242'
+                  name: Bank of America NA
+                  stripe_token: tok_1234
+                  type: BankAccount
+                card: null
+  /provider/patients/{patient_id}/payment_methods/setup:
+    post:
+      tags:
+      - PaymentMethod
+      operationId: PaymentMethod.CreateSetupIntent
+      summary: Create Setup Intent
+      description: 'The response shape depends on the practice''s payment processor (`payment_processor` in the response):
+
+        - When `rainforest`: `payment_method_config_id`, `session_key`, and `allowed_methods` are returned.
+
+        - When `stripe`: `stripe_client_secret` is returned instead.
+
+        The example below shows the `rainforest` variant.'
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                payment_processor: rainforest
+                payment_method_config_id: pmc_1234567890
+                session_key: skey_1234
+                allowed_methods: ACH,CARD
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.Patients.PaymentMethods.SetupController.create_body'
+  /provider/patients/{patient_id}/payment_methods/{id}:
+    delete:
+      tags:
+      - PaymentMethod
+      operationId: PaymentMethod.DeletePaymentMethod
+      summary: Delete Payment Method
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Payment Method ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+    get:
+      tags:
+      - PaymentMethod
+      operationId: PaymentMethod.ShowPaymentMethod
+      summary: Show Payment Method
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Payment Method ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: bnk-ab12C345DeF6
+                default: true
+                last_four: '4242'
+                name: Bank of America NA
+                type: bank_account
+                bank_account:
+                  id: bnk-ab12C345DeF6
+                  last_four: '4242'
+                  name: Bank of America NA
+                  stripe_token: tok_1234
+                  type: BankAccount
+                card: null
+components:
+  schemas:
+    Provider.Patients.PaymentMethodsController.create_body:
+      type: object
+      properties:
+        rainforest_id:
+          type: string
+          description: Tokenized payment method id from Rainforest. Required if the practice uses Hint Payments.
+        stripe_id:
+          type: string
+          description: Tokenized payment method id from Stripe. Required if the practice uses Stripe.
+    Provider.Patients.PaymentMethods.SetupController.create_body:
+      type: object
+      properties:
+        user_is_owner:
+          type: boolean
+        accepts_bank:
+          type: boolean
+      required:
+      - user_is_owner
+      - accepts_bank
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

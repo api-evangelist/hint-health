@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken IntegrationRecord API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: IntegrationRecord
+paths:
+  /provider/patients/{patient_id}/integration_records:
+    get:
+      tags:
+      - IntegrationRecord
+      operationId: IntegrationRecord.ListAllIntegrationRecords
+      summary: List all IntegrationRecords for a Patient
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+              - integration_record_id: ABCD0012027
+                partner:
+                  id: ptr-ab12C345DeF6
+                  name: HealthifyEMR24
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken OAuth API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: OAuth
+paths:
+  /oauth/tokens:
+    post:
+      tags:
+      - OAuth
+      operationId: OAuth.OauthTokens
+      summary: Exchange Code for Access Token
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Platform.IntegrationBlueprint_one_with_access_token'
+              example:
+                id: int-ab12C345DeF6
+                access_token: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+                expires_in: null
+                refresh_token: null
+                status: active
+                token_type: bearer
+                webhook_url_default: null
+                webhook_url_override: https://integration.example.hint.com
+                activated_by:
+                  id: user-ab12C345DeF6
+                  name: Joe Blogs
+                  email: joe_170@example.com
+                api_keys:
+                - deactivated_at: null
+                  description: Hint-Partner EMR
+                  last_used_at: null
+                  token: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+                product:
+                  id: ppro-ab12C345DeF6
+                  name: Hint-Partner EMR
+                  slug: hint-partner-emr-oauth-example
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Platform.OauthsController.tokens_body'
+components:
+  schemas:
+    Platform.PracticeBlueprint_for_integration:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Platform.IntegrationBlueprint_one_with_access_token:
+      type: object
+      properties:
+        id:
+          type: string
+        access_token:
+          type: string
+        expires_in:
+          type: string
+        refresh_token:
+          type: string
+        status:
+          type: string
+        token_type:
+          type: string
+        webhook_url_default:
+          type: string
+          deprecated: true
+        webhook_url_override:
+          type: string
+          deprecated: true
+        activated_by:
+          $ref: '#/components/schemas/Platform.UserBlueprint_min'
+        api_keys:
+          $ref: '#/components/schemas/Platform.ApiKeyBlueprint_shared'
+        practice:
+          $ref: '#/components/schemas/Platform.PracticeBlueprint_for_integration'
+        product:
+          $ref: '#/components/schemas/Platform.PartnerProductBlueprint_min'
+    Platform.UserBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+    Platform.OauthsController.tokens_body:
+      title: OAuth
+      type: object
+      properties:
+        grant_type:
+          type: string
+        code:
+          type: string
+        activate:
+          type: boolean
+          description: Defaults to true. Pass false to keep the integration pending after token exchange.
+      required:
+      - grant_type
+      - code
+    Platform.PartnerProductBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+    Platform.ApiKeyBlueprint_shared:
+      type: object
+      properties:
+        deactivated_at:
+          type: string
+        description:
+          type: string
+        last_used_at:
+          type: string
+        token:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

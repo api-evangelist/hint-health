@@ -1,0 +1,362 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Location API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Location
+paths:
+  /provider/locations:
+    post:
+      tags:
+      - Location
+      operationId: Location.CreateLocation
+      summary: Create Location
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.LocationBlueprint_one'
+              example:
+                id: loc-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_latitude: 40.7227998
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_longitude: -73.9892241
+                address_state: NY
+                address_zip: '10002'
+                distance: null
+                name: San Francisco HQ
+                phone_number: '5553050019'
+                virtual: false
+                location_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.LocationsController.create_body'
+    get:
+      tags:
+      - Location
+      operationId: Location.ListLocations
+      summary: List All Locations
+      description: ''
+      parameters:
+      - name: near_zip
+        in: query
+        required: false
+        description: The zip code in the centre of your search
+        schema:
+          type: string
+      - name: distance
+        in: query
+        required: false
+        description: The search radius in miles. Defaults to 20 if near_zip is not blank
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.LocationBlueprint_all'
+              example:
+              - id: loc-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_latitude: 40.7227998
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_longitude: -73.9892241
+                address_state: NY
+                address_zip: '10002'
+                distance: null
+                name: San Francisco HQ
+                phone_number: '5553050019'
+                virtual: false
+                location_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+  /provider/locations/{id}:
+    delete:
+      tags:
+      - Location
+      operationId: Location.DeleteLocation
+      summary: Delete Location
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Location ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+    get:
+      tags:
+      - Location
+      operationId: Location.ShowLocation
+      summary: Show Location
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Location ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.LocationBlueprint_one'
+              example:
+                id: loc-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_latitude: 40.7227998
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_longitude: -73.9892241
+                address_state: NY
+                address_zip: '10002'
+                distance: null
+                name: San Francisco HQ
+                phone_number: '5553050019'
+                virtual: false
+                location_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+    patch:
+      tags:
+      - Location
+      operationId: Location.UpdateLocation
+      summary: Update Location
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Location ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.LocationBlueprint_one'
+              example:
+                id: loc-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_latitude: 40.7227998
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_longitude: -73.9892241
+                address_state: NY
+                address_zip: '10002'
+                distance: null
+                name: San Francisco HQ
+                phone_number: '5553050019'
+                virtual: false
+                location_group:
+                  id: prg-ab12C345DeF6
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  integration_record_id: null
+                  name: Downtown Location Group
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.LocationsController.update_body'
+components:
+  schemas:
+    Public.LocationBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_latitude:
+          type: number
+          format: float
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_longitude:
+          type: number
+          format: float
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        distance:
+          type: string
+        name:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.LocationBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          address_city:
+            type: string
+          address_country:
+            type: string
+          address_latitude:
+            type: number
+            format: float
+          address_line1:
+            type: string
+          address_line2:
+            type: string
+          address_longitude:
+            type: number
+            format: float
+          address_state:
+            type: string
+          address_zip:
+            type: string
+          distance:
+            type: string
+          name:
+            type: string
+          phone_number:
+            type: string
+          virtual:
+            type: boolean
+          location_group:
+            $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+    Provider.LocationsController.update_body:
+      type: object
+      properties:
+        name:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        address_country:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Association'
+      required:
+      - name
+    Public.LocationGroupBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        integration_record_id:
+          type: string
+        name:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    Provider.LocationsController.create_body:
+      type: object
+      properties:
+        name:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        address_country:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Association'
+      required:
+      - name
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

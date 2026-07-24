@@ -1,0 +1,164 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken LeadSource API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: LeadSource
+paths:
+  /provider/lead_sources/{id}:
+    delete:
+      tags:
+      - LeadSource
+      operationId: LeadSource.DeleteLeadSource
+      summary: Delete Lead Source
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Lead Source ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+    patch:
+      tags:
+      - LeadSource
+      operationId: LeadSource.UpdateLeadSource
+      summary: Update Lead Source
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Lead Source ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.LeadSourceBlueprint_one'
+              example:
+                id: lds-ab12C345DeF6
+                name: Online Ad2
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.LeadSourcesController.update_body'
+  /provider/lead_sources:
+    post:
+      tags:
+      - LeadSource
+      operationId: LeadSource.LeadSource
+      summary: Create LeadSource
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.LeadSourceBlueprint_one'
+              example:
+                id: lds-ab12C345DeF6
+                name: Online Ad2
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.LeadSourcesController.create_body'
+    get:
+      tags:
+      - LeadSource
+      operationId: LeadSource.LeadSources
+      summary: List All Lead Sources
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.LeadSourceBlueprint_all'
+              example:
+              - id: lds-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                name: Online Ad1
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+components:
+  schemas:
+    Public.LeadSourceBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          name:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+    Provider.LeadSourcesController.create_body:
+      title: Create_LeadSource
+      type: object
+      properties:
+        name:
+          type: string
+    Provider.LeadSourcesController.update_body:
+      title: Create_LeadSource
+      type: object
+      properties:
+        name:
+          type: string
+    Public.LeadSourceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

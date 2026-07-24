@@ -1,0 +1,647 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken LabInteraction API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: LabInteraction
+paths:
+  /provider/patients/{patient_id}/interactions/lab:
+    post:
+      tags:
+      - LabInteraction
+      operationId: LabInteraction.CreateLabInteraction
+      summary: Create Lab Interaction
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.Interaction.LabBlueprint_one'
+              example:
+                id: inter-2f93f9da35eb293f
+                event_timestamp: '2017-02-05T14:23:00Z'
+                status: fulfilled
+                type: lab
+                vendor_order_id: '123456'
+                order:
+                  lab_reference_id: ord-ref-123456
+                  ordered_from: San Francisco Lab
+                  authored_on: '2017-02-05T14:23:00Z'
+                  collected_at: '2017-02-05T14:23:00Z'
+                  author: John Doe
+                  author_reference: aut-ref-123456
+                  intent: diagnostic
+                  lab_account_id: lab-acc-123456
+                  actions:
+                  - reference: act-ref-123
+                    display: LabCorp
+                  subject:
+                    reference: sub-ref-456
+                    display: John Doe
+                report:
+                  issued: '2017-02-05T14:23:00Z'
+                  status: final
+                  lab_reference_id: lab-ref-123456
+                  order_reference: order-ref-123456
+                results:
+                - id: res-id-123
+                  code_text: lab-code-text-123
+                  issued: '2017-02-05T14:23:00Z'
+                  value_string: 100 mg/dL
+                  text: Normal
+                  interpretation:
+                  - normal
+                  subject: John Doe
+                  code:
+                  - code: lab-code-123
+                    display: lab-code-display-123
+                  value_quantity:
+                    value: 100
+                    unit: mg/dL
+                  ranges:
+                  - text: 120-140 mg/dL
+                    low:
+                      value: 120
+                      unit: mg/dL
+                    high:
+                      value: 140
+                      unit: mg/dL
+                - id: res-id-456
+                  code_text: lab-code-text-456
+                  issued: '2017-02-05T14:23:00Z'
+                  value_string: 110 mg/dL
+                  text: Normal
+                  interpretation:
+                  - normal
+                  subject: John Doe
+                  code:
+                  - code: lab-code-456
+                    display: lab-code-display-456
+                  value_quantity:
+                    value: 110
+                    unit: mg/dL
+                  ranges:
+                  - text: 100-120 mg/dL
+                    low:
+                      value: 100
+                      unit: mg/dL
+                    high:
+                      value: 120
+                      unit: mg/dL
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Interaction.LabSanitizer'
+  /provider/patients/{patient_id}/interactions/lab/{id}:
+    get:
+      tags:
+      - LabInteraction
+      operationId: LabInteraction.ShowLabInteraction
+      summary: Show Lab Interaction
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Lab Interaction ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.Interaction.LabBlueprint_one'
+              example:
+                id: inter-2f93f9da35eb293f
+                event_timestamp: '2017-02-05T14:23:00Z'
+                status: fulfilled
+                type: lab
+                vendor_order_id: '123456'
+                order:
+                  lab_reference_id: ord-ref-123456
+                  ordered_from: San Francisco Lab
+                  authored_on: '2017-02-05T14:23:00Z'
+                  collected_at: '2017-02-05T14:23:00Z'
+                  author: John Doe
+                  author_reference: aut-ref-123456
+                  intent: diagnostic
+                  lab_account_id: lab-acc-123456
+                  actions:
+                  - reference: act-ref-123
+                    display: LabCorp
+                  subject:
+                    reference: sub-ref-456
+                    display: John Doe
+                report:
+                  issued: '2017-02-05T14:23:00Z'
+                  status: final
+                  lab_reference_id: lab-ref-123456
+                  order_reference: order-ref-123456
+                results:
+                - id: res-id-123
+                  code_text: lab-code-text-123
+                  issued: '2017-02-05T14:23:00Z'
+                  value_string: 100 mg/dL
+                  text: Normal
+                  interpretation:
+                  - normal
+                  subject: John Doe
+                  code:
+                  - code: lab-code-123
+                    display: lab-code-display-123
+                  value_quantity:
+                    value: 100
+                    unit: mg/dL
+                  ranges:
+                  - text: 120-140 mg/dL
+                    low:
+                      value: 120
+                      unit: mg/dL
+                    high:
+                      value: 140
+                      unit: mg/dL
+                - id: res-id-456
+                  code_text: lab-code-text-456
+                  issued: '2017-02-05T14:23:00Z'
+                  value_string: 110 mg/dL
+                  text: Normal
+                  interpretation:
+                  - normal
+                  subject: John Doe
+                  code:
+                  - code: lab-code-456
+                    display: lab-code-display-456
+                  value_quantity:
+                    value: 110
+                    unit: mg/dL
+                  ranges:
+                  - text: 100-120 mg/dL
+                    low:
+                      value: 100
+                      unit: mg/dL
+                    high:
+                      value: 120
+                      unit: mg/dL
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+    patch:
+      tags:
+      - LabInteraction
+      operationId: LabInteraction.UpdateLabInteraction
+      summary: Update Lab Interaction
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Lab Interaction ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.Interaction.LabBlueprint_one'
+              example:
+                id: inter-2f93f9da35eb293f
+                event_timestamp: '2017-02-05T14:23:00Z'
+                status: fulfilled
+                type: lab
+                vendor_order_id: '123456'
+                order:
+                  lab_reference_id: ord-ref-123456
+                  ordered_from: San Francisco Lab
+                  authored_on: '2017-02-05T14:23:00Z'
+                  collected_at: '2017-02-05T14:23:00Z'
+                  author: John Doe
+                  author_reference: aut-ref-123456
+                  intent: diagnostic
+                  lab_account_id: lab-acc-123456
+                  actions:
+                  - reference: act-ref-123
+                    display: LabCorp
+                  subject:
+                    reference: sub-ref-456
+                    display: John Doe
+                report:
+                  issued: '2017-02-05T14:23:00Z'
+                  status: final
+                  lab_reference_id: lab-ref-123456
+                  order_reference: order-ref-123456
+                results:
+                - id: res-id-123
+                  code_text: lab-code-text-123
+                  issued: '2017-02-05T14:23:00Z'
+                  value_string: 100 mg/dL
+                  text: Normal
+                  interpretation:
+                  - normal
+                  subject: John Doe
+                  code:
+                  - code: lab-code-123
+                    display: lab-code-display-123
+                  value_quantity:
+                    value: 100
+                    unit: mg/dL
+                  ranges:
+                  - text: 120-140 mg/dL
+                    low:
+                      value: 120
+                      unit: mg/dL
+                    high:
+                      value: 140
+                      unit: mg/dL
+                - id: res-id-456
+                  code_text: lab-code-text-456
+                  issued: '2017-02-05T14:23:00Z'
+                  value_string: 110 mg/dL
+                  text: Normal
+                  interpretation:
+                  - normal
+                  subject: John Doe
+                  code:
+                  - code: lab-code-456
+                    display: lab-code-display-456
+                  value_quantity:
+                    value: 110
+                    unit: mg/dL
+                  ranges:
+                  - text: 100-120 mg/dL
+                    low:
+                      value: 100
+                      unit: mg/dL
+                    high:
+                      value: 120
+                      unit: mg/dL
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Interaction.LabSanitizer'
+components:
+  schemas:
+    Public.Interaction.Lab.Result.QuantityBlueprint_leaf:
+      type: object
+      properties:
+        value:
+          type: string
+        unit:
+          type: string
+    Interaction.LabSanitizer.ResultRangeSanitizer:
+      type: object
+      properties:
+        low:
+          $ref: '#/components/schemas/Interaction.LabSanitizer.ResultQuantitySanitizer'
+          description: Lower bound of range
+        high:
+          $ref: '#/components/schemas/Interaction.LabSanitizer.ResultQuantitySanitizer'
+          description: Upper bound of range
+        text:
+          type: string
+          description: Textual range description
+    Interaction.LabSanitizer.ResultSanitizer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique result identifier
+        code:
+          type: array
+          items:
+            $ref: '#/components/schemas/Interaction.LabSanitizer.ResultCodeSanitizer'
+          description: At least one coding entry (min 1)
+        code_text:
+          type: string
+          description: Human-readable name for the result
+        issued:
+          type: string
+          format: date-time
+          description: When the result was issued
+        value_quantity:
+          $ref: '#/components/schemas/Interaction.LabSanitizer.ResultQuantitySanitizer'
+          description: Numeric result value with unit
+        value_string:
+          type: string
+          description: String result value
+        text:
+          type: string
+          description: Additional narrative text
+        interpretation:
+          type: array
+          items:
+            type: string
+          description: Interpretation codes (e.g., ["normal"])
+        ranges:
+          type: array
+          items:
+            $ref: '#/components/schemas/Interaction.LabSanitizer.ResultRangeSanitizer'
+          description: Reference ranges
+        subject:
+          type: string
+          description: Subject reference
+      required:
+      - id
+      - code
+      - code_text
+      - issued
+    Public.Interaction.Lab.Result.RangeBlueprint_leaf:
+      type: object
+      properties:
+        text:
+          type: string
+        low:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf'
+        high:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf'
+    Public.Interaction.Lab.Result.CodeBlueprint_leaf:
+      type: object
+      properties:
+        code:
+          type: string
+        display:
+          type: string
+    Interaction.LabSanitizer.ResultCodeSanitizer:
+      type: object
+      properties:
+        code:
+          type: string
+          description: LOINC code value (only LOINC is supported)
+        display:
+          type: string
+          description: Human-readable name
+      required:
+      - code
+      - display
+    Interaction.LabSanitizer.OrderSanitizer:
+      type: object
+      properties:
+        lab_reference_id:
+          type: string
+          description: External reference ID for the lab order
+        ordered_from:
+          type: string
+          description: Lab provider name (e.g., "LabCorp")
+        authored_on:
+          type: string
+          description: When the order was authored
+        collected_at:
+          type: string
+          format: date-time
+          description: When the specimen was collected
+        author:
+          type: string
+          description: Name or ID of the ordering provider
+        author_reference:
+          type: string
+          description: Reference identifier for the author
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Interaction.LabSanitizer.ActionSanitizer'
+          description: Ordered tests/panels
+        intent:
+          type: string
+          description: Order intent
+        subject:
+          $ref: '#/components/schemas/Interaction.LabSanitizer.SubjectSanitizer'
+          description: Subject of the lab order
+        lab_account_id:
+          type: string
+          description: Lab account identifier
+    Public.Interaction.Lab.Order.ActionBlueprint_leaf:
+      type: object
+      properties:
+        reference:
+          type: string
+        display:
+          type: string
+    Interaction.LabSanitizer.ActionSanitizer:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: Reference code for the test
+        display:
+          type: string
+          description: Human-readable test name
+      required:
+      - reference
+      - display
+    Interaction.LabSanitizer.SubjectSanitizer:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: Subject reference ID
+        display:
+          type: string
+          description: Subject display name
+    Public.Interaction.LabBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        event_timestamp:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        vendor_order_id:
+          type: string
+        order:
+          $ref: '#/components/schemas/Public.Interaction.Lab.OrderBlueprint_leaf'
+        report:
+          $ref: '#/components/schemas/Public.Interaction.Lab.ReportBlueprint_leaf'
+        results:
+          $ref: '#/components/schemas/Public.Interaction.Lab.ResultBlueprint_leaf'
+    Public.Interaction.Lab.ResultBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        code_text:
+          type: string
+        issued:
+          type: string
+        value_string:
+          type: string
+        text:
+          type: string
+        interpretation:
+          type: string
+        subject:
+          type: string
+        code:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Result.CodeBlueprint_leaf'
+        value_quantity:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf'
+        ranges:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Result.RangeBlueprint_leaf'
+    Public.Interaction.Lab.OrderBlueprint_leaf:
+      type: object
+      properties:
+        lab_reference_id:
+          type: string
+        ordered_from:
+          type: string
+        authored_on:
+          type: string
+        collected_at:
+          type: string
+        author:
+          type: string
+        author_reference:
+          type: string
+        intent:
+          type: string
+        lab_account_id:
+          type: string
+        actions:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Order.ActionBlueprint_leaf'
+        subject:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Order.SubjectBlueprint_leaf'
+    Interaction.LabSanitizer.ReportSanitizer:
+      type: object
+      properties:
+        issued:
+          type: string
+          format: date-time
+          description: When the report was issued
+        status:
+          type: string
+          description: Report status (e.g., "final", "preliminary")
+        lab_reference_id:
+          type: string
+          description: External lab reference ID
+        order_reference:
+          type: string
+          description: Reference to the originating order
+      required:
+      - issued
+      - status
+    Interaction.LabSanitizer:
+      type: object
+      properties:
+        status:
+          type: string
+          description: The status of the interaction. Defaults to "SENT"
+          enum:
+          - sent
+          - fulfilled
+        vendor_order_id:
+          type: string
+          description: External vendor order ID (used for idempotency)
+        event_timestamp:
+          type: string
+          format: date-time
+          description: Defaults to current time
+        order:
+          $ref: '#/components/schemas/Interaction.LabSanitizer.OrderSanitizer'
+          description: Lab order details
+        report:
+          $ref: '#/components/schemas/Interaction.LabSanitizer.ReportSanitizer'
+          description: Diagnostic report details
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Interaction.LabSanitizer.ResultSanitizer'
+          description: Lab result observations
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+    Public.Interaction.Lab.ReportBlueprint_leaf:
+      type: object
+      properties:
+        issued:
+          type: string
+        status:
+          type: string
+        lab_reference_id:
+          type: string
+        order_reference:
+          type: string
+    Interaction.LabSanitizer.ResultQuantitySanitizer:
+      type: object
+      properties:
+        value:
+          type: integer
+          format: int32
+          description: The measured value
+        unit:
+          type: string
+          description: Unit of measure (e.g., "mg/dL")
+      required:
+      - value
+      - unit
+    Public.Interaction.Lab.Order.SubjectBlueprint_leaf:
+      type: object
+      properties:
+        reference:
+          type: string
+        display:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

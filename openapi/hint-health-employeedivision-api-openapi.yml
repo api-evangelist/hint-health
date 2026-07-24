@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken EmployeeDivision API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: EmployeeDivision
+paths:
+  /provider/companies/{company_id}/employee_divisions:
+    get:
+      tags:
+      - EmployeeDivision
+      operationId: EmployeeDivision.ListAllEmployeeDivisions
+      summary: List All Employee Divisions
+      description: ''
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_all'
+              example:
+              - id: div-ab12C345DeF6
+                name: Accounting
+components:
+  schemas:
+    Public.EmployeeDivisionBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

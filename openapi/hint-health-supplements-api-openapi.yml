@@ -1,0 +1,336 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Supplements API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Supplements
+paths:
+  /provider/patients/{patient_id}/supplements:
+    post:
+      tags:
+      - Supplements
+      operationId: Supplements.CreateSupplement
+      summary: Create Patient Supplement
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.SupplementBlueprint_one'
+              example:
+                id: med-e548304
+                product_name: Product Name
+                quantity: 1
+                sig_text: Take 1 capsule daily with food
+                strength: '100'
+                strength_uom: mg
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.Patients.SupplementsController.create_body'
+    get:
+      tags:
+      - Supplements
+      operationId: Supplements.ListAllPatientSupplements
+      summary: List Patient Supplements
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        description: Allows limiting the number of supplements returned.
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        required: false
+        description: Allows offsetting the number of supplements returned.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.SupplementBlueprint_all'
+              example:
+              - id: med-e548301
+                product_name: Product Name
+                quantity: 1
+                sig_text: Take 1 capsule daily with food
+                strength: '100'
+                strength_uom: mg
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+              - id: med-e548302
+                product_name: Product Name
+                quantity: 1
+                sig_text: Take 1 capsule daily with food
+                strength: '100'
+                strength_uom: mg
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+              - id: med-e548303
+                product_name: Product Name
+                quantity: 1
+                sig_text: Take 1 capsule daily with food
+                strength: '100'
+                strength_uom: mg
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /provider/patients/{patient_id}/supplements/{id}:
+    delete:
+      tags:
+      - Supplements
+      operationId: Supplements.DeleteSupplement
+      summary: Delete Patient Supplement
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Supplements ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+    get:
+      tags:
+      - Supplements
+      operationId: Supplements.ShowSupplement
+      summary: Show Patient Supplement
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Supplements ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.SupplementBlueprint_one'
+              example:
+                id: med-e548304
+                product_name: Product Name
+                quantity: 1
+                sig_text: Take 1 capsule daily with food
+                strength: '100'
+                strength_uom: mg
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+    patch:
+      tags:
+      - Supplements
+      operationId: Supplements.UpdateSupplement
+      summary: Update Patient Supplement
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Supplements ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.SupplementBlueprint_one'
+              example:
+                id: med-e548304
+                product_name: Product Name
+                quantity: 1
+                sig_text: Take 1 capsule daily with food
+                strength: '100'
+                strength_uom: mg
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.Patients.SupplementsController.update_body'
+components:
+  schemas:
+    Public.SupplementBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          product_name:
+            type: string
+          quantity:
+            type: string
+          sig_text:
+            type: string
+          strength:
+            type: string
+          strength_uom:
+            type: string
+    Provider.Patients.SupplementsController.update_body:
+      title: Update_Supplement
+      type: object
+      properties:
+        product_name:
+          type: string
+          description: The name of the supplement.
+        strength:
+          type: string
+          description: The strength of the supplement.
+        strength_uom:
+          type: string
+          description: The unit of measure for the strength.
+        quantity:
+          type: integer
+          format: int32
+          description: The quantity of the supplement.
+        sig_text:
+          type: string
+          description: The dosage and usage directions for the supplement (e.g. "Take 1 capsule daily with food").
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+    Provider.Patients.SupplementsController.create_body:
+      title: Create_Supplement
+      type: object
+      properties:
+        product_name:
+          type: string
+          description: The name of the supplement.
+        strength:
+          type: string
+          description: The strength of the supplement.
+        strength_uom:
+          type: string
+          description: The unit of measure for the strength.
+        quantity:
+          type: integer
+          format: int32
+          description: The quantity of the supplement.
+        sig_text:
+          type: string
+          description: The dosage and usage directions for the supplement (e.g. "Take 1 capsule daily with food").
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+      required:
+      - product_name
+    Public.SupplementBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        product_name:
+          type: string
+        quantity:
+          type: string
+        sig_text:
+          type: string
+        strength:
+          type: string
+        strength_uom:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

@@ -1,0 +1,200 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken PartnerCharge API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: PartnerCharge
+paths:
+  /provider/partner_charges:
+    post:
+      tags:
+      - PartnerCharge
+      operationId: PartnerCharge.CreatePartnerCharge
+      summary: Create Partner Charge
+      description: '**Workflows:**
+
+        Charging a patient: Set the payer to the be the patient.
+
+        Charging a patient: Set the payer to the be practice.'
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PartnerChargeBlueprint_one'
+              example:
+                id: ptrchg-ab12C345DeF6
+                amount_in_cents: 1000
+                description: Partner charge
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.PartnerChargesController.create_body'
+    get:
+      tags:
+      - PartnerCharge
+      operationId: PartnerCharge.ListAllPartnerCharges
+      summary: List All Partner Charges
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.PartnerChargeBlueprint_all'
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /provider/partner_charges/{id}:
+    get:
+      tags:
+      - PartnerCharge
+      operationId: PartnerCharge.ShowPartnerCharge
+      summary: Show Partner Charge
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Partner Charge ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PartnerChargeBlueprint_one'
+              example:
+                id: ptrchg-ab12C345DeF6
+                amount_in_cents: 1000
+                description: Partner charge
+components:
+  schemas:
+    Public.PartnerChargeBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        amount_in_cents:
+          type: string
+        description:
+          type: string
+    Provider.PartnerChargesController.create_body:
+      title: Create_PartnerCharge
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+        description:
+          type: string
+        patient:
+          $ref: '#/components/schemas/Association'
+        integration_record_id:
+          type: string
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerChargeLine'
+        cost_in_cents:
+          type: integer
+          format: int32
+      required:
+      - amount_in_cents
+      - description
+      - integration_record_id
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.PartnerChargeBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          amount_in_cents:
+            type: string
+          description:
+            type: string
+    PartnerChargeLine:
+      type: object
+      properties:
+        quantity:
+          type: integer
+        price_in_cents:
+          type: integer
+        description:
+          type: string
+        charge_item:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Optional if name, code and code_type are specified
+            name:
+              type: string
+              description: Required if no ID
+            code:
+              type: string
+              description: Required if no ID
+            code_type:
+              type: string
+              description: Required if no ID
+              enum:
+              - cpt
+              - ndc
+              - loinc
+              - snowmed
+            manufacturer:
+              type: string
+            days_supply:
+              type: integer
+          required:
+          - id
+          - name
+          - code
+          - code_type
+      required:
+      - id
+      - type
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

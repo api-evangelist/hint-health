@@ -1,0 +1,104 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Affiliate API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Affiliate
+paths:
+  /provider/affiliates:
+    get:
+      tags:
+      - Affiliate
+      operationId: Affiliate.ListAffiliates
+      summary: List All Affiliates
+      description: ''
+      parameters:
+      - name: status
+        in: query
+        required: false
+        description: 'Allows filtering by active ones, possible values: pending, active, ended'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.AffiliationBlueprint_all'
+              example:
+              - id: aff-ab12C345DeF6
+                name: Dr. Phil
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /provider/patients/{patient_id}/affiliate:
+    get:
+      tags:
+      - Affiliate
+      operationId: Affiliate.ShowPatientAffiliate
+      summary: Show Patient Affiliate
+      description: Returns `null` when the patient has no assigned affiliate.
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.AffiliationBlueprint_affiliate_min'
+              example:
+                id: aff-ab12C345DeF6
+                name: Dr. Phil
+components:
+  schemas:
+    Public.AffiliationBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+    Public.AffiliationBlueprint_affiliate_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

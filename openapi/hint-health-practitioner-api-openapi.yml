@@ -1,0 +1,590 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Practitioner API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Practitioner
+paths:
+  /provider/practitioners:
+    post:
+      tags:
+      - Practitioner
+      operationId: Practitioner.CreatePractitioner
+      summary: Create Practitioner
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
+              example:
+                id: pct-ab12C345DeF6
+                accepts_enrollments_from_employer: true
+                accepts_enrollments_from_retail: true
+                bio: Reginalds biography...
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                education:
+                - The University of Hint
+                email: rocket_man@emi.com
+                gender: male
+                gender_other: null
+                integration_record_id: ABCD0012051
+                max_patient_age: 50
+                min_patient_age: 0
+                name: Reginald Dwight
+                online_signup_visibility: true
+                panel_size: 150
+                panel_size_limit: 200
+                photo_url: practitioners/000/000/115/photos/original.png
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                locations:
+                - id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_latitude: 40.7227998
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_longitude: -73.9892241
+                  address_state: NY
+                  address_zip: '10002'
+                  distance: null
+                  name: San Francisco HQ
+                  phone_number: '5553050019'
+                  virtual: false
+                  location_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                npi:
+                  first_name: REGINALD
+                  last_name: DWIGHT
+                  number: 0123456879
+                  organization_name: HINT HEALTH
+                  type: individual
+                specialties:
+                - id: spe-ab12C345DeF6
+                  name: Internal Medicine
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.PractitionersController.create_body'
+    get:
+      tags:
+      - Practitioner
+      operationId: Practitioner.ProviderPractitioners
+      summary: List All Practitioners
+      description: ''
+      parameters:
+      - name: near_zip
+        in: query
+        required: false
+        description: The zip code in the centre of your search
+        schema:
+          type: string
+      - name: distance
+        in: query
+        required: false
+        description: The search radius in miles. Defaults to 20 if near_zip is not blank
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.PractitionerBlueprint_all'
+              example:
+              - id: pct-ab12C345DeF6
+                accepts_enrollments_from_employer: true
+                accepts_enrollments_from_retail: true
+                bio: Reginalds biography...
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                education:
+                - The University of Hint
+                email: rocket_man@emi.com
+                gender: male
+                gender_other: null
+                integration_record_id: ABCD0012050
+                max_patient_age: 50
+                min_patient_age: 0
+                name: Reginald Dwight
+                online_signup_visibility: true
+                panel_size: 150
+                panel_size_limit: 200
+                photo_url: practitioners/000/000/115/photos/original.png
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                locations:
+                - id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_latitude: 40.7227998
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_longitude: -73.9892241
+                  address_state: NY
+                  address_zip: '10002'
+                  distance: null
+                  name: San Francisco HQ
+                  phone_number: '5553050019'
+                  virtual: false
+                  location_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                npi:
+                  first_name: REGINALD
+                  last_name: DWIGHT
+                  number: 0123456879
+                  organization_name: HINT HEALTH
+                  type: individual
+                specialties:
+                - id: spe-ab12C345DeF6
+                  name: Internal Medicine
+  /provider/practitioners/{id}:
+    delete:
+      tags:
+      - Practitioner
+      operationId: Practitioner.DeletePractitioner
+      summary: Delete Practitioner
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Practitioner ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+    get:
+      tags:
+      - Practitioner
+      operationId: Practitioner.ShowPractitioner
+      summary: Show Practitioner
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Practitioner ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
+              example:
+                id: pct-ab12C345DeF6
+                accepts_enrollments_from_employer: true
+                accepts_enrollments_from_retail: true
+                bio: Reginalds biography...
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                education:
+                - The University of Hint
+                email: rocket_man@emi.com
+                gender: male
+                gender_other: null
+                integration_record_id: ABCD0012051
+                max_patient_age: 50
+                min_patient_age: 0
+                name: Reginald Dwight
+                online_signup_visibility: true
+                panel_size: 150
+                panel_size_limit: 200
+                photo_url: practitioners/000/000/115/photos/original.png
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                locations:
+                - id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_latitude: 40.7227998
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_longitude: -73.9892241
+                  address_state: NY
+                  address_zip: '10002'
+                  distance: null
+                  name: San Francisco HQ
+                  phone_number: '5553050019'
+                  virtual: false
+                  location_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                npi:
+                  first_name: REGINALD
+                  last_name: DWIGHT
+                  number: 0123456879
+                  organization_name: HINT HEALTH
+                  type: individual
+                specialties:
+                - id: spe-ab12C345DeF6
+                  name: Internal Medicine
+    patch:
+      tags:
+      - Practitioner
+      operationId: Practitioner.UpdatePractitioner
+      summary: Update Practitioner
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Practitioner ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
+              example:
+                id: pct-ab12C345DeF6
+                accepts_enrollments_from_employer: true
+                accepts_enrollments_from_retail: true
+                bio: Reginalds biography...
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                education:
+                - The University of Hint
+                email: rocket_man@emi.com
+                gender: male
+                gender_other: null
+                integration_record_id: ABCD0012051
+                max_patient_age: 50
+                min_patient_age: 0
+                name: Reginald Dwight
+                online_signup_visibility: true
+                panel_size: 150
+                panel_size_limit: 200
+                photo_url: practitioners/000/000/115/photos/original.png
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                locations:
+                - id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_latitude: 40.7227998
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_longitude: -73.9892241
+                  address_state: NY
+                  address_zip: '10002'
+                  distance: null
+                  name: San Francisco HQ
+                  phone_number: '5553050019'
+                  virtual: false
+                  location_group:
+                    id: prg-ab12C345DeF6
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    integration_record_id: null
+                    name: Downtown Location Group
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                npi:
+                  first_name: REGINALD
+                  last_name: DWIGHT
+                  number: 0123456879
+                  organization_name: HINT HEALTH
+                  type: individual
+                specialties:
+                - id: spe-ab12C345DeF6
+                  name: Internal Medicine
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.PractitionersController.update_body'
+components:
+  schemas:
+    Public.LocationBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_latitude:
+          type: number
+          format: float
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_longitude:
+          type: number
+          format: float
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        distance:
+          type: string
+        name:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+    Provider.PractitionersController.update_body:
+      title: Create_Practitioner
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        bio:
+          type: string
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+        gender_other:
+          type: string
+        photo:
+          type: string
+          description: Base64 encoded photo.
+        education:
+          type: array
+          items:
+            type: string
+        integration_record_id:
+          type: string
+        npi:
+          $ref: '#/components/schemas/Npi'
+        practitioner_group:
+          $ref: '#/components/schemas/Association'
+    Public.SpecialtyBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Provider.PractitionersController.create_body:
+      title: Create_Practitioner
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        bio:
+          type: string
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+        gender_other:
+          type: string
+        photo:
+          type: string
+          description: Base64 encoded photo.
+        education:
+          type: array
+          items:
+            type: string
+        integration_record_id:
+          type: string
+        npi:
+          $ref: '#/components/schemas/Npi'
+        practitioner_group:
+          $ref: '#/components/schemas/Association'
+    Public.PractitionerBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          accepts_enrollments_from_employer:
+            type: string
+          accepts_enrollments_from_retail:
+            type: string
+          bio:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          education:
+            type: string
+          email:
+            type: string
+          gender:
+            type: string
+          gender_other:
+            type: string
+          integration_record_id:
+            type: string
+          max_patient_age:
+            type: string
+          min_patient_age:
+            type: string
+          name:
+            type: string
+          online_signup_visibility:
+            type: string
+          panel_size:
+            type: integer
+            format: int32
+          panel_size_limit:
+            type: integer
+            format: int32
+          photo_url:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          locations:
+            type: array
+            items:
+              $ref: '#/components/schemas/Public.LocationBlueprint_one'
+          npi:
+            $ref: '#/components/schemas/Public.NpiBlueprint_shared'
+          specialties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
+    Public.LocationGroupBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        integration_record_id:
+          type: string
+        name:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    Public.PractitionerBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        accepts_enrollments_from_employer:
+          type: string
+        accepts_enrollments_from_retail:
+          type: string
+        bio:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        education:
+          type: string
+        email:
+          type: string
+        gender:
+          type: string
+        gender_other:
+          type: string
+        integration_record_id:
+          type: string
+        max_patient_age:
+          type: string
+        min_patient_age:
+          type: string
+        name:
+          type: string
+        online_signup_visibility:
+          type: string
+        panel_size:
+          type: integer
+          format: int32
+        panel_size_limit:
+          type: integer
+          format: int32
+        photo_url:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.LocationBlueprint_one'
+        npi:
+          $ref: '#/components/schemas/Public.NpiBlueprint_shared'
+        specialties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
+    Npi:
+      type: object
+      properties:
+        number:
+          type: integer
+    Public.NpiBlueprint_shared:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        number:
+          type: string
+        organization_name:
+          type: string
+        type:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

@@ -1,0 +1,431 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Company API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Company
+paths:
+  /provider/companies:
+    post:
+      tags:
+      - Company
+      operationId: Company.CreateCompany
+      summary: Create Company
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CompanyBlueprint_one'
+              example:
+                id: com-ab12C345DeF6
+                employee_divisions_count: 0
+                name: Schmoogle Inc.
+                status: active
+                address:
+                  id: add-ab12C345DeF6
+                  city: New York
+                  country: United States
+                  line1: 157 E Houston St
+                  line2: Suite 2402
+                  state: NY
+                  zip: '10002'
+                  latitude: 40.7227998
+                  longitude: -73.9892241
+                default_location: null
+                default_plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: company
+                default_practitioner: null
+                phones:
+                - number: '5553050005'
+                  type: mobile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompanyCreateSanitizer'
+    get:
+      tags:
+      - Company
+      operationId: Company.ListAllCompanies
+      summary: List All Companies
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.CompanyBlueprint_all'
+              example:
+              - id: com-ab12C345DeF6
+                employee_divisions_count: 0
+                name: Schmoogle Inc.
+                status: active
+                address:
+                  id: add-ab12C345DeF6
+                  city: New York
+                  country: United States
+                  line1: 157 E Houston St
+                  line2: Suite 2402
+                  state: NY
+                  zip: '10002'
+                  latitude: 40.7227998
+                  longitude: -73.9892241
+                default_location: null
+                default_plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: company
+                default_practitioner: null
+                phones:
+                - number: '5553050004'
+                  type: mobile
+  /provider/companies/{id}/deactivate:
+    post:
+      tags:
+      - Company
+      operationId: Company.DeactivateCompany
+      summary: Deactivate Company
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CompanyBlueprint_one'
+              example:
+                id: com-ab12C345DeF6
+                employee_divisions_count: 0
+                name: Schmoogle Inc.
+                status: active
+                address:
+                  id: add-ab12C345DeF6
+                  city: New York
+                  country: United States
+                  line1: 157 E Houston St
+                  line2: Suite 2402
+                  state: NY
+                  zip: '10002'
+                  latitude: 40.7227998
+                  longitude: -73.9892241
+                default_location: null
+                default_plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: company
+                default_practitioner: null
+                phones:
+                - number: '5553050005'
+                  type: mobile
+  /provider/companies/{id}:
+    get:
+      tags:
+      - Company
+      operationId: Company.ShowCompany
+      summary: Show Company
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CompanyBlueprint_one'
+              example:
+                id: com-ab12C345DeF6
+                employee_divisions_count: 0
+                name: Schmoogle Inc.
+                status: active
+                address:
+                  id: add-ab12C345DeF6
+                  city: New York
+                  country: United States
+                  line1: 157 E Houston St
+                  line2: Suite 2402
+                  state: NY
+                  zip: '10002'
+                  latitude: 40.7227998
+                  longitude: -73.9892241
+                default_location: null
+                default_plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: company
+                default_practitioner: null
+                phones:
+                - number: '5553050005'
+                  type: mobile
+    patch:
+      tags:
+      - Company
+      operationId: Company.UpdateCompany
+      summary: Update Company
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CompanyBlueprint_one'
+              example:
+                id: com-ab12C345DeF6
+                employee_divisions_count: 0
+                name: Schmoogle Inc.
+                status: active
+                address:
+                  id: add-ab12C345DeF6
+                  city: New York
+                  country: United States
+                  line1: 157 E Houston St
+                  line2: Suite 2402
+                  state: NY
+                  zip: '10002'
+                  latitude: 40.7227998
+                  longitude: -73.9892241
+                default_location: null
+                default_plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: company
+                default_practitioner: null
+                phones:
+                - number: '5553050005'
+                  type: mobile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompanyUpdateSanitizer'
+components:
+  schemas:
+    Public.PractitionerBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    PhoneNumber:
+      type: object
+      properties:
+        id:
+          type: string
+        number:
+          type: number
+        type:
+          type: string
+        us_formattable:
+          type: boolean
+          description: Make this false if your number is not exactly 10 digits
+      required:
+      - number
+      - type
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+    Public.CompanyBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          employee_divisions_count:
+            type: integer
+            format: int32
+          name:
+            type: string
+          status:
+            type: string
+          address:
+            $ref: '#/components/schemas/Public.AddressBlueprint_leaf'
+          default_location:
+            $ref: '#/components/schemas/Public.LocationBlueprint_min'
+          default_plan:
+            $ref: '#/components/schemas/Public.PlanBlueprint_min'
+          default_practitioner:
+            $ref: '#/components/schemas/Public.PractitionerBlueprint_min'
+          employee_divisions:
+            $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
+          phones:
+            $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+    CompanyUpdateSanitizer:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+      required:
+      - line1
+      - city
+      - state
+      - zip
+    CompanyCreateSanitizer:
+      type: object
+      properties:
+        default_plan:
+          $ref: '#/components/schemas/Association'
+          description: You must use plans of type "company"
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+    Public.EmployeeDivisionBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.LocationBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+    Public.AddressBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+    Public.CompanyBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        employee_divisions_count:
+          type: integer
+          format: int32
+        name:
+          type: string
+        status:
+          type: string
+        address:
+          $ref: '#/components/schemas/Public.AddressBlueprint_leaf'
+        default_location:
+          $ref: '#/components/schemas/Public.LocationBlueprint_min'
+        default_plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+        default_practitioner:
+          $ref: '#/components/schemas/Public.PractitionerBlueprint_min'
+        employee_divisions:
+          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

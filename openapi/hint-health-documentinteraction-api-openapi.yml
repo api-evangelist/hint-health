@@ -1,0 +1,230 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken DocumentInteraction API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: DocumentInteraction
+paths:
+  /provider/patients/{patient_id}/interactions/document:
+    post:
+      tags:
+      - DocumentInteraction
+      operationId: DocumentInteraction.CreateDocumentInteraction
+      summary: Create Document Interaction
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.InteractionBlueprint_one'
+              example:
+                id: inter-ab12C345DeF6
+                body: This is a test body
+                patient_id: pat-123456
+                status: draft
+                title: 'Lab #123456'
+                type: partner
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.Patients.Interactions.DocumentController.create_body'
+  /provider/patients/{patient_id}/interactions/document/{id}:
+    get:
+      tags:
+      - DocumentInteraction
+      operationId: DocumentInteraction.ShowDocumentInteraction
+      summary: Show Document Interaction
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Document Interaction ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.InteractionBlueprint_one'
+              example:
+                id: inter-ab12C345DeF6
+                body: This is a test body
+                patient_id: pat-123456
+                status: draft
+                title: 'Lab #123456'
+                type: partner
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+    patch:
+      tags:
+      - DocumentInteraction
+      operationId: DocumentInteraction.UpdateDocumentInteraction
+      summary: Update Interaction
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Document Interaction ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.InteractionBlueprint_one'
+              example:
+                id: inter-ab12C345DeF6
+                body: This is a test body
+                patient_id: pat-123456
+                status: draft
+                title: 'Lab #123456'
+                type: partner
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.Patients.Interactions.DocumentController.update_body'
+components:
+  schemas:
+    Public.InteractionBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        body:
+          type: string
+        patient_id:
+          type: string
+        status:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+    Provider.Patients.Interactions.DocumentController.update_body:
+      title: Update_DocumentInteraction
+      type: object
+      properties:
+        status:
+          type: string
+          description: ' The status of the interaction.'
+          enum:
+          - draft
+          - signed
+          - addended
+          - deleted
+          - failed
+        title:
+          type: string
+          description: The title of the interaction.
+        body:
+          type: string
+          description: The body of the interaction.
+        attachments:
+          type: array
+          items:
+            type: string
+          description: The attachments of the interaction. Files will be downloaded as part of the request. If provided it will OVERRIDE the attachments on the interaction so make sure to provide all the attachments if you want to keep them.
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+      required:
+      - status
+    Provider.Patients.Interactions.DocumentController.create_body:
+      title: Create_DocumentInteraction
+      type: object
+      properties:
+        status:
+          type: string
+          description: ' The status of the interaction.'
+          enum:
+          - draft
+          - signed
+          - addended
+          - deleted
+          - failed
+        title:
+          type: string
+          description: The title of the interaction.
+        body:
+          type: string
+          description: The body of the interaction. Markdown formatted.
+        attachments:
+          type: array
+          items:
+            type: string
+          description: The attachments of the interaction. Files will be downloaded as part of the request.
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+      required:
+      - status
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

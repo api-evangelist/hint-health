@@ -1,0 +1,193 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken CreditCategory API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: CreditCategory
+paths:
+  /provider/credit_categories:
+    post:
+      tags:
+      - CreditCategory
+      operationId: CreditCategory.CreateCreditCategory
+      summary: Create Credit Category
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CreditCategoryBlueprint_one'
+              example:
+                id: cct-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                name: Credit Category 2
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.CreditCategoriesController.create_body'
+    get:
+      tags:
+      - CreditCategory
+      operationId: CreditCategory.ListCreditCategories
+      summary: List All Credit Categories
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.CreditCategoryBlueprint_all'
+              example:
+              - id: cct-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                name: Credit Category 1
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+  /provider/credit_categories/{id}:
+    delete:
+      tags:
+      - CreditCategory
+      operationId: CreditCategory.DeleteCreditCategory
+      summary: Delete Credit Category
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Credit Category ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+    get:
+      tags:
+      - CreditCategory
+      operationId: CreditCategory.ShowCreditCategory
+      summary: Show Credit Category
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Credit Category ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CreditCategoryBlueprint_one'
+              example:
+                id: cct-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                name: Credit Category 2
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+    patch:
+      tags:
+      - CreditCategory
+      operationId: CreditCategory.UpdateCreditCategory
+      summary: Update Credit Category
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Credit Category ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CreditCategoryBlueprint_one'
+              example:
+                id: cct-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                name: Credit Category 2
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.CreditCategoriesController.update_body'
+components:
+  schemas:
+    Public.CreditCategoryBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        name:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    Public.CreditCategoryBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          name:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+    Provider.CreditCategoriesController.create_body:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Value is case sensitive. If you delete a Credit Category, you can restore it by POSTing with the same name.
+      required:
+      - name
+    Provider.CreditCategoriesController.update_body:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Value is case sensitive. If you delete a Credit Category, you can restore it by POSTing with the same name.
+      required:
+      - name
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

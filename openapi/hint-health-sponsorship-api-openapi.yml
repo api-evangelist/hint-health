@@ -1,0 +1,256 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Sponsorship API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Sponsorship
+paths:
+  /provider/companies/{company_id}/sponsorships:
+    post:
+      tags:
+      - Sponsorship
+      operationId: Sponsorship.CreateSponsorship
+      summary: Create Sponsorship
+      description: ''
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: creg-ab12C345DeF6
+                external_id: ext_id_from_another_system012345
+                is_subscriber: false
+                type: spouse
+                family:
+                  id: cac-ab12C345DeF6
+                patient:
+                  id: pat-ab12C345DeF6
+                  name: oxana renquist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.CompanySponsorshipsController.create_body'
+    get:
+      tags:
+      - Sponsorship
+      operationId: Sponsorship.ListSponsorships
+      summary: List All Sponsorhips
+      description: ''
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      - name: family_id
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+              - id: creg-ab12C345DeF6
+                external_id: ext_id_from_another_system012345
+                is_subscriber: false
+                type: spouse
+                family:
+                  id: cac-ab12C345DeF6
+                patient:
+                  id: pat-ab12C345DeF6
+                  name: oxana renquist
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /provider/companies/{company_id}/sponsorships/{id}:
+    delete:
+      tags:
+      - Sponsorship
+      operationId: Sponsorship.DestroySponsorship
+      summary: Destroy Sponsorship
+      description: If the subscriber is destroyed all dependents will be destroyed.
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Sponsorship ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: creg-ab12C345DeF6
+                external_id: ext_id_from_another_system012345
+                is_subscriber: false
+                type: spouse
+                family:
+                  id: cac-ab12C345DeF6
+                patient:
+                  id: pat-ab12C345DeF6
+                  name: oxana renquist
+    get:
+      tags:
+      - Sponsorship
+      operationId: Sponsorship.ShowSponsorhip
+      summary: Show Sponsorship
+      description: ''
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Sponsorship ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: creg-ab12C345DeF6
+                external_id: ext_id_from_another_system012345
+                is_subscriber: false
+                type: spouse
+                family:
+                  id: cac-ab12C345DeF6
+                patient:
+                  id: pat-ab12C345DeF6
+                  name: oxana renquist
+    patch:
+      tags:
+      - Sponsorship
+      operationId: Sponsorship.UpdateSponsorship
+      summary: Update Sponsorship
+      description: ''
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Sponsorship ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: creg-ab12C345DeF6
+                external_id: ext_id_from_another_system012345
+                is_subscriber: false
+                type: spouse
+                family:
+                  id: cac-ab12C345DeF6
+                patient:
+                  id: pat-ab12C345DeF6
+                  name: oxana renquist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.CompanySponsorshipsController.update_body'
+components:
+  schemas:
+    Provider.CompanySponsorshipsController.create_body:
+      title: Create_Sponsorship
+      type: object
+      properties:
+        is_subscriber:
+          type: boolean
+          description: Currently only employees may be subscribers
+        type:
+          type: string
+          description: May be one of "employee", "spouse", or "child"
+        external_id:
+          type: string
+        patient:
+          $ref: '#/components/schemas/Association'
+        family:
+          $ref: '#/components/schemas/Association'
+          description: This will be returned to you upon creation of the employee. This is only required when creating dependents.
+      required:
+      - is_subscriber
+      - type
+      - patient
+    Provider.CompanySponsorshipsController.update_body:
+      title: Update_Sponsorship
+      type: object
+      description: Subscribers type can not be updated.
+      properties:
+        type:
+          type: string
+          description: May be one of "spouse", or "child"
+        external_id:
+          type: string
+      required:
+      - type
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

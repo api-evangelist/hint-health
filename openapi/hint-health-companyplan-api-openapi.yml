@@ -1,0 +1,226 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken CompanyPlan API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: CompanyPlan
+paths:
+  /provider/companies/{company_id}/company_plans:
+    post:
+      tags:
+      - CompanyPlan
+      operationId: CompanyPlan.CreateCompanyPlan
+      summary: Create Company Plan
+      description: ''
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CompanyPlanBlueprint_one'
+              example:
+                id: cmpl-ab12C345DeF6
+                available_for_enrollment: true
+                is_default: false
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Memberships
+                  plan_type: company
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.CompanyPlansController.create_body'
+    get:
+      tags:
+      - CompanyPlan
+      operationId: CompanyPlan.ListCompanyPlans
+      summary: List All Company Plans
+      description: ''
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.CompanyPlanBlueprint_all'
+              example:
+              - id: cmpl-ab12C345DeF6
+                available_for_enrollment: true
+                is_default: false
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Memberships
+                  plan_type: company
+  /provider/companies/{company_id}/company_plans/{id}:
+    delete:
+      tags:
+      - CompanyPlan
+      operationId: CompanyPlan.DestroyCompanyPlan
+      summary: Destroy CompanyPlan
+      description: ''
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Company Plan ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: cmpl-ab12C345DeF6
+                available_for_enrollment: true
+                is_default: false
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Memberships
+                  plan_type: company
+    patch:
+      tags:
+      - CompanyPlan
+      operationId: CompanyPlan.UpdateCompanyPlan
+      summary: Update Company Plan
+      description: ''
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        description: Unique Company ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Company Plan ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CompanyPlanBlueprint_one'
+              example:
+                id: cmpl-ab12C345DeF6
+                available_for_enrollment: true
+                is_default: false
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Memberships
+                  plan_type: company
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.CompanyPlansController.update_body'
+components:
+  schemas:
+    Provider.CompanyPlansController.update_body:
+      title: Update_Company_Plan
+      type: object
+      properties:
+        available_for_enrollment:
+          type: boolean
+    Public.CompanyPlanBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        available_for_enrollment:
+          type: boolean
+        is_default:
+          type: boolean
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.CompanyPlanBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          available_for_enrollment:
+            type: boolean
+          is_default:
+            type: boolean
+          plan:
+            $ref: '#/components/schemas/Public.PlanBlueprint_min'
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+    Provider.CompanyPlansController.create_body:
+      title: Create_Company_Plan
+      type: object
+      description: Plan Id must be provided.
+      properties:
+        plan:
+          $ref: '#/components/schemas/Association'
+          description: You must use plans of type "company"
+        available_for_enrollment:
+          type: boolean
+      required:
+      - plan
+      - available_for_enrollment
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

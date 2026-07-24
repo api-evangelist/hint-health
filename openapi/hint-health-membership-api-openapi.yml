@@ -1,0 +1,2558 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Membership API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Membership
+paths:
+  /provider/memberships/{id}/bill:
+    post:
+      tags:
+      - Membership
+      operationId: Membership.BillMembership
+      summary: Bill Membership
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipBlueprint_one'
+              example:
+                id: mem-ab12C345DeF6
+                bill_date: '2017-03-05'
+                billed_through_date: '2017-03-05'
+                billing_start_date: '2016-08-05'
+                bills_at_end_of_period: false
+                contract_expiration_action: auto-renew
+                contract_expires: true
+                contract_period_in_months: 12
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                end_date: null
+                enrollment_status: active
+                fixed_period_rate_in_cents: null
+                fixed_registration_fee_in_cents: null
+                group_code: null
+                is_confirmed: true
+                is_current: true
+                is_processing: false
+                is_restartable: false
+                list_price_in_cents: 5000
+                next_bill_date: '2017-03-05'
+                period_in_months: 1
+                period_rate_in_cents: 5000
+                rate_in_cents: 5000
+                source_status: null
+                start_date: '2016-08-05'
+                status: unpaid
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                coupon: null
+                membership_patients:
+                - id: mp-ab12C345DeF6
+                  member_type: spouse
+                  fixed_period_rate_in_cents: null
+                  list_price_in_cents: 5000
+                  period_rate_in_cents: 5000
+                  revenue_in_cents: 5000
+                  start_date: '2016-08-05'
+                  uses_tobacco: false
+                  end_date: null
+                  patient:
+                    id: pat-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_state: NY
+                    address_zip: '10002'
+                    age: 65
+                    chosen_first_name: null
+                    chosen_last_name: null
+                    chosen_middle_name: null
+                    chosen_suffix: null
+                    chosen_title: null
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    dob: '1952-01-01'
+                    electronic_communication_consent_accepted: true
+                    electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    email: bass_man@bumblebeeinc.com
+                    engaged: false
+                    external_link_id: null
+                    first_name: Gordon
+                    gender: male
+                    gender_identity: man
+                    gender_other: null
+                    health_insurance_group_id: '12345'
+                    health_insurance_member_id: A22222222
+                    health_insurance_payer_id: 00039
+                    health_insurance_payer_name: Anthem Blue Cross California
+                    hipaa_authorization_accepted: true
+                    hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    import_id: null
+                    import_source: null
+                    joined_practice_date: '2017-02-05'
+                    last_engagement_date: null
+                    last_name: Sumner
+                    lead_source_other: Downtown marketing event
+                    master_record_sponsor: null
+                    membership_status: unpaid
+                    middle_name: Thomas
+                    name: Gordon Thomas Sumner
+                    patient_agreement_accepted: false
+                    patient_agreement_accepted_at: null
+                    preferred_language: en
+                    pronouns: null
+                    provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                    sex: male
+                    suffix: null
+                    terms_accepted: false
+                    terms_accepted_at: null
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    uses_tobacco: false
+                    lead_source:
+                      id: lds-ab12C345DeF6
+                      name: Other
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    phones: []
+                    sponsorships:
+                    - id: creg-ab12C345DeF6
+                      external_id: ext_id_from_another_system012345
+                      is_subscriber: true
+                      type: spouse
+                      company:
+                        id: com-ab12C345DeF6
+                        name: Schmoogle Inc.
+                      family:
+                        id: cac-ab12C345DeF6
+                    integration_error_message: null
+                    integration_last_synced_at: null
+                    integration_record_id: ABCD0012030
+                    integration_sync_status: enabled
+                    integration_web_link: null
+                owner:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: ABCD0012030
+                  integration_sync_status: enabled
+                  integration_web_link: null
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: retail
+                sponsorship: null
+                upcoming_bills:
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-03-05'
+                  end_date: '2017-04-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-03-05'
+                  customer_invoice: null
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-04-05'
+                  end_date: '2017-05-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-04-05'
+                  customer_invoice: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.MembershipsController.bill_body'
+  /provider/memberships/{id}/cancel:
+    post:
+      tags:
+      - Membership
+      operationId: Membership.CancelMembership
+      summary: Cancel Membership
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipBlueprint_one'
+              example:
+                id: mem-ab12C345DeF6
+                bill_date: '2017-03-05'
+                billed_through_date: '2017-03-05'
+                billing_start_date: '2016-12-05'
+                bills_at_end_of_period: false
+                contract_expiration_action: null
+                contract_expires: false
+                contract_period_in_months: null
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                end_date: '2017-01-05'
+                enrollment_status: inactive
+                fixed_period_rate_in_cents: null
+                fixed_registration_fee_in_cents: null
+                group_code: null
+                is_confirmed: true
+                is_current: false
+                is_processing: false
+                is_restartable: false
+                list_price_in_cents: 5000
+                next_bill_date: null
+                period_in_months: 1
+                period_rate_in_cents: 5000
+                rate_in_cents: 5000
+                source_status: null
+                start_date: '2016-12-05'
+                status: ended
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                coupon: null
+                membership_patients:
+                - id: mp-ab12C345DeF6
+                  member_type: spouse
+                  fixed_period_rate_in_cents: null
+                  list_price_in_cents: 5000
+                  period_rate_in_cents: 5000
+                  revenue_in_cents: null
+                  start_date: '2016-12-05'
+                  uses_tobacco: false
+                  end_date: '2017-01-05'
+                  patient:
+                    id: pat-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_state: NY
+                    address_zip: '10002'
+                    age: 65
+                    chosen_first_name: null
+                    chosen_last_name: null
+                    chosen_middle_name: null
+                    chosen_suffix: null
+                    chosen_title: null
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    dob: '1952-01-01'
+                    electronic_communication_consent_accepted: true
+                    electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    email: bass_man@bumblebeeinc.com
+                    engaged: false
+                    external_link_id: null
+                    first_name: Gordon
+                    gender: male
+                    gender_identity: man
+                    gender_other: null
+                    health_insurance_group_id: '12345'
+                    health_insurance_member_id: A22222222
+                    health_insurance_payer_id: 00039
+                    health_insurance_payer_name: Anthem Blue Cross California
+                    hipaa_authorization_accepted: true
+                    hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    import_id: null
+                    import_source: null
+                    joined_practice_date: '2017-02-05'
+                    last_engagement_date: null
+                    last_name: Sumner
+                    lead_source_other: Downtown marketing event
+                    master_record_sponsor: null
+                    membership_status: inactive
+                    middle_name: Thomas
+                    name: Gordon Thomas Sumner
+                    patient_agreement_accepted: false
+                    patient_agreement_accepted_at: null
+                    preferred_language: en
+                    pronouns: null
+                    provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                    sex: male
+                    suffix: null
+                    terms_accepted: false
+                    terms_accepted_at: null
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    uses_tobacco: false
+                    lead_source:
+                      id: lds-ab12C345DeF6
+                      name: Other
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    phones: []
+                    sponsorships:
+                    - id: creg-ab12C345DeF6
+                      external_id: ext_id_from_another_system012345
+                      is_subscriber: true
+                      type: spouse
+                      company:
+                        id: com-ab12C345DeF6
+                        name: Schmoogle Inc.
+                      family:
+                        id: cac-ab12C345DeF6
+                    integration_error_message: null
+                    integration_last_synced_at: null
+                    integration_record_id: ABCD0012028
+                    integration_sync_status: enabled
+                    integration_web_link: null
+                owner:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: inactive
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: ABCD0012028
+                  integration_sync_status: enabled
+                  integration_web_link: null
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: retail
+                sponsorship: null
+                upcoming_bills: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.MembershipsController.cancel_body'
+  /provider/memberships/{id}/confirm:
+    post:
+      tags:
+      - Membership
+      operationId: Membership.ConfirmMembership
+      summary: Confirm Membership
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipBlueprint_one'
+              example:
+                id: mem-ab12C345DeF6
+                bill_date: '2017-03-05'
+                billed_through_date: '2017-03-05'
+                billing_start_date: '2016-08-05'
+                bills_at_end_of_period: false
+                contract_expiration_action: auto-renew
+                contract_expires: true
+                contract_period_in_months: 12
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                end_date: null
+                enrollment_status: active
+                fixed_period_rate_in_cents: null
+                fixed_registration_fee_in_cents: null
+                group_code: null
+                is_confirmed: true
+                is_current: true
+                is_processing: false
+                is_restartable: false
+                list_price_in_cents: 5000
+                next_bill_date: '2017-03-05'
+                period_in_months: 1
+                period_rate_in_cents: 5000
+                rate_in_cents: 5000
+                source_status: null
+                start_date: '2016-08-05'
+                status: unpaid
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                coupon: null
+                membership_patients:
+                - id: mp-ab12C345DeF6
+                  member_type: spouse
+                  fixed_period_rate_in_cents: null
+                  list_price_in_cents: 5000
+                  period_rate_in_cents: 5000
+                  revenue_in_cents: 5000
+                  start_date: '2016-08-05'
+                  uses_tobacco: false
+                  end_date: null
+                  patient:
+                    id: pat-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_state: NY
+                    address_zip: '10002'
+                    age: 65
+                    chosen_first_name: null
+                    chosen_last_name: null
+                    chosen_middle_name: null
+                    chosen_suffix: null
+                    chosen_title: null
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    dob: '1952-01-01'
+                    electronic_communication_consent_accepted: true
+                    electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    email: bass_man@bumblebeeinc.com
+                    engaged: false
+                    external_link_id: null
+                    first_name: Gordon
+                    gender: male
+                    gender_identity: man
+                    gender_other: null
+                    health_insurance_group_id: '12345'
+                    health_insurance_member_id: A22222222
+                    health_insurance_payer_id: 00039
+                    health_insurance_payer_name: Anthem Blue Cross California
+                    hipaa_authorization_accepted: true
+                    hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    import_id: null
+                    import_source: null
+                    joined_practice_date: '2017-02-05'
+                    last_engagement_date: null
+                    last_name: Sumner
+                    lead_source_other: Downtown marketing event
+                    master_record_sponsor: null
+                    membership_status: unpaid
+                    middle_name: Thomas
+                    name: Gordon Thomas Sumner
+                    patient_agreement_accepted: false
+                    patient_agreement_accepted_at: null
+                    preferred_language: en
+                    pronouns: null
+                    provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                    sex: male
+                    suffix: null
+                    terms_accepted: false
+                    terms_accepted_at: null
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    uses_tobacco: false
+                    lead_source:
+                      id: lds-ab12C345DeF6
+                      name: Other
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    phones: []
+                    sponsorships:
+                    - id: creg-ab12C345DeF6
+                      external_id: ext_id_from_another_system012345
+                      is_subscriber: true
+                      type: spouse
+                      company:
+                        id: com-ab12C345DeF6
+                        name: Schmoogle Inc.
+                      family:
+                        id: cac-ab12C345DeF6
+                    integration_error_message: null
+                    integration_last_synced_at: null
+                    integration_record_id: ABCD0012030
+                    integration_sync_status: enabled
+                    integration_web_link: null
+                owner:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: ABCD0012030
+                  integration_sync_status: enabled
+                  integration_web_link: null
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: retail
+                sponsorship: null
+                upcoming_bills:
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-03-05'
+                  end_date: '2017-04-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-03-05'
+                  customer_invoice: null
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-04-05'
+                  end_date: '2017-05-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-04-05'
+                  customer_invoice: null
+  /provider/memberships:
+    post:
+      tags:
+      - Membership
+      operationId: Membership.CreateMembership
+      summary: Create Membership
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipBlueprint_one'
+              example:
+                id: mem-ab12C345DeF6
+                bill_date: '2017-03-05'
+                billed_through_date: '2017-03-05'
+                billing_start_date: '2016-08-05'
+                bills_at_end_of_period: false
+                contract_expiration_action: auto-renew
+                contract_expires: true
+                contract_period_in_months: 12
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                end_date: null
+                enrollment_status: active
+                fixed_period_rate_in_cents: null
+                fixed_registration_fee_in_cents: null
+                group_code: null
+                is_confirmed: true
+                is_current: true
+                is_processing: false
+                is_restartable: false
+                list_price_in_cents: 5000
+                next_bill_date: '2017-03-05'
+                period_in_months: 1
+                period_rate_in_cents: 5000
+                rate_in_cents: 5000
+                source_status: null
+                start_date: '2016-08-05'
+                status: unpaid
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                coupon: null
+                membership_patients:
+                - id: mp-ab12C345DeF6
+                  member_type: spouse
+                  fixed_period_rate_in_cents: null
+                  list_price_in_cents: 5000
+                  period_rate_in_cents: 5000
+                  revenue_in_cents: 5000
+                  start_date: '2016-08-05'
+                  uses_tobacco: false
+                  end_date: null
+                  patient:
+                    id: pat-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_state: NY
+                    address_zip: '10002'
+                    age: 65
+                    chosen_first_name: null
+                    chosen_last_name: null
+                    chosen_middle_name: null
+                    chosen_suffix: null
+                    chosen_title: null
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    dob: '1952-01-01'
+                    electronic_communication_consent_accepted: true
+                    electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    email: bass_man@bumblebeeinc.com
+                    engaged: false
+                    external_link_id: null
+                    first_name: Gordon
+                    gender: male
+                    gender_identity: man
+                    gender_other: null
+                    health_insurance_group_id: '12345'
+                    health_insurance_member_id: A22222222
+                    health_insurance_payer_id: 00039
+                    health_insurance_payer_name: Anthem Blue Cross California
+                    hipaa_authorization_accepted: true
+                    hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    import_id: null
+                    import_source: null
+                    joined_practice_date: '2017-02-05'
+                    last_engagement_date: null
+                    last_name: Sumner
+                    lead_source_other: Downtown marketing event
+                    master_record_sponsor: null
+                    membership_status: unpaid
+                    middle_name: Thomas
+                    name: Gordon Thomas Sumner
+                    patient_agreement_accepted: false
+                    patient_agreement_accepted_at: null
+                    preferred_language: en
+                    pronouns: null
+                    provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                    sex: male
+                    suffix: null
+                    terms_accepted: false
+                    terms_accepted_at: null
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    uses_tobacco: false
+                    lead_source:
+                      id: lds-ab12C345DeF6
+                      name: Other
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    phones: []
+                    sponsorships:
+                    - id: creg-ab12C345DeF6
+                      external_id: ext_id_from_another_system012345
+                      is_subscriber: true
+                      type: spouse
+                      company:
+                        id: com-ab12C345DeF6
+                        name: Schmoogle Inc.
+                      family:
+                        id: cac-ab12C345DeF6
+                    integration_error_message: null
+                    integration_last_synced_at: null
+                    integration_record_id: ABCD0012030
+                    integration_sync_status: enabled
+                    integration_web_link: null
+                owner:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: ABCD0012030
+                  integration_sync_status: enabled
+                  integration_web_link: null
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: retail
+                sponsorship: null
+                upcoming_bills:
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-03-05'
+                  end_date: '2017-04-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-03-05'
+                  customer_invoice: null
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-04-05'
+                  end_date: '2017-05-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-04-05'
+                  customer_invoice: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MembershipCreateSanitizer'
+    get:
+      tags:
+      - Membership
+      operationId: Membership.ListAllMemberships
+      summary: List All Memberships
+      description: ''
+      parameters:
+      - name: updated_at
+        in: query
+        required: false
+        description: Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information.
+        schema:
+          type: string
+          format: date-time
+      - name: created_at
+        in: query
+        required: false
+        description: Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information.
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.MembershipBlueprint_all'
+              example:
+              - id: mem-ab12C345DeF6
+                bill_date: '2017-02-05'
+                billed_through_date: '2017-02-05'
+                billing_start_date: '2017-02-05'
+                bills_at_end_of_period: false
+                contract_expiration_action: null
+                contract_expires: false
+                contract_period_in_months: null
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                end_date: null
+                enrollment_status: active
+                fixed_period_rate_in_cents: null
+                fixed_registration_fee_in_cents: null
+                group_code: null
+                is_confirmed: true
+                is_current: true
+                is_processing: true
+                is_restartable: false
+                last_bill_amount_in_cents: null
+                last_bill_date: null
+                list_price_in_cents: 5000
+                never_been_billed: true
+                next_bill_date: '2017-02-05'
+                period_in_months: 1
+                period_rate_in_cents: 5000
+                rate_in_cents: 5000
+                source_status: null
+                start_date: '2017-02-05'
+                status: active
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                coupon: null
+                membership_patients:
+                - end_date: null
+                  enrollment_requested_on: '2017-02-05'
+                  enrollment_status: active
+                  member_type: spouse
+                  start_date: '2017-02-05'
+                  status: active
+                  uses_tobacco: false
+                  patient:
+                    id: pat-ab12C345DeF6
+                    name: Gordon Thomas Sumner
+                owner:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: active
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: ABCD0012032
+                  integration_sync_status: enabled
+                  integration_web_link: null
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: retail
+                sponsorship: null
+                upcoming_bills:
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-02-05'
+                  end_date: '2017-03-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-02-05'
+                  customer_invoice: null
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-03-05'
+                  end_date: '2017-04-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-03-05'
+                  customer_invoice: null
+  /provider/memberships/{id}:
+    delete:
+      tags:
+      - Membership
+      operationId: Membership.DeleteMembership
+      summary: Delete Membership
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+    get:
+      tags:
+      - Membership
+      operationId: Membership.ShowMembership
+      summary: Show Membership
+      description: '**Status Options:** pending, unconfirmed, active, unpaid, ended
+
+        **Enrollment Status Options:** pending, unconfirmed, active, inactive'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipBlueprint_one'
+              example:
+                id: mem-ab12C345DeF6
+                bill_date: '2017-03-05'
+                billed_through_date: '2017-03-05'
+                billing_start_date: '2016-08-05'
+                bills_at_end_of_period: false
+                contract_expiration_action: auto-renew
+                contract_expires: true
+                contract_period_in_months: 12
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                end_date: null
+                enrollment_status: active
+                fixed_period_rate_in_cents: null
+                fixed_registration_fee_in_cents: null
+                group_code: null
+                is_confirmed: true
+                is_current: true
+                is_processing: false
+                is_restartable: false
+                list_price_in_cents: 5000
+                next_bill_date: '2017-03-05'
+                period_in_months: 1
+                period_rate_in_cents: 5000
+                rate_in_cents: 5000
+                source_status: null
+                start_date: '2016-08-05'
+                status: unpaid
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                coupon: null
+                membership_patients:
+                - id: mp-ab12C345DeF6
+                  member_type: spouse
+                  fixed_period_rate_in_cents: null
+                  list_price_in_cents: 5000
+                  period_rate_in_cents: 5000
+                  revenue_in_cents: 5000
+                  start_date: '2016-08-05'
+                  uses_tobacco: false
+                  end_date: null
+                  patient:
+                    id: pat-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_state: NY
+                    address_zip: '10002'
+                    age: 65
+                    chosen_first_name: null
+                    chosen_last_name: null
+                    chosen_middle_name: null
+                    chosen_suffix: null
+                    chosen_title: null
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    dob: '1952-01-01'
+                    electronic_communication_consent_accepted: true
+                    electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    email: bass_man@bumblebeeinc.com
+                    engaged: false
+                    external_link_id: null
+                    first_name: Gordon
+                    gender: male
+                    gender_identity: man
+                    gender_other: null
+                    health_insurance_group_id: '12345'
+                    health_insurance_member_id: A22222222
+                    health_insurance_payer_id: 00039
+                    health_insurance_payer_name: Anthem Blue Cross California
+                    hipaa_authorization_accepted: true
+                    hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    import_id: null
+                    import_source: null
+                    joined_practice_date: '2017-02-05'
+                    last_engagement_date: null
+                    last_name: Sumner
+                    lead_source_other: Downtown marketing event
+                    master_record_sponsor: null
+                    membership_status: unpaid
+                    middle_name: Thomas
+                    name: Gordon Thomas Sumner
+                    patient_agreement_accepted: false
+                    patient_agreement_accepted_at: null
+                    preferred_language: en
+                    pronouns: null
+                    provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                    sex: male
+                    suffix: null
+                    terms_accepted: false
+                    terms_accepted_at: null
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    uses_tobacco: false
+                    lead_source:
+                      id: lds-ab12C345DeF6
+                      name: Other
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    phones: []
+                    sponsorships:
+                    - id: creg-ab12C345DeF6
+                      external_id: ext_id_from_another_system012345
+                      is_subscriber: true
+                      type: spouse
+                      company:
+                        id: com-ab12C345DeF6
+                        name: Schmoogle Inc.
+                      family:
+                        id: cac-ab12C345DeF6
+                    integration_error_message: null
+                    integration_last_synced_at: null
+                    integration_record_id: ABCD0012030
+                    integration_sync_status: enabled
+                    integration_web_link: null
+                owner:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: ABCD0012030
+                  integration_sync_status: enabled
+                  integration_web_link: null
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: retail
+                sponsorship: null
+                upcoming_bills:
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-03-05'
+                  end_date: '2017-04-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-03-05'
+                  customer_invoice: null
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-04-05'
+                  end_date: '2017-05-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-04-05'
+                  customer_invoice: null
+    patch:
+      tags:
+      - Membership
+      operationId: Membership.UpdateMembership
+      summary: Update Membership
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipBlueprint_one'
+              example:
+                id: mem-ab12C345DeF6
+                bill_date: '2017-03-05'
+                billed_through_date: '2017-03-05'
+                billing_start_date: '2016-08-05'
+                bills_at_end_of_period: false
+                contract_expiration_action: auto-renew
+                contract_expires: true
+                contract_period_in_months: 12
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                end_date: null
+                enrollment_status: active
+                fixed_period_rate_in_cents: null
+                fixed_registration_fee_in_cents: null
+                group_code: null
+                is_confirmed: true
+                is_current: true
+                is_processing: false
+                is_restartable: false
+                list_price_in_cents: 5000
+                next_bill_date: '2017-03-05'
+                period_in_months: 1
+                period_rate_in_cents: 5000
+                rate_in_cents: 5000
+                source_status: null
+                start_date: '2016-08-05'
+                status: unpaid
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                coupon: null
+                membership_patients:
+                - id: mp-ab12C345DeF6
+                  member_type: spouse
+                  fixed_period_rate_in_cents: null
+                  list_price_in_cents: 5000
+                  period_rate_in_cents: 5000
+                  revenue_in_cents: 5000
+                  start_date: '2016-08-05'
+                  uses_tobacco: false
+                  end_date: null
+                  patient:
+                    id: pat-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_state: NY
+                    address_zip: '10002'
+                    age: 65
+                    chosen_first_name: null
+                    chosen_last_name: null
+                    chosen_middle_name: null
+                    chosen_suffix: null
+                    chosen_title: null
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    dob: '1952-01-01'
+                    electronic_communication_consent_accepted: true
+                    electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    email: bass_man@bumblebeeinc.com
+                    engaged: false
+                    external_link_id: null
+                    first_name: Gordon
+                    gender: male
+                    gender_identity: man
+                    gender_other: null
+                    health_insurance_group_id: '12345'
+                    health_insurance_member_id: A22222222
+                    health_insurance_payer_id: 00039
+                    health_insurance_payer_name: Anthem Blue Cross California
+                    hipaa_authorization_accepted: true
+                    hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    import_id: null
+                    import_source: null
+                    joined_practice_date: '2017-02-05'
+                    last_engagement_date: null
+                    last_name: Sumner
+                    lead_source_other: Downtown marketing event
+                    master_record_sponsor: null
+                    membership_status: unpaid
+                    middle_name: Thomas
+                    name: Gordon Thomas Sumner
+                    patient_agreement_accepted: false
+                    patient_agreement_accepted_at: null
+                    preferred_language: en
+                    pronouns: null
+                    provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                    sex: male
+                    suffix: null
+                    terms_accepted: false
+                    terms_accepted_at: null
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    uses_tobacco: false
+                    lead_source:
+                      id: lds-ab12C345DeF6
+                      name: Other
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    phones: []
+                    sponsorships:
+                    - id: creg-ab12C345DeF6
+                      external_id: ext_id_from_another_system012345
+                      is_subscriber: true
+                      type: spouse
+                      company:
+                        id: com-ab12C345DeF6
+                        name: Schmoogle Inc.
+                      family:
+                        id: cac-ab12C345DeF6
+                    integration_error_message: null
+                    integration_last_synced_at: null
+                    integration_record_id: ABCD0012030
+                    integration_sync_status: enabled
+                    integration_web_link: null
+                owner:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: ABCD0012030
+                  integration_sync_status: enabled
+                  integration_web_link: null
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: retail
+                sponsorship: null
+                upcoming_bills:
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-03-05'
+                  end_date: '2017-04-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-03-05'
+                  customer_invoice: null
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-04-05'
+                  end_date: '2017-05-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-04-05'
+                  customer_invoice: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MembershipUpdateSanitizer'
+  /provider/memberships/new:
+    get:
+      tags:
+      - Membership
+      operationId: Membership.NewMembership
+      summary: New Membership
+      description: Builds a default membership
+      parameters:
+      - name: owner
+        in: query
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipBlueprint_one'
+              example:
+                id: mem-ab12C345DeF6
+                bill_date: '2017-03-05'
+                billed_through_date: '2017-03-05'
+                billing_start_date: '2016-08-05'
+                bills_at_end_of_period: false
+                contract_expiration_action: auto-renew
+                contract_expires: true
+                contract_period_in_months: 12
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                end_date: null
+                enrollment_status: active
+                fixed_period_rate_in_cents: null
+                fixed_registration_fee_in_cents: null
+                group_code: null
+                is_confirmed: true
+                is_current: true
+                is_processing: false
+                is_restartable: false
+                list_price_in_cents: 5000
+                next_bill_date: '2017-03-05'
+                period_in_months: 1
+                period_rate_in_cents: 5000
+                rate_in_cents: 5000
+                source_status: null
+                start_date: '2016-08-05'
+                status: unpaid
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                coupon: null
+                membership_patients:
+                - id: mp-ab12C345DeF6
+                  member_type: spouse
+                  fixed_period_rate_in_cents: null
+                  list_price_in_cents: 5000
+                  period_rate_in_cents: 5000
+                  revenue_in_cents: 5000
+                  start_date: '2016-08-05'
+                  uses_tobacco: false
+                  end_date: null
+                  patient:
+                    id: pat-ab12C345DeF6
+                    address_city: New York
+                    address_country: United States
+                    address_line1: 157 E Houston St
+                    address_line2: Suite 2402
+                    address_state: NY
+                    address_zip: '10002'
+                    age: 65
+                    chosen_first_name: null
+                    chosen_last_name: null
+                    chosen_middle_name: null
+                    chosen_suffix: null
+                    chosen_title: null
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    dob: '1952-01-01'
+                    electronic_communication_consent_accepted: true
+                    electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    email: bass_man@bumblebeeinc.com
+                    engaged: false
+                    external_link_id: null
+                    first_name: Gordon
+                    gender: male
+                    gender_identity: man
+                    gender_other: null
+                    health_insurance_group_id: '12345'
+                    health_insurance_member_id: A22222222
+                    health_insurance_payer_id: 00039
+                    health_insurance_payer_name: Anthem Blue Cross California
+                    hipaa_authorization_accepted: true
+                    hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                    import_id: null
+                    import_source: null
+                    joined_practice_date: '2017-02-05'
+                    last_engagement_date: null
+                    last_name: Sumner
+                    lead_source_other: Downtown marketing event
+                    master_record_sponsor: null
+                    membership_status: unpaid
+                    middle_name: Thomas
+                    name: Gordon Thomas Sumner
+                    patient_agreement_accepted: false
+                    patient_agreement_accepted_at: null
+                    preferred_language: en
+                    pronouns: null
+                    provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                    sex: male
+                    suffix: null
+                    terms_accepted: false
+                    terms_accepted_at: null
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    uses_tobacco: false
+                    lead_source:
+                      id: lds-ab12C345DeF6
+                      name: Other
+                      created_at: '2017-02-05T06:23:00.000000-08:00'
+                      updated_at: '2017-02-05T06:23:00.000000-08:00'
+                    phones: []
+                    sponsorships:
+                    - id: creg-ab12C345DeF6
+                      external_id: ext_id_from_another_system012345
+                      is_subscriber: true
+                      type: spouse
+                      company:
+                        id: com-ab12C345DeF6
+                        name: Schmoogle Inc.
+                      family:
+                        id: cac-ab12C345DeF6
+                    integration_error_message: null
+                    integration_last_synced_at: null
+                    integration_record_id: ABCD0012030
+                    integration_sync_status: enabled
+                    integration_web_link: null
+                owner:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: ABCD0012030
+                  integration_sync_status: enabled
+                  integration_web_link: null
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: retail
+                sponsorship: null
+                upcoming_bills:
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-03-05'
+                  end_date: '2017-04-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-03-05'
+                  customer_invoice: null
+                - amount_in_cents: 5000
+                  charges_amount_in_cents: 0
+                  coupon_discount_in_cents: 0
+                  coupon_discount_months: null
+                  coupon_percent_off: null
+                  date: '2017-04-05'
+                  end_date: '2017-05-05'
+                  list_price_in_cents: 5000
+                  membership_amount_in_cents: 5000
+                  period_in_months: 1
+                  rate_in_cents: 5000
+                  registration_fee_in_cents: null
+                  start_date: '2017-04-05'
+                  customer_invoice: null
+components:
+  schemas:
+    Public.CompanyAccountBlueprint_for_membership_one:
+      type: object
+      properties:
+        id:
+          type: string
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+    Public.CompanySponsorshipBlueprint_for_patient:
+      type: object
+      properties:
+        id:
+          type: string
+        external_id:
+          type: string
+        is_subscriber:
+          type: boolean
+        type:
+          type: string
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        family:
+          $ref: '#/components/schemas/Public.CompanyAccountBlueprint_min'
+    Public.PatientBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.MembershipPatientBlueprint_for_membership_one:
+      type: object
+      properties:
+        id:
+          type: string
+        member_type:
+          type: string
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+        list_price_in_cents:
+          type: integer
+          format: int32
+        period_rate_in_cents:
+          type: integer
+          format: int32
+        revenue_in_cents:
+          type: integer
+          format: int32
+        start_date:
+          type: string
+          format: date
+        uses_tobacco:
+          type: boolean
+        end_date:
+          type: string
+        patient:
+          $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
+    Public.MembershipBillBlueprint_shared_with_invoice:
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+        charges_amount_in_cents:
+          type: integer
+          format: int32
+        coupon_discount_in_cents:
+          type: integer
+          format: int32
+        coupon_discount_months:
+          type: integer
+          format: int32
+        coupon_percent_off:
+          type: integer
+          format: int32
+        date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        list_price_in_cents:
+          type: integer
+          format: int32
+        membership_amount_in_cents:
+          type: integer
+          format: int32
+        period_in_months:
+          type: integer
+          format: int32
+        rate_in_cents:
+          type: integer
+          format: int32
+        registration_fee_in_cents:
+          type: integer
+          format: int32
+        start_date:
+          type: string
+          format: date
+        customer_invoice:
+          $ref: '#/components/schemas/Public.Payable.InvoiceBlueprint_for_membership_bill'
+    Public.Payable.InvoiceBlueprint_for_membership_bill:
+      type: object
+      properties:
+        id:
+          type: string
+        human_status:
+          type: string
+        invoice_number:
+          type: string
+        status:
+          type: string
+        amount_in_cents:
+          type: integer
+          format: int32
+        date:
+          type: string
+          format: date
+        payment_scheduled_on:
+          type: string
+        type:
+          type: string
+    Public.CouponBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        amount_off_in_cents:
+          type: integer
+          format: int32
+        apply_to_each_patient:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        duration_in_months:
+          type: integer
+          format: int32
+        percent_off:
+          type: number
+          format: float
+        updated_at:
+          type: string
+          format: date-time
+        is_redeemable:
+          type: boolean
+        is_archived:
+          type: boolean
+        redeemable_from:
+          type: string
+          format: date-time
+        redeemable_until:
+          type: string
+          format: date-time
+    Public.CompanyAccountBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    MembershipUpdateSanitizer.Patient:
+      type: object
+      properties:
+        id:
+          type: string
+        uses_tobacco:
+          type: boolean
+      required:
+      - id
+    Provider.MembershipsController.bill_body:
+      type: object
+      properties:
+        start_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+      required:
+      - start_date
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+    Public.MembershipPatientBlueprint_leaf_with_patient:
+      type: object
+      properties:
+        end_date:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        enrollment_status:
+          type: string
+        member_type:
+          type: string
+        start_date:
+          type: string
+          format: date
+        status:
+          type: string
+        uses_tobacco:
+          type: boolean
+        patient:
+          $ref: '#/components/schemas/Public.PatientBlueprint_min'
+    Public.CompanyBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.MembershipBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          bill_date:
+            type: string
+            format: date
+          billed_through_date:
+            type: string
+            format: date
+          billing_start_date:
+            type: string
+            format: date
+          bills_at_end_of_period:
+            type: boolean
+          contract_expiration_action:
+            type: string
+          contract_expires:
+            type: string
+            format: date
+          contract_period_in_months:
+            type: integer
+            format: int32
+          created_at:
+            type: string
+            format: date-time
+          end_date:
+            type: string
+            format: date
+          enrollment_status:
+            type: string
+          fixed_period_rate_in_cents:
+            type: integer
+            format: int32
+          fixed_registration_fee_in_cents:
+            type: integer
+            format: int32
+          group_code:
+            type: string
+          is_confirmed:
+            type: string
+          is_current:
+            type: boolean
+          is_processing:
+            type: boolean
+          is_restartable:
+            type: boolean
+          last_bill_amount_in_cents:
+            type: integer
+            format: int32
+          last_bill_date:
+            type: string
+            format: date
+          list_price_in_cents:
+            type: integer
+            format: int32
+          never_been_billed:
+            type: boolean
+          next_bill_date:
+            type: string
+            format: date
+          period_in_months:
+            type: string
+          period_rate_in_cents:
+            type: integer
+            format: int32
+          rate_in_cents:
+            type: integer
+            format: int32
+          source_status:
+            type: string
+          start_date:
+            type: string
+            format: date
+          status:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          coupon:
+            $ref: '#/components/schemas/Public.CouponBlueprint_one'
+          membership_patients:
+            $ref: '#/components/schemas/Public.MembershipPatientBlueprint_leaf_with_patient'
+          owner:
+            $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
+          plan:
+            $ref: '#/components/schemas/Public.PlanBlueprint_min'
+          sponsorship:
+            $ref: '#/components/schemas/Public.CompanyAccountBlueprint_for_membership_one'
+          upcoming_bills:
+            $ref: '#/components/schemas/Public.MembershipBillBlueprint_shared_with_invoice'
+    Provider.MembershipsController.cancel_body:
+      type: object
+      properties:
+        end_date:
+          type: string
+          format: date
+          description: It must line up with the membership's bill_date (not next_bill_date). Eg. A membership that bills on the 5th must end on the 5th. Date must be formatted as YYYY-MM-DD.
+        cancellation_reason:
+          $ref: '#/components/schemas/Association'
+        cancellation_reason_other:
+          type: string
+          description: Description required when sending cancellation_reason of "Other"
+      required:
+      - end_date
+      - cancellation_reason
+    Public.PatientBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        age:
+          type: string
+        chosen_first_name:
+          type: string
+        chosen_last_name:
+          type: string
+        chosen_middle_name:
+          type: string
+        chosen_suffix:
+          type: string
+        chosen_title:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        dob:
+          type: string
+          format: date
+        electronic_communication_consent_accepted:
+          type: string
+        electronic_communication_consent_accepted_at:
+          type: string
+        email:
+          type: string
+        engaged:
+          type: boolean
+        external_link_id:
+          type: string
+        first_name:
+          type: string
+        gender:
+          type: string
+        gender_identity:
+          type: string
+        gender_other:
+          type: string
+        health_insurance_group_id:
+          type: string
+        health_insurance_member_id:
+          type: string
+        health_insurance_payer_id:
+          type: string
+        health_insurance_payer_name:
+          type: string
+        hipaa_authorization_accepted:
+          type: boolean
+        hipaa_authorization_accepted_at:
+          type: string
+          format: date-time
+        import_id:
+          type: string
+        import_source:
+          type: string
+        joined_practice_date:
+          type: string
+          format: date
+        last_engagement_date:
+          type: string
+          format: date
+        last_name:
+          type: string
+        lead_source_other:
+          type: string
+        master_record_sponsor:
+          type: string
+        membership_status:
+          type: string
+        middle_name:
+          type: string
+        name:
+          type: string
+        patient_agreement_accepted:
+          type: boolean
+        patient_agreement_accepted_at:
+          type: string
+          format: date-time
+        preferred_language:
+          type: string
+        pronouns:
+          type: string
+        provider_web_link:
+          type: string
+        sex:
+          type: string
+        suffix:
+          type: string
+        terms_accepted:
+          type: boolean
+        terms_accepted_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        uses_tobacco:
+          type: boolean
+        lead_source:
+          $ref: '#/components/schemas/Public.LeadSourceBlueprint_one'
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+        sponsorships:
+          $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
+    Public.LeadSourceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    MembershipCreateSanitizer:
+      type: object
+      properties:
+        membership_patients:
+          type: array
+          items:
+            $ref: '#/components/schemas/MembershipUpdateSanitizer.MembershipPatient'
+          description: Members can be used as an alias for membership_patients
+        plan:
+          $ref: '#/components/schemas/Association'
+        owner:
+          $ref: '#/components/schemas/Association'
+        sponsorship:
+          $ref: '#/components/schemas/Association'
+        start_date:
+          type: string
+          format: date
+          description: Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD.
+        end_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        period_in_months:
+          type: integer
+          format: int32
+          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
+          enum:
+          - '1'
+          - '3'
+          - '6'
+          - '12'
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+        fixed_registration_fee_in_cents:
+          type: integer
+          format: int32
+      required:
+      - membership_patients
+      - plan
+      - start_date
+      - period_in_months
+    Public.MembershipBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        bill_date:
+          type: string
+          format: date
+        billed_through_date:
+          type: string
+          format: date
+        billing_start_date:
+          type: string
+          format: date
+        bills_at_end_of_period:
+          type: boolean
+        contract_expiration_action:
+          type: string
+        contract_expires:
+          type: string
+          format: date
+        contract_period_in_months:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date
+        enrollment_status:
+          type: string
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+        fixed_registration_fee_in_cents:
+          type: integer
+          format: int32
+        group_code:
+          type: string
+        is_confirmed:
+          type: string
+        is_current:
+          type: boolean
+        is_processing:
+          type: boolean
+        is_restartable:
+          type: boolean
+        list_price_in_cents:
+          type: integer
+          format: int32
+        next_bill_date:
+          type: string
+          format: date
+        period_in_months:
+          type: string
+        period_rate_in_cents:
+          type: integer
+          format: int32
+        rate_in_cents:
+          type: integer
+          format: int32
+        source_status:
+          type: string
+        start_date:
+          type: string
+          format: date
+        status:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        coupon:
+          $ref: '#/components/schemas/Public.CouponBlueprint_one'
+        membership_patients:
+          $ref: '#/components/schemas/Public.MembershipPatientBlueprint_for_membership_one'
+        owner:
+          $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+        sponsorship:
+          $ref: '#/components/schemas/Public.CompanyAccountBlueprint_for_membership_one'
+        upcoming_bills:
+          $ref: '#/components/schemas/Public.MembershipBillBlueprint_shared_with_invoice'
+    MembershipUpdateSanitizer:
+      type: object
+      properties:
+        membership_patients:
+          type: array
+          items:
+            $ref: '#/components/schemas/MembershipUpdateSanitizer.MembershipPatient'
+          description: Members can be used as an alias for membership_patients
+        plan:
+          $ref: '#/components/schemas/Association'
+        owner:
+          $ref: '#/components/schemas/Association'
+        start_date:
+          type: string
+          format: date
+          description: Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD.
+        end_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        period_in_months:
+          type: integer
+          format: int32
+          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
+          enum:
+          - '1'
+          - '3'
+          - '6'
+          - '12'
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+        fixed_registration_fee_in_cents:
+          type: integer
+          format: int32
+      required:
+      - membership_patients
+      - plan
+      - start_date
+      - period_in_months
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+    MembershipUpdateSanitizer.MembershipPatient:
+      type: object
+      properties:
+        patient:
+          $ref: '#/components/schemas/MembershipUpdateSanitizer.Patient'
+        start_date:
+          type: string
+          format: date
+          description: Defaults to Membership start date if not given. Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD.
+        member_type:
+          type: string
+          description: Choose one below. "employee" should only be used on sponsored memberships. Only one employee may be designated per sponsored membership. For non-sponsored memberships, all adults may be sent as "spouse" (naming convention may be updated in the future). All child dependents on all memberships may be sent as "child"
+          enum:
+          - child
+          - spouse
+          - employee
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+          description: Use this to override the standard rates that the membership plan would generate
+      required:
+      - patient
+      - member_type
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

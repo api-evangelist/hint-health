@@ -1,0 +1,235 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Credit API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Credit
+paths:
+  /provider/patients/{patient_id}/credits:
+    post:
+      tags:
+      - Credit
+      operationId: Credit.CreateCredit
+      summary: Create Credit
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CreditBlueprint_one'
+              example:
+                id: crd-ab12C345DeF6
+                amount_in_cents: 1500
+                balance_in_cents: 1500
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                integration_record_id: null
+                reason: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                credit_category:
+                  id: cct-ab12C345DeF6
+                  name: Credit Category 4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.CreditsController.create_body'
+    get:
+      tags:
+      - Credit
+      operationId: Credit.ListAllCredits
+      summary: List All Credits
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.CreditBlueprint_all'
+              example:
+              - id: crd-ab12C345DeF6
+                amount_in_cents: 1500
+                balance_in_cents: 1500
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                integration_record_id: null
+                reason: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                credit_category:
+                  id: cct-ab12C345DeF6
+                  name: Credit Category 3
+  /provider/patients/{patient_id}/credits/{id}:
+    patch:
+      tags:
+      - Credit
+      operationId: Credit.UpdateCredit
+      summary: Update Credit
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Credit ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.CreditBlueprint_one'
+              example:
+                id: crd-ab12C345DeF6
+                amount_in_cents: 1500
+                balance_in_cents: 1500
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                integration_record_id: null
+                reason: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                credit_category:
+                  id: cct-ab12C345DeF6
+                  name: Credit Category 4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.CreditsController.update_body'
+components:
+  schemas:
+    Provider.CreditsController.create_body:
+      title: Create_Credit
+      type: object
+      properties:
+        credit_category:
+          $ref: '#/components/schemas/Association'
+        amount_in_cents:
+          type: integer
+          format: int32
+          description: Value must be positive
+        reason:
+          type: string
+        integration_record_id:
+          type: string
+      required:
+      - credit_category
+      - amount_in_cents
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Provider.CreditsController.update_body:
+      title: Update_Credit
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+          description: Value must be greater than or equal to 0
+        reason:
+          type: string
+      required:
+      - amount_in_cents
+    Public.CreditBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          amount_in_cents:
+            type: integer
+            format: int32
+          balance_in_cents:
+            type: integer
+            format: int32
+          created_at:
+            type: string
+            format: date-time
+          integration_record_id:
+            type: string
+          reason:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          credit_category:
+            $ref: '#/components/schemas/Public.CreditCategoryBlueprint_min'
+    Public.CreditBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        amount_in_cents:
+          type: integer
+          format: int32
+        balance_in_cents:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        integration_record_id:
+          type: string
+        reason:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        credit_category:
+          $ref: '#/components/schemas/Public.CreditCategoryBlueprint_min'
+    Public.CreditCategoryBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

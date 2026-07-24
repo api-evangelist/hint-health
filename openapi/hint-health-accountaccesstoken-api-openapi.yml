@@ -1,0 +1,50 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: AccountAccessToken
+paths:
+  /provider/patients/{patient_id}/account_access_tokens:
+    post:
+      tags:
+      - AccountAccessToken
+      operationId: AccountAccessToken.CreateAcccessToken
+      summary: Create Patient Portal access token
+      description: "## Usage Instructions and Security Best Practices\n - **Authenticate Patients:** Only generate access tokens for patients that your system has already authenticated.\n - **On-Demand Links:** Generate the access token only when a patient requests to view their data.\n - **New Windows/Tabs:** Automatically redirect patients to the URL provided, instead of showing them the link directly.\n - **Avoid Caching:** Do not cache or store access tokens in your application.\n - **Do Not Display Directly:** Avoid displaying the access tokens directly in your application.\n - **Avoid Email Transmission:** Never send access tokens via email due to token expiry and security concerns.\n## Example Workflow\n 1. **Request Access:** Patient logs into your system and requests to view their Hint Health data.\n 2. **Generate Token:** Your system makes a POST request to the Access Tokens endpoint.\n 3. **Provide Link:** Your application receives the URL and automatically redirects the patient to the URL in a new window or tab."
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                token: example_token
+                url: https://examplepractice.hint.com/account?exchange_token=example_token
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

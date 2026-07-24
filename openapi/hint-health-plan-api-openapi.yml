@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Plan API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Plan
+paths:
+  /provider/plans:
+    get:
+      tags:
+      - Plan
+      operationId: Plan.ListAllPlans
+      summary: List All Plans
+      description: ''
+      parameters:
+      - name: plan_type
+        in: query
+        required: false
+        description: Allows filtering by plan_type. May be one of "company", "retail" or "sponsor_fixed_fee". If not given all resources will be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PlanBlueprint_all'
+              example:
+              - id: pln-ab12C345DeF6
+                name: Memberships
+                plan_type: retail
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+components:
+  schemas:
+    Public.PlanBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+          plan_type:
+            type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

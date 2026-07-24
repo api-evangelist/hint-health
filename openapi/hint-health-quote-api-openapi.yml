@@ -1,0 +1,204 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Quote API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Quote
+paths:
+  /provider/quotes:
+    post:
+      tags:
+      - Quote
+      operationId: Quote.CreateQuote
+      summary: Create Quote
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.QuoteBlueprint_one'
+              example:
+                billing_period: month
+                members:
+                - type: primary
+                  age: 27
+                  uses_tobacco: true
+                  dob: null
+                  start_date: null
+                  rate_in_cents: 1100
+                - type: spouse
+                  age: 23
+                  uses_tobacco: false
+                  dob: null
+                  start_date: null
+                  rate_in_cents: 1100
+                - type: child
+                  age: 4
+                  uses_tobacco: false
+                  dob: null
+                  start_date: null
+                  rate_in_cents: 1100
+                coupon_discount_in_cents: null
+                ongoing_amount_in_cents: 3300
+                registration_fee_in_cents: 5034
+                plan:
+                  id: pln-ab12C345DeF6
+                  name: Membership
+                  plan_type: retail
+                coupon: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteSanitizer'
+components:
+  schemas:
+    QuoteSanitizer:
+      type: object
+      properties:
+        plan:
+          $ref: '#/components/schemas/Association'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuoteSanitizer.MemberSanitizer'
+        period_in_months:
+          type: integer
+          format: int32
+          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
+          enum:
+          - '1'
+          - '3'
+          - '6'
+          - '12'
+        coupon:
+          $ref: '#/components/schemas/Association'
+          description: The coupon to apply to the quote (optional)
+        coupon_code:
+          type: string
+          description: The coupon code to apply to the quote (alternative to coupon object)
+      required:
+      - plan
+      - members
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    QuoteSanitizer.MemberSanitizer:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Choose one below. You can think of "spouse" as "adult". This is a naming issue that will hopefully be addressed in the future
+          enum:
+          - primary
+          - child
+          - spouse
+        age:
+          type: integer
+          format: int32
+        uses_tobacco:
+          type: boolean
+        dob:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        start_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+      required:
+      - type
+      - uses_tobacco
+    Public.QuoteBlueprint_one:
+      type: object
+      properties:
+        billing_period:
+          type: string
+        members:
+          type: string
+        coupon_discount_in_cents:
+          type: integer
+          format: int32
+        ongoing_amount_in_cents:
+          type: integer
+          format: int32
+        registration_fee_in_cents:
+          type: integer
+          format: int32
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+        coupon:
+          $ref: '#/components/schemas/Public.CouponBlueprint_one'
+    Public.CouponBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        amount_off_in_cents:
+          type: integer
+          format: int32
+        apply_to_each_patient:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        duration_in_months:
+          type: integer
+          format: int32
+        percent_off:
+          type: number
+          format: float
+        updated_at:
+          type: string
+          format: date-time
+        is_redeemable:
+          type: boolean
+        is_archived:
+          type: boolean
+        redeemable_from:
+          type: string
+          format: date-time
+        redeemable_until:
+          type: string
+          format: date-time
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

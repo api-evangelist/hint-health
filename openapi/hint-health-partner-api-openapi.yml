@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Partner API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Partner
+paths:
+  /partner:
+    get:
+      tags:
+      - Partner
+      operationId: Partner.ShowPartnerLegacy
+      summary: Show Partner
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Platform.PartnerBlueprint_one'
+              example:
+                id: ptr-ab12C345DeF6
+                email: jane.doe@hint-partner-emr.com
+                logo_url: null
+                name: Hint-Partner EMR
+                webhook_url: https://hint-partner-emr.com/webhooks/hint
+    patch:
+      tags:
+      - Partner
+      operationId: Partner.UpdatePartnerLegacy
+      summary: Update Partner
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Platform.PartnerBlueprint_one'
+              example:
+                id: ptr-ab12C345DeF6
+                email: jane.doe@hint-partner-emr.com
+                logo_url: null
+                name: Hint-Partner EMR
+                webhook_url: https://hint-partner-emr.com/webhooks/hint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Platform.PartnersController.update_body'
+components:
+  schemas:
+    Platform.PartnersController.update_body:
+      title: Update_Partner_Legacy
+      type: object
+      properties:
+        webhook_url:
+          type: string
+        marketing_url:
+          type: string
+        support_url:
+          type: string
+        product_description:
+          type: string
+        integration_description:
+          type: string
+        email:
+          type: string
+        logo_url:
+          type: string
+    Platform.PartnerBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        active:
+          type: string
+        email:
+          type: string
+        logo_url:
+          type: string
+        name:
+          type: string
+        organization_id:
+          type: string
+        requires_mfa:
+          type: string
+        status:
+          type: string
+        webhook_url:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

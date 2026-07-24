@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken AffiliatePatient API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: AffiliatePatient
+paths:
+  /provider/affiliates/{affiliate_id}/patients:
+    post:
+      tags:
+      - AffiliatePatient
+      operationId: AffiliatePatient.CreateAffiliatePatient
+      summary: Assign patient to an affiliation
+      description: ''
+      parameters:
+      - name: affiliate_id
+        in: path
+        required: true
+        description: Unique Affiliate ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.Affiliates.PatientsController.create_body'
+  /provider/affiliates/{affiliate_id}/patients/{id}:
+    delete:
+      tags:
+      - AffiliatePatient
+      operationId: AffiliatePatient.DestroyAffiliatePatient
+      summary: Remove patient from an affiliation
+      description: ''
+      parameters:
+      - name: affiliate_id
+        in: path
+        required: true
+        description: Unique Affiliate ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Affiliate Patient ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+components:
+  schemas:
+    Provider.Affiliates.PatientsController.create_body:
+      type: object
+      properties:
+        patient_id:
+          type: string
+      required:
+      - patient_id
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

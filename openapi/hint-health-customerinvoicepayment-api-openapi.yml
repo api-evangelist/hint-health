@@ -1,0 +1,221 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken CustomerInvoicePayment API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: CustomerInvoicePayment
+paths:
+  /provider/customer_invoices/{customer_invoice_id}/payments:
+    post:
+      tags:
+      - CustomerInvoicePayment
+      operationId: CustomerInvoicePayment.CreatePayment
+      summary: Create Payment
+      description: ''
+      parameters:
+      - name: customer_invoice_id
+        in: path
+        required: true
+        description: Unique Customer Invoice ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PaymentBlueprint_one'
+              example:
+                id: pmt-ab12C345DeF6
+                error_message: null
+                memo: null
+                status: unattempted
+                date: '2017-02-05T06:23:00.000000-08:00'
+                amount_in_cents: 4999
+                source:
+                  id: card-ab12C345DeF6
+                  type: Card
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.PaymentsController.create_body'
+    get:
+      tags:
+      - CustomerInvoicePayment
+      operationId: CustomerInvoicePayment.ListAllPayments
+      summary: List All Payments
+      description: ''
+      parameters:
+      - name: customer_invoice_id
+        in: path
+        required: true
+        description: Unique Customer Invoice ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PaymentBlueprint_all'
+              example:
+              - id: pmt-ab12C345DeF6
+                amount_in_cents: 4999
+                date: '2017-02-05T06:23:00.000000-08:00'
+                error_message: null
+                memo: null
+                status: unattempted
+                source:
+                  id: card-ab12C345DeF6
+                  type: Card
+  /provider/customer_invoices/{customer_invoice_id}/payments/{id}:
+    get:
+      tags:
+      - CustomerInvoicePayment
+      operationId: CustomerInvoicePayment.ShowPayment
+      summary: Show Payment
+      description: ''
+      parameters:
+      - name: customer_invoice_id
+        in: path
+        required: true
+        description: Unique Customer Invoice ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Customer Invoice Payment ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PaymentBlueprint_one'
+              example:
+                id: pmt-ab12C345DeF6
+                error_message: null
+                memo: null
+                status: unattempted
+                date: '2017-02-05T06:23:00.000000-08:00'
+                amount_in_cents: 4999
+                source:
+                  id: card-ab12C345DeF6
+                  type: Card
+components:
+  schemas:
+    Public.PaymentBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        error_message:
+          type: string
+        memo:
+          type: string
+        status:
+          type: string
+        date:
+          type: string
+          format: date-time
+        amount_in_cents:
+          type: integer
+          format: int32
+        external:
+          type: boolean
+        external_type:
+          type: string
+        source:
+          $ref: '#/components/schemas/Public.SourceBlueprint_leaf'
+    Provider.PaymentsController.create_body:
+      title: Create Payment
+      type: object
+      properties:
+        amount_in_cents:
+          type: number
+          format: double
+          description: When creating a payment you can add an amount_in_cents, if no amount is included, we will set the payment amount = due_in_cents.
+        external:
+          type: boolean
+          description: 'When creating a payment, processed payments are required to include `process: true`, mark-as-paid payments are required to include `external: true` as an attribute. The request fails if it does not contain only one of these attributes.'
+        memo:
+          type: string
+        process:
+          type: boolean
+          description: 'When creating a payment, processed payments are required to include `process: true`, mark-as-paid payments are required to include `external: true` as an attribute. The request fails if it does not contain only one of these attributes.'
+        paid_at:
+          type: string
+          format: date
+          description: When creating a payment you can specify the date, if no a date is included, we will set it to the `Hint.today` date. Date must be formatted as YYYY-MM-DD.
+        source:
+          $ref: '#/components/schemas/PaymentSource'
+          description: A payment source to process the payment can be specified, if empty the patient's default payment source will be used. The request fails if the patient has no default payment source and source is not specified.
+    Public.PaymentBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          amount_in_cents:
+            type: integer
+            format: int32
+          date:
+            type: string
+            format: date-time
+          error_message:
+            type: string
+          external:
+            type: boolean
+          external_type:
+            type: string
+          memo:
+            type: string
+          status:
+            type: string
+          source:
+            $ref: '#/components/schemas/Public.SourceBlueprint_leaf'
+    Public.SourceBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    PaymentSource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+      required:
+      - id
+      - type
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

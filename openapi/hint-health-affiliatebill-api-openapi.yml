@@ -1,0 +1,111 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken AffiliateBill API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: AffiliateBill
+paths:
+  /provider/affiliates/{affiliate_id}/affiliate_bills:
+    get:
+      tags:
+      - AffiliateBill
+      operationId: AffiliateBill.ListAffiliateBills
+      summary: List All Affiliate Bills
+      description: ''
+      parameters:
+      - name: affiliate_id
+        in: path
+        required: true
+        description: Unique Affiliate ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Public.AffiliateBillBlueprint_all'
+              example:
+              - id: inv-ab12C345DeF6
+                amount_in_cents: 20000
+                human_status: issued
+                invoice_date: '2017-02-01'
+                invoice_number: 1
+                paid_at: null
+                paid_in_cents: 0
+                company:
+                  id: com-ab12C345DeF6
+                  name: Schmoogle Inc.
+                  owner:
+                    id: user-ab12C345DeF6
+                    email: fixture@example.com
+                    first_name: Joe
+                    last_name: Blogs
+                    name: Joe Blogs
+                    phones: []
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+components:
+  schemas:
+    Public.CompanyBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.AffiliateBillBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          amount_in_cents:
+            type: integer
+            format: int32
+          human_status:
+            type: string
+          invoice_date:
+            type: string
+            format: date
+          invoice_number:
+            type: string
+          paid_at:
+            type: string
+            format: date-time
+          paid_in_cents:
+            type: integer
+            format: int32
+          company:
+            $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

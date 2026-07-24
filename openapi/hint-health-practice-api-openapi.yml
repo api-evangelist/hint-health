@@ -1,0 +1,181 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Practice API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Practice
+paths:
+  /provider/practice:
+    get:
+      tags:
+      - Practice
+      operationId: Practice.GetPractice
+      summary: Get Practice
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PracticeBlueprint_one'
+              example:
+                id: pra-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_state: NY
+                address_zip: '10002'
+                email: hintclinic@example.com
+                name: Hint Health Clinic
+                url: https://www.hint.com
+                logo_url: https://www.hint.com/logo.png
+                integration_record_id: null
+                phones:
+                - number: '4158546466'
+                  type: mobile
+                  us_formattable: true
+    patch:
+      tags:
+      - Practice
+      operationId: Practice.UpdatePractice
+      summary: Update Practice
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PracticeBlueprint_one'
+              example:
+                id: pra-ab12C345DeF6
+                address_city: New York
+                address_country: United States
+                address_line1: 157 E Houston St
+                address_line2: Suite 2402
+                address_state: NY
+                address_zip: '10002'
+                email: hintclinic@example.com
+                name: Hint Health Clinic
+                url: https://www.hint.com
+                logo_url: https://www.hint.com/logo.png
+                integration_record_id: null
+                phones:
+                - number: '4158546466'
+                  type: mobile
+                  us_formattable: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.PracticesController.update_body'
+components:
+  schemas:
+    Provider.PracticesController.update_body:
+      title: Update_Practice
+      type: object
+      properties:
+        name:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        address_country:
+          type: string
+        email:
+          type: string
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+        url:
+          type: string
+        logo_url:
+          type: string
+        integration_record_id:
+          type: string
+    Common.PhoneBlueprint_shared:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+        us_formattable:
+          type: string
+    PhoneNumber:
+      type: object
+      properties:
+        id:
+          type: string
+        number:
+          type: number
+        type:
+          type: string
+        us_formattable:
+          type: boolean
+          description: Make this false if your number is not exactly 10 digits
+      required:
+      - number
+      - type
+    Public.PracticeBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+        logo_url:
+          type: string
+        integration_record_id:
+          type: string
+        phones:
+          $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

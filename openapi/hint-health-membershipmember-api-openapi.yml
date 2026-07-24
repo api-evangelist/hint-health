@@ -1,0 +1,975 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken MembershipMember API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: MembershipMember
+paths:
+  /provider/memberships/{membership_id}/members/{id}/cancel:
+    post:
+      tags:
+      - MembershipMember
+      operationId: MembershipMember.CancelMembershipMember
+      summary: Cancel MembershipMember
+      description: ''
+      parameters:
+      - name: membership_id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Membership Member ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipMemberBlueprint_one'
+              example:
+                id: mp-ab12C345DeF6
+                member_type: spouse
+                status: unpaid
+                fixed_period_rate_in_cents: null
+                list_price_in_cents: null
+                period_rate_in_cents: null
+                revenue_in_cents: null
+                start_date: '2017-02-05'
+                end_date: null
+                patient:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: null
+                  integration_sync_status: enabled
+                  integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider.MembersController.cancel_body'
+  /provider/memberships/{membership_id}/members:
+    post:
+      tags:
+      - MembershipMember
+      operationId: MembershipMember.CreateMembershipMember
+      summary: Create MembershipMember
+      description: ''
+      parameters:
+      - name: membership_id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipMemberBlueprint_one'
+              example:
+                id: mp-ab12C345DeF6
+                member_type: spouse
+                status: unpaid
+                fixed_period_rate_in_cents: null
+                list_price_in_cents: null
+                period_rate_in_cents: null
+                revenue_in_cents: null
+                start_date: '2017-02-05'
+                end_date: null
+                patient:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: null
+                  integration_sync_status: enabled
+                  integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MembershipPatientSanitizer'
+    get:
+      tags:
+      - MembershipMember
+      operationId: MembershipMember.ListMembershipMembers
+      summary: List All MembershipMembers
+      description: ''
+      parameters:
+      - name: membership_id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipMemberBlueprint_all'
+              example:
+              - id: mp-ab12C345DeF6
+                end_date: null
+                fixed_period_rate_in_cents: null
+                list_price_in_cents: null
+                member_type: spouse
+                period_rate_in_cents: null
+                revenue_in_cents: null
+                start_date: '2017-02-05'
+                status: unpaid
+                patient:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: null
+                  integration_sync_status: enabled
+                  integration_web_link: null
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /provider/memberships/{membership_id}/members/{id}:
+    delete:
+      tags:
+      - MembershipMember
+      operationId: MembershipMember.DestroyMembershipMember
+      summary: Destroy MembershipMember
+      description: ''
+      parameters:
+      - name: membership_id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Membership Member ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: mp-ab12C345DeF6
+                member_type: spouse
+                status: unpaid
+                fixed_period_rate_in_cents: null
+                list_price_in_cents: null
+                period_rate_in_cents: null
+                revenue_in_cents: null
+                start_date: '2017-02-05'
+                end_date: null
+                patient:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: null
+                  integration_sync_status: enabled
+                  integration_web_link: null
+    get:
+      tags:
+      - MembershipMember
+      operationId: MembershipMember.ShowMembershipMember
+      summary: Show MembershipMember
+      description: ''
+      parameters:
+      - name: membership_id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Membership Member ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipMemberBlueprint_one'
+              example:
+                id: mp-ab12C345DeF6
+                member_type: spouse
+                status: unpaid
+                fixed_period_rate_in_cents: null
+                list_price_in_cents: null
+                period_rate_in_cents: null
+                revenue_in_cents: null
+                start_date: '2017-02-05'
+                end_date: null
+                patient:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: null
+                  integration_sync_status: enabled
+                  integration_web_link: null
+    patch:
+      tags:
+      - MembershipMember
+      operationId: MembershipMember.UpdateMembershipMember
+      summary: Update Member
+      description: ''
+      parameters:
+      - name: membership_id
+        in: path
+        required: true
+        description: Unique Membership ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Membership Member ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.MembershipMemberBlueprint_one'
+              example:
+                id: mp-ab12C345DeF6
+                member_type: spouse
+                status: unpaid
+                fixed_period_rate_in_cents: null
+                list_price_in_cents: null
+                period_rate_in_cents: null
+                revenue_in_cents: null
+                start_date: '2017-02-05'
+                end_date: null
+                patient:
+                  id: pat-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  age: 65
+                  chosen_first_name: null
+                  chosen_last_name: null
+                  chosen_middle_name: null
+                  chosen_suffix: null
+                  chosen_title: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  dob: '1952-01-01'
+                  electronic_communication_consent_accepted: true
+                  electronic_communication_consent_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  email: bass_man@bumblebeeinc.com
+                  engaged: false
+                  external_link_id: null
+                  first_name: Gordon
+                  gender: male
+                  gender_identity: man
+                  gender_other: null
+                  health_insurance_group_id: '12345'
+                  health_insurance_member_id: A22222222
+                  health_insurance_payer_id: 00039
+                  health_insurance_payer_name: Anthem Blue Cross California
+                  hipaa_authorization_accepted: true
+                  hipaa_authorization_accepted_at: '2017-01-29T06:23:00.000000-08:00'
+                  import_id: null
+                  import_source: null
+                  joined_practice_date: '2017-02-05'
+                  last_engagement_date: null
+                  last_name: Sumner
+                  lead_source_other: Downtown marketing event
+                  master_record_sponsor: null
+                  membership_status: unpaid
+                  middle_name: Thomas
+                  name: Gordon Thomas Sumner
+                  patient_agreement_accepted: false
+                  patient_agreement_accepted_at: null
+                  preferred_language: en
+                  pronouns: null
+                  provider_web_link: https://app.hint.com/patients/pat-ab12C345DeF6
+                  sex: male
+                  suffix: null
+                  terms_accepted: false
+                  terms_accepted_at: null
+                  updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  uses_tobacco: false
+                  lead_source:
+                    id: lds-ab12C345DeF6
+                    name: Other
+                    created_at: '2017-02-05T06:23:00.000000-08:00'
+                    updated_at: '2017-02-05T06:23:00.000000-08:00'
+                  phones: []
+                  sponsorships:
+                  - id: creg-ab12C345DeF6
+                    external_id: ext_id_from_another_system012345
+                    is_subscriber: true
+                    type: spouse
+                    company:
+                      id: com-ab12C345DeF6
+                      name: Schmoogle Inc.
+                    family:
+                      id: cac-ab12C345DeF6
+                  integration_error_message: null
+                  integration_last_synced_at: null
+                  integration_record_id: null
+                  integration_sync_status: enabled
+                  integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MembershipPatientSanitizer'
+components:
+  schemas:
+    Public.PatientBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        age:
+          type: string
+        chosen_first_name:
+          type: string
+        chosen_last_name:
+          type: string
+        chosen_middle_name:
+          type: string
+        chosen_suffix:
+          type: string
+        chosen_title:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        dob:
+          type: string
+          format: date
+        electronic_communication_consent_accepted:
+          type: string
+        electronic_communication_consent_accepted_at:
+          type: string
+        email:
+          type: string
+        engaged:
+          type: boolean
+        external_link_id:
+          type: string
+        first_name:
+          type: string
+        gender:
+          type: string
+        gender_identity:
+          type: string
+        gender_other:
+          type: string
+        health_insurance_group_id:
+          type: string
+        health_insurance_member_id:
+          type: string
+        health_insurance_payer_id:
+          type: string
+        health_insurance_payer_name:
+          type: string
+        hipaa_authorization_accepted:
+          type: boolean
+        hipaa_authorization_accepted_at:
+          type: string
+          format: date-time
+        import_id:
+          type: string
+        import_source:
+          type: string
+        joined_practice_date:
+          type: string
+          format: date
+        last_engagement_date:
+          type: string
+          format: date
+        last_name:
+          type: string
+        lead_source_other:
+          type: string
+        master_record_sponsor:
+          type: string
+        membership_status:
+          type: string
+        middle_name:
+          type: string
+        name:
+          type: string
+        patient_agreement_accepted:
+          type: boolean
+        patient_agreement_accepted_at:
+          type: string
+          format: date-time
+        preferred_language:
+          type: string
+        pronouns:
+          type: string
+        provider_web_link:
+          type: string
+        sex:
+          type: string
+        suffix:
+          type: string
+        terms_accepted:
+          type: boolean
+        terms_accepted_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        uses_tobacco:
+          type: boolean
+        lead_source:
+          $ref: '#/components/schemas/Public.LeadSourceBlueprint_one'
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+        sponsorships:
+          $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+    Public.CompanySponsorshipBlueprint_for_patient:
+      type: object
+      properties:
+        id:
+          type: string
+        external_id:
+          type: string
+        is_subscriber:
+          type: boolean
+        type:
+          type: string
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        family:
+          $ref: '#/components/schemas/Public.CompanyAccountBlueprint_min'
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.CompanyBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.LeadSourceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Public.MembershipMemberBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          end_date:
+            type: string
+          fixed_period_rate_in_cents:
+            type: integer
+            format: int32
+          list_price_in_cents:
+            type: integer
+            format: int32
+          member_type:
+            type: string
+          period_rate_in_cents:
+            type: integer
+            format: int32
+          revenue_in_cents:
+            type: integer
+            format: int32
+          start_date:
+            type: string
+            format: date
+          status:
+            type: string
+          patient:
+            $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
+    MembershipPatientSanitizer:
+      type: object
+      properties:
+        patient:
+          $ref: '#/components/schemas/MembershipPatientSanitizer.PatientSanitizer'
+        start_date:
+          type: string
+          format: date
+          description: Defaults to Membership start date if not given. Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD.
+        member_type:
+          type: string
+          description: 'Choose one below. You can think of "spouse" as "adult". This is a naming issue that will hopefully be addressed in the future. Note: "employee" is not an accepted value as you cannot add employees to existing memberships.'
+          enum:
+          - child
+          - spouse
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+          description: Use this to override the standard rates that the membership plan would generate
+      required:
+      - patient
+      - member_type
+    Provider.MembersController.cancel_body:
+      type: object
+      properties:
+        end_date:
+          type: string
+          format: date
+          description: If an end date is not provided, we will default to ending after the most recently billed month. Date must be formatted as YYYY-MM-DD.
+        cancellation_reason:
+          $ref: '#/components/schemas/Association'
+        cancellation_reason_other:
+          type: string
+          description: Description required when sending cancellation_reason of "Other"
+      required:
+      - cancellation_reason
+    Public.CompanyAccountBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.MembershipMemberBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        member_type:
+          type: string
+        status:
+          type: string
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+        list_price_in_cents:
+          type: integer
+          format: int32
+        period_rate_in_cents:
+          type: integer
+          format: int32
+        revenue_in_cents:
+          type: integer
+          format: int32
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+        patient:
+          $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
+    MembershipPatientSanitizer.PatientSanitizer:
+      type: object
+      properties:
+        id:
+          type: string
+        uses_tobacco:
+          type: boolean
+      required:
+      - id
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

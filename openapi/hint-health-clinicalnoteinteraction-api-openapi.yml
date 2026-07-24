@@ -1,0 +1,224 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken ClinicalNoteInteraction API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: ClinicalNoteInteraction
+paths:
+  /provider/patients/{patient_id}/interactions/clinical_note:
+    post:
+      tags:
+      - ClinicalNoteInteraction
+      operationId: ClinicalNoteInteraction.CreateClinicalNoteInteraction
+      summary: Create Clinical Note Interaction
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.Interaction.ClinicalNoteBlueprint_one'
+              example:
+                id: inter-cN12x345AbC6
+                author: Dr. Jane Smith
+                event_timestamp: '2017-02-05T14:23:00Z'
+                files: []
+                formatted_text: <p>Patient presented for annual wellness exam. All vitals within normal range.</p>
+                patient_id: pat-123456
+                signed: true
+                status: completed
+                text: Patient presented for annual wellness exam. All vitals within normal range.
+                title: Visit Note – Annual Physical
+                type: note
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Interaction.ClinicalNoteSanitizer'
+  /provider/patients/{patient_id}/interactions/clinical_note/{id}:
+    get:
+      tags:
+      - ClinicalNoteInteraction
+      operationId: ClinicalNoteInteraction.ShowClinicalNoteInteraction
+      summary: Show Clinical Note Interaction
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Clinical Note Interaction ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.Interaction.ClinicalNoteBlueprint_one'
+              example:
+                id: inter-cN12x345AbC6
+                author: Dr. Jane Smith
+                event_timestamp: '2017-02-05T14:23:00Z'
+                files: []
+                formatted_text: <p>Patient presented for annual wellness exam. All vitals within normal range.</p>
+                patient_id: pat-123456
+                signed: true
+                status: completed
+                text: Patient presented for annual wellness exam. All vitals within normal range.
+                title: Visit Note – Annual Physical
+                type: note
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+    patch:
+      tags:
+      - ClinicalNoteInteraction
+      operationId: ClinicalNoteInteraction.UpdateClinicalNoteInteraction
+      summary: Update Clinical Note Interaction
+      description: ''
+      parameters:
+      - name: patient_id
+        in: path
+        required: true
+        description: Unique Patient ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Clinical Note Interaction ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.Interaction.ClinicalNoteBlueprint_one'
+              example:
+                id: inter-cN12x345AbC6
+                author: Dr. Jane Smith
+                event_timestamp: '2017-02-05T14:23:00Z'
+                files: []
+                formatted_text: <p>Patient presented for annual wellness exam. All vitals within normal range.</p>
+                patient_id: pat-123456
+                signed: true
+                status: completed
+                text: Patient presented for annual wellness exam. All vitals within normal range.
+                title: Visit Note – Annual Physical
+                type: note
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Interaction.ClinicalNoteSanitizer'
+components:
+  schemas:
+    Public.Interaction.ClinicalNoteBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        author:
+          type: string
+        event_timestamp:
+          type: string
+        files:
+          type: string
+        formatted_text:
+          type: string
+        patient_id:
+          type: string
+        signed:
+          type: string
+        status:
+          type: string
+        text:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+    Interaction.ClinicalNoteSanitizer:
+      type: object
+      properties:
+        ? ''
+        : type: string
+          description: status [draft, signed, addended, deleted, failed] The status of the interaction.
+        title:
+          type: string
+          description: The title of the interaction.
+        text:
+          type: string
+          description: The plain text body of the interaction.
+        formatted_text:
+          type: string
+          description: The formatted text body (markdown). Converted to HTML server-side.
+        event_timestamp:
+          type: string
+          format: date-time
+          description: The event timestamp of the interaction.
+        files:
+          type: array
+          items:
+            type: string
+          description: File attachment paths. Files will be downloaded as part of the request.
+        provider_name:
+          type: string
+          description: Name of the signing provider. When provided with status "signed", the API resolves it to a provider user ID for the signed field.
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

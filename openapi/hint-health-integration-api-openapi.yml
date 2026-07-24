@@ -1,0 +1,248 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Integration API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Integration
+paths:
+  /integrations/{id}/activate:
+    post:
+      tags:
+      - Integration
+      operationId: Integration.ActivateIntegration
+      summary: Activate Integration
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Integration ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Platform.IntegrationBlueprint_one'
+              example:
+                id: int-ab12C345DeF6
+                expires_in: null
+                refresh_token: null
+                status: requested
+                token_type: bearer
+                webhook_url_default: null
+                webhook_url_override: https://integration.example.hint.com
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+  /integrations/{id}/deactivate:
+    post:
+      tags:
+      - Integration
+      operationId: Integration.DeactivateIntegration
+      summary: Deactivate Integration
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Integration ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Platform.IntegrationBlueprint_one'
+              example:
+                id: int-ab12C345DeF6
+                expires_in: null
+                refresh_token: null
+                status: inactive
+                token_type: bearer
+                webhook_url_default: null
+                webhook_url_override: https://integration.example.hint.com
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+  /integrations:
+    get:
+      tags:
+      - Integration
+      operationId: Integration.ListAllIntegrations
+      summary: List All Integrations
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Platform.IntegrationBlueprint_all'
+              example:
+              - id: int-ab12C345DeF6
+                expires_in: null
+                refresh_token: null
+                status: requested
+                token_type: bearer
+                webhook_url_default: null
+                webhook_url_override: https://integration.example.hint.com
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+  /integrations/{id}:
+    get:
+      tags:
+      - Integration
+      operationId: Integration.ShowIntegration
+      summary: Show Integration
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Integration ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Platform.IntegrationBlueprint_one'
+              example:
+                id: int-ab12C345DeF6
+                expires_in: null
+                refresh_token: null
+                status: requested
+                token_type: bearer
+                webhook_url_default: null
+                webhook_url_override: https://integration.example.hint.com
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+    patch:
+      tags:
+      - Integration
+      operationId: Integration.UpdateIntegration
+      summary: Update Integration
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Integration ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Platform.IntegrationBlueprint_one'
+              example:
+                id: int-ab12C345DeF6
+                expires_in: null
+                refresh_token: null
+                status: requested
+                token_type: bearer
+                webhook_url_default: null
+                webhook_url_override: https://integration.example.hint.com
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Platform.IntegrationsController.update_body'
+components:
+  schemas:
+    Platform.IntegrationBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        expires_in:
+          type: string
+        refresh_token:
+          type: string
+        status:
+          type: string
+        token_type:
+          type: string
+        webhook_url_default:
+          type: string
+          deprecated: true
+        webhook_url_override:
+          type: string
+          deprecated: true
+        practice:
+          $ref: '#/components/schemas/Platform.PracticeBlueprint_for_integration'
+    Platform.IntegrationBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          expires_in:
+            type: string
+          refresh_token:
+            type: string
+          status:
+            type: string
+          token_type:
+            type: string
+          webhook_url_default:
+            type: string
+            deprecated: true
+          webhook_url_override:
+            type: string
+            deprecated: true
+          practice:
+            $ref: '#/components/schemas/Platform.PracticeBlueprint_for_integration'
+    Platform.PracticeBlueprint_for_integration:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Platform.IntegrationsController.update_body:
+      title: Update_Integration
+      type: object
+      properties:
+        webhook_url_override:
+          type: string
+          deprecated: true
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)

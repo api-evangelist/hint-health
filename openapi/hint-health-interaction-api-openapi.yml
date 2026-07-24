@@ -1,0 +1,173 @@
+openapi: 3.0.3
+info:
+  title: Hint Health AccountAccessToken Interaction API
+  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
+  version: '1.0'
+  contact:
+    name: Hint Health Developer Support
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+servers:
+- url: https://api.hint.com/api
+  description: Production
+- url: https://api.sandbox.hint.com/api
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Interaction
+paths:
+  /provider/interactions:
+    get:
+      tags:
+      - Interaction
+      operationId: Interaction.ListAllInteractions
+      summary: List All Interactions
+      description: ''
+      parameters:
+      - name: patient_id
+        in: query
+        required: false
+        description: Allows filtering interactions by patient id.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: status
+        in: query
+        required: false
+        description: ' Allows filtering interactions by status.'
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - draft
+            - signed
+            - addended
+            - deleted
+            - failed
+      - name: type
+        in: query
+        required: false
+        description: ' Allows filtering interactions by type.'
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - note
+            - phone_call
+            - email
+            - lab
+            - fax
+            - rx
+            - rx_veradigm
+            - rx_dosespot
+            - vitals
+            - document
+      - name: limit
+        in: query
+        required: false
+        description: Allows limiting the number of interactions returned.
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        required: false
+        description: Allows offsetting the number of interactions returned.
+        schema:
+          type: integer
+          format: int32
+      - name: created_at
+        in: query
+        required: false
+        description: Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information.
+        schema:
+          type: string
+          format: date-time
+      - name: updated_at
+        in: query
+        required: false
+        description: Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information.
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.InteractionBlueprint_all'
+              example:
+              - id: inter-ab12C345DeF6
+                body: This is a test body
+                patient_id: pat-123456
+                status: draft
+                title: 'Lab #123456'
+                type: partner
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+              - id: inter-ab12C345DeF6
+                body: This is a test body
+                patient_id: pat-123456
+                status: draft
+                title: 'Lab #123456'
+                type: partner
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+              - id: inter-ab12C345DeF6
+                body: This is a test body
+                patient_id: pat-123456
+                status: draft
+                title: 'Lab #123456'
+                type: partner
+                integration_error_message: null
+                integration_last_synced_at: null
+                integration_record_id: null
+                integration_sync_status: enabled
+                integration_web_link: null
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+components:
+  schemas:
+    Public.InteractionBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          body:
+            type: string
+          patient_id:
+            type: string
+          status:
+            type: string
+          title:
+            type: string
+          type:
+            type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Practice access token or Partner API key (Bearer authentication)
