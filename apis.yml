@@ -1,7 +1,20 @@
 aid: hint-health
 name: Hint Health
 description: Hint Health is the leading direct primary care (DPC) technology platform, powering thousands of DPC practices with software for membership management, automated billing, clinical workflows, and provider networks. The Hint REST API provides programmatic access to clinic operations including patient enrollment, membership billing, practice configuration, clinical data management, charges, invoices, webhooks, and OAuth-based partner integrations.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/hint-health.png
 url: https://raw.githubusercontent.com/api-evangelist/hint-health/refs/heads/main/apis.yml
 created: 2026-06-13
 modified: 2026-06-13
@@ -17,25 +30,599 @@ tags:
   - Health Plans
 
 apis:
-  - aid: hint-health:hint-health-api
-    name: Hint Health API
-    description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.hint.com/
-    baseURL: https://api.hint.com
-    tags:
-      - Direct Primary Care
-      - Membership
-      - Billing
-      - Patients
-      - Webhooks
-      - OAuth
-    properties:
-      - type: Documentation
-        url: https://developers.hint.com/docs/overview
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/hint-health/refs/heads/main/openapi/hint-health-hint-health-api-openapi.yml
-
+- aid: hint-health:hint-health-accountaccesstoken-api
+  name: Hint Health AccountAccessToken API
+  description: The AccountAccessToken API from Hint Health — 1 operation(s) for accountaccesstoken.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - AccountAccessToken
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-accountaccesstoken-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-affiliate-api
+  name: Hint Health Affiliate API
+  description: The Affiliate API from Hint Health — 2 operation(s) for affiliate.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Affiliate
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-affiliate-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-affiliatebill-api
+  name: Hint Health AffiliateBill API
+  description: The AffiliateBill API from Hint Health — 1 operation(s) for affiliatebill.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - AffiliateBill
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-affiliatebill-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-affiliatepatient-api
+  name: Hint Health AffiliatePatient API
+  description: The AffiliatePatient API from Hint Health — 2 operation(s) for affiliatepatient.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - AffiliatePatient
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-affiliatepatient-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-cancellationreason-api
+  name: Hint Health CancellationReason API
+  description: The CancellationReason API from Hint Health — 1 operation(s) for cancellationreason.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - CancellationReason
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-cancellationreason-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-charge-api
+  name: Hint Health Charge API
+  description: The Charge API from Hint Health — 1 operation(s) for charge.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Charge
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-charge-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-chargeitem-api
+  name: Hint Health ChargeItem API
+  description: The ChargeItem API from Hint Health — 2 operation(s) for chargeitem.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - ChargeItem
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-chargeitem-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-clinicalnoteinteraction-api
+  name: Hint Health ClinicalNoteInteraction API
+  description: >-
+    The ClinicalNoteInteraction API from Hint Health — 2 operation(s) for clinicalnoteinteraction.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - ClinicalNoteInteraction
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-clinicalnoteinteraction-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-company-api
+  name: Hint Health Company API
+  description: The Company API from Hint Health — 3 operation(s) for company.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Company
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-company-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-companyplan-api
+  name: Hint Health CompanyPlan API
+  description: The CompanyPlan API from Hint Health — 2 operation(s) for companyplan.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - CompanyPlan
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-companyplan-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-coupon-api
+  name: Hint Health Coupon API
+  description: The Coupon API from Hint Health — 2 operation(s) for coupon.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Coupon
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-coupon-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-credit-api
+  name: Hint Health Credit API
+  description: The Credit API from Hint Health — 2 operation(s) for credit.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Credit
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-credit-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-creditcategory-api
+  name: Hint Health CreditCategory API
+  description: The CreditCategory API from Hint Health — 2 operation(s) for creditcategory.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - CreditCategory
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-creditcategory-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-creditline-api
+  name: Hint Health CreditLine API
+  description: The CreditLine API from Hint Health — 1 operation(s) for creditline.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - CreditLine
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-creditline-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-customerinvoice-api
+  name: Hint Health CustomerInvoice API
+  description: The CustomerInvoice API from Hint Health — 6 operation(s) for customerinvoice.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - CustomerInvoice
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-customerinvoice-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-customerinvoicecharge-api
+  name: Hint Health CustomerInvoiceCharge API
+  description: >-
+    The CustomerInvoiceCharge API from Hint Health — 2 operation(s) for customerinvoicecharge.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - CustomerInvoiceCharge
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-customerinvoicecharge-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-customerinvoicepayment-api
+  name: Hint Health CustomerInvoicePayment API
+  description: >-
+    The CustomerInvoicePayment API from Hint Health — 2 operation(s) for customerinvoicepayment.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - CustomerInvoicePayment
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-customerinvoicepayment-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-documentinteraction-api
+  name: Hint Health DocumentInteraction API
+  description: The DocumentInteraction API from Hint Health — 2 operation(s) for documentinteraction.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - DocumentInteraction
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-documentinteraction-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-employeedivision-api
+  name: Hint Health EmployeeDivision API
+  description: The EmployeeDivision API from Hint Health — 1 operation(s) for employeedivision.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - EmployeeDivision
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-employeedivision-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-formresponse-api
+  name: Hint Health FormResponse API
+  description: The FormResponse API from Hint Health — 2 operation(s) for formresponse.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - FormResponse
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-formresponse-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-globalwebhookendpoint-api
+  name: Hint Health GlobalWebhookEndpoint API
+  description: >-
+    The GlobalWebhookEndpoint API from Hint Health — 2 operation(s) for globalwebhookendpoint.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - GlobalWebhookEndpoint
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-globalwebhookendpoint-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-integration-api
+  name: Hint Health Integration API
+  description: The Integration API from Hint Health — 4 operation(s) for integration.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Integration
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-integration-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-integrationrecord-api
+  name: Hint Health IntegrationRecord API
+  description: The IntegrationRecord API from Hint Health — 1 operation(s) for integrationrecord.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - IntegrationRecord
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-integrationrecord-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-interaction-api
+  name: Hint Health Interaction API
+  description: The Interaction API from Hint Health — 1 operation(s) for interaction.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Interaction
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-interaction-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-interactionnotifications-api
+  name: Hint Health InteractionNotifications API
+  description: >-
+    The InteractionNotifications API from Hint Health — 1 operation(s) for interactionnotifications.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - InteractionNotifications
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-interactionnotifications-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-invoice-api
+  name: Hint Health Invoice API
+  description: The Invoice API from Hint Health — 2 operation(s) for invoice.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Invoice
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-invoice-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-invoicepayment-api
+  name: Hint Health InvoicePayment API
+  description: The InvoicePayment API from Hint Health — 2 operation(s) for invoicepayment.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - InvoicePayment
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-invoicepayment-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-labinteraction-api
+  name: Hint Health LabInteraction API
+  description: The LabInteraction API from Hint Health — 2 operation(s) for labinteraction.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - LabInteraction
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-labinteraction-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-leadsource-api
+  name: Hint Health LeadSource API
+  description: The LeadSource API from Hint Health — 2 operation(s) for leadsource.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - LeadSource
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-leadsource-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-location-api
+  name: Hint Health Location API
+  description: The Location API from Hint Health — 2 operation(s) for location.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Location
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-location-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-membership-api
+  name: Hint Health Membership API
+  description: The Membership API from Hint Health — 6 operation(s) for membership.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Membership
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-membership-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-membershipcontract-api
+  name: Hint Health MembershipContract API
+  description: The MembershipContract API from Hint Health — 3 operation(s) for membershipcontract.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - MembershipContract
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-membershipcontract-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-membershipmember-api
+  name: Hint Health MembershipMember API
+  description: The MembershipMember API from Hint Health — 3 operation(s) for membershipmember.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - MembershipMember
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-membershipmember-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-oauth-api
+  name: Hint Health OAuth API
+  description: The OAuth API from Hint Health — 1 operation(s) for oauth.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-partner-api
+  name: Hint Health Partner API
+  description: The Partner API from Hint Health — 1 operation(s) for partner.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Partner
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-partner-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-partnercharge-api
+  name: Hint Health PartnerCharge API
+  description: The PartnerCharge API from Hint Health — 2 operation(s) for partnercharge.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - PartnerCharge
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-partnercharge-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-partnerinteraction-api
+  name: Hint Health PartnerInteraction API
+  description: The PartnerInteraction API from Hint Health — 2 operation(s) for partnerinteraction.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - PartnerInteraction
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-partnerinteraction-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-patient-api
+  name: Hint Health Patient API
+  description: The Patient API from Hint Health — 3 operation(s) for patient.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Patient
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-patient-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-paymentmethod-api
+  name: Hint Health PaymentMethod API
+  description: The PaymentMethod API from Hint Health — 3 operation(s) for paymentmethod.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - PaymentMethod
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-paymentmethod-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-plan-api
+  name: Hint Health Plan API
+  description: The Plan API from Hint Health — 1 operation(s) for plan.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Plan
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-plan-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-practice-api
+  name: Hint Health Practice API
+  description: The Practice API from Hint Health — 1 operation(s) for practice.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Practice
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-practice-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-practitioner-api
+  name: Hint Health Practitioner API
+  description: The Practitioner API from Hint Health — 2 operation(s) for practitioner.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Practitioner
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-practitioner-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-quote-api
+  name: Hint Health Quote API
+  description: The Quote API from Hint Health — 1 operation(s) for quote.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Quote
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-quote-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-signupattempt-api
+  name: Hint Health SignupAttempt API
+  description: The SignupAttempt API from Hint Health — 2 operation(s) for signupattempt.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - SignupAttempt
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-signupattempt-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-socialsecuritynumber-api
+  name: Hint Health SocialSecurityNumber API
+  description: The SocialSecurityNumber API from Hint Health — 1 operation(s) for socialsecuritynumber.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - SocialSecurityNumber
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-socialsecuritynumber-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-sponsorship-api
+  name: Hint Health Sponsorship API
+  description: The Sponsorship API from Hint Health — 2 operation(s) for sponsorship.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Sponsorship
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-sponsorship-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-supplements-api
+  name: Hint Health Supplements API
+  description: The Supplements API from Hint Health — 2 operation(s) for supplements.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Supplements
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-supplements-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-user-api
+  name: Hint Health User API
+  description: The User API from Hint Health — 1 operation(s) for user.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-user-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-webhookendpoint-api
+  name: Hint Health WebhookEndpoint API
+  description: The WebhookEndpoint API from Hint Health — 2 operation(s) for webhookendpoint.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - WebhookEndpoint
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-webhookendpoint-api-openapi.yml
+  - type: Documentation
+    url: https://developers.hint.com/docs/overview
 common:
   - type: AgenticAccess
     url: agentic-access/hint-health-agentic-access.yml
