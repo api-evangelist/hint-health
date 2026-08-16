@@ -17,7 +17,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/hint-health.png
 url: https://raw.githubusercontent.com/api-evangelist/hint-health/refs/heads/main/apis.yml
 created: 2026-06-13
-modified: 2026-06-13
+modified: 2026-08-15
 specificationVersion: "0.19"
 tags:
   - Direct Primary Care
@@ -40,6 +40,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-accountaccesstoken-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-accountaccesstoken-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-affiliate-api
@@ -52,6 +54,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-affiliate-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-affiliate-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-affiliatebill-api
@@ -64,6 +68,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-affiliatebill-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-affiliatebill-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-affiliatepatient-api
@@ -76,6 +82,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-affiliatepatient-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-affiliatepatient-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-cancellationreason-api
@@ -88,6 +96,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-cancellationreason-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-cancellationreason-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-charge-api
@@ -100,6 +110,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-charge-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-charge-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-chargeitem-api
@@ -112,6 +124,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-chargeitem-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-chargeitem-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-clinicalnoteinteraction-api
@@ -125,6 +139,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-clinicalnoteinteraction-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-clinicalnoteinteraction-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-company-api
@@ -137,6 +153,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-company-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-company-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-companyplan-api
@@ -149,6 +167,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-companyplan-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-companyplan-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-coupon-api
@@ -161,6 +181,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-coupon-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-coupon-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-credit-api
@@ -173,6 +195,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-credit-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-credit-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-creditcategory-api
@@ -185,6 +209,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-creditcategory-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-creditcategory-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-creditline-api
@@ -197,6 +223,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-creditline-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-creditline-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-customerinvoice-api
@@ -209,6 +237,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-customerinvoice-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-customerinvoice-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-customerinvoicecharge-api
@@ -222,6 +252,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-customerinvoicecharge-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-customerinvoicecharge-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-customerinvoicepayment-api
@@ -235,6 +267,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-customerinvoicepayment-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-customerinvoicepayment-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-documentinteraction-api
@@ -247,6 +281,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-documentinteraction-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-documentinteraction-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-employeedivision-api
@@ -259,6 +295,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-employeedivision-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-employeedivision-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-formresponse-api
@@ -271,6 +309,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-formresponse-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-formresponse-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-globalwebhookendpoint-api
@@ -284,6 +324,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-globalwebhookendpoint-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-globalwebhookendpoint-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-integration-api
@@ -296,6 +338,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-integration-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-integration-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-integrationrecord-api
@@ -308,6 +352,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-integrationrecord-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-integrationrecord-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-interaction-api
@@ -320,6 +366,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-interaction-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-interaction-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-interactionnotifications-api
@@ -333,6 +381,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-interactionnotifications-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-interactionnotifications-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-invoice-api
@@ -345,6 +395,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-invoice-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-invoice-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-invoicepayment-api
@@ -357,6 +409,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-invoicepayment-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-invoicepayment-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-labinteraction-api
@@ -369,6 +423,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-labinteraction-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-labinteraction-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-leadsource-api
@@ -381,6 +437,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-leadsource-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-leadsource-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-location-api
@@ -393,6 +451,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-location-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-location-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-membership-api
@@ -405,6 +465,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-membership-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-membership-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-membershipcontract-api
@@ -417,6 +479,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-membershipcontract-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-membershipcontract-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-membershipmember-api
@@ -429,6 +493,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-membershipmember-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-membershipmember-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-oauth-api
@@ -441,6 +507,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-oauth-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-oauth-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-partner-api
@@ -453,6 +521,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-partner-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-partner-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-partnercharge-api
@@ -465,6 +535,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-partnercharge-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-partnercharge-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-partnerinteraction-api
@@ -477,6 +549,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-partnerinteraction-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-partnerinteraction-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-patient-api
@@ -489,6 +563,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-patient-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-patient-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-paymentmethod-api
@@ -501,6 +577,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-paymentmethod-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-paymentmethod-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-plan-api
@@ -513,6 +591,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-plan-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-plan-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-practice-api
@@ -525,6 +605,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-practice-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-practice-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-practitioner-api
@@ -537,6 +619,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-practitioner-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-practitioner-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-quote-api
@@ -549,6 +633,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-quote-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-quote-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-signupattempt-api
@@ -561,6 +647,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-signupattempt-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-signupattempt-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-socialsecuritynumber-api
@@ -573,6 +661,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-socialsecuritynumber-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-socialsecuritynumber-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-sponsorship-api
@@ -585,6 +675,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-sponsorship-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-sponsorship-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-supplements-api
@@ -597,6 +689,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-supplements-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-supplements-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-user-api
@@ -609,6 +703,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-user-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-user-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 - aid: hint-health:hint-health-webhookendpoint-api
@@ -621,6 +717,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hint-health-webhookendpoint-api-openapi.yml
+  - type: Overlay
+    url: overlays/hint-health-webhookendpoint-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 common:
@@ -636,7 +734,7 @@ common:
     url: https://www.hint.com/
   - type: Documentation
     url: https://developers.hint.com/docs/overview
-  - type: GitHubOrg
+  - type: GitHubOrganization
     url: https://github.com/hinthealth
   - type: LinkedIn
     url: https://www.linkedin.com/company/hint-health
@@ -654,7 +752,61 @@ common:
     url: rate-limits/hint-health-rate-limits.yml
   - type: FinOps
     url: finops/hint-health-finops.yml
+  - type: DeveloperPortal
+    url: https://developers.hint.com/
+  - type: APIReference
+    url: https://developers.hint.com/reference
+  - type: GettingStarted
+    url: https://developers.hint.com/docs/requesting-a-sandbox-and-api-access
+  - type: Support
+    url: https://www.hint.com/contact
+  - type: SignUp
+    url: https://www.hint.com/get-started
+  - type: Login
+    url: https://accounts.hint.com/oauth/account/login
+  - type: TermsOfService
+    url: https://www.hint.com/terms
+  - type: PrivacyPolicy
+    url: https://www.hint.com/privacy
+  - type: Compliance
+    url: https://www.hint.com/security
+  - type: Conformance
+    url: conformance/hint-health-conformance.yml
+  - type: Conventions
+    url: conventions/hint-health-conventions.yml
+  - type: Idempotency
+    url: conventions/hint-health-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hint-health-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/hint-health-lifecycle.yml
+  - type: Packages
+    url: packages/hint-health-packages.yml
+  - type: SDKs
+    url: packages/hint-health-packages.yml
+  - type: Sandbox
+    url: sandbox/hint-health-sandbox.yml
+  - type: Components
+    url: components/hint-health-components.yml
+  - type: DataModel
+    url: data-model/hint-health-data-model.yml
+  - type: Webhooks
+    url: asyncapi/hint-health-webhooks.yml
+  - type: MCPServer
+    url: mcp/hint-health-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/hint-health-tool-crosswalk.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: LLMsTxt
+    url: llms/hint-health-llms.txt
 
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+
+x-enrichment:
+  date: '2026-08-15'
+  status: enriched
+  artifacts_added: 56
+  pass: local-v1
