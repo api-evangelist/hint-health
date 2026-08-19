@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken ChargeItem API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ChargeItem",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Charge Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/charge_items"
+          },
+          "docs": "Charges will only include the 'quantity_in_stock' if their charge item is configured to track inventory"
+        },
+        {
+          "info": {
+            "name": "Create Charge Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/charge_items",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Charge Item"
+        },
+        {
+          "info": {
+            "name": "Show Charge Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/charge_items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Charge Item ID"
+              }
+            ]
+          },
+          "docs": "Charge will only include the 'quantity_in_stock' if its charge item is configured to track inventory."
+        },
+        {
+          "info": {
+            "name": "Update Charge Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/charge_items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Charge Item ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Charge Item"
+        },
+        {
+          "info": {
+            "name": "Delete Charge Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/charge_items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Charge Item ID"
+              }
+            ]
+          },
+          "docs": "Delete Charge Item"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,201 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken CustomerInvoice API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CustomerInvoice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Customer Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/customer_invoices",
+            "params": [
+              {
+                "name": "updated_at",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+              }
+            ]
+          },
+          "docs": "List All Customer Invoices"
+        },
+        {
+          "info": {
+            "name": "Create Customer Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/customer_invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Customer Invoice"
+        },
+        {
+          "info": {
+            "name": "Generate PDF for Customer Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/customer_invoices/:customer_invoice_id/pdf",
+            "params": [
+              {
+                "name": "customer_invoice_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice ID"
+              }
+            ]
+          },
+          "docs": "## Usage Instructions and Security Best Practices\n - **Link Expiration:** Links expire after 15 minutes.\n - **Authenticate Users:** Only generate pdf links for authenticated users.\n - **On-Demand Links:** Generate the link only when a user requests to view or download a pdf.\n - **New Windows/Tabs:** Automatically redirect users to the URL provided, instead of showing them the link\n directly.\n - **Avoid Caching:** Do not cache or store pdf links in your application.\n - **Avoid Email Transmission:"
+        },
+        {
+          "info": {
+            "name": "Show Customer Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/customer_invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice ID"
+              }
+            ]
+          },
+          "docs": "**Status Options:** draft, issued, sent, cancelled, retrying, bad_debt, paid, disputed\n**Human Status Options:** draft, issued, sent, cancelled, bank_not_verified, needs_payment_info, retrying, bad_debt, paid, disputed"
+        },
+        {
+          "info": {
+            "name": "Update Customer Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/customer_invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Customer Invoice"
+        },
+        {
+          "info": {
+            "name": "Delete Customer Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/customer_invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice ID"
+              }
+            ]
+          },
+          "docs": "Delete Customer Invoice"
+        },
+        {
+          "info": {
+            "name": "Issue Customer Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/customer_invoices/:id/issue",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice ID"
+              }
+            ]
+          },
+          "docs": "Issue Customer Invoice"
+        },
+        {
+          "info": {
+            "name": "Return Customer Invoice To Draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/customer_invoices/:id/return_to_draft",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice ID"
+              }
+            ]
+          },
+          "docs": "Return to draft removes the financial information including revenue from all reports.\nThis action is not possible if the invoice is in a locked reporting period or has any payments."
+        },
+        {
+          "info": {
+            "name": "Void Customer Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/customer_invoices/:id/void",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice ID"
+              }
+            ]
+          },
+          "docs": "Void Customer Invoice"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

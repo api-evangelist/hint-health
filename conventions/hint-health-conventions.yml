@@ -1,0 +1,193 @@
+generated: '2026-08-14'
+method: searched
+source: https://developers.hint.com/reference/making-requests
+docs:
+  - https://developers.hint.com/reference/making-requests
+  - https://developers.hint.com/reference/shared-objects
+  - https://developers.hint.com/docs/overview
+  - https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/api-conventions.md
+name: Hint Health API Conventions
+description: >-
+  Cross-cutting runtime semantics for the Hint REST API — authentication,
+  pagination, filtering, expansion, headers, versioning, error envelope,
+  idempotency and rate-limit signalling — read from Hint's own "Making Requests"
+  reference and from the api-conventions fragment Hint ships inside its
+  first-party marketplace agent skill.
+
+hosts:
+  production: https://api.hint.com
+  sandbox: https://api.sandbox.hint.com
+  staging: https://api.staging.hint.com
+  base_path: /api
+  note: >-
+    Hint's own skill fragment says api.hint.com works for BOTH sandbox and live
+    keys — the `sbx-` prefix on the key selects the environment, not the host.
+    api.sandbox.hint.com exists as an alias and returns identical data for
+    sandbox keys.
+
+authentication:
+  style: bearer
+  header: 'Authorization: Bearer <api_key_or_access_token>'
+  standard: RFC 6750
+  standard_url: https://www.rfc-editor.org/rfc/rfc6750
+  token_types:
+    - name: Practice access token
+      scope: /api/provider/*
+      note: >-
+        Practice-scoped. Returned by POST /api/partner/installations/connect in
+        api_keys[0].token. Never use the partner key against /api/provider/* —
+        Hint's own guidance says that leaks cross-practice data.
+    - name: Partner API key
+      scope: /api/partner/*
+      note: Partner-wide. Set as HINT_API_KEY on marketplace deployments.
+  key_prefixes:
+    sandbox: 'sbx-'
+    live: no prefix
+  see_also: authentication/hint-health-authentication.yml
+
+pagination:
+  style: limit-offset
+  parameters:
+    - {name: limit, in: query, default: 10, min: 1, max: 100, description: Maximum results to return}
+    - {name: offset, in: query, default: 0, min: 0, description: Number of results to skip}
+  response_headers:
+    - {name: x-count, description: Number of results in this response}
+    - {name: x-total-count, description: Total number of results available}
+  response_envelope: >-
+    List endpoints return BARE JSON ARRAYS — not {data: [...]} and not
+    {patients: [...]}. Hint calls this out explicitly in its own skill fragment
+    because the common `res.patients || res.data || []` idiom silently yields an
+    empty array against this API.
+  example: GET /api/provider/patients?limit=10&offset=20
+
+sorting:
+  parameter: sort
+  ascending: 'sort=<attribute>'
+  descending: 'sort=-<attribute>'
+  example: GET /api/provider/patients?sort=-created_at
+
+filtering:
+  string_match:
+    description: Exact attribute match, case-insensitive
+    example: GET /api/provider/patients?first_name=joe
+  numeric_and_date_operators:
+    operators: [gt, gte, lt, lte, eq]
+    forms:
+      - 'JSON form (reference docs): ?date={"gte":"2015-05-01","lt":"2015-06-01"}'
+      - 'Bracket form (marketplace skill): ?created_at[gte]=2026-01-01&created_at[lte]=2026-12-31'
+    note: >-
+      Hint documents both forms in different places. Both appear in
+      provider-published material; neither is marked deprecated.
+  archive_filter:
+    default: archived records are EXCLUDED from list responses
+    values:
+      - {value: 'filter=archived', meaning: only archived records}
+      - {value: 'filter=all', meaning: active and archived}
+  availability: >-
+    Advanced querying is available on select endpoints only; Hint points at
+    List Customer Invoices as the full example and asks partners to email
+    devsupport@hint.com to enable it elsewhere.
+
+expansion:
+  parameter: expand
+  description: >-
+    Inlines nested related objects in a single request. Expandable attributes
+    are noted per-object in the reference. Webhook payloads always carry the
+    UNEXPANDED version.
+  example: GET /api/provider/customer_invoices/inv-4IklwJi23xQ?expand=charges
+
+idempotency:
+  supported: true
+  mechanism: integration-record-id
+  field: integration_record_id
+  header: null
+  description: >-
+    Hint's documented idempotency mechanism is a caller-supplied natural key,
+    not an Idempotency-Key header. The API accepts integration_record_id on
+    creatable objects, enforces it as UNIQUE PER OBJECT TYPE, and uses that
+    uniqueness to prevent accidental duplicate creation on retry. The same field
+    doubles as an alternative lookup key and drives sync-status display in the
+    Hint UI.
+  guarantees:
+    - Duplicate prevention — uniqueness enforced per object type
+    - Alternative lookup — query resources by integration_record_id
+    - Sync-status tracking in the Hint UI
+  retention: not documented
+  scope: per object type, per practice
+  caveats:
+    - >-
+      There is NO Idempotency-Key request header and no replayed-response
+      semantics. A retried create with the same integration_record_id is
+      rejected as a duplicate rather than returning the original resource, so
+      clients must handle the conflict, not assume a replay.
+    - Objects created without integration_record_id have no idempotency at all.
+  example: |
+    curl -X POST "https://api.hint.com/api/provider/patients" \
+      -H "Authorization: Bearer <token>" \
+      -H "Content-Type: application/json" \
+      -d '{"first_name":"Jane","last_name":"Doe","integration_record_id":"your-system-id-123"}'
+  reference: https://developers.hint.com/reference/making-requests
+
+http_methods:
+  note: >-
+    PUT and PATCH are handled identically. Hint prefers PATCH because it expects
+    partial updates, but accepts PUT anywhere PATCH is documented.
+
+versioning:
+  scheme: none-in-path
+  current_version: unversioned
+  description: >-
+    There is no version segment in the URL and no version header documented.
+    Hint states additively that "new resource/action pairs may be added without
+    a version bump" for webhook event types, and asks implementations to ignore
+    unknown event types. See lifecycle/hint-health-lifecycle.yml.
+
+error_envelope:
+  format: proprietary
+  rfc9457: false
+  content_type: application/json
+  shape:
+    status: integer HTTP status, repeated in the body
+    message: human-readable string
+  example: |
+    {"status": 422, "message": "Validation failed: First name can't be blank"}
+  see_also: errors/hint-health-problem-types.yml
+
+rate_limit_signalling:
+  documented_limits: true
+  response_headers: none
+  detail: >-
+    Hint publishes hard numbers (20 requests/second, 500,000 requests/day, per
+    partner) but returns NO RateLimit-*, X-RateLimit-* or Retry-After headers,
+    and explicitly tells clients to use exponential backoff with jitter instead
+    of a server-provided delay. This is a documented-but-unsignalled posture:
+    an agent cannot learn its remaining quota at runtime.
+  exhaustion_status: 429
+  see_also: rate-limits/hint-health-rate-limits.yml
+
+shared_object_shapes:
+  source: https://developers.hint.com/reference/shared-objects
+  phones:
+    shape: 'array of {number, type, us_formattable}'
+    normalization: >-
+      type is lowercased and mapped to canonical values (h/home phone -> home;
+      m/cell/cellphone/cellular -> mobile; w/work phone/business/company ->
+      office). Unmapped types are stored lowercased as-is.
+    us_formattable: >-
+      true means a strict 10-digit US number with no +1; false allows
+      international formatting including a leading +.
+  addresses:
+    shape: >-
+      flat address_-prefixed fields on the parent resource — address_line1,
+      address_line2, address_city, address_state, address_zip, address_country
+    normalization: >-
+      state values are normalized to two-character codes ("California" -> "CA").
+      Hint does NOT perform full address validation or standardization.
+
+cross_links:
+  errors: errors/hint-health-problem-types.yml
+  lifecycle: lifecycle/hint-health-lifecycle.yml
+  authentication: authentication/hint-health-authentication.yml
+  rate_limits: rate-limits/hint-health-rate-limits.yml
+  sandbox: sandbox/hint-health-sandbox.yml
+  webhooks: asyncapi/hint-health-webhooks.yml

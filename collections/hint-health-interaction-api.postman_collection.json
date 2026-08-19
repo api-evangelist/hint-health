@@ -1,0 +1,235 @@
+{
+  "item": [
+    {
+      "id": "6f2f5b29-5098-40b0-b03a-112b381a5598",
+      "name": "Interaction",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f47789ed-d2ad-4445-b3ff-39ae92104077",
+          "name": "List All Interactions",
+          "request": {
+            "name": "List All Interactions",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "interactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient_id",
+                  "value": "<string>",
+                  "description": "Allows filtering interactions by patient id."
+                },
+                {
+                  "disabled": false,
+                  "key": "patient_id",
+                  "value": "<string>",
+                  "description": "Allows filtering interactions by patient id."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": " Allows filtering interactions by status."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": " Allows filtering interactions by status."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": " Allows filtering interactions by type."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": " Allows filtering interactions by type."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Allows limiting the number of interactions returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Allows offsetting the number of interactions returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "<dateTime>",
+                  "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at",
+                  "value": "<dateTime>",
+                  "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53b28f0e-8aaa-4dab-b055-399b365c41d5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "interactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "patient_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updated_at",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of resources returned in this request",
+                  "key": "X-Count",
+                  "value": "7137"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of resources available (scoped to query params)",
+                  "key": "X-Total-Count",
+                  "value": "7137"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"inter-ab12C345DeF6\",\n    \"body\": \"This is a test body\",\n    \"patient_id\": \"pat-123456\",\n    \"status\": \"draft\",\n    \"title\": \"Lab #123456\",\n    \"type\": \"partner\",\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  {\n    \"id\": \"inter-ab12C345DeF6\",\n    \"body\": \"This is a test body\",\n    \"patient_id\": \"pat-123456\",\n    \"status\": \"draft\",\n    \"title\": \"Lab #123456\",\n    \"type\": \"partner\",\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  {\n    \"id\": \"inter-ab12C345DeF6\",\n    \"body\": \"This is a test body\",\n    \"patient_id\": \"pat-123456\",\n    \"status\": \"draft\",\n    \"title\": \"Lab #123456\",\n    \"type\": \"partner\",\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "baaef608-f345-4d5c-a872-96a33084a07a",
+    "name": "Hint Health AccountAccessToken Interaction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

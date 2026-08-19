@@ -1,0 +1,141 @@
+{
+  "item": [
+    {
+      "id": "4d57a504-6790-426b-9332-a4b6a872c403",
+      "name": "CreditLine",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a714b29c-a19f-4aae-b3b8-ffb5b2a12daa",
+          "name": "List All Credit Lines",
+          "request": {
+            "name": "List All Credit Lines",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "credit_lines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "credit",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "credit_category",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05d837b8-aa9e-4158-8b85-be1d909b4cd9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "credit_lines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "credit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_category",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"cln-ab12C345DeF6\",\n    \"amount_in_cents\": -1000,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"transaction_date\": \"2017-02-05\",\n    \"type\": \"applied\",\n    \"credit\": {\n      \"id\": \"crd-ab12C345DeF6\"\n    },\n    \"invoice\": {\n      \"id\": \"inv-ab12C345DeF6\",\n      \"invoice_number\": 1,\n      \"type\": \"customer_invoice\",\n      \"owner\": {\n        \"id\": \"pat-ab12C345DeF6\",\n        \"type\": \"patient\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "38528ddc-ef07-479e-8613-9292c28e5fe9",
+    "name": "Hint Health AccountAccessToken CreditLine API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

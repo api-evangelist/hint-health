@@ -1,0 +1,539 @@
+{
+  "item": [
+    {
+      "id": "427b11f3-bcdc-4afc-a683-13055591d4bd",
+      "name": "Company",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bdd9818f-a0d1-45d7-abff-4cca520a29af",
+          "name": "Create Company",
+          "request": {
+            "name": "Create Company",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "companies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"default_plan\": {\n    \"id\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"phones\": [\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "330b086e-59b7-421a-8f62-762ec3940d31",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "companies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"default_plan\": {\n    \"id\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"phones\": [\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"com-ab12C345DeF6\",\n  \"employee_divisions_count\": 0,\n  \"name\": \"Schmoogle Inc.\",\n  \"status\": \"active\",\n  \"address\": {\n    \"id\": \"add-ab12C345DeF6\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"line1\": \"157 E Houston St\",\n    \"line2\": \"Suite 2402\",\n    \"state\": \"NY\",\n    \"zip\": \"10002\",\n    \"latitude\": 40.7227998,\n    \"longitude\": -73.9892241\n  },\n  \"default_location\": null,\n  \"default_plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"company\"\n  },\n  \"default_practitioner\": null,\n  \"phones\": [\n    {\n      \"number\": \"5553050005\",\n      \"type\": \"mobile\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e67dea7-17ae-4e11-b4af-73fb6424b15a",
+          "name": "List All Companies",
+          "request": {
+            "name": "List All Companies",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "companies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7782aa17-d6fd-4db3-8708-61b7120309bf",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "companies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"com-ab12C345DeF6\",\n    \"employee_divisions_count\": 0,\n    \"name\": \"Schmoogle Inc.\",\n    \"status\": \"active\",\n    \"address\": {\n      \"id\": \"add-ab12C345DeF6\",\n      \"city\": \"New York\",\n      \"country\": \"United States\",\n      \"line1\": \"157 E Houston St\",\n      \"line2\": \"Suite 2402\",\n      \"state\": \"NY\",\n      \"zip\": \"10002\",\n      \"latitude\": 40.7227998,\n      \"longitude\": -73.9892241\n    },\n    \"default_location\": null,\n    \"default_plan\": {\n      \"id\": \"pln-ab12C345DeF6\",\n      \"name\": \"Membership\",\n      \"plan_type\": \"company\"\n    },\n    \"default_practitioner\": null,\n    \"phones\": [\n      {\n        \"number\": \"5553050004\",\n        \"type\": \"mobile\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2eb898b8-a5c6-4f21-b96d-42c777e28701",
+          "name": "Deactivate Company",
+          "request": {
+            "name": "Deactivate Company",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "companies",
+                ":id",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Company ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5ef3114-930f-4041-b44a-8a76a2724a45",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "companies",
+                    ":id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Company ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"com-ab12C345DeF6\",\n  \"employee_divisions_count\": 0,\n  \"name\": \"Schmoogle Inc.\",\n  \"status\": \"active\",\n  \"address\": {\n    \"id\": \"add-ab12C345DeF6\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"line1\": \"157 E Houston St\",\n    \"line2\": \"Suite 2402\",\n    \"state\": \"NY\",\n    \"zip\": \"10002\",\n    \"latitude\": 40.7227998,\n    \"longitude\": -73.9892241\n  },\n  \"default_location\": null,\n  \"default_plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"company\"\n  },\n  \"default_practitioner\": null,\n  \"phones\": [\n    {\n      \"number\": \"5553050005\",\n      \"type\": \"mobile\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16334682-90a3-41ce-a0ff-f2cc65d13e43",
+          "name": "Show Company",
+          "request": {
+            "name": "Show Company",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "companies",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Company ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "623dbbf8-7e7e-491c-9a16-4a0dd23dd679",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "companies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Company ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"com-ab12C345DeF6\",\n  \"employee_divisions_count\": 0,\n  \"name\": \"Schmoogle Inc.\",\n  \"status\": \"active\",\n  \"address\": {\n    \"id\": \"add-ab12C345DeF6\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"line1\": \"157 E Houston St\",\n    \"line2\": \"Suite 2402\",\n    \"state\": \"NY\",\n    \"zip\": \"10002\",\n    \"latitude\": 40.7227998,\n    \"longitude\": -73.9892241\n  },\n  \"default_location\": null,\n  \"default_plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"company\"\n  },\n  \"default_practitioner\": null,\n  \"phones\": [\n    {\n      \"number\": \"5553050005\",\n      \"type\": \"mobile\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "630cf7cd-a5f5-4090-bca5-892942209915",
+          "name": "Update Company",
+          "request": {
+            "name": "Update Company",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "companies",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Company ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"phones\": [\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b7ffdd3-cd16-4e86-9e3b-be122a8015fe",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "companies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Company ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"phones\": [\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"com-ab12C345DeF6\",\n  \"employee_divisions_count\": 0,\n  \"name\": \"Schmoogle Inc.\",\n  \"status\": \"active\",\n  \"address\": {\n    \"id\": \"add-ab12C345DeF6\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"line1\": \"157 E Houston St\",\n    \"line2\": \"Suite 2402\",\n    \"state\": \"NY\",\n    \"zip\": \"10002\",\n    \"latitude\": 40.7227998,\n    \"longitude\": -73.9892241\n  },\n  \"default_location\": null,\n  \"default_plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"company\"\n  },\n  \"default_practitioner\": null,\n  \"phones\": [\n    {\n      \"number\": \"5553050005\",\n      \"type\": \"mobile\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9ed2c37d-71fc-418c-800e-0e9443b64c7b",
+    "name": "Hint Health AccountAccessToken Company API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

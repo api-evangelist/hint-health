@@ -1,0 +1,233 @@
+# Hint Health API Documentation
+
+> The Hint API allows partners, providers and employers to deeply integrate with our core technology infrastructure.
+
+## Guides
+- [Overview](https://developers.hint.com/docs/overview.md): Hint powers thousands of Direct Primary Care practices with software built to streamline operations and enable better patient care. This API enables you to build partner apps & integrations, and gives you programmatic access to the day to day workflows of these clinics - including patient enrollment, membership billing, practice configuration, clinical data management, and more.
+- [Hint MCP Server](https://developers.hint.com/docs/hint-mcp-server.md): Connect AI coding assistants to Hint’s public developer documentation using the Hint MCP server.
+- [Marketplace Overview](https://developers.hint.com/docs/marketplace.md): Build rock-solid integrations and embedded apps that practices can discover and install inside Hint.
+- [Join the Marketplace](https://developers.hint.com/docs/become-a-partner.md): We pride ourselves on running a predictable launch cadence for Hint Marketplace partners. When we move forward with a partnership, our team stays engaged through go-live to guarantee a smooth rollout for mutual customers.
+- [Building an Integration](https://developers.hint.com/docs/building-an-integration.md): Implementation steps for Integration Partners in the Hint Marketplace.
+- [Integration Activation](https://developers.hint.com/docs/integration-activation.md): How practices enable your integration and how partners exchange credentials.
+- [Downloading Interaction Files](https://developers.hint.com/docs/downloading-interaction-files.md): Request short-lived, single-use download URLs for an interaction's file attachments.
+- [Building an App](https://developers.hint.com/docs/building-an-app.md): Build an embedded app that runs inside Hint. Start with a minimal workflow, then add deeper surfaces and automation.
+- [JS SDK](https://developers.hint.com/docs/js-sdk.md): How to embed apps in the Hint UI
+- [Roles & Access Context](https://developers.hint.com/docs/roles-and-access-context.md): Understand the partner roles Hint assigns to each user, and handle Hint platform-support sessions correctly with access_context.
+- [App Best Practices](https://developers.hint.com/docs/app-best-practices.md)
+- [Colors & Typography](https://developers.hint.com/docs/design-system.md): Use this guide to keep Hint Marketplace apps visually consistent with the Hint UI.
+- [Localhost Mode](https://developers.hint.com/docs/localhost-mode.md): Route your product's handshake, app surfaces, activation redirect, and webhooks to a server on your own machine. No tunnel, no hosted dev server.
+- [Managing Your Listing](https://developers.hint.com/docs/managing-your-listing.md): How the pieces of a marketplace listing fit together under the /api/partner surface.
+- [Partner Asset Guidelines](https://developers.hint.com/docs/partner-asset-guidelines.md): To ensure your integration looks great across the Hint Marketplace, please provide the following visual assets. These assets may be used across various product and branding contexts, now and in the future.
+- [Requesting a Sandbox and API Access](https://developers.hint.com/docs/requesting-a-sandbox-and-api-access.md)
+- [Setting up your Sandbox Account & API Keys](https://developers.hint.com/docs/setting-up-your-sandbox-account-api-keys.md)
+- [Creating A Custom Signup Page](https://developers.hint.com/docs/creating-a-custom-signup-page.md): How to orchestrate plans, patients, memberships, and payments outside Hint’s hosted signup form.
+- [Creating Charges and Invoices](https://developers.hint.com/docs/creating-charges-and-invoices.md): Route partner-supplied charges through Hint’s pricing engine and collect invoices confidently.
+- [Recurring Appointments](https://developers.hint.com/docs/recurring-appointments.md): How Hint represents recurring appointments in the public API, and why occurrences of the same series can show different statuses - or more than one entry for the same date.
+- [Collecting payment information (Hint Payments)](https://developers.hint.com/docs/collecting-payment-information-hint-payments.md): Use Rainforest’s Payment Component with Hint’s setup endpoint to collect cards and ACH safely.
+- [Collecting payment information (Stripe)](https://developers.hint.com/docs/collecting-payment-information-using-stripes-financial-connections.md): If you are using Hint Payments, please refer to that guide.
+
+## API Reference
+- [Making Requests](https://developers.hint.com/reference/making-requests.md): Authentication, Pagination, Rate Limits, Headers
+- [Webhooks](https://developers.hint.com/reference/webhooks.md): Event delivery, payload format, retries, signature validation
+- [Shared Objects](https://developers.hint.com/reference/shared-objects.md): Common object structures embedded across multiple API resources
+- [List All Patients](https://developers.hint.com/reference/patientlistallpatients-1.md): **Note:** Archived patients are excluded from responses by default. Use `filter=archived` to return only archived patients.
+- [Create Patient](https://developers.hint.com/reference/patientcreatepatient-1.md)
+- [Match Patients](https://developers.hint.com/reference/patientmatchpatients-1.md)
+- [Show Patient](https://developers.hint.com/reference/patientshowpatient-1.md): **Membership Status Options:** unconfirmed, pending, active, unpaid, inactive, archived
+- [Update Patient](https://developers.hint.com/reference/patientupdatepatient-1.md)
+- [Delete Patient](https://developers.hint.com/reference/patientdeletepatient-1.md)
+- [Show Social Security Number](https://developers.hint.com/reference/socialsecuritynumbershowsocialsecuritynumber-1.md)
+- [List all IntegrationRecords for a Patient](https://developers.hint.com/reference/integrationrecordlistallintegrationrecords-1.md)
+- [Show Patient Affiliate](https://developers.hint.com/reference/affiliateshowpatientaffiliate.md): Returns `null` when the patient has no assigned affiliate.
+- [List All Form Responses](https://developers.hint.com/reference/formresponselistallformresponses-1.md)
+- [Show Form Response](https://developers.hint.com/reference/formresponseshowformresponse-1.md)
+- [List All Coupons](https://developers.hint.com/reference/couponlistallcoupons-1.md)
+- [Show Coupon](https://developers.hint.com/reference/couponshowcoupon-1.md)
+- [List All CancellationReasons](https://developers.hint.com/reference/cancellationreasonlistcancellationreasons-1.md)
+- [List All Lead Sources](https://developers.hint.com/reference/leadsourceleadsources-1.md)
+- [Create LeadSource](https://developers.hint.com/reference/leadsourceleadsource-1.md)
+- [Update Lead Source](https://developers.hint.com/reference/leadsourceupdateleadsource-1.md)
+- [Delete Lead Source](https://developers.hint.com/reference/leadsourcedeleteleadsource-1.md)
+- [List All Memberships](https://developers.hint.com/reference/membershiplistallmemberships-1.md)
+- [Create Membership](https://developers.hint.com/reference/membershipcreatemembership-1.md)
+- [New Membership](https://developers.hint.com/reference/membershipnewmembership-1.md): Builds a default membership
+- [Show Membership](https://developers.hint.com/reference/membershipshowmembership-1.md): **Status Options:** pending, unconfirmed, active, unpaid, ended **Enrollment Status Options:** pending, unconfirmed, active, inactive
+- [Update Membership](https://developers.hint.com/reference/membershipupdatemembership-1.md)
+- [Delete Membership](https://developers.hint.com/reference/membershipdeletemembership-1.md)
+- [Bill Membership](https://developers.hint.com/reference/membershipbillmembership-1.md)
+- [Cancel Membership](https://developers.hint.com/reference/membershipcancelmembership-1.md)
+- [Confirm Membership](https://developers.hint.com/reference/membershipconfirmmembership.md)
+- [List All MembershipMembers](https://developers.hint.com/reference/membershipmemberlistmembershipmembers-1.md)
+- [Create MembershipMember](https://developers.hint.com/reference/membershipmembercreatemembershipmember-1.md)
+- [Show MembershipMember](https://developers.hint.com/reference/membershipmembershowmembershipmember-1.md)
+- [Update Member](https://developers.hint.com/reference/membershipmemberupdatemembershipmember-1.md)
+- [Destroy MembershipMember](https://developers.hint.com/reference/membershipmemberdestroymembershipmember-1.md)
+- [Cancel MembershipMember](https://developers.hint.com/reference/membershipmembercancelmembershipmember-1.md)
+- [List all Membership Contracts](https://developers.hint.com/reference/membershipcontractlistallmembershipcontracts-1.md)
+- [Renew Membership Contract](https://developers.hint.com/reference/membershipcontractrenewmembershipcontract-1.md)
+- [Update Membership Contract](https://developers.hint.com/reference/membershipcontractupdatemembershipcontract-1.md)
+- [List All Plans](https://developers.hint.com/reference/planlistallplans-1.md)
+- [Create Quote](https://developers.hint.com/reference/quotecreatequote-1.md)
+- [List All Payment Methods](https://developers.hint.com/reference/paymentmethodlistallpaymentmethods-1.md)
+- [Create Payment Method](https://developers.hint.com/reference/paymentmethodcreatepaymentmethod-1.md): Exactly one of `rainforest_id` or `stripe_id` must be provided. Practices on Hint Payments (Rainforest) submit a `rainforest_id`; practices on Stripe submit a `stripe_id`.
+- [Create Setup Intent](https://developers.hint.com/reference/paymentmethodcreatesetupintent-1.md): The response shape depends on the practice's payment processor (`payment_processor` in the response): - When `rainforest`: `payment_method_config_id`, `session_key`, and `allowed_methods` are returned. - When `stripe`: `stripe_client_secret` is returned instead. The example below shows the `rainforest` variant.
+- [Show Payment Method](https://developers.hint.com/reference/paymentmethodshowpaymentmethod-1.md)
+- [Delete Payment Method](https://developers.hint.com/reference/paymentmethoddeletepaymentmethod-1.md)
+- [List All Charge Items](https://developers.hint.com/reference/chargeitemlistallchargeitems-1.md): Charges will only include the 'quantity_in_stock' if their charge item is configured to track inventory
+- [Create Charge Item](https://developers.hint.com/reference/chargeitemcreatechargeitem-1.md)
+- [Show Charge Item](https://developers.hint.com/reference/chargeitemshowchargeitem-1.md): Charge will only include the 'quantity_in_stock' if its charge item is configured to track inventory.
+- [Update Charge Item](https://developers.hint.com/reference/chargeitemupdatechargeitem-1.md)
+- [Delete Charge Item](https://developers.hint.com/reference/chargeitemdeletechargeitem-1.md)
+- [Create Charge](https://developers.hint.com/reference/chargecreatecharge-1.md)
+- [List All Credit Categories](https://developers.hint.com/reference/creditcategorylistcreditcategories-1.md)
+- [Create Credit Category](https://developers.hint.com/reference/creditcategorycreatecreditcategory-1.md)
+- [Show Credit Category](https://developers.hint.com/reference/creditcategoryshowcreditcategory-1.md)
+- [Update Credit Category](https://developers.hint.com/reference/creditcategoryupdatecreditcategory-1.md)
+- [Delete Credit Category](https://developers.hint.com/reference/creditcategorydeletecreditcategory-1.md)
+- [List All Customer Invoices](https://developers.hint.com/reference/customerinvoicelistallcustomerinvoices-1.md)
+- [Create Customer Invoice](https://developers.hint.com/reference/customerinvoicecreatecustomerinvoice-1.md)
+- [Generate PDF for Customer Invoice](https://developers.hint.com/reference/customerinvoicecreatepdf-1.md): ## Usage Instructions and Security Best Practices  - **Link Expiration:** Links expire after 15 minutes.  - **Authenticate Users:** Only generate pdf links for authenticated users.  - **On-Demand Links:** Generate the link only when a user requests to view or download a pdf.  - **New Windows/Tabs:** Automatically redirect users to the URL provided, instead of showing them the link  directly.  - **Avoid Caching:** Do not cache or store pdf links in your application.  - **Avoid Email Transmission:** Never send pdf links via email due to link expiry and security concerns. ## Example Workflow  1. **Request Access:** User logs into your system and requests to view a pdf.  2. **Generate Link:** Your system makes a POST request to the pdf endpoint.  3. **Provide Link:** Your application receives the URL and automatically redirects the user to the URL in a new  window or tab.
+- [Show Customer Invoice](https://developers.hint.com/reference/customerinvoiceshowcustomerinvoice-1.md): **Status Options:** draft, issued, sent, cancelled, retrying, bad_debt, paid, disputed **Human Status Options:** draft, issued, sent, cancelled, bank_not_verified, needs_payment_info, retrying, bad_debt, paid, disputed
+- [Update Customer Invoice](https://developers.hint.com/reference/customerinvoiceupdatecustomerinvoice-1.md)
+- [Delete Customer Invoice](https://developers.hint.com/reference/customerinvoicedeletecustomerinvoice-1.md)
+- [Issue Customer Invoice](https://developers.hint.com/reference/customerinvoiceissuecustomerinvoice-1.md)
+- [Return Customer Invoice To Draft](https://developers.hint.com/reference/customerinvoicereturntodraft-1.md): Return to draft removes the financial information including revenue from all reports. This action is not possible if the invoice is in a locked reporting period or has any payments.
+- [Void Customer Invoice](https://developers.hint.com/reference/customerinvoicevoidcustomerinvoice-1.md)
+- [Email Customer Invoice](https://developers.hint.com/reference/customerinvoicesendcustomerinvoiceemail.md): Emails the customer invoice to its owner (the patient), the same email a provider can send from the invoice screen in Hint. Use this to deliver an API-generated invoice to the patient. Returns a 422 with a descriptive error when the email can't be sent — for example, the owner has no email address on file, the address is invalid, or it previously bounced.
+- [Create CustomerInvoiceCharge](https://developers.hint.com/reference/customerinvoicechargecreatecustomerinvoicecharge-1.md)
+- [Update CustomerInvoiceCharge](https://developers.hint.com/reference/customerinvoicechargeupdatecustomerinvoicecharge-1.md)
+- [Delete CustomerInvoiceCharge](https://developers.hint.com/reference/customerinvoicechargedeletecustomerinvoicecharge-1.md)
+- [List All Payments](https://developers.hint.com/reference/customerinvoicepaymentlistallpayments-1.md)
+- [Create Payment](https://developers.hint.com/reference/customerinvoicepaymentcreatepayment-1.md)
+- [Show Payment](https://developers.hint.com/reference/customerinvoicepaymentshowpayment-1.md)
+- [List All Credits](https://developers.hint.com/reference/creditlistallcredits-1.md)
+- [Create Credit](https://developers.hint.com/reference/creditcreatecredit-1.md)
+- [Update Credit](https://developers.hint.com/reference/creditupdatecredit-1.md)
+- [Create Clinical Note Interaction](https://developers.hint.com/reference/clinicalnoteinteractioncreateclinicalnoteinteraction.md)
+- [Show Clinical Note Interaction](https://developers.hint.com/reference/clinicalnoteinteractionshowclinicalnoteinteraction.md)
+- [Update Clinical Note Interaction](https://developers.hint.com/reference/clinicalnoteinteractionupdateclinicalnoteinteraction.md)
+- [Create Document Interaction](https://developers.hint.com/reference/documentinteractioncreatedocumentinteraction.md)
+- [Show Document Interaction](https://developers.hint.com/reference/documentinteractionshowdocumentinteraction.md)
+- [Update Interaction](https://developers.hint.com/reference/documentinteractionupdatedocumentinteraction.md)
+- [Create Partner Interaction](https://developers.hint.com/reference/partnerinteractioncreatepartnerinteraction.md)
+- [Show Partner Interaction](https://developers.hint.com/reference/partnerinteractionshowpartnerinteraction.md)
+- [Update Partner Interaction](https://developers.hint.com/reference/partnerinteractionupdatepartnerinteraction.md)
+- [Create Lab Interaction](https://developers.hint.com/reference/labinteractioncreatelabinteraction.md)
+- [Show Lab Interaction](https://developers.hint.com/reference/labinteractionshowlabinteraction.md)
+- [Update Lab Interaction](https://developers.hint.com/reference/labinteractionupdatelabinteraction.md)
+- [List Patient Supplements](https://developers.hint.com/reference/supplementslistallpatientsupplements.md)
+- [Create Patient Supplement](https://developers.hint.com/reference/supplementscreatesupplement.md)
+- [Show Patient Supplement](https://developers.hint.com/reference/supplementsshowsupplement.md)
+- [Update Patient Supplement](https://developers.hint.com/reference/supplementsupdatesupplement.md)
+- [Delete Patient Supplement](https://developers.hint.com/reference/supplementsdeletesupplement.md)
+- [List All Appointments](https://developers.hint.com/reference/appointmentlistallappointments.md): Declined appointments are not returned by this endpoint. Recurring appointments are stored once and expanded into one appointment object per occurrence that falls within `start_date`/`end_date`. Occurrences that haven't been individually modified share the base appointment's `id`; once an occurrence's status is changed (for example, checking a patient in), it's returned as its own appointment with a new `id` and a `recurring_appointment_id` pointing back to the original recurring appointment. See [Recurring Appointments](doc:recurring-appointments) for details, including what happens when a series is edited after an occurrence has already split off.
+- [List All Appointment Types](https://developers.hint.com/reference/appointmentlistallappointmenttypes.md): Returns the practice's active appointment types. Inactive, archived, and deleted appointment types are excluded. As a result, an appointment's `appointment_type_id` may reference a type that no longer appears in this list (for example, one archived after the appointment was booked). Treat an unfamiliar `appointment_type_id` as an unknown/retired type rather than an error.
+- [List All Interactions](https://developers.hint.com/reference/interactionlistallinteractions.md)
+- [Create Interaction Notification](https://developers.hint.com/reference/interactionnotificationscreateinteractionnotification.md)
+- [List All Locations](https://developers.hint.com/reference/locationlistlocations-1.md)
+- [Create Location](https://developers.hint.com/reference/locationcreatelocation-1.md)
+- [Show Location](https://developers.hint.com/reference/locationshowlocation-1.md)
+- [Update Location](https://developers.hint.com/reference/locationupdatelocation-1.md)
+- [Delete Location](https://developers.hint.com/reference/locationdeletelocation-1.md)
+- [Get Practice](https://developers.hint.com/reference/practicegetpractice-1.md)
+- [Update Practice](https://developers.hint.com/reference/practiceupdatepractice-1.md)
+- [List All Practitioners](https://developers.hint.com/reference/practitionerproviderpractitioners-1.md)
+- [Create Practitioner](https://developers.hint.com/reference/practitionercreatepractitioner-1.md)
+- [Show Practitioner](https://developers.hint.com/reference/practitionershowpractitioner-1.md)
+- [Update Practitioner](https://developers.hint.com/reference/practitionerupdatepractitioner-1.md)
+- [Delete Practitioner](https://developers.hint.com/reference/practitionerdeletepractitioner-1.md)
+- [List Users](https://developers.hint.com/reference/userlistusers.md)
+- [List All Companies](https://developers.hint.com/reference/companylistallcompanies-1.md)
+- [Create Company](https://developers.hint.com/reference/companycreatecompany-1.md)
+- [Show Company](https://developers.hint.com/reference/companyshowcompany-1.md)
+- [Update Company](https://developers.hint.com/reference/companyupdatecompany-1.md)
+- [Deactivate Company](https://developers.hint.com/reference/companydeactivatecompany-1.md)
+- [List All Employee Divisions](https://developers.hint.com/reference/employeedivisionlistallemployeedivisions-1.md)
+- [List All Company Plans](https://developers.hint.com/reference/companyplanlistcompanyplans-1.md)
+- [Create Company Plan](https://developers.hint.com/reference/companyplancreatecompanyplan-1.md)
+- [Update Company Plan](https://developers.hint.com/reference/companyplanupdatecompanyplan-1.md)
+- [Destroy CompanyPlan](https://developers.hint.com/reference/companyplandestroycompanyplan-1.md)
+- [List All Invoices](https://developers.hint.com/reference/invoicelistallinvoices-1.md)
+- [Show Invoice](https://developers.hint.com/reference/invoiceshowinvoice-1.md)
+- [List All Payments](https://developers.hint.com/reference/invoicepaymentlistallpayments-1.md)
+- [Create Payment](https://developers.hint.com/reference/invoicepaymentcreatepayment-1.md)
+- [Show Payment](https://developers.hint.com/reference/invoicepaymentshowpayment-1.md)
+- [List All Sponsorhips](https://developers.hint.com/reference/sponsorshiplistsponsorships-1.md)
+- [Create Sponsorship](https://developers.hint.com/reference/sponsorshipcreatesponsorship-1.md)
+- [Show Sponsorship](https://developers.hint.com/reference/sponsorshipshowsponsorhip-1.md)
+- [Update Sponsorship](https://developers.hint.com/reference/sponsorshipupdatesponsorship-1.md)
+- [Destroy Sponsorship](https://developers.hint.com/reference/sponsorshipdestroysponsorship-1.md): If the subscriber is destroyed all dependents will be destroyed.
+- [List All Affiliate Bills](https://developers.hint.com/reference/affiliatebilllistaffiliatebills-1.md)
+- [Assign patient to an affiliation](https://developers.hint.com/reference/affiliatepatientcreateaffiliatepatient-1.md)
+- [Remove patient from an affiliation](https://developers.hint.com/reference/affiliatepatientdestroyaffiliatepatient-1.md)
+- [List All Affiliates](https://developers.hint.com/reference/affiliatelistaffiliates-1.md)
+- [List All Signup Attempts](https://developers.hint.com/reference/signupattemptlistsignupattempts-1.md)
+- [Show Signup Attempt](https://developers.hint.com/reference/signupattemptshowsignupattempt-1.md)
+- [List All Credit Lines](https://developers.hint.com/reference/creditlinelistcreditlines-1.md)
+- [List API Keys](https://developers.hint.com/reference/apikeylistapikeys.md)
+- [Create API Key](https://developers.hint.com/reference/apikeycreateapikey.md): The full `token` value is only returned in this response. Store it securely — it cannot be retrieved later.
+- [Show Partner](https://developers.hint.com/reference/partnershowpartner-1.md)
+- [Update Partner](https://developers.hint.com/reference/partnerupdatepartner-1.md)
+- [List Partner Backends](https://developers.hint.com/reference/backendlistbackends.md): Each backend owns its own webhook delivery, OAuth config, and product catalog.
+- [Show Partner Backend](https://developers.hint.com/reference/backendshowbackend.md)
+- [Update Partner Backend](https://developers.hint.com/reference/backendupdatebackend.md)
+- [Deactivate Installation](https://developers.hint.com/reference/installationdeactivateinstallation.md): Deactivates the installation. The practice's other installations are not affected.
+- [Activate Installation](https://developers.hint.com/reference/installationactivateinstallation.md): Activates a pending installation. The practice must have activated the connection first; the connection is activated as part of this call if it is not already active.
+- [Connect Installation](https://developers.hint.com/reference/installationconnectinstallation.md): Exchanges the authorization code issued when the practice installed the product and returns the installation with the API credentials the practice's app uses to authenticate its requests.
+- [List Installations](https://developers.hint.com/reference/installationlistinstallations.md): Returns the partner's installations — one per (product × practice connection). Each row carries the connected practice and product and survives the install/uninstall cycle (deactivated installs are returned too).
+- [Show Installation](https://developers.hint.com/reference/installationshowinstallation.md): Returns a single installation by id. Deactivated installations are also returned — uninstall is reactivation-shaped, so a partner can inspect the durable per-product install row across the install/uninstall cycle.
+- [List Installation Webhook Endpoints](https://developers.hint.com/reference/installationwebhookendpointslistwebhookendpoints.md): Lists the webhook endpoints registered on this installation's practice connection. Endpoints are connection-scoped, so installs of the same practice's products share them.
+- [Create Installation Webhook Endpoint](https://developers.hint.com/reference/installationwebhookendpointscreatewebhookendpoint.md)
+- [Update Installation Webhook Endpoint](https://developers.hint.com/reference/installationwebhookendpointsupdatewebhookendpoint.md)
+- [Delete Installation Webhook Endpoint](https://developers.hint.com/reference/installationwebhookendpointsdeletewebhookendpoint.md)
+- [List Installation API Keys](https://developers.hint.com/reference/installationapikeyslistapikeys.md): Lists the API keys for this installation's practice connection. Keys are connection-scoped, so installs of the same practice's products share them.
+- [Create Installation API Key](https://developers.hint.com/reference/installationapikeyscreateapikey.md): The full `token` value is only returned in this response. Store it securely — it cannot be retrieved later.
+- [Update Installation API Key](https://developers.hint.com/reference/installationapikeysupdateapikey.md)
+- [Delete Installation API Key](https://developers.hint.com/reference/installationapikeysdeleteapikey.md)
+- [List Products](https://developers.hint.com/reference/productlistproducts.md)
+- [Create Product](https://developers.hint.com/reference/productcreateproduct.md)
+- [Get Product](https://developers.hint.com/reference/productgetproduct.md)
+- [Update Product](https://developers.hint.com/reference/productupdateproduct.md)
+- [Destroy Product](https://developers.hint.com/reference/productdestroyproduct.md)
+- [Request Product Review](https://developers.hint.com/reference/productrequestproductreview.md)
+- [List Available Product Categories](https://developers.hint.com/reference/productcategorylistavailableproductcategories.md): Flat list of all marketplace categories currently in use. Useful for partners picking which categories to attach to their product — pick from this list to align with existing marketplace browse, or supply a new name to introduce one.
+- [List Product Categories](https://developers.hint.com/reference/productcategorylistproductcategories.md)
+- [Attach Product Category](https://developers.hint.com/reference/productcategoryattachproductcategory.md): Attach a category to the product, either by `category_id` (an existing category from `GET /partner/products/categories`) or by `name`. A name must match an existing category — partners cannot mint new category names. If the category you need isn't listed, contact devsupport@hint.com.
+- [Detach Product Category](https://developers.hint.com/reference/productcategorydetachproductcategory.md): Detach the category from the product. The category itself is preserved (other products may still be using it).
+- [List Product Testimonials](https://developers.hint.com/reference/testimoniallistproducttestimonials.md)
+- [Create Product Testimonial](https://developers.hint.com/reference/testimonialcreateproducttestimonial.md)
+- [Update Product Testimonial](https://developers.hint.com/reference/testimonialupdateproducttestimonial.md)
+- [Destroy Product Testimonial](https://developers.hint.com/reference/testimonialdestroyproducttestimonial.md)
+- [List Product Links](https://developers.hint.com/reference/partnerproductlinklistproductlinks.md)
+- [Create Product Link](https://developers.hint.com/reference/partnerproductlinkcreateproductlink.md)
+- [Update Product Link](https://developers.hint.com/reference/partnerproductlinkupdateproductlink.md)
+- [Destroy Product Link](https://developers.hint.com/reference/partnerproductlinkdestroyproductlink.md)
+- [List Product Highlights](https://developers.hint.com/reference/partnerproducthighlightlistproducthighlights.md)
+- [Create Product Highlight](https://developers.hint.com/reference/partnerproducthighlightcreateproducthighlight.md)
+- [Update Product Highlight](https://developers.hint.com/reference/partnerproducthighlightupdateproducthighlight.md)
+- [Destroy Product Highlight](https://developers.hint.com/reference/partnerproducthighlightdestroyproducthighlight.md)
+- [Get Product Overview](https://developers.hint.com/reference/partnerproductoverviewgetproductoverview.md)
+- [Update Product Overview](https://developers.hint.com/reference/partnerproductoverviewupdateproductoverview.md)
+- [List Product Preconditions](https://developers.hint.com/reference/partnerproductpreconditionlistproductpreconditions.md)
+- [Create Product Precondition](https://developers.hint.com/reference/partnerproductpreconditioncreateproductprecondition.md)
+- [Update Product Precondition](https://developers.hint.com/reference/partnerproductpreconditionupdateproductprecondition.md)
+- [Destroy Product Precondition](https://developers.hint.com/reference/partnerproductpreconditiondestroyproductprecondition.md)
+- [Create App Surface](https://developers.hint.com/reference/appsurfacecreateproductappsurface.md)
+- [Update App Surface](https://developers.hint.com/reference/appsurfaceupdateproductappsurface.md)
+- [Delete App Surface](https://developers.hint.com/reference/appsurfacedeleteproductappsurface.md)
+- [Get App](https://developers.hint.com/reference/appgetproductapp.md)
+- [Update App](https://developers.hint.com/reference/appupdateproductapp.md)
+- [Create App](https://developers.hint.com/reference/appcreateproductapp.md)
+- [List Webhook Event Types](https://developers.hint.com/reference/webhookeventlistwebhookevents.md): Returns the canonical list of event types delivered to partner webhook endpoints — every string is a `resource.action` pair (e.g. `patient.created`, `customer_invoice.paid`, `membership.updated`). Use this list to type-check incoming webhook payloads against the platform's current event registry. Today there is no per-endpoint subscription filter — once a webhook endpoint is registered (`POST /partner/webhook_endpoints`), it receives the full set of events emitted for the partner's connected practices. Implementations should ignore unknown event types; new resource/action pairs may be added without a version bump.
+- [List Webhook Endpoints](https://developers.hint.com/reference/webhookendpointlistwebhookendpoints.md)
+- [Create Webhook Endpoint](https://developers.hint.com/reference/webhookendpointcreatewebhookendpoint-1.md): Registers a URL to receive events for every integration tied to this partner. There is no per-endpoint event filter — a registered endpoint receives the full set of events the partner's integrations emit. Each event is delivered as `POST <webhook_url>` with a JSON body shaped like: ```json {   "id":          "evt-...",   "type":        "patient.created",   "practice_id": "prc-...",   "created_at":  "2026-05-26T14:23:00.000Z",   "object":      { ...full resource snapshot... } } ``` The `object` field carries the resource snapshot; its shape matches the corresponding `GET /api/provider/<resource>/:id` response. Each request carries an `X-Hint-Signature: sha256=<hmac>` header — HMAC-SHA256 of the raw request body, keyed by the partner's webhook signature key (Partner Portal → API Keys → Webhooks Signature Key, mirrored to the `HINT_WEBHOOK_SECRET` env var on Hosted Mode deploys). Endpoints should compute the expected signature themselves and reject requests whose signature doesn't match. **Discover the current event-type list at `GET /partner/webhook_events`** — it returns the live set of `resource.action` strings derived from the platform's `IntegrationEvent` registry. Implementations should ignore unknown event types; new resource/action pairs may be added without a version bump.
+- [Update Webhook Endpoint](https://developers.hint.com/reference/webhookendpointupdatewebhookendpoint-1.md)
+- [Delete Webhook Endpoint](https://developers.hint.com/reference/webhookendpointdeletewebhookendpoint-1.md)
+- [List Webhook Requests](https://developers.hint.com/reference/webhookrequestlistwebhookrequests.md)
+- [List All Affiliate Ancillary Charges](https://developers.hint.com/reference/affiliateancillarychargelistaffiliateancillarycharges.md): Returns the network's ancillary charges aggregated across every affiliate, newest first. Supports pagination through `limit` (default 10, min 1, max 100) and `offset` (default 0, min 0). Sortable attributes are `created_at`, `status`, `sponsor` and `affiliate_practice`, ascending as `sort=attribute` and descending as `sort=-attribute`.
+- [List Interaction File Download URLs](https://developers.hint.com/reference/interactionlistinteractionfiledownloadurls.md): Returns a short-lived, single-use download URL for every file attached to the interaction. Only PDFs are downloadable; other file types are listed with a null url. The URLs cannot be saved and refetched later.
+- [Get Interaction File Download URL](https://developers.hint.com/reference/interactiongetinteractionfiledownloadurl.md): Returns a short-lived, single-use download URL for one file on the interaction, addressed by its id. Responds 404 when the id does not match a file on the interaction, and 422 when the file is not a PDF.
+- [List All Partner Charges](https://developers.hint.com/reference/partnerchargelistallpartnercharges.md)
+- [Create Partner Charge](https://developers.hint.com/reference/partnerchargecreatepartnercharge.md): **Workflows:** Charging a patient: Set the payer to the be the patient. Charging a patient: Set the payer to the be practice.
+- [Show Partner Charge](https://developers.hint.com/reference/partnerchargeshowpartnercharge.md)
+- [Create Patient Portal access token](https://developers.hint.com/reference/accountaccesstokencreateacccesstoken-1.md): ## Usage Instructions and Security Best Practices  - **Authenticate Patients:** Only generate access tokens for patients that your system has already authenticated.  - **On-Demand Links:** Generate the access token only when a patient requests to view their data.  - **New Windows/Tabs:** Automatically redirect patients to the URL provided, instead of showing them the link directly.  - **Avoid Caching:** Do not cache or store access tokens in your application.  - **Do Not Display Directly:** Avoid displaying the access tokens directly in your application.  - **Avoid Email Transmission:** Never send access tokens via email due to token expiry and security concerns. ## Example Workflow  1. **Request Access:** Patient logs into your system and requests to view their Hint Health data.  2. **Generate Token:** Your system makes a POST request to the Access Tokens endpoint.  3. **Provide Link:** Your application receives the URL and automatically redirects the patient to the URL in a new window or tab.

@@ -1,38 +1,97 @@
+generated: '2026-08-14'
+method: searched
+source: https://developers.hint.com/reference/making-requests
 name: Hint Health API Rate Limits
-description: Rate limiting information for the Hint Health REST API. The API documentation references rate limits in the Making Requests section; specific numeric thresholds are not publicly disclosed and may vary by plan and partner tier.
-url: https://developers.hint.com/docs/overview
+description: >-
+  Hint publishes hard, numeric default rate limits for partner API access —
+  20 requests per second and 500,000 requests per day, applied per partner
+  across every API key an integration holds. It returns no rate-limit response
+  headers of any kind, which is the operative fact for an agent: the numbers are
+  knowable at design time and invisible at runtime.
+url: https://developers.hint.com/reference/making-requests
 created: 2026-06-13
-modified: 2026-06-13
+modified: 2026-08-14
+limit_count: 2
 
-notes:
-  - Hint Health's developer documentation references pagination and rate limits in the "Making Requests" section but does not publicly disclose specific numeric thresholds.
-  - Rate limits may differ between Practice API access tokens and Partner API keys.
-  - Core Enterprise plan includes "Unlimited API access," implying lower-tier plans (Core Growth, Core Scale with API add-on) have defined limits.
-  - Contact Hint Health at developers.hint.com or via the partner program for plan-specific rate limit details.
+limits:
+  - name: Requests per second
+    scope: per-partner
+    window: 1s
+    limit: 20
+    burst: not documented
+    note: >-
+      Applies per partner across every API key the integration uses. Issuing
+      additional keys does NOT increase available throughput.
+  - name: Requests per day
+    scope: per-partner
+    window: 1d
+    limit: 500000
+    reset: '00:00 UTC'
+    note: >-
+      Once exhausted, all further requests return 429 until the daily reset at
+      00:00 UTC. Hint will clear the counter early on request to devsupport@hint.com.
+
+endpoint_specific:
+  documented: partial
+  note: >-
+    Hint states some endpoints enforce their own, stricter limits in addition to
+    the defaults, but does not publish which endpoints or what those limits are;
+    partners are asked to contact devsupport@hint.com for a specific endpoint.
+
+response_headers:
+  present: false
+  ratelimit_headers: none
+  retry_after: false
+  detail: >-
+    Hint states plainly that rate-limit responses "do not include a Retry-After
+    header, or any header reporting your remaining quota or reset time," and
+    directs clients to retry with exponential backoff and jitter. No
+    RateLimit-Limit / RateLimit-Remaining / RateLimit-Reset (RFC 9239-style) and
+    no X-RateLimit-* equivalents are emitted.
+
+exhaustion:
+  status_code: 429
+  status_text: Too Many Requests
+  body: |
+    {
+      "status": 429,
+      "message": "Enhance your calm"
+    }
+  related_status: >-
+    Security anomalies may separately return 403 Forbidden rather than 429.
+
+pagination_headers:
+  note: >-
+    Hint DOES return list-metadata headers (x-count, x-total-count) — these are
+    pagination signals, not rate-limit signals. See
+    conventions/hint-health-conventions.yml.
+
+raising_limits:
+  process: >-
+    The per-second and per-day limits can be raised per integration. Hint asks
+    partners to contact devsupport@hint.com with expected request volume — for
+    example a large initial data sync or a high-volume production workload — and
+    will set a custom limit.
+  contact: devsupport@hint.com
+
+change_policy: >-
+  Hint reserves the right to modify rate limits without prior notice based on
+  performance, usage, or abuse prevention, with "reasonable efforts" to notify
+  affected integrations.
 
 environments:
-  - name: Production
-    description: Live environment with practice-specific access tokens and real patient data. PHI access requires compliance-managed token rotation.
-    url: https://developers.hint.com/docs/overview
-    rateLimit: Not publicly disclosed
+  - name: Production Live
+    baseURL: https://api.hint.com
+    limits: 20/s, 500,000/day per partner
+  - name: Production Sandbox
+    baseURL: https://api.sandbox.hint.com
+    limits: not separately documented
+    note: Partner portal login at app.hint.com
+  - name: Staging Sandbox
+    baseURL: https://api.staging.hint.com
+    limits: not separately documented
+    note: Partner portal login at app.staging.hint.com
 
-  - name: Sandbox
-    description: Testing environment with separate credentials from production. Used for development and integration testing without affecting live practice data.
-    url: https://developers.hint.com/docs/overview
-    rateLimit: Not publicly disclosed
-
-pagination:
-  description: The API supports pagination for list endpoints. Specific pagination parameters (page size, cursor style) are documented in the Making Requests section of the developer portal.
-  url: https://developers.hint.com/docs/overview
-
-authentication:
-  type: Bearer Token
-  description: All requests use HTTPS with Bearer tokens. Practice resources use practice-specific access tokens; partner resources use Partner API keys. OAuth token exchange is supported via /api/oauth/* endpoints.
-
-headers:
-  description: Required request headers are documented in the Making Requests section of the developer portal.
-  url: https://developers.hint.com/docs/overview
-
-contact:
-  description: For rate limit specifics and partner API access inquiries, contact the Hint Health developer team through the developer portal.
-  url: https://www.hint.com/developers
+guidance:
+  - For bulk operations, throttle requests and schedule during off-hours.
+  - Retry 429s with exponential backoff and jitter — there is no server-provided delay to honour.

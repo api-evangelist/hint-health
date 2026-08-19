@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken GlobalWebhookEndpoint API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GlobalWebhookEndpoint",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Webhook Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/global_webhook_endpoints"
+          },
+          "docs": "List All Webhook Endpoints"
+        },
+        {
+          "info": {
+            "name": "Create Webhook Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/global_webhook_endpoints",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Webhook Endpoint"
+        },
+        {
+          "info": {
+            "name": "Show Webhook Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/global_webhook_endpoints/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Global Webhook Endpoint ID"
+              }
+            ]
+          },
+          "docs": "Show Webhook Endpoint"
+        },
+        {
+          "info": {
+            "name": "Update Webhook Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/global_webhook_endpoints/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Global Webhook Endpoint ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Webhook Endpoint"
+        },
+        {
+          "info": {
+            "name": "Delete Webhook Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/global_webhook_endpoints/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Global Webhook Endpoint ID"
+              }
+            ]
+          },
+          "docs": "This operation will take effect immediately and cancel all pending and retrying webhooks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

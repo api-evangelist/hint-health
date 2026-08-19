@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Practice API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Practice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Practice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/practice"
+          },
+          "docs": "Get Practice"
+        },
+        {
+          "info": {
+            "name": "Update Practice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/practice",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Practice"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

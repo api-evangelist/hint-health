@@ -1,0 +1,421 @@
+{
+  "item": [
+    {
+      "id": "a4b1db9b-16f6-4945-a96c-41bfb59bcb95",
+      "name": "DocumentInteraction",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8e899b2-2aed-4057-86c1-0026efa86180",
+          "name": "Create Document Interaction",
+          "request": {
+            "name": "Create Document Interaction",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "interactions",
+                "document"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"title\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aac0d57a-59b1-4d5f-b0dd-98377a9c4cff",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "interactions",
+                    "document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"title\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inter-ab12C345DeF6\",\n  \"body\": \"This is a test body\",\n  \"patient_id\": \"pat-123456\",\n  \"status\": \"draft\",\n  \"title\": \"Lab #123456\",\n  \"type\": \"partner\",\n  \"integration_error_message\": null,\n  \"integration_last_synced_at\": null,\n  \"integration_record_id\": null,\n  \"integration_sync_status\": \"enabled\",\n  \"integration_web_link\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ed82ece-e2be-4b06-83dd-a80722ce4c74",
+          "name": "Show Document Interaction",
+          "request": {
+            "name": "Show Document Interaction",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "interactions",
+                "document",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Document Interaction ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1e4a846-bf03-4aab-96f5-11480706f786",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "interactions",
+                    "document",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Document Interaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inter-ab12C345DeF6\",\n  \"body\": \"This is a test body\",\n  \"patient_id\": \"pat-123456\",\n  \"status\": \"draft\",\n  \"title\": \"Lab #123456\",\n  \"type\": \"partner\",\n  \"integration_error_message\": null,\n  \"integration_last_synced_at\": null,\n  \"integration_record_id\": null,\n  \"integration_sync_status\": \"enabled\",\n  \"integration_web_link\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3433e12-8777-40bb-85ca-6f4aa725d1f7",
+          "name": "Update Interaction",
+          "request": {
+            "name": "Update Interaction",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "interactions",
+                "document",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Document Interaction ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"title\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1cc18fcc-aa00-4605-bc4c-1f29e5a85529",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "interactions",
+                    "document",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Document Interaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"title\": \"<string>\",\n  \"body\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inter-ab12C345DeF6\",\n  \"body\": \"This is a test body\",\n  \"patient_id\": \"pat-123456\",\n  \"status\": \"draft\",\n  \"title\": \"Lab #123456\",\n  \"type\": \"partner\",\n  \"integration_error_message\": null,\n  \"integration_last_synced_at\": null,\n  \"integration_record_id\": null,\n  \"integration_sync_status\": \"enabled\",\n  \"integration_web_link\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c4f1d544-5e91-49e1-98d7-9d6dbb7b3343",
+    "name": "Hint Health AccountAccessToken DocumentInteraction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

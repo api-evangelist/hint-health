@@ -1,0 +1,655 @@
+{
+  "item": [
+    {
+      "id": "21c498e5-a824-4a1c-84dd-a37f21387845",
+      "name": "Supplements",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f0aaa78-cc3e-4ff6-a025-fa91174c2417",
+          "name": "Create Patient Supplement",
+          "request": {
+            "name": "Create Patient Supplement",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "supplements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product_name\": \"<string>\",\n  \"strength\": \"<string>\",\n  \"strength_uom\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"sig_text\": \"<string>\",\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af900acc-c85e-464d-8c15-4355a703a6a4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "supplements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"product_name\": \"<string>\",\n  \"strength\": \"<string>\",\n  \"strength_uom\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"sig_text\": \"<string>\",\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"med-e548304\",\n  \"product_name\": \"Product Name\",\n  \"quantity\": 1,\n  \"sig_text\": \"Take 1 capsule daily with food\",\n  \"strength\": \"100\",\n  \"strength_uom\": \"mg\",\n  \"integration_error_message\": null,\n  \"integration_last_synced_at\": null,\n  \"integration_record_id\": null,\n  \"integration_sync_status\": \"enabled\",\n  \"integration_web_link\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5c556b8-9703-4712-ad4c-5ce38d4fd257",
+          "name": "List Patient Supplements",
+          "request": {
+            "name": "List Patient Supplements",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "supplements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Allows limiting the number of supplements returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Allows offsetting the number of supplements returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ce7c40c-ff78-4f05-bce4-3a473e493c3a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "supplements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of resources returned in this request",
+                  "key": "X-Count",
+                  "value": "6880"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of resources available (scoped to query params)",
+                  "key": "X-Total-Count",
+                  "value": "6880"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"med-e548301\",\n    \"product_name\": \"Product Name\",\n    \"quantity\": 1,\n    \"sig_text\": \"Take 1 capsule daily with food\",\n    \"strength\": \"100\",\n    \"strength_uom\": \"mg\",\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  {\n    \"id\": \"med-e548302\",\n    \"product_name\": \"Product Name\",\n    \"quantity\": 1,\n    \"sig_text\": \"Take 1 capsule daily with food\",\n    \"strength\": \"100\",\n    \"strength_uom\": \"mg\",\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  {\n    \"id\": \"med-e548303\",\n    \"product_name\": \"Product Name\",\n    \"quantity\": 1,\n    \"sig_text\": \"Take 1 capsule daily with food\",\n    \"strength\": \"100\",\n    \"strength_uom\": \"mg\",\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2387c4f8-1062-4d36-8606-805ec67b3b26",
+          "name": "Delete Patient Supplement",
+          "request": {
+            "name": "Delete Patient Supplement",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "supplements",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Supplements ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85bff8c1-68a7-4162-b613-f983ba7a21e6",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "supplements",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Supplements ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e7add94-1943-49fd-9f8a-d763502de7c4",
+          "name": "Show Patient Supplement",
+          "request": {
+            "name": "Show Patient Supplement",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "supplements",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Supplements ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a865a17-d705-4add-8955-bb43706aaca3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "supplements",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Supplements ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"med-e548304\",\n  \"product_name\": \"Product Name\",\n  \"quantity\": 1,\n  \"sig_text\": \"Take 1 capsule daily with food\",\n  \"strength\": \"100\",\n  \"strength_uom\": \"mg\",\n  \"integration_error_message\": null,\n  \"integration_last_synced_at\": null,\n  \"integration_record_id\": null,\n  \"integration_sync_status\": \"enabled\",\n  \"integration_web_link\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f9692fc-317c-4b85-bacb-4bfc81717e94",
+          "name": "Update Patient Supplement",
+          "request": {
+            "name": "Update Patient Supplement",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "supplements",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Supplements ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product_name\": \"<string>\",\n  \"strength\": \"<string>\",\n  \"strength_uom\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"sig_text\": \"<string>\",\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6598d3aa-3a4c-41f5-b932-48fc66b6eb40",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "supplements",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Supplements ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"product_name\": \"<string>\",\n  \"strength\": \"<string>\",\n  \"strength_uom\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"sig_text\": \"<string>\",\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"med-e548304\",\n  \"product_name\": \"Product Name\",\n  \"quantity\": 1,\n  \"sig_text\": \"Take 1 capsule daily with food\",\n  \"strength\": \"100\",\n  \"strength_uom\": \"mg\",\n  \"integration_error_message\": null,\n  \"integration_last_synced_at\": null,\n  \"integration_record_id\": null,\n  \"integration_sync_status\": \"enabled\",\n  \"integration_web_link\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "01817899-61be-460c-81b6-f25611408f80",
+    "name": "Hint Health AccountAccessToken Supplements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

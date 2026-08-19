@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Affiliate API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Affiliate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Affiliates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/affiliates",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by active ones, possible values: pending, active, ended"
+              }
+            ]
+          },
+          "docs": "List All Affiliates"
+        },
+        {
+          "info": {
+            "name": "Show Patient Affiliate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/affiliate",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ]
+          },
+          "docs": "Returns `null` when the patient has no assigned affiliate."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

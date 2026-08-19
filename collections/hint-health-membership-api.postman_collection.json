@@ -1,0 +1,985 @@
+{
+  "item": [
+    {
+      "id": "315d4e8f-a756-4f72-8a0b-8bc0ac20d297",
+      "name": "Membership",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c6e37e48-40ef-4c9d-867a-2788ec74462b",
+          "name": "Bill Membership",
+          "request": {
+            "name": "Bill Membership",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "memberships",
+                ":id",
+                "bill"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Membership ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start_date\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52a6e81b-f5a0-415a-98df-5bba907dfb00",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "memberships",
+                    ":id",
+                    "bill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Membership ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"mem-ab12C345DeF6\",\n  \"bill_date\": \"2017-03-05\",\n  \"billed_through_date\": \"2017-03-05\",\n  \"billing_start_date\": \"2016-08-05\",\n  \"bills_at_end_of_period\": false,\n  \"contract_expiration_action\": \"auto-renew\",\n  \"contract_expires\": true,\n  \"contract_period_in_months\": 12,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"end_date\": null,\n  \"enrollment_status\": \"active\",\n  \"fixed_period_rate_in_cents\": null,\n  \"fixed_registration_fee_in_cents\": null,\n  \"group_code\": null,\n  \"is_confirmed\": true,\n  \"is_current\": true,\n  \"is_processing\": false,\n  \"is_restartable\": false,\n  \"list_price_in_cents\": 5000,\n  \"next_bill_date\": \"2017-03-05\",\n  \"period_in_months\": 1,\n  \"period_rate_in_cents\": 5000,\n  \"rate_in_cents\": 5000,\n  \"source_status\": null,\n  \"start_date\": \"2016-08-05\",\n  \"status\": \"unpaid\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"coupon\": null,\n  \"membership_patients\": [\n    {\n      \"id\": \"mp-ab12C345DeF6\",\n      \"member_type\": \"spouse\",\n      \"fixed_period_rate_in_cents\": null,\n      \"list_price_in_cents\": 5000,\n      \"period_rate_in_cents\": 5000,\n      \"revenue_in_cents\": 5000,\n      \"start_date\": \"2016-08-05\",\n      \"uses_tobacco\": false,\n      \"end_date\": null,\n      \"patient\": {\n        \"id\": \"pat-ab12C345DeF6\",\n        \"address_city\": \"New York\",\n        \"address_country\": \"United States\",\n        \"address_line1\": \"157 E Houston St\",\n        \"address_line2\": \"Suite 2402\",\n        \"address_state\": \"NY\",\n        \"address_zip\": \"10002\",\n        \"age\": 65,\n        \"chosen_first_name\": null,\n        \"chosen_last_name\": null,\n        \"chosen_middle_name\": null,\n        \"chosen_suffix\": null,\n        \"chosen_title\": null,\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"dob\": \"1952-01-01\",\n        \"electronic_communication_consent_accepted\": true,\n        \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"email\": \"bass_man@bumblebeeinc.com\",\n        \"engaged\": false,\n        \"external_link_id\": null,\n        \"first_name\": \"Gordon\",\n        \"gender\": \"male\",\n        \"gender_identity\": \"man\",\n        \"gender_other\": null,\n        \"health_insurance_group_id\": \"12345\",\n        \"health_insurance_member_id\": \"A22222222\",\n        \"health_insurance_payer_id\": 39,\n        \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n        \"hipaa_authorization_accepted\": true,\n        \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"import_id\": null,\n        \"import_source\": null,\n        \"joined_practice_date\": \"2017-02-05\",\n        \"last_engagement_date\": null,\n        \"last_name\": \"Sumner\",\n        \"lead_source_other\": \"Downtown marketing event\",\n        \"master_record_sponsor\": null,\n        \"membership_status\": \"unpaid\",\n        \"middle_name\": \"Thomas\",\n        \"name\": \"Gordon Thomas Sumner\",\n        \"patient_agreement_accepted\": false,\n        \"patient_agreement_accepted_at\": null,\n        \"preferred_language\": \"en\",\n        \"pronouns\": null,\n        \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n        \"sex\": \"male\",\n        \"suffix\": null,\n        \"terms_accepted\": false,\n        \"terms_accepted_at\": null,\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"uses_tobacco\": false,\n        \"lead_source\": {\n          \"id\": \"lds-ab12C345DeF6\",\n          \"name\": \"Other\",\n          \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n          \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n        },\n        \"phones\": [],\n        \"sponsorships\": [\n          {\n            \"id\": \"creg-ab12C345DeF6\",\n            \"external_id\": \"ext_id_from_another_system012345\",\n            \"is_subscriber\": true,\n            \"type\": \"spouse\",\n            \"company\": {\n              \"id\": \"com-ab12C345DeF6\",\n              \"name\": \"Schmoogle Inc.\"\n            },\n            \"family\": {\n              \"id\": \"cac-ab12C345DeF6\"\n            }\n          }\n        ],\n        \"integration_error_message\": null,\n        \"integration_last_synced_at\": null,\n        \"integration_record_id\": \"ABCD0012030\",\n        \"integration_sync_status\": \"enabled\",\n        \"integration_web_link\": null\n      }\n    }\n  ],\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"unpaid\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"phones\": [],\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"spouse\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": \"ABCD0012030\",\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  \"plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"retail\"\n  },\n  \"sponsorship\": null,\n  \"upcoming_bills\": [\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-03-05\",\n      \"end_date\": \"2017-04-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-03-05\",\n      \"customer_invoice\": null\n    },\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-04-05\",\n      \"end_date\": \"2017-05-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-04-05\",\n      \"customer_invoice\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de69b6e6-296d-4334-8958-10d1a52f3863",
+          "name": "Cancel Membership",
+          "request": {
+            "name": "Cancel Membership",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "memberships",
+                ":id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Membership ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"end_date\": \"<date>\",\n  \"cancellation_reason\": {\n    \"id\": \"<string>\"\n  },\n  \"cancellation_reason_other\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aba26d23-78a5-45de-bea0-d324875aa17c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "memberships",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Membership ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<date>\",\n  \"cancellation_reason\": {\n    \"id\": \"<string>\"\n  },\n  \"cancellation_reason_other\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"mem-ab12C345DeF6\",\n  \"bill_date\": \"2017-03-05\",\n  \"billed_through_date\": \"2017-03-05\",\n  \"billing_start_date\": \"2016-12-05\",\n  \"bills_at_end_of_period\": false,\n  \"contract_expiration_action\": null,\n  \"contract_expires\": false,\n  \"contract_period_in_months\": null,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"end_date\": \"2017-01-05\",\n  \"enrollment_status\": \"inactive\",\n  \"fixed_period_rate_in_cents\": null,\n  \"fixed_registration_fee_in_cents\": null,\n  \"group_code\": null,\n  \"is_confirmed\": true,\n  \"is_current\": false,\n  \"is_processing\": false,\n  \"is_restartable\": false,\n  \"list_price_in_cents\": 5000,\n  \"next_bill_date\": null,\n  \"period_in_months\": 1,\n  \"period_rate_in_cents\": 5000,\n  \"rate_in_cents\": 5000,\n  \"source_status\": null,\n  \"start_date\": \"2016-12-05\",\n  \"status\": \"ended\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"coupon\": null,\n  \"membership_patients\": [\n    {\n      \"id\": \"mp-ab12C345DeF6\",\n      \"member_type\": \"spouse\",\n      \"fixed_period_rate_in_cents\": null,\n      \"list_price_in_cents\": 5000,\n      \"period_rate_in_cents\": 5000,\n      \"revenue_in_cents\": null,\n      \"start_date\": \"2016-12-05\",\n      \"uses_tobacco\": false,\n      \"end_date\": \"2017-01-05\",\n      \"patient\": {\n        \"id\": \"pat-ab12C345DeF6\",\n        \"address_city\": \"New York\",\n        \"address_country\": \"United States\",\n        \"address_line1\": \"157 E Houston St\",\n        \"address_line2\": \"Suite 2402\",\n        \"address_state\": \"NY\",\n        \"address_zip\": \"10002\",\n        \"age\": 65,\n        \"chosen_first_name\": null,\n        \"chosen_last_name\": null,\n        \"chosen_middle_name\": null,\n        \"chosen_suffix\": null,\n        \"chosen_title\": null,\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"dob\": \"1952-01-01\",\n        \"electronic_communication_consent_accepted\": true,\n        \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"email\": \"bass_man@bumblebeeinc.com\",\n        \"engaged\": false,\n        \"external_link_id\": null,\n        \"first_name\": \"Gordon\",\n        \"gender\": \"male\",\n        \"gender_identity\": \"man\",\n        \"gender_other\": null,\n        \"health_insurance_group_id\": \"12345\",\n        \"health_insurance_member_id\": \"A22222222\",\n        \"health_insurance_payer_id\": 39,\n        \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n        \"hipaa_authorization_accepted\": true,\n        \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"import_id\": null,\n        \"import_source\": null,\n        \"joined_practice_date\": \"2017-02-05\",\n        \"last_engagement_date\": null,\n        \"last_name\": \"Sumner\",\n        \"lead_source_other\": \"Downtown marketing event\",\n        \"master_record_sponsor\": null,\n        \"membership_status\": \"inactive\",\n        \"middle_name\": \"Thomas\",\n        \"name\": \"Gordon Thomas Sumner\",\n        \"patient_agreement_accepted\": false,\n        \"patient_agreement_accepted_at\": null,\n        \"preferred_language\": \"en\",\n        \"pronouns\": null,\n        \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n        \"sex\": \"male\",\n        \"suffix\": null,\n        \"terms_accepted\": false,\n        \"terms_accepted_at\": null,\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"uses_tobacco\": false,\n        \"lead_source\": {\n          \"id\": \"lds-ab12C345DeF6\",\n          \"name\": \"Other\",\n          \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n          \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n        },\n        \"phones\": [],\n        \"sponsorships\": [\n          {\n            \"id\": \"creg-ab12C345DeF6\",\n            \"external_id\": \"ext_id_from_another_system012345\",\n            \"is_subscriber\": true,\n            \"type\": \"spouse\",\n            \"company\": {\n              \"id\": \"com-ab12C345DeF6\",\n              \"name\": \"Schmoogle Inc.\"\n            },\n            \"family\": {\n              \"id\": \"cac-ab12C345DeF6\"\n            }\n          }\n        ],\n        \"integration_error_message\": null,\n        \"integration_last_synced_at\": null,\n        \"integration_record_id\": \"ABCD0012028\",\n        \"integration_sync_status\": \"enabled\",\n        \"integration_web_link\": null\n      }\n    }\n  ],\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"inactive\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"phones\": [],\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"spouse\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": \"ABCD0012028\",\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  \"plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"retail\"\n  },\n  \"sponsorship\": null,\n  \"upcoming_bills\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55292d83-48d5-452e-83b4-50d25d82e4eb",
+          "name": "Confirm Membership",
+          "request": {
+            "name": "Confirm Membership",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "memberships",
+                ":id",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Membership ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e72c6150-48eb-48e4-bf8f-ee45430f12a3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "memberships",
+                    ":id",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Membership ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"mem-ab12C345DeF6\",\n  \"bill_date\": \"2017-03-05\",\n  \"billed_through_date\": \"2017-03-05\",\n  \"billing_start_date\": \"2016-08-05\",\n  \"bills_at_end_of_period\": false,\n  \"contract_expiration_action\": \"auto-renew\",\n  \"contract_expires\": true,\n  \"contract_period_in_months\": 12,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"end_date\": null,\n  \"enrollment_status\": \"active\",\n  \"fixed_period_rate_in_cents\": null,\n  \"fixed_registration_fee_in_cents\": null,\n  \"group_code\": null,\n  \"is_confirmed\": true,\n  \"is_current\": true,\n  \"is_processing\": false,\n  \"is_restartable\": false,\n  \"list_price_in_cents\": 5000,\n  \"next_bill_date\": \"2017-03-05\",\n  \"period_in_months\": 1,\n  \"period_rate_in_cents\": 5000,\n  \"rate_in_cents\": 5000,\n  \"source_status\": null,\n  \"start_date\": \"2016-08-05\",\n  \"status\": \"unpaid\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"coupon\": null,\n  \"membership_patients\": [\n    {\n      \"id\": \"mp-ab12C345DeF6\",\n      \"member_type\": \"spouse\",\n      \"fixed_period_rate_in_cents\": null,\n      \"list_price_in_cents\": 5000,\n      \"period_rate_in_cents\": 5000,\n      \"revenue_in_cents\": 5000,\n      \"start_date\": \"2016-08-05\",\n      \"uses_tobacco\": false,\n      \"end_date\": null,\n      \"patient\": {\n        \"id\": \"pat-ab12C345DeF6\",\n        \"address_city\": \"New York\",\n        \"address_country\": \"United States\",\n        \"address_line1\": \"157 E Houston St\",\n        \"address_line2\": \"Suite 2402\",\n        \"address_state\": \"NY\",\n        \"address_zip\": \"10002\",\n        \"age\": 65,\n        \"chosen_first_name\": null,\n        \"chosen_last_name\": null,\n        \"chosen_middle_name\": null,\n        \"chosen_suffix\": null,\n        \"chosen_title\": null,\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"dob\": \"1952-01-01\",\n        \"electronic_communication_consent_accepted\": true,\n        \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"email\": \"bass_man@bumblebeeinc.com\",\n        \"engaged\": false,\n        \"external_link_id\": null,\n        \"first_name\": \"Gordon\",\n        \"gender\": \"male\",\n        \"gender_identity\": \"man\",\n        \"gender_other\": null,\n        \"health_insurance_group_id\": \"12345\",\n        \"health_insurance_member_id\": \"A22222222\",\n        \"health_insurance_payer_id\": 39,\n        \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n        \"hipaa_authorization_accepted\": true,\n        \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"import_id\": null,\n        \"import_source\": null,\n        \"joined_practice_date\": \"2017-02-05\",\n        \"last_engagement_date\": null,\n        \"last_name\": \"Sumner\",\n        \"lead_source_other\": \"Downtown marketing event\",\n        \"master_record_sponsor\": null,\n        \"membership_status\": \"unpaid\",\n        \"middle_name\": \"Thomas\",\n        \"name\": \"Gordon Thomas Sumner\",\n        \"patient_agreement_accepted\": false,\n        \"patient_agreement_accepted_at\": null,\n        \"preferred_language\": \"en\",\n        \"pronouns\": null,\n        \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n        \"sex\": \"male\",\n        \"suffix\": null,\n        \"terms_accepted\": false,\n        \"terms_accepted_at\": null,\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"uses_tobacco\": false,\n        \"lead_source\": {\n          \"id\": \"lds-ab12C345DeF6\",\n          \"name\": \"Other\",\n          \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n          \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n        },\n        \"phones\": [],\n        \"sponsorships\": [\n          {\n            \"id\": \"creg-ab12C345DeF6\",\n            \"external_id\": \"ext_id_from_another_system012345\",\n            \"is_subscriber\": true,\n            \"type\": \"spouse\",\n            \"company\": {\n              \"id\": \"com-ab12C345DeF6\",\n              \"name\": \"Schmoogle Inc.\"\n            },\n            \"family\": {\n              \"id\": \"cac-ab12C345DeF6\"\n            }\n          }\n        ],\n        \"integration_error_message\": null,\n        \"integration_last_synced_at\": null,\n        \"integration_record_id\": \"ABCD0012030\",\n        \"integration_sync_status\": \"enabled\",\n        \"integration_web_link\": null\n      }\n    }\n  ],\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"unpaid\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"phones\": [],\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"spouse\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": \"ABCD0012030\",\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  \"plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"retail\"\n  },\n  \"sponsorship\": null,\n  \"upcoming_bills\": [\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-03-05\",\n      \"end_date\": \"2017-04-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-03-05\",\n      \"customer_invoice\": null\n    },\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-04-05\",\n      \"end_date\": \"2017-05-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-04-05\",\n      \"customer_invoice\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cbc295c-9d26-40ea-8e1e-be55e96c0fea",
+          "name": "Create Membership",
+          "request": {
+            "name": "Create Membership",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "memberships"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"membership_patients\": [\n    {\n      \"patient\": {\n        \"id\": \"<string>\",\n        \"uses_tobacco\": \"<boolean>\"\n      },\n      \"member_type\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"fixed_period_rate_in_cents\": \"<integer>\"\n    },\n    {\n      \"patient\": {\n        \"id\": \"<string>\",\n        \"uses_tobacco\": \"<boolean>\"\n      },\n      \"member_type\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"fixed_period_rate_in_cents\": \"<integer>\"\n    }\n  ],\n  \"plan\": {\n    \"id\": \"<string>\"\n  },\n  \"start_date\": \"<date>\",\n  \"period_in_months\": \"<integer>\",\n  \"owner\": {\n    \"id\": \"<string>\"\n  },\n  \"sponsorship\": {\n    \"id\": \"<string>\"\n  },\n  \"end_date\": \"<date>\",\n  \"fixed_period_rate_in_cents\": \"<integer>\",\n  \"fixed_registration_fee_in_cents\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bed3d7ce-581b-4934-b5bd-cfa816776413",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "memberships"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"membership_patients\": [\n    {\n      \"patient\": {\n        \"id\": \"<string>\",\n        \"uses_tobacco\": \"<boolean>\"\n      },\n      \"member_type\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"fixed_period_rate_in_cents\": \"<integer>\"\n    },\n    {\n      \"patient\": {\n        \"id\": \"<string>\",\n        \"uses_tobacco\": \"<boolean>\"\n      },\n      \"member_type\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"fixed_period_rate_in_cents\": \"<integer>\"\n    }\n  ],\n  \"plan\": {\n    \"id\": \"<string>\"\n  },\n  \"start_date\": \"<date>\",\n  \"period_in_months\": \"<integer>\",\n  \"owner\": {\n    \"id\": \"<string>\"\n  },\n  \"sponsorship\": {\n    \"id\": \"<string>\"\n  },\n  \"end_date\": \"<date>\",\n  \"fixed_period_rate_in_cents\": \"<integer>\",\n  \"fixed_registration_fee_in_cents\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"mem-ab12C345DeF6\",\n  \"bill_date\": \"2017-03-05\",\n  \"billed_through_date\": \"2017-03-05\",\n  \"billing_start_date\": \"2016-08-05\",\n  \"bills_at_end_of_period\": false,\n  \"contract_expiration_action\": \"auto-renew\",\n  \"contract_expires\": true,\n  \"contract_period_in_months\": 12,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"end_date\": null,\n  \"enrollment_status\": \"active\",\n  \"fixed_period_rate_in_cents\": null,\n  \"fixed_registration_fee_in_cents\": null,\n  \"group_code\": null,\n  \"is_confirmed\": true,\n  \"is_current\": true,\n  \"is_processing\": false,\n  \"is_restartable\": false,\n  \"list_price_in_cents\": 5000,\n  \"next_bill_date\": \"2017-03-05\",\n  \"period_in_months\": 1,\n  \"period_rate_in_cents\": 5000,\n  \"rate_in_cents\": 5000,\n  \"source_status\": null,\n  \"start_date\": \"2016-08-05\",\n  \"status\": \"unpaid\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"coupon\": null,\n  \"membership_patients\": [\n    {\n      \"id\": \"mp-ab12C345DeF6\",\n      \"member_type\": \"spouse\",\n      \"fixed_period_rate_in_cents\": null,\n      \"list_price_in_cents\": 5000,\n      \"period_rate_in_cents\": 5000,\n      \"revenue_in_cents\": 5000,\n      \"start_date\": \"2016-08-05\",\n      \"uses_tobacco\": false,\n      \"end_date\": null,\n      \"patient\": {\n        \"id\": \"pat-ab12C345DeF6\",\n        \"address_city\": \"New York\",\n        \"address_country\": \"United States\",\n        \"address_line1\": \"157 E Houston St\",\n        \"address_line2\": \"Suite 2402\",\n        \"address_state\": \"NY\",\n        \"address_zip\": \"10002\",\n        \"age\": 65,\n        \"chosen_first_name\": null,\n        \"chosen_last_name\": null,\n        \"chosen_middle_name\": null,\n        \"chosen_suffix\": null,\n        \"chosen_title\": null,\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"dob\": \"1952-01-01\",\n        \"electronic_communication_consent_accepted\": true,\n        \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"email\": \"bass_man@bumblebeeinc.com\",\n        \"engaged\": false,\n        \"external_link_id\": null,\n        \"first_name\": \"Gordon\",\n        \"gender\": \"male\",\n        \"gender_identity\": \"man\",\n        \"gender_other\": null,\n        \"health_insurance_group_id\": \"12345\",\n        \"health_insurance_member_id\": \"A22222222\",\n        \"health_insurance_payer_id\": 39,\n        \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n        \"hipaa_authorization_accepted\": true,\n        \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"import_id\": null,\n        \"import_source\": null,\n        \"joined_practice_date\": \"2017-02-05\",\n        \"last_engagement_date\": null,\n        \"last_name\": \"Sumner\",\n        \"lead_source_other\": \"Downtown marketing event\",\n        \"master_record_sponsor\": null,\n        \"membership_status\": \"unpaid\",\n        \"middle_name\": \"Thomas\",\n        \"name\": \"Gordon Thomas Sumner\",\n        \"patient_agreement_accepted\": false,\n        \"patient_agreement_accepted_at\": null,\n        \"preferred_language\": \"en\",\n        \"pronouns\": null,\n        \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n        \"sex\": \"male\",\n        \"suffix\": null,\n        \"terms_accepted\": false,\n        \"terms_accepted_at\": null,\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"uses_tobacco\": false,\n        \"lead_source\": {\n          \"id\": \"lds-ab12C345DeF6\",\n          \"name\": \"Other\",\n          \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n          \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n        },\n        \"phones\": [],\n        \"sponsorships\": [\n          {\n            \"id\": \"creg-ab12C345DeF6\",\n            \"external_id\": \"ext_id_from_another_system012345\",\n            \"is_subscriber\": true,\n            \"type\": \"spouse\",\n            \"company\": {\n              \"id\": \"com-ab12C345DeF6\",\n              \"name\": \"Schmoogle Inc.\"\n            },\n            \"family\": {\n              \"id\": \"cac-ab12C345DeF6\"\n            }\n          }\n        ],\n        \"integration_error_message\": null,\n        \"integration_last_synced_at\": null,\n        \"integration_record_id\": \"ABCD0012030\",\n        \"integration_sync_status\": \"enabled\",\n        \"integration_web_link\": null\n      }\n    }\n  ],\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"unpaid\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"phones\": [],\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"spouse\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": \"ABCD0012030\",\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  \"plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"retail\"\n  },\n  \"sponsorship\": null,\n  \"upcoming_bills\": [\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-03-05\",\n      \"end_date\": \"2017-04-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-03-05\",\n      \"customer_invoice\": null\n    },\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-04-05\",\n      \"end_date\": \"2017-05-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-04-05\",\n      \"customer_invoice\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "520cb168-6a1e-4651-b4dd-0fde172bcd55",
+          "name": "List All Memberships",
+          "request": {
+            "name": "List All Memberships",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "memberships"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updated_at",
+                  "value": "<dateTime>",
+                  "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "<dateTime>",
+                  "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f28c5c23-acee-4031-9dd6-a42e8889e7b9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "memberships"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updated_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"mem-ab12C345DeF6\",\n    \"bill_date\": \"2017-02-05\",\n    \"billed_through_date\": \"2017-02-05\",\n    \"billing_start_date\": \"2017-02-05\",\n    \"bills_at_end_of_period\": false,\n    \"contract_expiration_action\": null,\n    \"contract_expires\": false,\n    \"contract_period_in_months\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"end_date\": null,\n    \"enrollment_status\": \"active\",\n    \"fixed_period_rate_in_cents\": null,\n    \"fixed_registration_fee_in_cents\": null,\n    \"group_code\": null,\n    \"is_confirmed\": true,\n    \"is_current\": true,\n    \"is_processing\": true,\n    \"is_restartable\": false,\n    \"last_bill_amount_in_cents\": null,\n    \"last_bill_date\": null,\n    \"list_price_in_cents\": 5000,\n    \"never_been_billed\": true,\n    \"next_bill_date\": \"2017-02-05\",\n    \"period_in_months\": 1,\n    \"period_rate_in_cents\": 5000,\n    \"rate_in_cents\": 5000,\n    \"source_status\": null,\n    \"start_date\": \"2017-02-05\",\n    \"status\": \"active\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"coupon\": null,\n    \"membership_patients\": [\n      {\n        \"end_date\": null,\n        \"enrollment_requested_on\": \"2017-02-05\",\n        \"enrollment_status\": \"active\",\n        \"member_type\": \"spouse\",\n        \"start_date\": \"2017-02-05\",\n        \"status\": \"active\",\n        \"uses_tobacco\": false,\n        \"patient\": {\n          \"id\": \"pat-ab12C345DeF6\",\n          \"name\": \"Gordon Thomas Sumner\"\n        }\n      }\n    ],\n    \"owner\": {\n      \"id\": \"pat-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"age\": 65,\n      \"chosen_first_name\": null,\n      \"chosen_last_name\": null,\n      \"chosen_middle_name\": null,\n      \"chosen_suffix\": null,\n      \"chosen_title\": null,\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"dob\": \"1952-01-01\",\n      \"electronic_communication_consent_accepted\": true,\n      \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n      \"email\": \"bass_man@bumblebeeinc.com\",\n      \"engaged\": false,\n      \"external_link_id\": null,\n      \"first_name\": \"Gordon\",\n      \"gender\": \"male\",\n      \"gender_identity\": \"man\",\n      \"gender_other\": null,\n      \"health_insurance_group_id\": \"12345\",\n      \"health_insurance_member_id\": \"A22222222\",\n      \"health_insurance_payer_id\": 39,\n      \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n      \"hipaa_authorization_accepted\": true,\n      \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n      \"import_id\": null,\n      \"import_source\": null,\n      \"joined_practice_date\": \"2017-02-05\",\n      \"last_engagement_date\": null,\n      \"last_name\": \"Sumner\",\n      \"lead_source_other\": \"Downtown marketing event\",\n      \"master_record_sponsor\": null,\n      \"membership_status\": \"active\",\n      \"middle_name\": \"Thomas\",\n      \"name\": \"Gordon Thomas Sumner\",\n      \"patient_agreement_accepted\": false,\n      \"patient_agreement_accepted_at\": null,\n      \"preferred_language\": \"en\",\n      \"pronouns\": null,\n      \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n      \"sex\": \"male\",\n      \"suffix\": null,\n      \"terms_accepted\": false,\n      \"terms_accepted_at\": null,\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"uses_tobacco\": false,\n      \"lead_source\": {\n        \"id\": \"lds-ab12C345DeF6\",\n        \"name\": \"Other\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      },\n      \"phones\": [],\n      \"sponsorships\": [\n        {\n          \"id\": \"creg-ab12C345DeF6\",\n          \"external_id\": \"ext_id_from_another_system012345\",\n          \"is_subscriber\": true,\n          \"type\": \"spouse\",\n          \"company\": {\n            \"id\": \"com-ab12C345DeF6\",\n            \"name\": \"Schmoogle Inc.\"\n          },\n          \"family\": {\n            \"id\": \"cac-ab12C345DeF6\"\n          }\n        }\n      ],\n      \"integration_error_message\": null,\n      \"integration_last_synced_at\": null,\n      \"integration_record_id\": \"ABCD0012032\",\n      \"integration_sync_status\": \"enabled\",\n      \"integration_web_link\": null\n    },\n    \"plan\": {\n      \"id\": \"pln-ab12C345DeF6\",\n      \"name\": \"Membership\",\n      \"plan_type\": \"retail\"\n    },\n    \"sponsorship\": null,\n    \"upcoming_bills\": [\n      {\n        \"amount_in_cents\": 5000,\n        \"charges_amount_in_cents\": 0,\n        \"coupon_discount_in_cents\": 0,\n        \"coupon_discount_months\": null,\n        \"coupon_percent_off\": null,\n        \"date\": \"2017-02-05\",\n        \"end_date\": \"2017-03-05\",\n        \"list_price_in_cents\": 5000,\n        \"membership_amount_in_cents\": 5000,\n        \"period_in_months\": 1,\n        \"rate_in_cents\": 5000,\n        \"registration_fee_in_cents\": null,\n        \"start_date\": \"2017-02-05\",\n        \"customer_invoice\": null\n      },\n      {\n        \"amount_in_cents\": 5000,\n        \"charges_amount_in_cents\": 0,\n        \"coupon_discount_in_cents\": 0,\n        \"coupon_discount_months\": null,\n        \"coupon_percent_off\": null,\n        \"date\": \"2017-03-05\",\n        \"end_date\": \"2017-04-05\",\n        \"list_price_in_cents\": 5000,\n        \"membership_amount_in_cents\": 5000,\n        \"period_in_months\": 1,\n        \"rate_in_cents\": 5000,\n        \"registration_fee_in_cents\": null,\n        \"start_date\": \"2017-03-05\",\n        \"customer_invoice\": null\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6958244c-d5c1-414e-9208-1c0c63c50afc",
+          "name": "Delete Membership",
+          "request": {
+            "name": "Delete Membership",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "memberships",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Membership ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0bb44df7-0e14-4278-9dce-205e1dff4a70",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "memberships",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Membership ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "702fc93c-cdb3-488a-9c6e-c01f13418151",
+          "name": "Show Membership",
+          "request": {
+            "name": "Show Membership",
+            "description": {
+              "content": "**Status Options:** pending, unconfirmed, active, unpaid, ended\n**Enrollment Status Options:** pending, unconfirmed, active, inactive",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "memberships",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Membership ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fca0859-cc17-4d87-b0ac-a3b11c5ccb3e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "memberships",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Membership ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"mem-ab12C345DeF6\",\n  \"bill_date\": \"2017-03-05\",\n  \"billed_through_date\": \"2017-03-05\",\n  \"billing_start_date\": \"2016-08-05\",\n  \"bills_at_end_of_period\": false,\n  \"contract_expiration_action\": \"auto-renew\",\n  \"contract_expires\": true,\n  \"contract_period_in_months\": 12,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"end_date\": null,\n  \"enrollment_status\": \"active\",\n  \"fixed_period_rate_in_cents\": null,\n  \"fixed_registration_fee_in_cents\": null,\n  \"group_code\": null,\n  \"is_confirmed\": true,\n  \"is_current\": true,\n  \"is_processing\": false,\n  \"is_restartable\": false,\n  \"list_price_in_cents\": 5000,\n  \"next_bill_date\": \"2017-03-05\",\n  \"period_in_months\": 1,\n  \"period_rate_in_cents\": 5000,\n  \"rate_in_cents\": 5000,\n  \"source_status\": null,\n  \"start_date\": \"2016-08-05\",\n  \"status\": \"unpaid\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"coupon\": null,\n  \"membership_patients\": [\n    {\n      \"id\": \"mp-ab12C345DeF6\",\n      \"member_type\": \"spouse\",\n      \"fixed_period_rate_in_cents\": null,\n      \"list_price_in_cents\": 5000,\n      \"period_rate_in_cents\": 5000,\n      \"revenue_in_cents\": 5000,\n      \"start_date\": \"2016-08-05\",\n      \"uses_tobacco\": false,\n      \"end_date\": null,\n      \"patient\": {\n        \"id\": \"pat-ab12C345DeF6\",\n        \"address_city\": \"New York\",\n        \"address_country\": \"United States\",\n        \"address_line1\": \"157 E Houston St\",\n        \"address_line2\": \"Suite 2402\",\n        \"address_state\": \"NY\",\n        \"address_zip\": \"10002\",\n        \"age\": 65,\n        \"chosen_first_name\": null,\n        \"chosen_last_name\": null,\n        \"chosen_middle_name\": null,\n        \"chosen_suffix\": null,\n        \"chosen_title\": null,\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"dob\": \"1952-01-01\",\n        \"electronic_communication_consent_accepted\": true,\n        \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"email\": \"bass_man@bumblebeeinc.com\",\n        \"engaged\": false,\n        \"external_link_id\": null,\n        \"first_name\": \"Gordon\",\n        \"gender\": \"male\",\n        \"gender_identity\": \"man\",\n        \"gender_other\": null,\n        \"health_insurance_group_id\": \"12345\",\n        \"health_insurance_member_id\": \"A22222222\",\n        \"health_insurance_payer_id\": 39,\n        \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n        \"hipaa_authorization_accepted\": true,\n        \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"import_id\": null,\n        \"import_source\": null,\n        \"joined_practice_date\": \"2017-02-05\",\n        \"last_engagement_date\": null,\n        \"last_name\": \"Sumner\",\n        \"lead_source_other\": \"Downtown marketing event\",\n        \"master_record_sponsor\": null,\n        \"membership_status\": \"unpaid\",\n        \"middle_name\": \"Thomas\",\n        \"name\": \"Gordon Thomas Sumner\",\n        \"patient_agreement_accepted\": false,\n        \"patient_agreement_accepted_at\": null,\n        \"preferred_language\": \"en\",\n        \"pronouns\": null,\n        \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n        \"sex\": \"male\",\n        \"suffix\": null,\n        \"terms_accepted\": false,\n        \"terms_accepted_at\": null,\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"uses_tobacco\": false,\n        \"lead_source\": {\n          \"id\": \"lds-ab12C345DeF6\",\n          \"name\": \"Other\",\n          \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n          \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n        },\n        \"phones\": [],\n        \"sponsorships\": [\n          {\n            \"id\": \"creg-ab12C345DeF6\",\n            \"external_id\": \"ext_id_from_another_system012345\",\n            \"is_subscriber\": true,\n            \"type\": \"spouse\",\n            \"company\": {\n              \"id\": \"com-ab12C345DeF6\",\n              \"name\": \"Schmoogle Inc.\"\n            },\n            \"family\": {\n              \"id\": \"cac-ab12C345DeF6\"\n            }\n          }\n        ],\n        \"integration_error_message\": null,\n        \"integration_last_synced_at\": null,\n        \"integration_record_id\": \"ABCD0012030\",\n        \"integration_sync_status\": \"enabled\",\n        \"integration_web_link\": null\n      }\n    }\n  ],\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"unpaid\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"phones\": [],\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"spouse\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": \"ABCD0012030\",\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  \"plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"retail\"\n  },\n  \"sponsorship\": null,\n  \"upcoming_bills\": [\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-03-05\",\n      \"end_date\": \"2017-04-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-03-05\",\n      \"customer_invoice\": null\n    },\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-04-05\",\n      \"end_date\": \"2017-05-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-04-05\",\n      \"customer_invoice\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d312b0d6-4c0f-4ab1-9bda-30e8896a0c93",
+          "name": "Update Membership",
+          "request": {
+            "name": "Update Membership",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "memberships",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Membership ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"membership_patients\": [\n    {\n      \"patient\": {\n        \"id\": \"<string>\",\n        \"uses_tobacco\": \"<boolean>\"\n      },\n      \"member_type\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"fixed_period_rate_in_cents\": \"<integer>\"\n    },\n    {\n      \"patient\": {\n        \"id\": \"<string>\",\n        \"uses_tobacco\": \"<boolean>\"\n      },\n      \"member_type\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"fixed_period_rate_in_cents\": \"<integer>\"\n    }\n  ],\n  \"plan\": {\n    \"id\": \"<string>\"\n  },\n  \"start_date\": \"<date>\",\n  \"period_in_months\": \"<integer>\",\n  \"owner\": {\n    \"id\": \"<string>\"\n  },\n  \"end_date\": \"<date>\",\n  \"fixed_period_rate_in_cents\": \"<integer>\",\n  \"fixed_registration_fee_in_cents\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7cd46cd9-ee43-41ae-ba7f-e722f2d08cf4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "memberships",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Membership ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"membership_patients\": [\n    {\n      \"patient\": {\n        \"id\": \"<string>\",\n        \"uses_tobacco\": \"<boolean>\"\n      },\n      \"member_type\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"fixed_period_rate_in_cents\": \"<integer>\"\n    },\n    {\n      \"patient\": {\n        \"id\": \"<string>\",\n        \"uses_tobacco\": \"<boolean>\"\n      },\n      \"member_type\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"fixed_period_rate_in_cents\": \"<integer>\"\n    }\n  ],\n  \"plan\": {\n    \"id\": \"<string>\"\n  },\n  \"start_date\": \"<date>\",\n  \"period_in_months\": \"<integer>\",\n  \"owner\": {\n    \"id\": \"<string>\"\n  },\n  \"end_date\": \"<date>\",\n  \"fixed_period_rate_in_cents\": \"<integer>\",\n  \"fixed_registration_fee_in_cents\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"mem-ab12C345DeF6\",\n  \"bill_date\": \"2017-03-05\",\n  \"billed_through_date\": \"2017-03-05\",\n  \"billing_start_date\": \"2016-08-05\",\n  \"bills_at_end_of_period\": false,\n  \"contract_expiration_action\": \"auto-renew\",\n  \"contract_expires\": true,\n  \"contract_period_in_months\": 12,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"end_date\": null,\n  \"enrollment_status\": \"active\",\n  \"fixed_period_rate_in_cents\": null,\n  \"fixed_registration_fee_in_cents\": null,\n  \"group_code\": null,\n  \"is_confirmed\": true,\n  \"is_current\": true,\n  \"is_processing\": false,\n  \"is_restartable\": false,\n  \"list_price_in_cents\": 5000,\n  \"next_bill_date\": \"2017-03-05\",\n  \"period_in_months\": 1,\n  \"period_rate_in_cents\": 5000,\n  \"rate_in_cents\": 5000,\n  \"source_status\": null,\n  \"start_date\": \"2016-08-05\",\n  \"status\": \"unpaid\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"coupon\": null,\n  \"membership_patients\": [\n    {\n      \"id\": \"mp-ab12C345DeF6\",\n      \"member_type\": \"spouse\",\n      \"fixed_period_rate_in_cents\": null,\n      \"list_price_in_cents\": 5000,\n      \"period_rate_in_cents\": 5000,\n      \"revenue_in_cents\": 5000,\n      \"start_date\": \"2016-08-05\",\n      \"uses_tobacco\": false,\n      \"end_date\": null,\n      \"patient\": {\n        \"id\": \"pat-ab12C345DeF6\",\n        \"address_city\": \"New York\",\n        \"address_country\": \"United States\",\n        \"address_line1\": \"157 E Houston St\",\n        \"address_line2\": \"Suite 2402\",\n        \"address_state\": \"NY\",\n        \"address_zip\": \"10002\",\n        \"age\": 65,\n        \"chosen_first_name\": null,\n        \"chosen_last_name\": null,\n        \"chosen_middle_name\": null,\n        \"chosen_suffix\": null,\n        \"chosen_title\": null,\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"dob\": \"1952-01-01\",\n        \"electronic_communication_consent_accepted\": true,\n        \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"email\": \"bass_man@bumblebeeinc.com\",\n        \"engaged\": false,\n        \"external_link_id\": null,\n        \"first_name\": \"Gordon\",\n        \"gender\": \"male\",\n        \"gender_identity\": \"man\",\n        \"gender_other\": null,\n        \"health_insurance_group_id\": \"12345\",\n        \"health_insurance_member_id\": \"A22222222\",\n        \"health_insurance_payer_id\": 39,\n        \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n        \"hipaa_authorization_accepted\": true,\n        \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"import_id\": null,\n        \"import_source\": null,\n        \"joined_practice_date\": \"2017-02-05\",\n        \"last_engagement_date\": null,\n        \"last_name\": \"Sumner\",\n        \"lead_source_other\": \"Downtown marketing event\",\n        \"master_record_sponsor\": null,\n        \"membership_status\": \"unpaid\",\n        \"middle_name\": \"Thomas\",\n        \"name\": \"Gordon Thomas Sumner\",\n        \"patient_agreement_accepted\": false,\n        \"patient_agreement_accepted_at\": null,\n        \"preferred_language\": \"en\",\n        \"pronouns\": null,\n        \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n        \"sex\": \"male\",\n        \"suffix\": null,\n        \"terms_accepted\": false,\n        \"terms_accepted_at\": null,\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"uses_tobacco\": false,\n        \"lead_source\": {\n          \"id\": \"lds-ab12C345DeF6\",\n          \"name\": \"Other\",\n          \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n          \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n        },\n        \"phones\": [],\n        \"sponsorships\": [\n          {\n            \"id\": \"creg-ab12C345DeF6\",\n            \"external_id\": \"ext_id_from_another_system012345\",\n            \"is_subscriber\": true,\n            \"type\": \"spouse\",\n            \"company\": {\n              \"id\": \"com-ab12C345DeF6\",\n              \"name\": \"Schmoogle Inc.\"\n            },\n            \"family\": {\n              \"id\": \"cac-ab12C345DeF6\"\n            }\n          }\n        ],\n        \"integration_error_message\": null,\n        \"integration_last_synced_at\": null,\n        \"integration_record_id\": \"ABCD0012030\",\n        \"integration_sync_status\": \"enabled\",\n        \"integration_web_link\": null\n      }\n    }\n  ],\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"unpaid\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"phones\": [],\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"spouse\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": \"ABCD0012030\",\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  \"plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"retail\"\n  },\n  \"sponsorship\": null,\n  \"upcoming_bills\": [\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-03-05\",\n      \"end_date\": \"2017-04-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-03-05\",\n      \"customer_invoice\": null\n    },\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-04-05\",\n      \"end_date\": \"2017-05-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-04-05\",\n      \"customer_invoice\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07454ce5-61c6-414d-b4c0-fba2328d5d9a",
+          "name": "New Membership",
+          "request": {
+            "name": "New Membership",
+            "description": {
+              "content": "Builds a default membership",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "memberships",
+                "new"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "owner",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f618784c-7c3c-4507-a246-4b94b3f20a22",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "memberships",
+                    "new"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "owner",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"mem-ab12C345DeF6\",\n  \"bill_date\": \"2017-03-05\",\n  \"billed_through_date\": \"2017-03-05\",\n  \"billing_start_date\": \"2016-08-05\",\n  \"bills_at_end_of_period\": false,\n  \"contract_expiration_action\": \"auto-renew\",\n  \"contract_expires\": true,\n  \"contract_period_in_months\": 12,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"end_date\": null,\n  \"enrollment_status\": \"active\",\n  \"fixed_period_rate_in_cents\": null,\n  \"fixed_registration_fee_in_cents\": null,\n  \"group_code\": null,\n  \"is_confirmed\": true,\n  \"is_current\": true,\n  \"is_processing\": false,\n  \"is_restartable\": false,\n  \"list_price_in_cents\": 5000,\n  \"next_bill_date\": \"2017-03-05\",\n  \"period_in_months\": 1,\n  \"period_rate_in_cents\": 5000,\n  \"rate_in_cents\": 5000,\n  \"source_status\": null,\n  \"start_date\": \"2016-08-05\",\n  \"status\": \"unpaid\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"coupon\": null,\n  \"membership_patients\": [\n    {\n      \"id\": \"mp-ab12C345DeF6\",\n      \"member_type\": \"spouse\",\n      \"fixed_period_rate_in_cents\": null,\n      \"list_price_in_cents\": 5000,\n      \"period_rate_in_cents\": 5000,\n      \"revenue_in_cents\": 5000,\n      \"start_date\": \"2016-08-05\",\n      \"uses_tobacco\": false,\n      \"end_date\": null,\n      \"patient\": {\n        \"id\": \"pat-ab12C345DeF6\",\n        \"address_city\": \"New York\",\n        \"address_country\": \"United States\",\n        \"address_line1\": \"157 E Houston St\",\n        \"address_line2\": \"Suite 2402\",\n        \"address_state\": \"NY\",\n        \"address_zip\": \"10002\",\n        \"age\": 65,\n        \"chosen_first_name\": null,\n        \"chosen_last_name\": null,\n        \"chosen_middle_name\": null,\n        \"chosen_suffix\": null,\n        \"chosen_title\": null,\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"dob\": \"1952-01-01\",\n        \"electronic_communication_consent_accepted\": true,\n        \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"email\": \"bass_man@bumblebeeinc.com\",\n        \"engaged\": false,\n        \"external_link_id\": null,\n        \"first_name\": \"Gordon\",\n        \"gender\": \"male\",\n        \"gender_identity\": \"man\",\n        \"gender_other\": null,\n        \"health_insurance_group_id\": \"12345\",\n        \"health_insurance_member_id\": \"A22222222\",\n        \"health_insurance_payer_id\": 39,\n        \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n        \"hipaa_authorization_accepted\": true,\n        \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n        \"import_id\": null,\n        \"import_source\": null,\n        \"joined_practice_date\": \"2017-02-05\",\n        \"last_engagement_date\": null,\n        \"last_name\": \"Sumner\",\n        \"lead_source_other\": \"Downtown marketing event\",\n        \"master_record_sponsor\": null,\n        \"membership_status\": \"unpaid\",\n        \"middle_name\": \"Thomas\",\n        \"name\": \"Gordon Thomas Sumner\",\n        \"patient_agreement_accepted\": false,\n        \"patient_agreement_accepted_at\": null,\n        \"preferred_language\": \"en\",\n        \"pronouns\": null,\n        \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n        \"sex\": \"male\",\n        \"suffix\": null,\n        \"terms_accepted\": false,\n        \"terms_accepted_at\": null,\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"uses_tobacco\": false,\n        \"lead_source\": {\n          \"id\": \"lds-ab12C345DeF6\",\n          \"name\": \"Other\",\n          \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n          \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n        },\n        \"phones\": [],\n        \"sponsorships\": [\n          {\n            \"id\": \"creg-ab12C345DeF6\",\n            \"external_id\": \"ext_id_from_another_system012345\",\n            \"is_subscriber\": true,\n            \"type\": \"spouse\",\n            \"company\": {\n              \"id\": \"com-ab12C345DeF6\",\n              \"name\": \"Schmoogle Inc.\"\n            },\n            \"family\": {\n              \"id\": \"cac-ab12C345DeF6\"\n            }\n          }\n        ],\n        \"integration_error_message\": null,\n        \"integration_last_synced_at\": null,\n        \"integration_record_id\": \"ABCD0012030\",\n        \"integration_sync_status\": \"enabled\",\n        \"integration_web_link\": null\n      }\n    }\n  ],\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"unpaid\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"phones\": [],\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"spouse\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": \"ABCD0012030\",\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  \"plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"retail\"\n  },\n  \"sponsorship\": null,\n  \"upcoming_bills\": [\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-03-05\",\n      \"end_date\": \"2017-04-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-03-05\",\n      \"customer_invoice\": null\n    },\n    {\n      \"amount_in_cents\": 5000,\n      \"charges_amount_in_cents\": 0,\n      \"coupon_discount_in_cents\": 0,\n      \"coupon_discount_months\": null,\n      \"coupon_percent_off\": null,\n      \"date\": \"2017-04-05\",\n      \"end_date\": \"2017-05-05\",\n      \"list_price_in_cents\": 5000,\n      \"membership_amount_in_cents\": 5000,\n      \"period_in_months\": 1,\n      \"rate_in_cents\": 5000,\n      \"registration_fee_in_cents\": null,\n      \"start_date\": \"2017-04-05\",\n      \"customer_invoice\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5ccf5cea-13cf-4032-ab4b-c769659ed145",
+    "name": "Hint Health AccountAccessToken Membership API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

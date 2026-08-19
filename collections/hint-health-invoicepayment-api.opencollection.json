@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken InvoicePayment API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "InvoicePayment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/invoices/:invoice_id/payments",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              },
+              {
+                "name": "invoice_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Invoice ID"
+              }
+            ]
+          },
+          "docs": "List All Payments"
+        },
+        {
+          "info": {
+            "name": "Create Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/invoices/:invoice_id/payments",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              },
+              {
+                "name": "invoice_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Invoice ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Payment"
+        },
+        {
+          "info": {
+            "name": "Show Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/invoices/:invoice_id/payments/:id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              },
+              {
+                "name": "invoice_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Invoice ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Invoice Payment ID"
+              }
+            ]
+          },
+          "docs": "Show Payment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

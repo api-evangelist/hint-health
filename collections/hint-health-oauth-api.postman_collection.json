@@ -1,0 +1,142 @@
+{
+  "item": [
+    {
+      "id": "720b64a1-d8fb-492b-9500-5e5a3a647344",
+      "name": "OAuth",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aeb80a90-7584-4bad-9a94-3a79f3c971d0",
+          "name": "Exchange Code for Access Token",
+          "request": {
+            "name": "Exchange Code for Access Token",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "oauth",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"grant_type\": \"<string>\",\n  \"code\": \"<string>\",\n  \"activate\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae6c4512-cb4d-4556-b0d6-d0c7144dbd05",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "oauth",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"grant_type\": \"<string>\",\n  \"code\": \"<string>\",\n  \"activate\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"int-ab12C345DeF6\",\n  \"access_token\": \"i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3\",\n  \"expires_in\": null,\n  \"refresh_token\": null,\n  \"status\": \"active\",\n  \"token_type\": \"bearer\",\n  \"webhook_url_default\": null,\n  \"webhook_url_override\": \"https://integration.example.hint.com\",\n  \"activated_by\": {\n    \"id\": \"user-ab12C345DeF6\",\n    \"name\": \"Joe Blogs\",\n    \"email\": \"joe_170@example.com\"\n  },\n  \"api_keys\": [\n    {\n      \"deactivated_at\": null,\n      \"description\": \"Hint-Partner EMR\",\n      \"last_used_at\": null,\n      \"token\": \"i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3\"\n    }\n  ],\n  \"practice\": {\n    \"id\": \"pra-ab12C345DeF6\",\n    \"name\": \"Dr. Phil\"\n  },\n  \"product\": {\n    \"id\": \"ppro-ab12C345DeF6\",\n    \"name\": \"Hint-Partner EMR\",\n    \"slug\": \"hint-partner-emr-oauth-example\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7ea7e024-bfe0-49b3-bb7d-e6dad4e6317c",
+    "name": "Hint Health AccountAccessToken OAuth API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

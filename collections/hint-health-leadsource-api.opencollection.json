@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken LeadSource API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LeadSource",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update Lead Source",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/lead_sources/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Lead Source ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Lead Source"
+        },
+        {
+          "info": {
+            "name": "Delete Lead Source",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/lead_sources/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Lead Source ID"
+              }
+            ]
+          },
+          "docs": "Delete Lead Source"
+        },
+        {
+          "info": {
+            "name": "List All Lead Sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/lead_sources"
+          },
+          "docs": "List All Lead Sources"
+        },
+        {
+          "info": {
+            "name": "Create LeadSource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/lead_sources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create LeadSource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

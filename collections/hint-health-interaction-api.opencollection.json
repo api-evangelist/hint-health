@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Interaction API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Interaction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Interactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/interactions",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering interactions by patient id."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": " Allows filtering interactions by status."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": " Allows filtering interactions by type."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Allows limiting the number of interactions returned."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Allows offsetting the number of interactions returned."
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+              },
+              {
+                "name": "updated_at",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+              }
+            ]
+          },
+          "docs": "List All Interactions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

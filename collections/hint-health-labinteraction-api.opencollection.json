@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken LabInteraction API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LabInteraction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Lab Interaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/interactions/lab",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Lab Interaction"
+        },
+        {
+          "info": {
+            "name": "Show Lab Interaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/interactions/lab/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Lab Interaction ID"
+              }
+            ]
+          },
+          "docs": "Show Lab Interaction"
+        },
+        {
+          "info": {
+            "name": "Update Lab Interaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/interactions/lab/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Lab Interaction ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Lab Interaction"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

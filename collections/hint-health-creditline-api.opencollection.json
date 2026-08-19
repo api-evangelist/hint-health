@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken CreditLine API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CreditLine",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Credit Lines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/credit_lines",
+            "params": [
+              {
+                "name": "credit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "credit_category",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List All Credit Lines"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,904 @@
+generated: '2026-08-15'
+method: derived
+source: openapi/_original/hint-health-partner-endpoints-2026-07-01-openapi.yml
+docs:
+- https://developers.hint.com/reference/shared-objects
+- https://developers.hint.com/reference/making-requests
+name: Hint Health Data Model
+description: Entity-relationship graph for the Hint REST API, derived from the 2026-07-01 OpenAPI harvest
+  (200 operations, 247 component schemas). Hint models responses as nested 'Blueprint' serializers rather
+  than id-reference fields, so nearly every relationship is expressed by an embedded object or array rather
+  than a foreign key — which is why ?expand= exists and why webhook payloads, which are never expanded,
+  carry a thinner graph than a GET of the same resource.
+surfaces:
+  provider: /api/provider/* — practice-scoped clinical and billing resources, reached with a practice
+    access token.
+  partner: /api/partner/* — partner-scoped marketplace, installation, API key and webhook resources, reached
+    with the partner API key.
+counts:
+  resources: 32
+  component_schemas: 247
+  blueprint_serializers: 154
+  relationships: 98
+  operations: 200
+id_prefixes:
+  note: Hint uses prefixed opaque string ids. Prefixes below were read from the published examples in
+    Hint's own reference pages; the count is how many times each prefix appears in the harvested spec,
+    not a completeness claim.
+  prefixes:
+  - prefix: pat
+    entity: Patient
+    occurrences: 102
+  - prefix: prg
+    entity: Practitioner
+    occurrences: 72
+  - prefix: com
+    entity: Company
+    occurrences: 68
+  - prefix: loc
+    entity: Location
+    occurrences: 46
+  - prefix: creg
+    entity: Credit / credit line
+    occurrences: 45
+  - prefix: cac
+    entity: CompanyAccount
+    occurrences: 45
+  - prefix: lds
+    entity: LeadSource
+    occurrences: 44
+  - prefix: pct
+    entity: PartnerCharge
+    occurrences: 28
+  - prefix: inv
+    entity: Invoice / CustomerInvoice
+    occurrences: 24
+  - prefix: pln
+    entity: Plan
+    occurrences: 22
+  - prefix: spe
+    entity: Specialty
+    occurrences: 20
+  - prefix: pbnd
+    entity: Partner backend
+    occurrences: 18
+  - prefix: mp
+    entity: MembershipPatient
+    occurrences: 17
+  - prefix: emc
+    entity: EmergencyContact
+    occurrences: 16
+  - prefix: inter
+    entity: unmapped — observed but not attributed to a resource in the docs
+    occurrences: 16
+  - prefix: mem
+    entity: Membership
+    occurrences: 11
+  - prefix: ppro
+    entity: Partner product
+    occurrences: 10
+  - prefix: whep
+    entity: WebhookEndpoint
+    occurrences: 10
+  - prefix: card
+    entity: Card payment source
+    occurrences: 10
+  - prefix: pra
+    entity: Practice
+    occurrences: 8
+  - prefix: item
+    entity: ChargeItem
+    occurrences: 8
+  - prefix: user
+    entity: User
+    occurrences: 7
+  - prefix: cct
+    entity: CreditCategory
+    occurrences: 7
+  - prefix: appty
+    entity: unmapped — observed but not attributed to a resource in the docs
+    occurrences: 6
+  - prefix: pmt
+    entity: Payment
+    occurrences: 6
+  - prefix: bnk
+    entity: Bank payment source
+    occurrences: 6
+  - prefix: inst
+    entity: Installation
+    occurrences: 5
+  - prefix: panch
+    entity: unmapped — observed but not attributed to a resource in the docs
+    occurrences: 5
+  - prefix: cha
+    entity: Charge
+    occurrences: 5
+  - prefix: add
+    entity: Address
+    occurrences: 5
+  - prefix: appt
+    entity: Appointment
+    occurrences: 4
+  - prefix: cmpl
+    entity: Company plan
+    occurrences: 4
+  - prefix: div
+    entity: EmployeeDivision
+    occurrences: 4
+  - prefix: crd
+    entity: unmapped — observed but not attributed to a resource in the docs
+    occurrences: 4
+  - prefix: sat
+    entity: unmapped — observed but not attributed to a resource in the docs
+    occurrences: 4
+  - prefix: spg
+    entity: unmapped — observed but not attributed to a resource in the docs
+    occurrences: 4
+entities:
+- resource: api_keys
+  surface: partner
+  operations: 2
+  methods:
+  - GET
+  - POST
+  paths:
+  - /partner/api_keys
+- resource: backends
+  surface: partner
+  operations: 3
+  methods:
+  - GET
+  - PATCH
+  paths:
+  - /partner/backends
+  - /partner/backends/{id}
+- resource: installations
+  surface: partner
+  operations: 13
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /partner/installations
+  - /partner/installations/connect
+  - /partner/installations/{id}
+  - /partner/installations/{id}/activate
+  - /partner/installations/{id}/deactivate
+  - /partner/installations/{installation_id}/api_keys
+  - /partner/installations/{installation_id}/api_keys/{id}
+  - /partner/installations/{installation_id}/webhook_endpoints
+  - /partner/installations/{installation_id}/webhook_endpoints/{id}
+- resource: partner
+  surface: partner
+  operations: 2
+  methods:
+  - GET
+  - PATCH
+  paths:
+  - /partner/partner
+- resource: products
+  surface: partner
+  operations: 34
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /partner/products
+  - /partner/products/categories
+  - /partner/products/{id}
+  - /partner/products/{id}/request_review
+  - /partner/products/{product_id}/app
+  - /partner/products/{product_id}/app/surfaces
+  - /partner/products/{product_id}/app/surfaces/{id}
+  - /partner/products/{product_id}/categories
+  - /partner/products/{product_id}/categories/{id}
+  - /partner/products/{product_id}/highlights
+  - /partner/products/{product_id}/highlights/{id}
+  - /partner/products/{product_id}/links
+  - /partner/products/{product_id}/links/{id}
+  - /partner/products/{product_id}/overview
+  - /partner/products/{product_id}/preconditions
+  - /partner/products/{product_id}/preconditions/{id}
+  - /partner/products/{product_id}/testimonials
+  - /partner/products/{product_id}/testimonials/{id}
+- resource: webhook_endpoints
+  surface: partner
+  operations: 3
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  paths:
+  - /partner/webhook_endpoints
+  - /partner/webhook_endpoints/{id}
+- resource: webhook_events
+  surface: partner
+  operations: 1
+  methods:
+  - GET
+  paths:
+  - /partner/webhook_events
+- resource: webhook_requests
+  surface: partner
+  operations: 1
+  methods:
+  - GET
+  paths:
+  - /partner/webhook_requests
+- resource: affiliate_ancillary_charges
+  surface: provider
+  operations: 1
+  methods:
+  - GET
+  paths:
+  - /provider/affiliate_ancillary_charges
+- resource: affiliates
+  surface: provider
+  operations: 4
+  methods:
+  - DELETE
+  - GET
+  - POST
+  paths:
+  - /provider/affiliates
+  - /provider/affiliates/{affiliate_id}/affiliate_bills
+  - /provider/affiliates/{affiliate_id}/patients
+  - /provider/affiliates/{affiliate_id}/patients/{id}
+- resource: appointment_types
+  surface: provider
+  operations: 1
+  methods:
+  - GET
+  paths:
+  - /provider/appointment_types
+- resource: appointments
+  surface: provider
+  operations: 1
+  methods:
+  - GET
+  paths:
+  - /provider/appointments
+- resource: cancellation_reasons
+  surface: provider
+  operations: 1
+  methods:
+  - GET
+  paths:
+  - /provider/cancellation_reasons
+- resource: charge_items
+  surface: provider
+  operations: 5
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /provider/charge_items
+  - /provider/charge_items/{id}
+- resource: charges
+  surface: provider
+  operations: 1
+  methods:
+  - POST
+  paths:
+  - /provider/charges
+- resource: companies
+  surface: provider
+  operations: 20
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /provider/companies
+  - /provider/companies/{company_id}/company_plans
+  - /provider/companies/{company_id}/company_plans/{id}
+  - /provider/companies/{company_id}/employee_divisions
+  - /provider/companies/{company_id}/invoices
+  - /provider/companies/{company_id}/invoices/{id}
+  - /provider/companies/{company_id}/invoices/{invoice_id}/payments
+  - /provider/companies/{company_id}/invoices/{invoice_id}/payments/{id}
+  - /provider/companies/{company_id}/sponsorships
+  - /provider/companies/{company_id}/sponsorships/{id}
+  - /provider/companies/{id}
+  - /provider/companies/{id}/deactivate
+- resource: coupons
+  surface: provider
+  operations: 2
+  methods:
+  - GET
+  paths:
+  - /provider/coupons
+  - /provider/coupons/{id}
+- resource: credit_categories
+  surface: provider
+  operations: 5
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /provider/credit_categories
+  - /provider/credit_categories/{id}
+- resource: credit_lines
+  surface: provider
+  operations: 1
+  methods:
+  - GET
+  paths:
+  - /provider/credit_lines
+- resource: customer_invoices
+  surface: provider
+  operations: 16
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /provider/customer_invoices
+  - /provider/customer_invoices/{customer_invoice_id}/charges
+  - /provider/customer_invoices/{customer_invoice_id}/charges/{id}
+  - /provider/customer_invoices/{customer_invoice_id}/payments
+  - /provider/customer_invoices/{customer_invoice_id}/payments/{id}
+  - /provider/customer_invoices/{customer_invoice_id}/pdf
+  - /provider/customer_invoices/{id}
+  - /provider/customer_invoices/{id}/issue
+  - /provider/customer_invoices/{id}/return_to_draft
+  - /provider/customer_invoices/{id}/send_email
+  - /provider/customer_invoices/{id}/void
+- resource: interactions
+  surface: provider
+  operations: 4
+  methods:
+  - GET
+  - POST
+  paths:
+  - /provider/interactions
+  - /provider/interactions/{interaction_id}/files/download_urls
+  - /provider/interactions/{interaction_id}/files/{id}/download_url
+  - /provider/interactions/{interaction_id}/notifications
+- resource: lead_sources
+  surface: provider
+  operations: 4
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /provider/lead_sources
+  - /provider/lead_sources/{id}
+- resource: locations
+  surface: provider
+  operations: 5
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /provider/locations
+  - /provider/locations/{id}
+- resource: memberships
+  surface: provider
+  operations: 18
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /provider/memberships
+  - /provider/memberships/new
+  - /provider/memberships/{id}
+  - /provider/memberships/{id}/bill
+  - /provider/memberships/{id}/cancel
+  - /provider/memberships/{id}/confirm
+  - /provider/memberships/{membership_id}/contracts
+  - /provider/memberships/{membership_id}/contracts/renew
+  - /provider/memberships/{membership_id}/contracts/{id}
+  - /provider/memberships/{membership_id}/members
+  - /provider/memberships/{membership_id}/members/{id}
+  - /provider/memberships/{membership_id}/members/{id}/cancel
+- resource: partner_charges
+  surface: provider
+  operations: 3
+  methods:
+  - GET
+  - POST
+  paths:
+  - /provider/partner_charges
+  - /provider/partner_charges/{id}
+- resource: patients
+  surface: provider
+  operations: 37
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /provider/patients
+  - /provider/patients/matching
+  - /provider/patients/{id}
+  - /provider/patients/{patient_id}/account_access_tokens
+  - /provider/patients/{patient_id}/affiliate
+  - /provider/patients/{patient_id}/credits
+  - /provider/patients/{patient_id}/credits/{id}
+  - /provider/patients/{patient_id}/form_responses
+  - /provider/patients/{patient_id}/form_responses/{id}
+  - /provider/patients/{patient_id}/integration_records
+  - /provider/patients/{patient_id}/interactions/clinical_note
+  - /provider/patients/{patient_id}/interactions/clinical_note/{id}
+  - /provider/patients/{patient_id}/interactions/document
+  - /provider/patients/{patient_id}/interactions/document/{id}
+  - /provider/patients/{patient_id}/interactions/lab
+  - /provider/patients/{patient_id}/interactions/lab/{id}
+  - /provider/patients/{patient_id}/interactions/partner
+  - /provider/patients/{patient_id}/interactions/partner/{id}
+  - /provider/patients/{patient_id}/payment_methods
+  - /provider/patients/{patient_id}/payment_methods/setup
+  - /provider/patients/{patient_id}/payment_methods/{id}
+  - /provider/patients/{patient_id}/social_security_number
+  - /provider/patients/{patient_id}/supplements
+  - /provider/patients/{patient_id}/supplements/{id}
+- resource: plans
+  surface: provider
+  operations: 1
+  methods:
+  - GET
+  paths:
+  - /provider/plans
+- resource: practice
+  surface: provider
+  operations: 2
+  methods:
+  - GET
+  - PATCH
+  paths:
+  - /provider/practice
+- resource: practitioners
+  surface: provider
+  operations: 5
+  methods:
+  - DELETE
+  - GET
+  - PATCH
+  - POST
+  paths:
+  - /provider/practitioners
+  - /provider/practitioners/{id}
+- resource: quotes
+  surface: provider
+  operations: 1
+  methods:
+  - POST
+  paths:
+  - /provider/quotes
+- resource: signup_attempts
+  surface: provider
+  operations: 2
+  methods:
+  - GET
+  paths:
+  - /provider/signup_attempts
+  - /provider/signup_attempts/{id}
+- resource: users
+  surface: provider
+  operations: 1
+  methods:
+  - GET
+  paths:
+  - /provider/users
+relationships:
+- from: App
+  kind: has_many
+  to: AppSurface
+  via: surfaces
+- from: App
+  kind: has_many
+  to: PartnerRole
+  via: partner_roles
+- from: Backend
+  kind: has_one
+  to: ApiKey
+  via: webhooks_signature_api_key
+- from: Backend
+  kind: has_one
+  to: PartnerApiCredentialsConfiguration
+  via: api_credentials_configuration
+- from: Backend
+  kind: has_many
+  to: Product
+  via: products
+- from: Charge
+  kind: has_one
+  to: Category
+  via: category
+- from: Charge
+  kind: has_one
+  to: ChargeItem
+  via: charge_item
+- from: Charge
+  kind: has_one
+  to: Location
+  via: location
+- from: Charge
+  kind: has_one
+  to: Patient
+  via: patient
+- from: Charge
+  kind: has_one
+  to: PayableInvoice
+  via: invoice
+- from: Charge
+  kind: has_one
+  to: Practitioner
+  via: practitioner
+- from: ChargeItem
+  kind: has_one
+  to: Category
+  via: category
+- from: Company
+  kind: has_many
+  to: Address
+  via: address
+- from: Company
+  kind: has_many
+  to: EmployeeDivision
+  via: employee_divisions
+- from: Company
+  kind: has_one
+  to: Location
+  via: default_location
+- from: Company
+  kind: has_many
+  to: Phone
+  via: phones
+- from: Company
+  kind: has_one
+  to: Plan
+  via: default_plan
+- from: Company
+  kind: has_one
+  to: Practitioner
+  via: default_practitioner
+- from: CompanyAccount
+  kind: has_one
+  to: Company
+  via: company
+- from: CompanyPlan
+  kind: has_one
+  to: Plan
+  via: plan
+- from: CompanySponsorship
+  kind: has_one
+  to: Company
+  via: company
+- from: CompanySponsorship
+  kind: has_one
+  to: CompanyAccount
+  via: family
+- from: Credit
+  kind: has_one
+  to: CreditCategory
+  via: credit_category
+- from: CustomerInvoice
+  kind: has_many
+  to: Charge
+  via: charges
+- from: CustomerInvoice
+  kind: has_one
+  to: Location
+  via: location
+- from: CustomerInvoice
+  kind: has_one
+  to: Patient
+  via: owner
+- from: EmergencyContact
+  kind: has_one
+  to: Phone
+  via: phone
+- from: Form
+  kind: has_many
+  to: FormItem
+  via: form_items
+- from: FormResponse
+  kind: has_one
+  to: Form
+  via: form
+- from: FormResponse
+  kind: has_many
+  to: FormResponseItem
+  via: form_response_items
+- from: FormResponse
+  kind: has_one
+  to: Record
+  via: subject
+- from: FormResponseItem
+  kind: has_one
+  to: Record
+  via: respondent
+- from: Installation
+  kind: has_many
+  to: ApiKey
+  via: api_keys
+- from: Installation
+  kind: has_one
+  to: Practice
+  via: practice
+- from: Installation
+  kind: has_one
+  to: Product
+  via: product
+- from: Interaction
+  kind: has_many
+  to: InteractionFile
+  via: files
+- from: Interaction
+  kind: belongs_to
+  to: patient
+  via: patient_id
+- from: InteractionClinicalNote
+  kind: has_many
+  to: InteractionFile
+  via: files
+- from: InteractionClinicalNote
+  kind: belongs_to
+  to: patient
+  via: patient_id
+- from: InteractionLab
+  kind: has_many
+  to: InteractionFile
+  via: files
+- from: InteractionLab
+  kind: has_one
+  to: Order
+  via: order
+- from: InteractionLab
+  kind: has_one
+  to: Report
+  via: report
+- from: InteractionLab
+  kind: has_many
+  to: Result
+  via: results
+- from: Location
+  kind: has_one
+  to: LocationGroup
+  via: location_group
+- from: Membership
+  kind: has_one
+  to: CompanyAccount
+  via: sponsorship
+- from: Membership
+  kind: has_one
+  to: Coupon
+  via: coupon
+- from: Membership
+  kind: has_many
+  to: MembershipBill
+  via: upcoming_bills
+- from: Membership
+  kind: has_many
+  to: MembershipPatient
+  via: membership_patients
+- from: Membership
+  kind: has_one
+  to: Patient
+  via: owner
+- from: Membership
+  kind: has_one
+  to: Plan
+  via: plan
+- from: MembershipBill
+  kind: has_one
+  to: PayableInvoice
+  via: customer_invoice
+- from: MembershipMember
+  kind: has_one
+  to: Membership
+  via: membership
+- from: MembershipMember
+  kind: has_one
+  to: Patient
+  via: patient
+- from: MembershipPatient
+  kind: has_one
+  to: Company
+  via: company
+- from: MembershipPatient
+  kind: has_one
+  to: EmployeeDivision
+  via: division
+- from: MembershipPatient
+  kind: has_one
+  to: Patient
+  via: patient
+- from: MembershipPatient
+  kind: has_one
+  to: Patient
+  via: payer
+- from: MembershipPatient
+  kind: has_one
+  to: Plan
+  via: plan
+- from: MembershipPatient
+  kind: has_one
+  to: Practitioner
+  via: practitioner
+- from: Order
+  kind: has_many
+  to: Action
+  via: actions
+- from: Order
+  kind: has_one
+  to: Subject
+  via: subject
+- from: PartnerAppUser
+  kind: has_one
+  to: Product
+  via: product
+- from: PartnerProductOverview
+  kind: has_many
+  to: PartnerProductImage
+  via: images
+- from: Patient
+  kind: has_one
+  to: Company
+  via: company
+- from: Patient
+  kind: has_many
+  to: CompanySponsorship
+  via: sponsorships
+- from: Patient
+  kind: has_one
+  to: EmergencyContact
+  via: emergency_contact
+- from: Patient
+  kind: has_many
+  to: ExternalRecord
+  via: external_records
+- from: Patient
+  kind: has_one
+  to: KnownPractice
+  via: known_practice
+- from: Patient
+  kind: has_one
+  to: LeadSource
+  via: lead_source
+- from: Patient
+  kind: has_one
+  to: Location
+  via: location
+- from: Patient
+  kind: has_one
+  to: LocationGroup
+  via: location_group
+- from: Patient
+  kind: has_one
+  to: LocationGroup
+  via: practitioner_group
+- from: Patient
+  kind: has_many
+  to: MembershipMember
+  via: membership_members
+- from: Patient
+  kind: has_many
+  to: MembershipPatient
+  via: memberships
+- from: Patient
+  kind: self_reference
+  to: Patient
+  via: account
+- from: Patient
+  kind: self_reference
+  to: Patient
+  via: merged_into
+- from: Patient
+  kind: has_many
+  to: Phone
+  via: phones
+- from: Patient
+  kind: has_one
+  to: Practitioner
+  via: practitioner
+- from: Patient
+  kind: has_one
+  to: SocialSecurityNumber
+  via: ssn
+- from: PayableInvoice
+  kind: has_one
+  to: PayableOwner
+  via: owner
+- from: Payment
+  kind: has_one
+  to: Source
+  via: source
+- from: Practice
+  kind: has_many
+  to: Phone
+  via: phones
+- from: Practitioner
+  kind: has_many
+  to: Location
+  via: locations
+- from: Practitioner
+  kind: has_one
+  to: Npi
+  via: npi
+- from: Practitioner
+  kind: has_many
+  to: Specialty
+  via: specialties
+- from: Product
+  kind: has_one
+  to: Backend
+  via: partner_backend
+- from: Quote
+  kind: has_one
+  to: Coupon
+  via: coupon
+- from: Quote
+  kind: has_one
+  to: Plan
+  via: plan
+- from: Range
+  kind: has_one
+  to: Quantity
+  via: high
+- from: Range
+  kind: has_one
+  to: Quantity
+  via: low
+- from: Result
+  kind: has_one
+  to: Code
+  via: code
+- from: Result
+  kind: has_one
+  to: Quantity
+  via: value_quantity
+- from: Result
+  kind: has_many
+  to: Range
+  via: ranges
+- from: SignupAttempt
+  kind: has_one
+  to: LeadSource
+  via: lead_source
+- from: SignupAttempt
+  kind: has_one
+  to: SignupPage
+  via: signup_page
+- from: User
+  kind: has_many
+  to: PartnerAppUser
+  via: product_users
+- from: User
+  kind: has_many
+  to: Phone
+  via: phones
+- from: WebhookEndpoint
+  kind: has_one
+  to: Backend
+  via: partner_backend
+findings:
+- 'Patient is the hub: 16 outbound relationships, including a self-reference (merged_into) that records
+  patient-record merges and an `account` self-reference for family billing. Any agent walking the graph
+  should start here.'
+- Money is modelled as *_in_cents integers throughout; there is no currency field on the resources, so
+  USD is implied by the platform rather than declared by the contract.
+- The partner surface is a full CRUD marketplace API (products, app surfaces, highlights, links, testimonials,
+  preconditions, backends, installations, api keys, webhook endpoints) that the repo's 49 refined specs
+  do not yet cover.
+render: null
+render_note: No subway/ diagram exists for this provider.

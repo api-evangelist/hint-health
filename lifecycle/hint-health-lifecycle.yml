@@ -1,0 +1,106 @@
+generated: '2026-08-14'
+method: searched
+source: https://developers.hint.com/reference/making-requests
+docs:
+  - https://developers.hint.com/reference/making-requests
+  - https://developers.hint.com/reference/webhookeventlistwebhookevents
+  - https://status.hint.com/
+name: Hint Health API Lifecycle
+description: >-
+  Versioning, change, deprecation and operational-transparency posture for the
+  Hint REST API. Hint runs an unversioned, additive API with a public
+  Statuspage; it publishes no deprecation policy, no Sunset/Deprecation header
+  practice, no dated changelog and no SLA.
+
+versioning:
+  scheme: unversioned
+  in_path: false
+  in_header: false
+  current_version: none
+  detail: >-
+    Hint's base path is /api with no version segment and no version header is
+    documented. The OpenAPI in this repo carries info.version "1.0", which is a
+    document version rather than a negotiated API version.
+  change_policy: additive
+  change_policy_detail: >-
+    Hint states for webhook event types that "new resource/action pairs may be
+    added without a version bump" and asks implementations to ignore unknown
+    event types. That is the only explicit change-compatibility statement Hint
+    publishes.
+
+deprecation:
+  policy_published: false
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  detail: >-
+    No deprecation policy page, no notice window, and no RFC 8594
+    Sunset/Deprecation response headers are documented anywhere in the developer
+    portal. The nearest published behaviour is soft retirement of reference
+    data: List All Appointment Types excludes inactive, archived and deleted
+    types, and Hint instructs clients to treat an unfamiliar appointment_type_id
+    as an unknown/retired type rather than an error.
+  deprecated_operations_in_openapi: 0
+  deprecated_operations_note: >-
+    Derived check — no operation across the 49 specs in openapi/ carries
+    deprecated: true.
+
+changelog:
+  published: false
+  probes:
+    - {url: 'https://developers.hint.com/changelog', status: 404}
+    - {url: 'https://developers.hint.com/docs/changelog', status: 404}
+  detail: >-
+    There is no dated API changelog. Individual documentation pages carry an
+    updatedAt timestamp in their markdown frontmatter (for example Making
+    Requests updatedAt 2026-07-30, Webhooks 2025-11-25, JS SDK 2026-07-14), and
+    llms.txt indexes them — page-level currency signals, but not a change log.
+  nearest_signal: per-page updatedAt frontmatter on developers.hint.com/*.md
+
+status_page:
+  url: https://status.hint.com/
+  provider: Atlassian Statuspage
+  http_status: 200
+  state_at_check: All Systems Operational
+  subscribe: [email, Slack, Atom, RSS]
+  historical_uptime: published (90-day rolling; HintOS App 99.96% at time of check)
+  components:
+    - HintOS App
+    - Stripe API
+    - Authentication
+    - HintOS Servers
+    - Hosting Service Provider (Aptible)
+    - AWS EC2 (California)
+    - AWS EC2 (Virginia)
+    - AWS EC2 (Oregon)
+    - HintOS Email Delivery (Mailgun outbound / API / status)
+    - Documo Fax Services
+    - Health Gorilla Lab Ordering
+    - Nylas Calendars and Appointment Scheduling
+    - Veradigm ePrescribing
+  note: >-
+    The status page names the application and its dependencies, but there is no
+    component named for the public REST API itself — an API consumer cannot read
+    api.hint.com health directly off this page.
+
+sla:
+  published: false
+  detail: >-
+    No public SLA or uptime commitment. Core Enterprise plans reference a custom
+    MSA/BAA negotiated with sales; terms are not public.
+
+support:
+  developer_contact: devsupport@hint.com
+  developer_portal: https://developers.hint.com/
+  partner_program: https://www.hint.com/developers
+
+api_surface_drift:
+  observed: '2026-08-14'
+  detail: >-
+    Hint's live MCP list-endpoints returns operations absent from the 49 specs
+    in openapi/ — appointments, appointment types, communication authorizations,
+    the partner-invisible clinical chart endpoints (allergies, diagnoses,
+    medications, family history, social history) and the full marketplace
+    products/installations/backends surface. With no changelog and no
+    versioning, that drift is only discoverable by re-reading the reference.

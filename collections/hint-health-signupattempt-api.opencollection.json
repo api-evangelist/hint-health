@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken SignupAttempt API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SignupAttempt",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Signup Attempts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/signup_attempts",
+            "params": [
+              {
+                "name": "signup_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lead_source",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_at",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+              }
+            ]
+          },
+          "docs": "List All Signup Attempts"
+        },
+        {
+          "info": {
+            "name": "Show Signup Attempt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/signup_attempts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Signup Attempt ID"
+              }
+            ]
+          },
+          "docs": "Show Signup Attempt"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,124 @@
+generated: '2026-08-14'
+method: searched
+source: https://developers.hint.com/docs/js-sdk
+docs:
+  - https://developers.hint.com/docs/js-sdk
+  - https://developers.hint.com/docs/building-an-app
+  - https://developers.hint.com/docs/design-system
+  - https://developers.hint.com/docs/app-best-practices
+  - https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/marketplace-contract.md
+name: Hint Health Embedded App Components
+description: >-
+  Hint's client-side surface is not a component library — it is an embedding
+  contract. Partner apps run in a cross-origin iframe inside the Hint UI at
+  named surface types, bridged by a single loader script (hint-sdk.js) that
+  carries session context in and resize/close/deep-link messages out. Hint also
+  publishes a design system so embedded apps match the host UI.
+
+loader:
+  name: hint-sdk.js
+  production: https://api.hint.com/hint-sdk.js
+  sandbox: https://api.sandbox.hint.com/hint-sdk.js
+  install: '<script src="https://api.hint.com/hint-sdk.js"></script>'
+  init: HintSDK.init()
+  versioned: false
+  see_also: packages/hint-health-packages.yml
+
+families:
+  - family: Embedded app surfaces
+    description: >-
+      Named mount points inside the Hint UI where a partner app renders. Hint
+      routes GET /hint/<surface_type>?session_key=... to the partner's server,
+      which recovers the practice context from the session key and renders the
+      surface.
+    surfaces:
+      - {type: core_page, description: 'Full page inside Hint Core'}
+      - {type: clinical_interaction, description: 'Panel inside a clinical note/interaction window'}
+      - {type: settings, description: 'App settings surface'}
+      - {type: clinical_chart, description: 'Clinical chart surface (sizing rules match clinical_interaction)'}
+    sizing: >-
+      Clinical surfaces size the embed iframe ONLY from the app's `resized`
+      reports. hint-sdk.js auto-reports height via a ResizeObserver from load;
+      an SDK-less page is clipped to roughly a 150px strip. The same applies to
+      core_page surfaces with auto-adjust height disabled.
+
+  - family: JS SDK context API
+    description: Read-only host context and lifecycle hooks exposed to the embedded app.
+    members:
+      - {name: 'HintSDK.init(callback)', description: 'Signals the app is ready to render'}
+      - {name: 'HintSDK.user', description: '{id, name, email, first_name, last_name, phones}'}
+      - {name: 'HintSDK.currentPatient', description: '{id, name} or null'}
+      - {name: 'HintSDK.onCurrentPatientChanged(cb)', description: 'Fires when the selected patient changes'}
+      - {name: 'HintSDK.interaction', description: '{id} of the attached interaction, or null'}
+      - {name: 'HintSDK.close()', description: 'Asks Hint to close the app container'}
+      - {name: 'HintSDK.onClose(cb)', description: 'Fires when the user closes the container'}
+    caveat: >-
+      partner_roles and access_context are NOT on HintSDK.user. They arrive only
+      in the signed server-to-server handshake payload and must be read on the
+      partner's server.
+
+  - family: Deep linking
+    description: >-
+      Shareable in-app navigation state, round-tripped through the host URL so a
+      link opened by another Hint user restores the same view.
+    members:
+      - {name: 'HintSDK.queryParams', description: 'Current Hint query params object or null'}
+      - {name: 'HintSDK.updateQueryParams(obj)', description: 'Merges params; set a key to null to clear it'}
+      - {name: 'HintSDK.onQueryParamsChanged(cb)'}
+      - {name: 'HintSDK.fragment', description: 'Current URL fragment string or null'}
+      - {name: 'HintSDK.updateFragment(str)'}
+      - {name: 'HintSDK.onFragmentChanged(cb)'}
+
+  - family: Payment collection components
+    description: >-
+      Hosted card/ACH capture, delegated to the practice's payment processor
+      rather than implemented by Hint.
+    members:
+      - name: Rainforest Payment Component
+        description: >-
+          Used with Hint's setup-intent endpoint. POST the setup intent, then
+          mount Rainforest's component with the returned
+          payment_method_config_id, session_key and allowed_methods.
+        docs: https://developers.hint.com/docs/collecting-payment-information-hint-payments
+      - name: Stripe Financial Connections
+        description: >-
+          Alternative path for practices on Stripe; the setup intent returns
+          stripe_client_secret instead.
+        docs: https://developers.hint.com/docs/collecting-payment-information-using-stripes-financial-connections
+
+  - family: Hosted signup
+    description: >-
+      Hint hosts a signup form; partners may instead orchestrate plans,
+      patients, memberships and payments themselves through the API.
+    docs: https://developers.hint.com/docs/creating-a-custom-signup-page
+
+  - family: Patient portal handoff
+    description: >-
+      Short-lived, single-use access tokens that redirect an already-authenticated
+      patient into the Hint patient portal.
+    operation: AccountAccessToken.CreateAcccessToken
+    guidance: >-
+      Generate on demand only, redirect immediately in a new window, never
+      cache, never display directly, never email.
+
+browser_capabilities:
+  mechanism: browser_allow_list
+  set_via: 'PATCH /partner/products/{id}/app'
+  supported: [camera, microphone, geolocation]
+  detail: >-
+    Embedded surfaces run cross-origin, so getUserMedia and geolocation are
+    blocked unless Hint delegates the capability via a matching Permissions
+    Policy allow attribute on the iframe. Delegation is opt-in per app and
+    applies at embed time — already-open surfaces must be reloaded. The end user
+    still sees the browser's own permission prompt.
+  fallback: >-
+    Older iOS may still block getUserMedia in cross-origin iframes; Hint advises
+    keeping an <input type="file" accept="image/*" capture> fallback.
+
+design_system:
+  url: https://developers.hint.com/docs/design-system
+  description: Colors and typography guidance so Marketplace apps match the Hint UI.
+  assets: https://developers.hint.com/docs/partner-asset-guidelines
+  icons: >-
+    Sidebar icon guidance is shipped inside Hint's own marketplace agent skill
+    (_common/sidebar-icons.md).

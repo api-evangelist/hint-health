@@ -1,0 +1,142 @@
+{
+  "item": [
+    {
+      "id": "17b9c962-ae76-4401-b8b8-8fd4b2056d2e",
+      "name": "Quote",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11af6dbb-9ce8-46de-ba46-98c1cc26a4e6",
+          "name": "Create Quote",
+          "request": {
+            "name": "Create Quote",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan\": {\n    \"id\": \"<string>\"\n  },\n  \"members\": [\n    {\n      \"type\": \"<string>\",\n      \"uses_tobacco\": \"<boolean>\",\n      \"age\": \"<integer>\",\n      \"dob\": \"<date>\",\n      \"start_date\": \"<date>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"uses_tobacco\": \"<boolean>\",\n      \"age\": \"<integer>\",\n      \"dob\": \"<date>\",\n      \"start_date\": \"<date>\"\n    }\n  ],\n  \"period_in_months\": \"<integer>\",\n  \"coupon\": {\n    \"id\": \"<string>\"\n  },\n  \"coupon_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f57f84e8-c1c7-435c-9ebd-e4276295b2ee",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan\": {\n    \"id\": \"<string>\"\n  },\n  \"members\": [\n    {\n      \"type\": \"<string>\",\n      \"uses_tobacco\": \"<boolean>\",\n      \"age\": \"<integer>\",\n      \"dob\": \"<date>\",\n      \"start_date\": \"<date>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"uses_tobacco\": \"<boolean>\",\n      \"age\": \"<integer>\",\n      \"dob\": \"<date>\",\n      \"start_date\": \"<date>\"\n    }\n  ],\n  \"period_in_months\": \"<integer>\",\n  \"coupon\": {\n    \"id\": \"<string>\"\n  },\n  \"coupon_code\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"billing_period\": \"month\",\n  \"members\": [\n    {\n      \"type\": \"primary\",\n      \"age\": 27,\n      \"uses_tobacco\": true,\n      \"dob\": null,\n      \"start_date\": null,\n      \"rate_in_cents\": 1100\n    },\n    {\n      \"type\": \"spouse\",\n      \"age\": 23,\n      \"uses_tobacco\": false,\n      \"dob\": null,\n      \"start_date\": null,\n      \"rate_in_cents\": 1100\n    },\n    {\n      \"type\": \"child\",\n      \"age\": 4,\n      \"uses_tobacco\": false,\n      \"dob\": null,\n      \"start_date\": null,\n      \"rate_in_cents\": 1100\n    }\n  ],\n  \"coupon_discount_in_cents\": null,\n  \"ongoing_amount_in_cents\": 3300,\n  \"registration_fee_in_cents\": 5034,\n  \"plan\": {\n    \"id\": \"pln-ab12C345DeF6\",\n    \"name\": \"Membership\",\n    \"plan_type\": \"retail\"\n  },\n  \"coupon\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "84dfeeaf-3fae-4d7f-b974-48ea680dfefd",
+    "name": "Hint Health AccountAccessToken Quote API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

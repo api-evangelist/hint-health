@@ -1,0 +1,257 @@
+{
+  "item": [
+    {
+      "id": "586f022a-f3b2-41c7-9ced-017853c4b9ea",
+      "name": "Invoice",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7252e066-271a-471a-a62d-2a062eca27b1",
+          "name": "List All Invoices",
+          "request": {
+            "name": "List All Invoices",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "companies",
+                ":company_id",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_id",
+                  "description": "(Required) Unique Company ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8055027-841e-4ecb-b8e5-57e51aaa6f72",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "companies",
+                    ":company_id",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_id",
+                      "description": "(Required) Unique Company ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"inv-ab12C345DeF6\",\n    \"amount_in_cents\": 20000,\n    \"human_status\": \"issued\",\n    \"invoice_date\": \"2017-02-01\",\n    \"invoice_number\": 1,\n    \"paid_at\": null,\n    \"paid_in_cents\": 0,\n    \"company\": {\n      \"id\": \"com-ab12C345DeF6\",\n      \"name\": \"Schmoogle Inc.\",\n      \"owner\": {\n        \"id\": \"user-ab12C345DeF6\",\n        \"email\": \"fixture@example.com\",\n        \"first_name\": \"Joe\",\n        \"last_name\": \"Blogs\",\n        \"name\": \"Joe Blogs\",\n        \"phones\": []\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20601c68-1ce0-45e2-a03e-7248d95eacf9",
+          "name": "Show Invoice",
+          "request": {
+            "name": "Show Invoice",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "companies",
+                ":company_id",
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_id",
+                  "description": "(Required) Unique Company ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2daf2f4b-946a-4cb4-b45f-9fe3061eb8f3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "companies",
+                    ":company_id",
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_id",
+                      "description": "(Required) Unique Company ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inv-ab12C345DeF6\",\n  \"amount_in_cents\": 20000,\n  \"human_status\": \"issued\",\n  \"invoice_date\": \"2017-02-01\",\n  \"invoice_number\": 1,\n  \"paid_at\": null,\n  \"paid_in_cents\": 0,\n  \"company\": {\n    \"id\": \"com-ab12C345DeF6\",\n    \"name\": \"Schmoogle Inc.\",\n    \"owner\": {\n      \"id\": \"user-ab12C345DeF6\",\n      \"email\": \"fixture@example.com\",\n      \"first_name\": \"Joe\",\n      \"last_name\": \"Blogs\",\n      \"name\": \"Joe Blogs\",\n      \"phones\": []\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a18dff67-439d-4edc-93a5-46d387fce00e",
+    "name": "Hint Health AccountAccessToken Invoice API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken DocumentInteraction API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DocumentInteraction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Document Interaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/interactions/document",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Document Interaction"
+        },
+        {
+          "info": {
+            "name": "Show Document Interaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/interactions/document/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Document Interaction ID"
+              }
+            ]
+          },
+          "docs": "Show Document Interaction"
+        },
+        {
+          "info": {
+            "name": "Update Interaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/interactions/document/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Document Interaction ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Interaction"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

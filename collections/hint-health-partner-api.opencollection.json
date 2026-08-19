@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Partner API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Partner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Show Partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/partner"
+          },
+          "docs": "Show Partner"
+        },
+        {
+          "info": {
+            "name": "Update Partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/partner",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Partner"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

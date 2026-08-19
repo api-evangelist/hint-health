@@ -1,0 +1,178 @@
+generated: '2026-08-15'
+method: searched
+source: >-
+  https://github.com/hinthealth/marketplace-skill (first-party, saved verbatim)
+  plus three API-flow skills generated from openapi/
+name: Hint Health Agent Skills
+description: >-
+  Two layers. Hint PUBLISHES its own Agent Skill bundle — hinthealth/marketplace-skill,
+  a router plus four sub-skills and eight shared fragments that build, retrofit,
+  list and audit a Hint marketplace partner app. Those are saved here verbatim and
+  are the provider's own words. Layered on top are three API-flow skills generated
+  by API Evangelist for the marquee Provider API journeys the vendor bundle does
+  not cover — enrollment, billing, and clinical writes — each grounded in
+  operationIds verified present in openapi/.
+provider_published:
+  repository: https://github.com/hinthealth/marketplace-skill
+  description: AI agent skill that builds and deploys a working partner app to the Hint marketplace
+  pushed: '2026-08-12'
+  license: none declared
+  install_router: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/SKILL.md
+  note: >-
+    Hint is one of very few providers in the catalogue shipping first-party Agent
+    Skills at all. The bundle is agent-native by design — it instructs the agent to
+    install Hint's MCP server first and read the API through it.
+
+skills:
+  # --- provider-published, verbatim ---
+  - file: hint-health-marketplace-skill.md
+    name: /hint-marketplace — router
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/SKILL.md
+    upstream_path: SKILL.md
+    summary: Entry point. Asks what the partner is trying to do and routes to a sub-skill.
+
+  - file: hint-health-create-app-skill.md
+    name: /hint-marketplace-create-app
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/create-app/SKILL.md
+    upstream_path: create-app/SKILL.md
+    summary: Build and deploy a Node.js partner app to Hint's managed platform, including deploying updates.
+
+  - file: hint-health-retrofit-skill.md
+    name: /hint-marketplace-retrofit
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/retrofit/SKILL.md
+    upstream_path: retrofit/SKILL.md
+    summary: Audit an existing app against the marketplace contract and emit the minimum diff, any stack.
+
+  - file: hint-health-fill-listing-skill.md
+    name: /hint-marketplace-fill-listing
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/fill-listing/SKILL.md
+    upstream_path: fill-listing/SKILL.md
+    summary: Populate the marketplace listing section by section, each through its own /partner/products endpoint.
+
+  - file: hint-health-audit-skill.md
+    name: /hint-marketplace-audit
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/audit/SKILL.md
+    upstream_path: audit/SKILL.md
+    summary: Read-only pass/fail audit of a deployed app — contract compliance, cross-practice data leakage, portal wiring.
+
+  - file: hint-health-marketplace-readme.md
+    name: Marketplace skill bundle README
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/README.md
+    upstream_path: README.md
+    summary: What the bundle is and how to install it into an agent.
+
+  # --- provider-published shared fragments ---
+  - file: hint-health-common-api-conventions.md
+    name: Shared fragment — API conventions
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/api-conventions.md
+    upstream_path: _common/api-conventions.md
+    summary: Hosts, auth, response shapes, pagination, filtering, reserved env vars. Feeds conventions/.
+  - file: hint-health-common-marketplace-contract.md
+    name: Shared fragment — marketplace contract
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/marketplace-contract.md
+    upstream_path: _common/marketplace-contract.md
+    summary: The three HTTP routes and reserved env vars every marketplace app must implement.
+  - file: hint-health-common-provider-api.md
+    name: Shared fragment — Provider API
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/provider-api.md
+    upstream_path: _common/provider-api.md
+    summary: How to read the Provider API — MCP server first, llms.txt second, browsable reference last.
+  - file: hint-health-common-provider-api-fields.md
+    name: Shared fragment — Provider API field reference
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/provider-api-fields.md
+    upstream_path: _common/provider-api-fields.md
+    summary: Field sketches and gotchas for patients, memberships, customer_invoices, payments, practitioners.
+  - file: hint-health-common-node-template.md
+    name: Shared fragment — Node.js reference implementation
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/node-template.md
+    upstream_path: _common/node-template.md
+    summary: The canonical Node implementation of the marketplace contract.
+  - file: hint-health-common-caching-patterns.md
+    name: Shared fragment — caching patterns
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/caching-patterns.md
+    upstream_path: _common/caching-patterns.md
+    summary: When and how to cache practice-scale list endpoints without tripping the 20 req/s limit.
+  - file: hint-health-common-brand-styles.md
+    name: Shared fragment — brand and UI styles
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/brand-styles.md
+    upstream_path: _common/brand-styles.md
+    summary: Design tokens so an embedded app matches the Hint portal.
+  - file: hint-health-common-sidebar-icons.md
+    name: Shared fragment — sidebar icons
+    method: searched
+    source: https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/sidebar-icons.md
+    upstream_path: _common/sidebar-icons.md
+    summary: Core Page sidebar icon rules, and why it is not the listing icon.
+
+  # --- generated by API Evangelist from openapi/ ---
+  - file: hint-health-enroll-patient-and-membership.md
+    name: Enroll a patient and start a membership
+    method: generated
+    api: openapi/hint-health-patient-api-openapi.yml
+    operations:
+      - Patient.MatchPatients
+      - Patient.CreatePatient
+      - Plan.ListAllPlans
+      - Quote.CreateQuote
+      - PaymentMethod.CreateSetupIntent
+      - PaymentMethod.CreatePaymentMethod
+      - Membership.CreateMembership
+      - Membership.ConfirmMembership
+      - MembershipMember.CreateMembershipMember
+    summary: De-duplicate, create the patient, price the plan, capture payment, create and CONFIRM the membership.
+
+  - file: hint-health-bill-and-collect-invoice.md
+    name: Bill a patient and collect a customer invoice
+    method: generated
+    api: openapi/hint-health-customerinvoice-api-openapi.yml
+    operations:
+      - CustomerInvoice.CreateCustomerInvoice
+      - CustomerInvoiceCharge.CreateCustomerInvoiceCharge
+      - CustomerInvoice.IssueCustomerInvoice
+      - CustomerInvoicePayment.CreatePayment
+      - CustomerInvoice.CreatePDF
+      - CustomerInvoice.ReturnToDraft
+      - CustomerInvoice.VoidCustomerInvoice
+      - CustomerInvoice.ListAllCustomerInvoices
+      - Membership.BillMembership
+      - Credit.CreateCredit
+    summary: draft → issued → paid, with void / return-to-draft, and why you never hand-bill a membership.
+
+  - file: hint-health-write-clinical-interaction.md
+    name: Write clinical interactions into a patient chart
+    method: generated
+    api: openapi/hint-health-clinicalnoteinteraction-api-openapi.yml
+    operations:
+      - ClinicalNoteInteraction.CreateClinicalNoteInteraction
+      - LabInteraction.CreateLabInteraction
+      - DocumentInteraction.CreateDocumentInteraction
+      - PartnerInteraction.CreatePartnerInteraction
+      - Interaction.ListAllInteractions
+      - InteractionNotifications.CreateInteractionNotification
+      - IntegrationRecord.ListAllIntegrationRecords
+    summary: The PHI write path — note/lab/document/partner records, notifications, and single-use file URLs.
+
+counts:
+  total: 17
+  provider_published: 14
+  generated: 3
+
+grounding_note: >-
+  Every operationId in the three generated skills was verified by grep against the
+  153 operationIds in openapi/*.yml before the skill was written. Nothing is
+  invented. Where a skill references an operation that exists only in the newer
+  2026-07-01 harvest (the interaction file download URLs), it says so and cites
+  openapi/_original/.

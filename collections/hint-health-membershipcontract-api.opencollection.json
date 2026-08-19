@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken MembershipContract API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MembershipContract",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all Membership Contracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/memberships/:membership_id/contracts",
+            "params": [
+              {
+                "name": "membership_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              }
+            ]
+          },
+          "docs": "List all Membership Contracts"
+        },
+        {
+          "info": {
+            "name": "Renew Membership Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/memberships/:membership_id/contracts/renew",
+            "params": [
+              {
+                "name": "membership_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Renew Membership Contract"
+        },
+        {
+          "info": {
+            "name": "Update Membership Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/memberships/:membership_id/contracts/:id",
+            "params": [
+              {
+                "name": "membership_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership Contract ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Membership Contract"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

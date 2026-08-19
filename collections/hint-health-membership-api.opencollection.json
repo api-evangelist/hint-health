@@ -1,0 +1,208 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Membership API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Membership",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bill Membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/memberships/:id/bill",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bill Membership"
+        },
+        {
+          "info": {
+            "name": "Cancel Membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/memberships/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel Membership"
+        },
+        {
+          "info": {
+            "name": "Confirm Membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/memberships/:id/confirm",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              }
+            ]
+          },
+          "docs": "Confirm Membership"
+        },
+        {
+          "info": {
+            "name": "List All Memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/memberships",
+            "params": [
+              {
+                "name": "updated_at",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+              }
+            ]
+          },
+          "docs": "List All Memberships"
+        },
+        {
+          "info": {
+            "name": "Create Membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/memberships",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Membership"
+        },
+        {
+          "info": {
+            "name": "Show Membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/memberships/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              }
+            ]
+          },
+          "docs": "**Status Options:** pending, unconfirmed, active, unpaid, ended\n**Enrollment Status Options:** pending, unconfirmed, active, inactive"
+        },
+        {
+          "info": {
+            "name": "Update Membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/memberships/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Membership"
+        },
+        {
+          "info": {
+            "name": "Delete Membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/memberships/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              }
+            ]
+          },
+          "docs": "Delete Membership"
+        },
+        {
+          "info": {
+            "name": "New Membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/memberships/new",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Builds a default membership"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

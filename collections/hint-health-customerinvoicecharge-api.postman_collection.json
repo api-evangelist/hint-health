@@ -1,0 +1,405 @@
+{
+  "item": [
+    {
+      "id": "f80eba01-61f4-4bb4-87ab-9b846e288b02",
+      "name": "CustomerInvoiceCharge",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c32156b9-8bef-487f-9dbe-05edbf901663",
+          "name": "Create CustomerInvoiceCharge",
+          "request": {
+            "name": "Create CustomerInvoiceCharge",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices",
+                ":customer_invoice_id",
+                "charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_invoice_id",
+                  "description": "(Required) Unique Customer Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": \"<double>\",\n  \"price_in_cents\": \"<double>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date\": \"<date>\",\n  \"patient\": {\n    \"id\": \"<string>\"\n  },\n  \"practitioner\": {\n    \"id\": \"<string>\"\n  },\n  \"category\": {\n    \"id\": \"<string>\"\n  },\n  \"charge_item\": {\n    \"id\": \"<string>\"\n  },\n  \"location\": {\n    \"id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95e1e893-14c4-4fc8-b144-ee800b2d7917",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices",
+                    ":customer_invoice_id",
+                    "charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_invoice_id",
+                      "description": "(Required) Unique Customer Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantity\": \"<double>\",\n  \"price_in_cents\": \"<double>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date\": \"<date>\",\n  \"patient\": {\n    \"id\": \"<string>\"\n  },\n  \"practitioner\": {\n    \"id\": \"<string>\"\n  },\n  \"category\": {\n    \"id\": \"<string>\"\n  },\n  \"charge_item\": {\n    \"id\": \"<string>\"\n  },\n  \"location\": {\n    \"id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cha-ab12C345DeF6\",\n  \"amount_in_cents\": 1000,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"description\": \"\",\n  \"is_persisted\": true,\n  \"name\": \"Lab fee\",\n  \"price_in_cents\": 1000,\n  \"quantity\": 1,\n  \"service_date\": \"2017-02-05\",\n  \"status\": \"draft\",\n  \"subtotal_in_cents\": 1000,\n  \"tax_in_cents\": 0,\n  \"total_in_cents\": 1000,\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"category\": null,\n  \"charge_item\": null,\n  \"location\": {\n    \"id\": \"loc-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"name\": \"San Francisco HQ\"\n  },\n  \"patient\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"i_heart_rufus@chaka.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Yvette\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Stevens\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"active\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Yvette Thomas Stevens\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"account\": {\n      \"name\": \"Yvette Thomas Stevens\",\n      \"past_due_in_cents\": 0\n    },\n    \"company\": {\n      \"id\": \"com-ab12C345DeF6\",\n      \"name\": \"Schmoogle Inc.\"\n    },\n    \"emergency_contact\": {\n      \"id\": \"emc-ab12C345DeF6\",\n      \"first_name\": \"Eliot\",\n      \"last_name\": \"Sumner\",\n      \"email\": \"bass_eliot@iblamecoco.com\",\n      \"name\": \"Eliot Sumner\",\n      \"relationship\": \"sibling\",\n      \"phone\": {\n        \"number\": \"5553050051\",\n        \"type\": \"mobile\",\n        \"us_formattable\": true\n      }\n    },\n    \"external_records\": [],\n    \"known_practice\": null,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"location\": {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": null,\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    },\n    \"location_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"membership_members\": [],\n    \"memberships\": [],\n    \"merged_into\": null,\n    \"phones\": [],\n    \"practitioner\": {\n      \"id\": \"pct-ab12C345DeF6\",\n      \"accepts_enrollments_from_employer\": true,\n      \"accepts_enrollments_from_retail\": true,\n      \"bio\": \"Reginalds biography...\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"education\": [\n        \"The University of Hint\"\n      ],\n      \"email\": \"rocket_man@emi.com\",\n      \"gender\": \"male\",\n      \"gender_other\": null,\n      \"integration_record_id\": null,\n      \"max_patient_age\": 50,\n      \"min_patient_age\": 0,\n      \"name\": \"Reginald Dwight\",\n      \"online_signup_visibility\": true,\n      \"panel_size\": 150,\n      \"panel_size_limit\": 200,\n      \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"locations\": [\n        {\n          \"id\": \"loc-ab12C345DeF6\",\n          \"address_city\": \"New York\",\n          \"address_country\": \"United States\",\n          \"address_latitude\": 40.7227998,\n          \"address_line1\": \"157 E Houston St\",\n          \"address_line2\": \"Suite 2402\",\n          \"address_longitude\": -73.9892241,\n          \"address_state\": \"NY\",\n          \"address_zip\": \"10002\",\n          \"distance\": null,\n          \"name\": \"San Francisco HQ\",\n          \"phone_number\": \"5553050019\",\n          \"virtual\": false,\n          \"location_group\": {\n            \"id\": \"prg-ab12C345DeF6\",\n            \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n            \"integration_record_id\": null,\n            \"name\": \"Downtown Location Group\",\n            \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n          }\n        }\n      ],\n      \"npi\": {\n        \"first_name\": \"REGINALD\",\n        \"last_name\": \"DWIGHT\",\n        \"number\": 123456879,\n        \"organization_name\": \"HINT HEALTH\",\n        \"type\": \"individual\"\n      },\n      \"specialties\": [\n        {\n          \"id\": \"spe-ab12C345DeF6\",\n          \"name\": \"Internal Medicine\"\n        }\n      ]\n    },\n    \"practitioner_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"employee\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"ssn\": {\n      \"masked_number\": \"***-**-1234\"\n    },\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  \"practitioner\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e31b1f4-9c95-47d5-aa8c-6627a464cdc8",
+          "name": "Delete CustomerInvoiceCharge",
+          "request": {
+            "name": "Delete CustomerInvoiceCharge",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices",
+                ":customer_invoice_id",
+                "charges",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_invoice_id",
+                  "description": "(Required) Unique Customer Invoice ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Customer Invoice Charge ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66e0d278-c4bf-4227-9934-90adb1041a55",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices",
+                    ":customer_invoice_id",
+                    "charges",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_invoice_id",
+                      "description": "(Required) Unique Customer Invoice ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Customer Invoice Charge ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "349805ba-33a3-4592-b07d-57597cd9fcba",
+          "name": "Update CustomerInvoiceCharge",
+          "request": {
+            "name": "Update CustomerInvoiceCharge",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices",
+                ":customer_invoice_id",
+                "charges",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_invoice_id",
+                  "description": "(Required) Unique Customer Invoice ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Customer Invoice Charge ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": \"<double>\",\n  \"price_in_cents\": \"<double>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date\": \"<date>\",\n  \"patient\": {\n    \"id\": \"<string>\"\n  },\n  \"practitioner\": {\n    \"id\": \"<string>\"\n  },\n  \"category\": {\n    \"id\": \"<string>\"\n  },\n  \"charge_item\": {\n    \"id\": \"<string>\"\n  },\n  \"location\": {\n    \"id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ae64ee2-1b9a-462d-9688-fc6dea27a08c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices",
+                    ":customer_invoice_id",
+                    "charges",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_invoice_id",
+                      "description": "(Required) Unique Customer Invoice ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Customer Invoice Charge ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantity\": \"<double>\",\n  \"price_in_cents\": \"<double>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date\": \"<date>\",\n  \"patient\": {\n    \"id\": \"<string>\"\n  },\n  \"practitioner\": {\n    \"id\": \"<string>\"\n  },\n  \"category\": {\n    \"id\": \"<string>\"\n  },\n  \"charge_item\": {\n    \"id\": \"<string>\"\n  },\n  \"location\": {\n    \"id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cha-ab12C345DeF6\",\n  \"amount_in_cents\": 1000,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"description\": \"\",\n  \"is_persisted\": true,\n  \"name\": \"Lab fee\",\n  \"price_in_cents\": 1000,\n  \"quantity\": 1,\n  \"service_date\": \"2017-02-05\",\n  \"status\": \"draft\",\n  \"subtotal_in_cents\": 1000,\n  \"tax_in_cents\": 0,\n  \"total_in_cents\": 1000,\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"category\": null,\n  \"charge_item\": null,\n  \"location\": {\n    \"id\": \"loc-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"name\": \"San Francisco HQ\"\n  },\n  \"patient\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"i_heart_rufus@chaka.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Yvette\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Stevens\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"active\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Yvette Thomas Stevens\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"account\": {\n      \"name\": \"Yvette Thomas Stevens\",\n      \"past_due_in_cents\": 0\n    },\n    \"company\": {\n      \"id\": \"com-ab12C345DeF6\",\n      \"name\": \"Schmoogle Inc.\"\n    },\n    \"emergency_contact\": {\n      \"id\": \"emc-ab12C345DeF6\",\n      \"first_name\": \"Eliot\",\n      \"last_name\": \"Sumner\",\n      \"email\": \"bass_eliot@iblamecoco.com\",\n      \"name\": \"Eliot Sumner\",\n      \"relationship\": \"sibling\",\n      \"phone\": {\n        \"number\": \"5553050051\",\n        \"type\": \"mobile\",\n        \"us_formattable\": true\n      }\n    },\n    \"external_records\": [],\n    \"known_practice\": null,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"location\": {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": null,\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    },\n    \"location_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"membership_members\": [],\n    \"memberships\": [],\n    \"merged_into\": null,\n    \"phones\": [],\n    \"practitioner\": {\n      \"id\": \"pct-ab12C345DeF6\",\n      \"accepts_enrollments_from_employer\": true,\n      \"accepts_enrollments_from_retail\": true,\n      \"bio\": \"Reginalds biography...\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"education\": [\n        \"The University of Hint\"\n      ],\n      \"email\": \"rocket_man@emi.com\",\n      \"gender\": \"male\",\n      \"gender_other\": null,\n      \"integration_record_id\": null,\n      \"max_patient_age\": 50,\n      \"min_patient_age\": 0,\n      \"name\": \"Reginald Dwight\",\n      \"online_signup_visibility\": true,\n      \"panel_size\": 150,\n      \"panel_size_limit\": 200,\n      \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"locations\": [\n        {\n          \"id\": \"loc-ab12C345DeF6\",\n          \"address_city\": \"New York\",\n          \"address_country\": \"United States\",\n          \"address_latitude\": 40.7227998,\n          \"address_line1\": \"157 E Houston St\",\n          \"address_line2\": \"Suite 2402\",\n          \"address_longitude\": -73.9892241,\n          \"address_state\": \"NY\",\n          \"address_zip\": \"10002\",\n          \"distance\": null,\n          \"name\": \"San Francisco HQ\",\n          \"phone_number\": \"5553050019\",\n          \"virtual\": false,\n          \"location_group\": {\n            \"id\": \"prg-ab12C345DeF6\",\n            \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n            \"integration_record_id\": null,\n            \"name\": \"Downtown Location Group\",\n            \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n          }\n        }\n      ],\n      \"npi\": {\n        \"first_name\": \"REGINALD\",\n        \"last_name\": \"DWIGHT\",\n        \"number\": 123456879,\n        \"organization_name\": \"HINT HEALTH\",\n        \"type\": \"individual\"\n      },\n      \"specialties\": [\n        {\n          \"id\": \"spe-ab12C345DeF6\",\n          \"name\": \"Internal Medicine\"\n        }\n      ]\n    },\n    \"practitioner_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"employee\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"ssn\": {\n      \"masked_number\": \"***-**-1234\"\n    },\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  },\n  \"practitioner\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0ca7c756-b81b-4148-a89e-32f2efe626bb",
+    "name": "Hint Health AccountAccessToken CustomerInvoiceCharge API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

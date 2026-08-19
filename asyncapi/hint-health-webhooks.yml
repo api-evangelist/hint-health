@@ -1,0 +1,142 @@
+generated: '2026-08-14'
+method: searched
+source: https://developers.hint.com/reference/webhooks
+docs:
+  - https://developers.hint.com/reference/webhooks
+  - https://developers.hint.com/reference/webhookeventlistwebhookevents
+  - https://developers.hint.com/reference/webhookendpointcreatewebhookendpoint-1
+name: Hint Health Webhook Catalog
+description: >-
+  Hint's event surface is webhooks — signed HTTP POSTs to a partner-registered
+  URL, with a documented payload envelope, a published event registry, an
+  HMAC-SHA256 signature header, and a stated retry/muting policy. Hint publishes
+  NO AsyncAPI document; this catalog is the machine-readable record of what the
+  docs describe.
+asyncapi_published: false
+asyncapi_note: >-
+  Probed and searched — Hint ships no AsyncAPI, EventBridge schema, or
+  CloudEvents mapping. The webhook contract exists only as human documentation
+  plus a live registry endpoint (GET /partner/webhook_events).
+
+transport:
+  protocol: https
+  method: POST
+  direction: hint-to-partner
+  content_type: application/json
+  ack: Respond 2XX to acknowledge. Any non-2XX triggers retry.
+
+endpoint_types:
+  - name: Global webhook endpoint
+    scope: All integrations
+    use_case: A single endpoint receives events for every connected practice.
+    reference: https://developers.hint.com/reference/globalwebhookendpoint
+    api: /partner/webhook_endpoints
+  - name: Integration webhook endpoint
+    scope: Single integration
+    use_case: A separate endpoint per practice.
+    reference: https://developers.hint.com/reference/webhookendpoint
+    api: /partner/installations/{installation_id}/webhook_endpoints
+
+subscription_model:
+  per_endpoint_filter: false
+  detail: >-
+    There is no per-endpoint event filter in the API. A registered endpoint
+    receives the FULL set of events emitted for the partner's connected
+    practices. Event selection is done in the Partner Portal UI, not through the
+    API. Implementations must ignore unknown event types — Hint adds new
+    resource.action pairs without a version bump.
+  portal:
+    sandbox: https://app.staging.hint.com/partner/account/webhooks
+    production: https://app.hint.com/partner/account/webhooks
+
+signature:
+  header: X-Hint-Signature
+  format: 'sha256=<hmac>'
+  algorithm: HMAC-SHA256
+  signed_payload: the raw request body
+  key: >-
+    The partner's webhook signature key, found in the Partner Portal under
+    API Keys / Webhook Settings → Webhooks Signature Key. Mirrored to the
+    HINT_WEBHOOK_SECRET environment variable on Hosted Mode marketplace deploys.
+  verification: >-
+    Endpoints should compute the expected signature themselves and reject
+    requests whose signature does not match.
+
+payload_envelope:
+  fields:
+    - {name: id, type: string, description: 'Event id, prefixed evt-'}
+    - {name: type, type: string, description: 'resource.action pair, e.g. patient.created'}
+    - {name: practice_id, type: string, description: 'Practice id, prefixed pra- / prc-'}
+    - {name: created_at, type: string, format: date-time}
+    - {name: object, type: object, description: 'Full resource snapshot, matching GET /api/provider/<resource>/{id}'}
+  expansion: >-
+    Webhook payloads always carry the UNEXPANDED resource — the ?expand=
+    parameter has no effect on delivery.
+  example: |
+    {
+      "id": "evt-jKi2jlalOJk3",
+      "created_at": "2015-02-19T10:49:21.419-08:00",
+      "type": "patient.created",
+      "practice_id": "pra-6BIBTelN3rM5",
+      "object": {
+        "id": "pat-eN9DgCQ9iQxL",
+        "first_name": "Jane",
+        "last_name": "Doe"
+      }
+    }
+
+discovery:
+  live_registry: GET /partner/webhook_events
+  description: >-
+    Returns the canonical live list of resource.action strings, derived from the
+    platform's IntegrationEvent registry. This is the authoritative source; the
+    table below is the published snapshot.
+
+events:
+  - resource: patient
+    types: [patient.created, patient.updated, patient.destroyed, patient.inactive]
+  - resource: membership
+    types: [membership.created, membership.updated, membership.destroyed]
+  - resource: practitioner
+    types: [practitioner.created, practitioner.updated, practitioner.destroyed]
+  - resource: company
+    types: [company.created, company.updated, company.destroyed]
+  - resource: employee_division
+    types: [employee_division.created, employee_division.updated, employee_division.destroyed]
+  - resource: customer_invoice
+    types:
+      - customer_invoice.created
+      - customer_invoice.updated
+      - customer_invoice.destroyed
+      - customer_invoice.draft
+      - customer_invoice.issued
+      - customer_invoice.paid
+      - customer_invoice.cancelled
+  - resource: invoice
+    types:
+      - invoice.created
+      - invoice.updated
+      - invoice.destroyed
+      - invoice.draft
+      - invoice.issued
+      - invoice.paid
+      - invoice.cancelled
+  - resource: signup_attempt
+    types: [signup_attempt.created, signup_attempt.updated]
+  - resource: integration
+    types: [integration.activated, integration.deactivated]
+
+event_count: 32
+resource_count: 9
+
+delivery:
+  retry_schedule: Every hour for 72 hours
+  muting: After 100 consecutive failures the endpoint is muted for 1 hour
+  recovery: The next successful delivery re-enables the endpoint
+  alerting: Daily failure email to the technical contact on file
+  inspection: GET /partner/webhook_requests
+
+activation_gating: >-
+  Only ACTIVE connections receive webhooks. A pending install (activation mode
+  practice_activate or partner_activate) completes the connect exchange but does
+  not receive events until activated.

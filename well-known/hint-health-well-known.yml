@@ -1,0 +1,74 @@
+generated: '2026-08-14'
+method: probed
+source: live HTTP probes of every Hint Health host in apis.yml and openapi servers[]
+name: Hint Health /.well-known Probe
+description: >-
+  Every RFC 8615 well-known path we check, probed against all four Hint hosts on
+  2026-08-14. Nothing was served. Every path returned 404, and on
+  www.hint.com/hint.com the 404 is an HTML marketing shell (112KB), not a
+  document — the classic SPA catch-all false positive, recorded here so a later
+  pass does not mistake it for a hit.
+result: none
+hit_count: 0
+
+hosts:
+  - host: www.hint.com
+    paths:
+      - {path: /.well-known/security.txt, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/openid-configuration, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/oauth-authorization-server, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/oauth-protected-resource, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/api-catalog, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/ai-plugin.json, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/agent-card.json, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/agent.json, status: 404, content_type: text/html, file: null}
+  - host: hint.com
+    note: identical responses to www.hint.com (same origin, 112KB HTML 404 shell)
+    paths:
+      - {path: /.well-known/security.txt, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/openid-configuration, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/oauth-authorization-server, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/oauth-protected-resource, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/api-catalog, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/ai-plugin.json, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/agent-card.json, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/agent.json, status: 404, content_type: text/html, file: null}
+  - host: developers.hint.com
+    paths:
+      - {path: /.well-known/security.txt, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/openid-configuration, status: 404, content_type: null, file: null}
+      - {path: /.well-known/oauth-authorization-server, status: 404, content_type: null, file: null}
+      - {path: /.well-known/oauth-protected-resource, status: 404, content_type: null, file: null}
+      - {path: /.well-known/api-catalog, status: 404, content_type: null, file: null}
+      - {path: /.well-known/ai-plugin.json, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/agent-card.json, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/agent.json, status: 404, content_type: text/html, file: null}
+  - host: api.hint.com
+    paths:
+      - {path: /.well-known/security.txt, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/openid-configuration, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/oauth-authorization-server, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/oauth-protected-resource, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/api-catalog, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/ai-plugin.json, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/agent-card.json, status: 404, content_type: text/html, file: null}
+      - {path: /.well-known/agent.json, status: 404, content_type: text/html, file: null}
+
+spec_discovery_probes:
+  note: >-
+    Recorded alongside the well-known sweep — these are the STEP 0b contract
+    probes. Hint publishes no OpenAPI at a fetchable URL, even though its own
+    MCP server is demonstrably backed by one.
+  paths:
+    - {url: 'https://api.hint.com/openapi.json', status: 404}
+    - {url: 'https://api.hint.com/swagger.json', status: 404}
+    - {url: 'https://api.hint.com/api-docs', status: 404}
+    - {url: 'https://developers.hint.com/openapi.json', status: 404}
+    - {url: 'https://developers.hint.com/openapi', status: 429, note: ReadMe bot challenge}
+    - {url: 'https://developers.hint.com/reference/openapi.json', status: 429, note: ReadMe bot challenge}
+    - {url: 'https://developers.hint.com/llms.txt', status: 200, note: served — saved to llms/}
+
+pointer_emitted: false
+pointer_note: >-
+  No WellKnown or SecurityTxt pointer is wired into apis.yml. Every path 404d.
+  This file records an absence and must not be read as a presence.

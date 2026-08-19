@@ -1,0 +1,100 @@
+generated: '2026-08-14'
+method: searched
+source: https://developers.hint.com/reference/making-requests
+docs:
+  - https://developers.hint.com/reference/making-requests
+  - https://developers.hint.com/docs/requesting-a-sandbox-and-api-access
+  - https://developers.hint.com/docs/setting-up-your-sandbox-account-api-keys
+  - https://developers.hint.com/docs/localhost-mode
+  - https://raw.githubusercontent.com/hinthealth/marketplace-skill/main/_common/api-conventions.md
+name: Hint Health Sandbox
+description: >-
+  Hint runs a real, credentialed sandbox with seeded practice data, reachable
+  from the same production host as live traffic. The environment is selected by
+  the KEY, not the URL — a `sbx-` prefixed key against api.hint.com returns
+  sandbox data — which means promoting an integration from sandbox to live
+  requires no host change.
+available: true
+self_serve: false
+access_process: >-
+  Sandbox and API access is requested from Hint (see "Requesting a Sandbox and
+  API Access"), not provisioned self-serve from a signup form.
+
+environments:
+  - name: Production Live
+    baseURL: https://api.hint.com
+    portal: https://app.hint.com
+    key_prefix: none
+  - name: Production Sandbox
+    baseURL: https://api.sandbox.hint.com
+    portal: https://app.hint.com
+    key_prefix: 'sbx-'
+    note: >-
+      Marked NEW in Hint's own docs. An alias — Hint's marketplace skill states
+      api.hint.com returns identical data for sandbox keys, and recommends
+      leaving HINT_API_URL at https://api.hint.com for both sandbox and live.
+  - name: Staging Sandbox
+    baseURL: https://api.staging.hint.com
+    portal: https://app.staging.hint.com
+    key_prefix: 'sbx-'
+
+key_prefixes:
+  sandbox: 'sbx-'
+  live: no prefix
+  detail: >-
+    The prefix appears on partner identifiers too — HINT_PARTNER_ID is
+    `ptr-...` in live and `sbx-ptr-...` in sandbox.
+
+test_data:
+  seeded: true
+  caveat: >-
+    Every seeded record's created_at is the timestamp of the seed run — patients,
+    memberships, invoices and payments all land within seconds of each other.
+    Hint warns in its own agent skill that any chart bucketed on created_at will
+    be flat with a single spike on seed day, and directs developers to bucket on
+    domain dates instead: joined_practice_date (patients), start_date/end_date
+    (memberships), paid_at/date (invoices, payments), bill_date/next_bill_date
+    (membership billing).
+  test_cards: not published
+  test_bank_accounts: not published
+  note: >-
+    Hint does not publish test card numbers or test bank accounts of its own.
+    Payment capture is delegated — practices are on either Hint Payments
+    (Rainforest) or Stripe, and the test instruments come from those processors.
+    See docs "Collecting payment information (Hint Payments)" and "(Stripe)".
+
+payment_processors:
+  processors:
+    - name: Hint Payments (Rainforest)
+      field: rainforest_id
+      setup_intent_response: [payment_method_config_id, session_key, allowed_methods]
+    - name: Stripe
+      field: stripe_id
+      setup_intent_response: [stripe_client_secret]
+  note: >-
+    Exactly one of rainforest_id or stripe_id must be supplied when creating a
+    payment method; the practice's payment_processor field says which.
+
+local_development:
+  feature: Localhost Mode
+  url: https://developers.hint.com/docs/localhost-mode
+  description: >-
+    Routes a marketplace app's handshake, app surfaces, activation redirect and
+    webhooks to a server on the developer's own machine — no tunnel and no
+    hosted dev server required. The handshake is browser-mediated in this mode,
+    so the local server's CORS policy must allow both the sandbox and live
+    portal origins.
+
+time_simulation:
+  test_clocks: false
+  note: Hint publishes no test-clock or time-travel facility.
+
+fixtures_and_triggers:
+  published: false
+  note: >-
+    No fixture-generation or event-trigger tooling is documented. Webhook
+    delivery can be inspected after the fact via GET /partner/webhook_requests.
+
+webhook_configuration:
+  sandbox: https://app.staging.hint.com/partner/account/webhooks
+  production: https://app.hint.com/partner/account/webhooks

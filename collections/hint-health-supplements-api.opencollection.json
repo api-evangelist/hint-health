@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Supplements API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Supplements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Patient Supplements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/supplements",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Allows limiting the number of supplements returned."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Allows offsetting the number of supplements returned."
+              }
+            ]
+          },
+          "docs": "List Patient Supplements"
+        },
+        {
+          "info": {
+            "name": "Create Patient Supplement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/supplements",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Patient Supplement"
+        },
+        {
+          "info": {
+            "name": "Show Patient Supplement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/supplements/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Supplements ID"
+              }
+            ]
+          },
+          "docs": "Show Patient Supplement"
+        },
+        {
+          "info": {
+            "name": "Update Patient Supplement",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/supplements/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Supplements ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Patient Supplement"
+        },
+        {
+          "info": {
+            "name": "Delete Patient Supplement",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/supplements/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Supplements ID"
+              }
+            ]
+          },
+          "docs": "Delete Patient Supplement"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

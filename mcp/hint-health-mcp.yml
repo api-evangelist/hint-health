@@ -1,0 +1,121 @@
+generated: '2026-08-14'
+method: probed
+source: https://developers.hint.com/docs/hint-mcp-server
+name: Hint Health MCP Server
+description: >-
+  Hint publishes a hosted, remote MCP server that exposes its public developer
+  documentation and API reference to MCP-capable agents. It is documented at
+  developers.hint.com/docs/hint-mcp-server and answers an anonymous
+  tools/list at https://developers.hint.com/mcp. The server is scoped to public
+  documentation — Hint states it does not expose private practice data, partner
+  credentials, or authenticated API operations. The execute-request tool is a
+  generic HAR-shaped proxy, so an agent that already holds a Hint bearer token
+  can drive real api.hint.com calls through it.
+status: published
+
+deployment:
+  mode: remote
+  endpoint: https://developers.hint.com/mcp
+  auth: none
+  verified: probed
+
+transport: streamable-http
+authentication:
+  required: false
+  note: >-
+    Hint's documentation states "No API key, site password, or authentication
+    header is required." The anonymous tools/list probe below confirms this —
+    it returned HTTP 200 with the full tool list and no OAuth challenge.
+
+client_configuration:
+  source: https://developers.hint.com/docs/hint-mcp-server
+  json: |
+    {
+      "mcpServers": {
+        "hint-docs": {
+          "url": "https://developers.hint.com/mcp"
+        }
+      }
+    }
+
+tools:
+  - name: list-endpoints
+    title: List API Endpoints
+    description: >-
+      Lists all API paths and their HTTP methods with summaries, organized by
+      path. Results can be passed directly into 'get-endpoint'.
+    readOnly: true
+    inputSchema: {}
+  - name: get-endpoint
+    title: Get Endpoint Details
+    description: >-
+      Gets detailed information about a specific API endpoint, including
+      security schemes and servers.
+    readOnly: true
+    inputSchema:
+      required:
+        - path
+        - method
+      properties:
+        path: The API endpoint path (e.g. /api/v1/users).
+        method: The HTTP method (e.g. GET, POST, PUT, DELETE).
+  - name: search-endpoints
+    title: Search API Endpoints
+    description: >-
+      Performs a deep search through paths, operations, and parameters to
+      discover relevant API endpoints.
+    readOnly: true
+    inputSchema:
+      required:
+        - pattern
+      properties:
+        pattern: Search pattern (case-insensitive)
+  - name: execute-request
+    title: Execute API Request
+    description: Executes an API request with a given HAR request object.
+    readOnly: false
+    destructive: true
+    openWorld: true
+    inputSchema:
+      required:
+        - harRequest
+      properties:
+        harRequest: >-
+          HAR request object — method, url, headers[], queryString[], postData.
+          Callers supply their own Authorization header; the MCP server holds no
+          Hint credentials.
+
+raw_tools: mcp/hint-health-mcp-tools.json
+
+x-evidence:
+  fetched: '2026-08-14'
+  probes:
+    - url: https://developers.hint.com/mcp
+      method: POST
+      body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+      http_status: 200
+      content_type: text/event-stream
+      result: 4 tools returned with inputSchema, anonymous, no OAuth challenge
+    - url: https://developers.hint.com/mcp
+      method: POST
+      body: '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"list-endpoints","arguments":{}}}'
+      http_status: 200
+      result: >-
+        returned the full Hint API path inventory (/api/partner/* and
+        /api/provider/*), confirming the server is backed by Hint's own OpenAPI
+    - url: https://developers.hint.com/docs/hint-mcp-server.md
+      http_status: 200
+
+notes:
+  - >-
+    Mode is remote and only remote. Hint publishes no stdio package — there is
+    no npx/pip install path, and none is documented.
+  - >-
+    The tool surface is documentation-shaped (list/get/search endpoints) rather
+    than resource-shaped. An agent cannot create a patient by calling a
+    "create-patient" tool; it discovers the operation and then issues it through
+    execute-request with its own credentials.
+  - >-
+    The server answers on the docs host (developers.hint.com), not the API host
+    (api.hint.com). Ownership is not in question: developers.hint.com is Hint's
+    own documentation domain and the server is documented on it.

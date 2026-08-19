@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken PartnerCharge API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PartnerCharge",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Partner Charges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/partner_charges"
+          },
+          "docs": "List All Partner Charges"
+        },
+        {
+          "info": {
+            "name": "Create Partner Charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/partner_charges",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "**Workflows:**\nCharging a patient: Set the payer to the be the patient.\nCharging a patient: Set the payer to the be practice."
+        },
+        {
+          "info": {
+            "name": "Show Partner Charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/partner_charges/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Partner Charge ID"
+              }
+            ]
+          },
+          "docs": "Show Partner Charge"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,549 @@
+{
+  "item": [
+    {
+      "id": "f1871c34-8a1c-46e9-98fc-2e15f55c60a4",
+      "name": "Practitioner",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8c29bb3-6306-468d-b589-370f01a5c1d7",
+          "name": "Create Practitioner",
+          "request": {
+            "name": "Create Practitioner",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "practitioners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"gender_other\": \"<string>\",\n  \"photo\": \"<string>\",\n  \"education\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"npi\": {\n    \"number\": \"<integer>\"\n  },\n  \"practitioner_group\": {\n    \"id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ddff19dc-70db-4a85-a8d0-994949c5b620",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "practitioners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"gender_other\": \"<string>\",\n  \"photo\": \"<string>\",\n  \"education\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"npi\": {\n    \"number\": \"<integer>\"\n  },\n  \"practitioner_group\": {\n    \"id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"pct-ab12C345DeF6\",\n  \"accepts_enrollments_from_employer\": true,\n  \"accepts_enrollments_from_retail\": true,\n  \"bio\": \"Reginalds biography...\",\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"education\": [\n    \"The University of Hint\"\n  ],\n  \"email\": \"rocket_man@emi.com\",\n  \"gender\": \"male\",\n  \"gender_other\": null,\n  \"integration_record_id\": \"ABCD0012051\",\n  \"max_patient_age\": 50,\n  \"min_patient_age\": 0,\n  \"name\": \"Reginald Dwight\",\n  \"online_signup_visibility\": true,\n  \"panel_size\": 150,\n  \"panel_size_limit\": 200,\n  \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"locations\": [\n    {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": \"5553050019\",\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    }\n  ],\n  \"npi\": {\n    \"first_name\": \"REGINALD\",\n    \"last_name\": \"DWIGHT\",\n    \"number\": 123456879,\n    \"organization_name\": \"HINT HEALTH\",\n    \"type\": \"individual\"\n  },\n  \"specialties\": [\n    {\n      \"id\": \"spe-ab12C345DeF6\",\n      \"name\": \"Internal Medicine\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45f79fde-7e0f-4dd1-9882-797e5672a0db",
+          "name": "List All Practitioners",
+          "request": {
+            "name": "List All Practitioners",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "practitioners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "near_zip",
+                  "value": "<string>",
+                  "description": "The zip code in the centre of your search"
+                },
+                {
+                  "disabled": false,
+                  "key": "distance",
+                  "value": "<integer>",
+                  "description": "The search radius in miles. Defaults to 20 if near_zip is not blank"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2095e21b-334b-4c41-a0ea-2393ea2534c1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "practitioners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "near_zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "distance",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"pct-ab12C345DeF6\",\n    \"accepts_enrollments_from_employer\": true,\n    \"accepts_enrollments_from_retail\": true,\n    \"bio\": \"Reginalds biography...\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"education\": [\n      \"The University of Hint\"\n    ],\n    \"email\": \"rocket_man@emi.com\",\n    \"gender\": \"male\",\n    \"gender_other\": null,\n    \"integration_record_id\": \"ABCD0012050\",\n    \"max_patient_age\": 50,\n    \"min_patient_age\": 0,\n    \"name\": \"Reginald Dwight\",\n    \"online_signup_visibility\": true,\n    \"panel_size\": 150,\n    \"panel_size_limit\": 200,\n    \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"locations\": [\n      {\n        \"id\": \"loc-ab12C345DeF6\",\n        \"address_city\": \"New York\",\n        \"address_country\": \"United States\",\n        \"address_latitude\": 40.7227998,\n        \"address_line1\": \"157 E Houston St\",\n        \"address_line2\": \"Suite 2402\",\n        \"address_longitude\": -73.9892241,\n        \"address_state\": \"NY\",\n        \"address_zip\": \"10002\",\n        \"distance\": null,\n        \"name\": \"San Francisco HQ\",\n        \"phone_number\": \"5553050019\",\n        \"virtual\": false,\n        \"location_group\": {\n          \"id\": \"prg-ab12C345DeF6\",\n          \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n          \"integration_record_id\": null,\n          \"name\": \"Downtown Location Group\",\n          \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n        }\n      }\n    ],\n    \"npi\": {\n      \"first_name\": \"REGINALD\",\n      \"last_name\": \"DWIGHT\",\n      \"number\": 123456879,\n      \"organization_name\": \"HINT HEALTH\",\n      \"type\": \"individual\"\n    },\n    \"specialties\": [\n      {\n        \"id\": \"spe-ab12C345DeF6\",\n        \"name\": \"Internal Medicine\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "abbdc2e8-499f-4c3b-8e31-56d72114c41b",
+          "name": "Delete Practitioner",
+          "request": {
+            "name": "Delete Practitioner",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "practitioners",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Practitioner ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a10cb60a-2bda-4540-aae7-a956a17bf57b",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "practitioners",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Practitioner ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8c96ffb-c661-4696-8dad-04a4543752a4",
+          "name": "Show Practitioner",
+          "request": {
+            "name": "Show Practitioner",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "practitioners",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Practitioner ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c1d278a-0df6-4d27-8ab3-890c8bb7c645",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "practitioners",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Practitioner ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"pct-ab12C345DeF6\",\n  \"accepts_enrollments_from_employer\": true,\n  \"accepts_enrollments_from_retail\": true,\n  \"bio\": \"Reginalds biography...\",\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"education\": [\n    \"The University of Hint\"\n  ],\n  \"email\": \"rocket_man@emi.com\",\n  \"gender\": \"male\",\n  \"gender_other\": null,\n  \"integration_record_id\": \"ABCD0012051\",\n  \"max_patient_age\": 50,\n  \"min_patient_age\": 0,\n  \"name\": \"Reginald Dwight\",\n  \"online_signup_visibility\": true,\n  \"panel_size\": 150,\n  \"panel_size_limit\": 200,\n  \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"locations\": [\n    {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": \"5553050019\",\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    }\n  ],\n  \"npi\": {\n    \"first_name\": \"REGINALD\",\n    \"last_name\": \"DWIGHT\",\n    \"number\": 123456879,\n    \"organization_name\": \"HINT HEALTH\",\n    \"type\": \"individual\"\n  },\n  \"specialties\": [\n    {\n      \"id\": \"spe-ab12C345DeF6\",\n      \"name\": \"Internal Medicine\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "923bfcc4-168d-42a9-8f70-b072dd669037",
+          "name": "Update Practitioner",
+          "request": {
+            "name": "Update Practitioner",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "practitioners",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Practitioner ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"gender_other\": \"<string>\",\n  \"photo\": \"<string>\",\n  \"education\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"npi\": {\n    \"number\": \"<integer>\"\n  },\n  \"practitioner_group\": {\n    \"id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e26c0291-cc49-44b2-93b5-b9546d6fc64d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "practitioners",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Practitioner ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"gender_other\": \"<string>\",\n  \"photo\": \"<string>\",\n  \"education\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"npi\": {\n    \"number\": \"<integer>\"\n  },\n  \"practitioner_group\": {\n    \"id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"pct-ab12C345DeF6\",\n  \"accepts_enrollments_from_employer\": true,\n  \"accepts_enrollments_from_retail\": true,\n  \"bio\": \"Reginalds biography...\",\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"education\": [\n    \"The University of Hint\"\n  ],\n  \"email\": \"rocket_man@emi.com\",\n  \"gender\": \"male\",\n  \"gender_other\": null,\n  \"integration_record_id\": \"ABCD0012051\",\n  \"max_patient_age\": 50,\n  \"min_patient_age\": 0,\n  \"name\": \"Reginald Dwight\",\n  \"online_signup_visibility\": true,\n  \"panel_size\": 150,\n  \"panel_size_limit\": 200,\n  \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"locations\": [\n    {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": \"5553050019\",\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    }\n  ],\n  \"npi\": {\n    \"first_name\": \"REGINALD\",\n    \"last_name\": \"DWIGHT\",\n    \"number\": 123456879,\n    \"organization_name\": \"HINT HEALTH\",\n    \"type\": \"individual\"\n  },\n  \"specialties\": [\n    {\n      \"id\": \"spe-ab12C345DeF6\",\n      \"name\": \"Internal Medicine\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "657dc7a6-bdbc-47e8-a29a-500da165bced",
+    "name": "Hint Health AccountAccessToken Practitioner API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

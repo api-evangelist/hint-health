@@ -1,8 +1,23 @@
+generated: '2026-08-15'
+method: searched
+source: https://www.hint.com/core/pricing
+docs:
+  - https://www.hint.com/core/pricing
+  - https://www.hint.com/clinical/pricing
+  - https://www.hint.com/pricing
 name: Hint Health Plans and Pricing
 description: Pricing plans for Hint Health's direct primary care platform, covering Core (billing/membership management) and Clinical (EMR) product lines, along with API access add-ons.
 url: https://www.hint.com/core/pricing
 created: 2026-06-13
-modified: 2026-06-13
+modified: 2026-08-15
+plan_count: 6
+addon_count: 6
+public_pricing: true
+api_access_note: >-
+  API access is not included in the base subscription. Core API Access and
+  Clinical API Access are each a $100/month add-on, bundled only at Core
+  Enterprise ("unlimited API access"). Enterprise itself is quote-only — the
+  0.00 price on Core Enterprise below means "contact sales", not "free".
 
 plans:
 

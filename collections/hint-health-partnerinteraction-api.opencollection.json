@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken PartnerInteraction API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PartnerInteraction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Partner Interaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/interactions/partner",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Partner Interaction"
+        },
+        {
+          "info": {
+            "name": "Show Partner Interaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/interactions/partner/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Partner Interaction ID"
+              }
+            ]
+          },
+          "docs": "Show Partner Interaction"
+        },
+        {
+          "info": {
+            "name": "Update Partner Interaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/interactions/partner/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Partner Interaction ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Partner Interaction"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

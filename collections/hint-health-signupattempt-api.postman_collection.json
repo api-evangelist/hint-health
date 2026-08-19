@@ -1,0 +1,280 @@
+{
+  "item": [
+    {
+      "id": "53db294e-3abb-4d41-a002-a9aaaf951c7c",
+      "name": "SignupAttempt",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7fd92101-8a41-4e9c-980f-57678794fa4d",
+          "name": "List All Signup Attempts",
+          "request": {
+            "name": "List All Signup Attempts",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "signup_attempts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "signup_page",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_source",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at",
+                  "value": "<dateTime>",
+                  "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "<dateTime>",
+                  "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "554c141a-f94b-47b9-ae63-36de0b370ff4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "signup_attempts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "signup_page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of resources returned in this request",
+                  "key": "X-Count",
+                  "value": "4744"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of resources available (scoped to query params)",
+                  "key": "X-Total-Count",
+                  "value": "4744"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"sat-ab12C345DeF6\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"email\": \"john@doe.com\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"lead_source_other\": null,\n    \"phone_number\": \"555-555-5555\",\n    \"status\": \"pending\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"zip\": \"11009\",\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Online ad\"\n    },\n    \"signup_page\": {\n      \"id\": \"spg-ab12C345DeF6\",\n      \"slug\": \"annual-membership\"\n    }\n  },\n  {\n    \"id\": \"sat-ab12C345DeF6\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"email\": \"john@doe.com\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"lead_source_other\": null,\n    \"phone_number\": \"555-555-5555\",\n    \"status\": \"pending\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"zip\": \"11009\",\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Online ad\"\n    },\n    \"signup_page\": {\n      \"id\": \"spg-ab12C345DeF6\",\n      \"slug\": \"annual-membership\"\n    }\n  },\n  {\n    \"id\": \"sat-ab12C345DeF6\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"email\": \"john@doe.com\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"lead_source_other\": null,\n    \"phone_number\": \"555-555-5555\",\n    \"status\": \"pending\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"zip\": \"11009\",\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Online ad\"\n    },\n    \"signup_page\": {\n      \"id\": \"spg-ab12C345DeF6\",\n      \"slug\": \"annual-membership\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cc75c0a-cc66-41d5-9093-7f71544a9216",
+          "name": "Show Signup Attempt",
+          "request": {
+            "name": "Show Signup Attempt",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "signup_attempts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Signup Attempt ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab9677c8-5b71-4420-92a4-4a90b043d524",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "signup_attempts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Signup Attempt ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"sat-ab12C345DeF6\",\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"email\": \"john@doe.com\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"lead_source_other\": null,\n  \"phone_number\": \"555-555-5555\",\n  \"status\": \"pending\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"zip\": \"11009\",\n  \"lead_source\": {\n    \"id\": \"lds-ab12C345DeF6\",\n    \"name\": \"Online ad\"\n  },\n  \"signup_page\": {\n    \"id\": \"spg-ab12C345DeF6\",\n    \"slug\": \"annual-membership\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "76f9a65e-76b2-40f1-bedf-2f024e2b7c94",
+    "name": "Hint Health AccountAccessToken SignupAttempt API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

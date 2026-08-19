@@ -1,0 +1,110 @@
+generated: '2026-08-14'
+method: searched
+source: >-
+  https://developers.hint.com/reference/making-requests (Community Libraries),
+  https://developers.hint.com/docs/js-sdk, registry.npmjs.org, api.github.com
+name: Hint Health Packages and Client Libraries
+description: >-
+  Hint ships exactly one first-party client artifact — hint-sdk.js, an
+  unversioned browser SDK served straight off the API host for marketplace apps
+  embedded in the Hint UI. There is no first-party server-side SDK in any
+  package registry. The only backend client Hint names is a community Go
+  library maintained by Spruce Health, which Hint itself labels
+  "community-supported".
+official_sdk_count: 1
+community_package_count: 2
+
+packages:
+  - name: hint-sdk.js
+    official: true
+    language: javascript
+    registry: cdn
+    url: https://api.hint.com/hint-sdk.js
+    sandbox_url: https://api.sandbox.hint.com/hint-sdk.js
+    docs: https://developers.hint.com/docs/js-sdk
+    version: null
+    published: null
+    install: '<script src="https://api.hint.com/hint-sdk.js"></script>'
+    probed:
+      url: https://api.hint.com/hint-sdk.js
+      http_status: 200
+      content_type: text/javascript
+      bytes: 3944
+      checked: '2026-08-14'
+    note: >-
+      CDN-distributed, not in any package registry, and the script URL is
+      UNPINNED — there is no version in the path, no version query parameter,
+      and no version constant in the served source (a plain IIFE defining
+      class HintSDK). A consumer cannot tell which build they loaded, and
+      neither can we; version and published are therefore null by measurement,
+      not by omission. Sandbox and production serve byte-identical 3,944-byte
+      files at time of check.
+    purpose: >-
+      Browser bridge for Hint Marketplace apps embedded in an iframe —
+      HintSDK.init(), .user, .currentPatient, .interaction, .close(),
+      deep-link queryParams/fragment helpers, and an automatic ResizeObserver
+      height report that Hint's clinical surfaces require to size the iframe.
+
+  - name: go-hint
+    official: false
+    language: go
+    registry: github
+    url: https://github.com/sprucehealth/go-hint
+    maintainer: Spruce Health engineering team
+    version: null
+    published: '2026-08-10'
+    published_note: >-
+      Last push date from the GitHub API. The repository publishes no semver
+      tags to read a version from, so version is null; proxy.golang.org has no
+      release to report either.
+    note: >-
+      Named by Hint's own Making Requests page as "one community-supported
+      client library written in Go". Not first-party — the module lives in the
+      sprucehealth org, and Hint asks other authors to email devsupport@hint.com
+      so their libraries can be listed too. Actively maintained as of
+      2026-08-10.
+
+  - name: hint_health
+    official: false
+    language: javascript
+    registry: npm
+    url: https://www.npmjs.com/package/hint_health
+    version: 1.2.3
+    published: '2021-01-07'
+    maintainers: [josepiccioni]
+    note: >-
+      "A client library for hint health api." Unaffiliated third party — the
+      sole npm maintainer is an individual (Jose Piccioni), the package declares
+      no repository or homepage, and Hint does not list it among its libraries.
+      Last published 2021-01-07, more than five years before the current API
+      surface; treat as abandoned.
+
+related_repositories:
+  - name: hinthealth/marketplace-skill
+    official: true
+    url: https://github.com/hinthealth/marketplace-skill
+    pushed: '2026-08-12'
+    note: >-
+      Not a package — a first-party Agent Skill bundle (SKILL.md + four
+      sub-skills) that builds and deploys a Hint marketplace partner app. Saved
+      verbatim under skills/. Listed here so the GitHub org's one genuinely
+      Hint-authored developer artifact is not mistaken for an SDK.
+
+registry_checks:
+  - {registry: npm, query: 'hint health', result: 'no first-party package; only third-party hint_health'}
+  - {registry: PyPI, query: hint-health, http_status: 404, result: absent}
+  - {registry: RubyGems, query: 'hint health', result: 'no matches'}
+  - {registry: pkg.go.dev, query: sprucehealth/go-hint, result: 'community module, no tagged release'}
+  - {registry: Maven Central, query: hint health, result: 'not checked — Hint publishes no JVM client and names none'}
+  - {registry: NuGet, query: hint health, result: 'not checked — Hint publishes no .NET client and names none'}
+
+findings:
+  - >-
+    A REST API with 150+ documented operations, PHI in the payloads, and a paid
+    API-access add-on ships no first-party server-side SDK in any language. The
+    integration path Hint actually invests in is the marketplace app plus its
+    agent skill, not a client library.
+  - >-
+    hint-sdk.js is unpinned. Every embedded marketplace app loads whatever build
+    is current, with no integrity attribute and no way to lock a version — a
+    supply-chain and reproducibility gap in a HIPAA-scoped surface.

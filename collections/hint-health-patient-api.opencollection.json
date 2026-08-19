@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Patient API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patient",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Patients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Allows limiting the number of patients returned."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Allows offsetting the number of patients returned."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Show only archived patients."
+              }
+            ]
+          },
+          "docs": "**Note:** Archived patients are excluded from responses by default.\nUse `filter=archived` to return only archived patients."
+        },
+        {
+          "info": {
+            "name": "Create Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/patients",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Patient"
+        },
+        {
+          "info": {
+            "name": "Show Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ]
+          },
+          "docs": "**Membership Status Options:** unconfirmed, pending, active, unpaid, inactive, archived"
+        },
+        {
+          "info": {
+            "name": "Update Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/patients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Patient"
+        },
+        {
+          "info": {
+            "name": "Delete Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/patients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ]
+          },
+          "docs": "Delete Patient"
+        },
+        {
+          "info": {
+            "name": "Match Patients",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/patients/matching",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Match Patients"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

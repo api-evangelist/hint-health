@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken SocialSecurityNumber API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SocialSecurityNumber",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Show Social Security Number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/social_security_number",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ]
+          },
+          "docs": "Show Social Security Number"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

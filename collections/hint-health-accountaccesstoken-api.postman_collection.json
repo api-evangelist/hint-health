@@ -1,0 +1,141 @@
+{
+  "item": [
+    {
+      "id": "5c21aaa1-429b-472b-865c-65a4dada09e0",
+      "name": "AccountAccessToken",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5ae8d56a-5f7f-461a-b793-551daddbfbac",
+          "name": "Create Patient Portal access token",
+          "request": {
+            "name": "Create Patient Portal access token",
+            "description": {
+              "content": "## Usage Instructions and Security Best Practices\n - **Authenticate Patients:** Only generate access tokens for patients that your system has already authenticated.\n - **On-Demand Links:** Generate the access token only when a patient requests to view their data.\n - **New Windows/Tabs:** Automatically redirect patients to the URL provided, instead of showing them the link directly.\n - **Avoid Caching:** Do not cache or store access tokens in your application.\n - **Do Not Display Directly:** Avoid displaying the access tokens directly in your application.\n - **Avoid Email Transmission:** Never send access tokens via email due to token expiry and security concerns.\n## Example Workflow\n 1. **Request Access:** Patient logs into your system and requests to view their Hint Health data.\n 2. **Generate Token:** Your system makes a POST request to the Access Tokens endpoint.\n 3. **Provide Link:** Your application receives the URL and automatically redirects the patient to the URL in a new window or tab.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "account_access_tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7bdb6d0b-3377-40af-a330-bac70ca0aabb",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "account_access_tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"example_token\",\n  \"url\": \"https://examplepractice.hint.com/account?exchange_token=example_token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1660666c-7932-4b46-981c-7a8f55a74b3f",
+    "name": "Hint Health AccountAccessToken API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

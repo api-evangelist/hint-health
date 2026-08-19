@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Coupon API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Coupon",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Coupons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/coupons",
+            "params": [
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by archived status. May be \"true\" to show only archived coupons, \"false\" to show only unarchived coupons. If not given all resources will be returned."
+              },
+              {
+                "name": "redeemable",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by redeemable status. May be \"true\" to show only currently redeemable coupons. If not given all resources will be returned."
+              }
+            ]
+          },
+          "docs": "List All Coupons"
+        },
+        {
+          "info": {
+            "name": "Show Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/coupons/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Coupon ID"
+              }
+            ]
+          },
+          "docs": "Show Coupon"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

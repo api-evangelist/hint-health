@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken CustomerInvoiceCharge API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CustomerInvoiceCharge",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create CustomerInvoiceCharge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/customer_invoices/:customer_invoice_id/charges",
+            "params": [
+              {
+                "name": "customer_invoice_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create CustomerInvoiceCharge"
+        },
+        {
+          "info": {
+            "name": "Update CustomerInvoiceCharge",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/customer_invoices/:customer_invoice_id/charges/:id",
+            "params": [
+              {
+                "name": "customer_invoice_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice Charge ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update CustomerInvoiceCharge"
+        },
+        {
+          "info": {
+            "name": "Delete CustomerInvoiceCharge",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/customer_invoices/:customer_invoice_id/charges/:id",
+            "params": [
+              {
+                "name": "customer_invoice_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Customer Invoice Charge ID"
+              }
+            ]
+          },
+          "docs": "Delete CustomerInvoiceCharge"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

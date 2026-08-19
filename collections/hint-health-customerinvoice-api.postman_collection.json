@@ -1,0 +1,961 @@
+{
+  "item": [
+    {
+      "id": "76d7577c-ef0d-425d-afff-caac06d19de6",
+      "name": "CustomerInvoice",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34edee8a-f056-4728-b56b-35035208e42c",
+          "name": "Create Customer Invoice",
+          "request": {
+            "name": "Create Customer Invoice",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_record_id\": \"<string>\",\n  \"owner\": {\n    \"id\": \"<string>\"\n  },\n  \"patient\": {\n    \"id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "298a4418-c26e-4c58-b34e-60dce466dcd7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_record_id\": \"<string>\",\n  \"owner\": {\n    \"id\": \"<string>\"\n  },\n  \"patient\": {\n    \"id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inv-ab12C345DeF6\",\n  \"amount_in_cents\": 4999,\n  \"charges_count\": 1,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"date\": \"2017-02-05\",\n  \"due_in_cents\": 4999,\n  \"human_status\": \"draft\",\n  \"integration_record_id\": \"ABCD0012016\",\n  \"invoice_number\": 1,\n  \"last_sent_at\": null,\n  \"last_viewed_at\": null,\n  \"paid_at\": null,\n  \"paid_in_cents\": 0,\n  \"payment_status\": null,\n  \"payments_count\": 0,\n  \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6/charges/inv-ab12C345DeF6\",\n  \"received_in_cents\": 0,\n  \"status\": \"draft\",\n  \"subtotal_in_cents\": 4999,\n  \"tax_in_cents\": 0,\n  \"total_in_cents\": 4999,\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"active\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"account\": {\n      \"name\": \"Gordon Thomas Sumner\",\n      \"past_due_in_cents\": 0\n    },\n    \"company\": {\n      \"id\": \"com-ab12C345DeF6\",\n      \"name\": \"Schmoogle Inc.\"\n    },\n    \"emergency_contact\": {\n      \"id\": \"emc-ab12C345DeF6\",\n      \"first_name\": \"Eliot\",\n      \"last_name\": \"Sumner\",\n      \"email\": \"bass_eliot@iblamecoco.com\",\n      \"name\": \"Eliot Sumner\",\n      \"relationship\": \"sibling\",\n      \"phone\": {\n        \"number\": \"5553050051\",\n        \"type\": \"mobile\",\n        \"us_formattable\": true\n      }\n    },\n    \"external_records\": [],\n    \"known_practice\": null,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"location\": {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": null,\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    },\n    \"location_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"membership_members\": [],\n    \"memberships\": [],\n    \"merged_into\": null,\n    \"phones\": [],\n    \"practitioner\": {\n      \"id\": \"pct-ab12C345DeF6\",\n      \"accepts_enrollments_from_employer\": true,\n      \"accepts_enrollments_from_retail\": true,\n      \"bio\": \"Reginalds biography...\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"education\": [\n        \"The University of Hint\"\n      ],\n      \"email\": \"rocket_man@emi.com\",\n      \"gender\": \"male\",\n      \"gender_other\": null,\n      \"integration_record_id\": null,\n      \"max_patient_age\": 50,\n      \"min_patient_age\": 0,\n      \"name\": \"Reginald Dwight\",\n      \"online_signup_visibility\": true,\n      \"panel_size\": 150,\n      \"panel_size_limit\": 200,\n      \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"locations\": [\n        {\n          \"id\": \"loc-ab12C345DeF6\",\n          \"address_city\": \"New York\",\n          \"address_country\": \"United States\",\n          \"address_latitude\": 40.7227998,\n          \"address_line1\": \"157 E Houston St\",\n          \"address_line2\": \"Suite 2402\",\n          \"address_longitude\": -73.9892241,\n          \"address_state\": \"NY\",\n          \"address_zip\": \"10002\",\n          \"distance\": null,\n          \"name\": \"San Francisco HQ\",\n          \"phone_number\": \"5553050019\",\n          \"virtual\": false,\n          \"location_group\": {\n            \"id\": \"prg-ab12C345DeF6\",\n            \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n            \"integration_record_id\": null,\n            \"name\": \"Downtown Location Group\",\n            \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n          }\n        }\n      ],\n      \"npi\": {\n        \"first_name\": \"REGINALD\",\n        \"last_name\": \"DWIGHT\",\n        \"number\": 123456879,\n        \"organization_name\": \"HINT HEALTH\",\n        \"type\": \"individual\"\n      },\n      \"specialties\": [\n        {\n          \"id\": \"spe-ab12C345DeF6\",\n          \"name\": \"Internal Medicine\"\n        }\n      ]\n    },\n    \"practitioner_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"employee\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"ssn\": {\n      \"masked_number\": \"***-**-1234\"\n    },\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e18a10e8-be65-4a31-8969-edf42d0f63fd",
+          "name": "List All Customer Invoices",
+          "request": {
+            "name": "List All Customer Invoices",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updated_at",
+                  "value": "<dateTime>",
+                  "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "<dateTime>",
+                  "description": "Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b4281f0-1c15-4e01-b3c3-2e4751c5ae72",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updated_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of resources returned in this request",
+                  "key": "X-Count",
+                  "value": "7125"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of resources available (scoped to query params)",
+                  "key": "X-Total-Count",
+                  "value": "7125"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"inv-ab12C345DeF6\",\n    \"amount_in_cents\": 4999,\n    \"charges_count\": 1,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"date\": \"2017-02-05\",\n    \"due_in_cents\": 4999,\n    \"human_status\": \"draft\",\n    \"integration_record_id\": \"ABCD0012011\",\n    \"invoice_number\": 1,\n    \"last_sent_at\": null,\n    \"last_viewed_at\": null,\n    \"paid_at\": null,\n    \"paid_in_cents\": 0,\n    \"payment_status\": null,\n    \"payments_count\": 0,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6/charges/inv-ab12C345DeF6\",\n    \"received_in_cents\": 0,\n    \"status\": \"draft\",\n    \"subtotal_in_cents\": 4999,\n    \"tax_in_cents\": 0,\n    \"total_in_cents\": 4999,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"owner\": {\n      \"id\": \"pat-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"age\": 65,\n      \"chosen_first_name\": null,\n      \"chosen_last_name\": null,\n      \"chosen_middle_name\": null,\n      \"chosen_suffix\": null,\n      \"chosen_title\": null,\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"dob\": \"1952-01-01\",\n      \"electronic_communication_consent_accepted\": true,\n      \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n      \"email\": \"bass_man@bumblebeeinc.com\",\n      \"engaged\": false,\n      \"external_link_id\": null,\n      \"first_name\": \"Gordon\",\n      \"gender\": \"male\",\n      \"gender_identity\": \"man\",\n      \"gender_other\": null,\n      \"health_insurance_group_id\": \"12345\",\n      \"health_insurance_member_id\": \"A22222222\",\n      \"health_insurance_payer_id\": 39,\n      \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n      \"hipaa_authorization_accepted\": true,\n      \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n      \"import_id\": null,\n      \"import_source\": null,\n      \"joined_practice_date\": \"2017-02-05\",\n      \"last_engagement_date\": null,\n      \"last_name\": \"Sumner\",\n      \"lead_source_other\": \"Downtown marketing event\",\n      \"master_record_sponsor\": null,\n      \"membership_status\": \"active\",\n      \"middle_name\": \"Thomas\",\n      \"name\": \"Gordon Thomas Sumner\",\n      \"patient_agreement_accepted\": false,\n      \"patient_agreement_accepted_at\": null,\n      \"preferred_language\": \"en\",\n      \"pronouns\": null,\n      \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n      \"sex\": \"male\",\n      \"suffix\": null,\n      \"terms_accepted\": false,\n      \"terms_accepted_at\": null,\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"uses_tobacco\": false,\n      \"account\": {\n        \"name\": \"Gordon Thomas Sumner\",\n        \"past_due_in_cents\": 0\n      },\n      \"company\": {\n        \"id\": \"com-ab12C345DeF6\",\n        \"name\": \"Schmoogle Inc.\"\n      },\n      \"emergency_contact\": {\n        \"id\": \"emc-ab12C345DeF6\",\n        \"first_name\": \"Eliot\",\n        \"last_name\": \"Sumner\",\n        \"email\": \"bass_eliot@iblamecoco.com\",\n        \"name\": \"Eliot Sumner\",\n        \"relationship\": \"sibling\",\n        \"phone\": {\n          \"number\": \"5553050051\",\n          \"type\": \"mobile\",\n          \"us_formattable\": true\n        }\n      },\n      \"external_records\": [],\n      \"known_practice\": null,\n      \"lead_source\": {\n        \"id\": \"lds-ab12C345DeF6\",\n        \"name\": \"Other\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      },\n      \"location\": {\n        \"id\": \"loc-ab12C345DeF6\",\n        \"address_city\": \"New York\",\n        \"address_country\": \"United States\",\n        \"address_latitude\": 40.7227998,\n        \"address_line1\": \"157 E Houston St\",\n        \"address_line2\": \"Suite 2402\",\n        \"address_longitude\": -73.9892241,\n        \"address_state\": \"NY\",\n        \"address_zip\": \"10002\",\n        \"distance\": null,\n        \"name\": \"San Francisco HQ\",\n        \"phone_number\": null,\n        \"virtual\": false,\n        \"location_group\": {\n          \"id\": \"prg-ab12C345DeF6\",\n          \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n          \"integration_record_id\": null,\n          \"name\": \"Downtown Location Group\",\n          \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n        }\n      },\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      },\n      \"membership_members\": [],\n      \"memberships\": [],\n      \"merged_into\": null,\n      \"phones\": [],\n      \"practitioner\": {\n        \"id\": \"pct-ab12C345DeF6\",\n        \"accepts_enrollments_from_employer\": true,\n        \"accepts_enrollments_from_retail\": true,\n        \"bio\": \"Reginalds biography...\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"education\": [\n          \"The University of Hint\"\n        ],\n        \"email\": \"rocket_man@emi.com\",\n        \"gender\": \"male\",\n        \"gender_other\": null,\n        \"integration_record_id\": null,\n        \"max_patient_age\": 50,\n        \"min_patient_age\": 0,\n        \"name\": \"Reginald Dwight\",\n        \"online_signup_visibility\": true,\n        \"panel_size\": 150,\n        \"panel_size_limit\": 200,\n        \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"locations\": [\n          {\n            \"id\": \"loc-ab12C345DeF6\",\n            \"address_city\": \"New York\",\n            \"address_country\": \"United States\",\n            \"address_latitude\": 40.7227998,\n            \"address_line1\": \"157 E Houston St\",\n            \"address_line2\": \"Suite 2402\",\n            \"address_longitude\": -73.9892241,\n            \"address_state\": \"NY\",\n            \"address_zip\": \"10002\",\n            \"distance\": null,\n            \"name\": \"San Francisco HQ\",\n            \"phone_number\": \"5553050019\",\n            \"virtual\": false,\n            \"location_group\": {\n              \"id\": \"prg-ab12C345DeF6\",\n              \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n              \"integration_record_id\": null,\n              \"name\": \"Downtown Location Group\",\n              \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n            }\n          }\n        ],\n        \"npi\": {\n          \"first_name\": \"REGINALD\",\n          \"last_name\": \"DWIGHT\",\n          \"number\": 123456879,\n          \"organization_name\": \"HINT HEALTH\",\n          \"type\": \"individual\"\n        },\n        \"specialties\": [\n          {\n            \"id\": \"spe-ab12C345DeF6\",\n            \"name\": \"Internal Medicine\"\n          }\n        ]\n      },\n      \"practitioner_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      },\n      \"sponsorships\": [\n        {\n          \"id\": \"creg-ab12C345DeF6\",\n          \"external_id\": \"ext_id_from_another_system012345\",\n          \"is_subscriber\": true,\n          \"type\": \"employee\",\n          \"company\": {\n            \"id\": \"com-ab12C345DeF6\",\n            \"name\": \"Schmoogle Inc.\"\n          },\n          \"family\": {\n            \"id\": \"cac-ab12C345DeF6\"\n          }\n        }\n      ],\n      \"ssn\": {\n        \"masked_number\": \"***-**-1234\"\n      },\n      \"integration_error_message\": null,\n      \"integration_last_synced_at\": null,\n      \"integration_record_id\": null,\n      \"integration_sync_status\": \"enabled\",\n      \"integration_web_link\": null\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42307ecf-fccd-4cab-a049-1a9232b6b1b5",
+          "name": "Generate PDF for Customer Invoice",
+          "request": {
+            "name": "Generate PDF for Customer Invoice",
+            "description": {
+              "content": "## Usage Instructions and Security Best Practices\n - **Link Expiration:** Links expire after 15 minutes.\n - **Authenticate Users:** Only generate pdf links for authenticated users.\n - **On-Demand Links:** Generate the link only when a user requests to view or download a pdf.\n - **New Windows/Tabs:** Automatically redirect users to the URL provided, instead of showing them the link\n directly.\n - **Avoid Caching:** Do not cache or store pdf links in your application.\n - **Avoid Email Transmission:** Never send pdf links via email due to link expiry and security concerns.\n## Example Workflow\n 1. **Request Access:** User logs into your system and requests to view a pdf.\n 2. **Generate Link:** Your system makes a POST request to the pdf endpoint.\n 3. **Provide Link:** Your application receives the URL and automatically redirects the user to the URL in a new\n window or tab.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices",
+                ":customer_invoice_id",
+                "pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_invoice_id",
+                  "description": "(Required) Unique Customer Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78eb195e-30f4-4ca4-b647-12e93bba242c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices",
+                    ":customer_invoice_id",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_invoice_id",
+                      "description": "(Required) Unique Customer Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"https://api.hint.com/api/files/0jlsWoWWS2M6?account_token=example_token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51097df4-b893-4fa0-b04a-d7e943a4f171",
+          "name": "Delete Customer Invoice",
+          "request": {
+            "name": "Delete Customer Invoice",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Customer Invoice ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f152f799-4023-4f28-b25d-7726d00a1d4a",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Customer Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b0a78ea-ac87-4780-b9a1-253bcc017145",
+          "name": "Show Customer Invoice",
+          "request": {
+            "name": "Show Customer Invoice",
+            "description": {
+              "content": "**Status Options:** draft, issued, sent, cancelled, retrying, bad_debt, paid, disputed\n**Human Status Options:** draft, issued, sent, cancelled, bank_not_verified, needs_payment_info, retrying, bad_debt, paid, disputed",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Customer Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1f31bb5-9c9b-49d6-9f57-571653008183",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Customer Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inv-ab12C345DeF6\",\n  \"amount_in_cents\": 4999,\n  \"charges_count\": 1,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"date\": \"2017-02-05\",\n  \"due_in_cents\": 4999,\n  \"human_status\": \"draft\",\n  \"integration_record_id\": \"ABCD0012016\",\n  \"invoice_number\": 1,\n  \"last_sent_at\": null,\n  \"last_viewed_at\": null,\n  \"paid_at\": null,\n  \"paid_in_cents\": 0,\n  \"payment_status\": null,\n  \"payments_count\": 0,\n  \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6/charges/inv-ab12C345DeF6\",\n  \"received_in_cents\": 0,\n  \"status\": \"draft\",\n  \"subtotal_in_cents\": 4999,\n  \"tax_in_cents\": 0,\n  \"total_in_cents\": 4999,\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"active\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"account\": {\n      \"name\": \"Gordon Thomas Sumner\",\n      \"past_due_in_cents\": 0\n    },\n    \"company\": {\n      \"id\": \"com-ab12C345DeF6\",\n      \"name\": \"Schmoogle Inc.\"\n    },\n    \"emergency_contact\": {\n      \"id\": \"emc-ab12C345DeF6\",\n      \"first_name\": \"Eliot\",\n      \"last_name\": \"Sumner\",\n      \"email\": \"bass_eliot@iblamecoco.com\",\n      \"name\": \"Eliot Sumner\",\n      \"relationship\": \"sibling\",\n      \"phone\": {\n        \"number\": \"5553050051\",\n        \"type\": \"mobile\",\n        \"us_formattable\": true\n      }\n    },\n    \"external_records\": [],\n    \"known_practice\": null,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"location\": {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": null,\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    },\n    \"location_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"membership_members\": [],\n    \"memberships\": [],\n    \"merged_into\": null,\n    \"phones\": [],\n    \"practitioner\": {\n      \"id\": \"pct-ab12C345DeF6\",\n      \"accepts_enrollments_from_employer\": true,\n      \"accepts_enrollments_from_retail\": true,\n      \"bio\": \"Reginalds biography...\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"education\": [\n        \"The University of Hint\"\n      ],\n      \"email\": \"rocket_man@emi.com\",\n      \"gender\": \"male\",\n      \"gender_other\": null,\n      \"integration_record_id\": null,\n      \"max_patient_age\": 50,\n      \"min_patient_age\": 0,\n      \"name\": \"Reginald Dwight\",\n      \"online_signup_visibility\": true,\n      \"panel_size\": 150,\n      \"panel_size_limit\": 200,\n      \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"locations\": [\n        {\n          \"id\": \"loc-ab12C345DeF6\",\n          \"address_city\": \"New York\",\n          \"address_country\": \"United States\",\n          \"address_latitude\": 40.7227998,\n          \"address_line1\": \"157 E Houston St\",\n          \"address_line2\": \"Suite 2402\",\n          \"address_longitude\": -73.9892241,\n          \"address_state\": \"NY\",\n          \"address_zip\": \"10002\",\n          \"distance\": null,\n          \"name\": \"San Francisco HQ\",\n          \"phone_number\": \"5553050019\",\n          \"virtual\": false,\n          \"location_group\": {\n            \"id\": \"prg-ab12C345DeF6\",\n            \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n            \"integration_record_id\": null,\n            \"name\": \"Downtown Location Group\",\n            \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n          }\n        }\n      ],\n      \"npi\": {\n        \"first_name\": \"REGINALD\",\n        \"last_name\": \"DWIGHT\",\n        \"number\": 123456879,\n        \"organization_name\": \"HINT HEALTH\",\n        \"type\": \"individual\"\n      },\n      \"specialties\": [\n        {\n          \"id\": \"spe-ab12C345DeF6\",\n          \"name\": \"Internal Medicine\"\n        }\n      ]\n    },\n    \"practitioner_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"employee\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"ssn\": {\n      \"masked_number\": \"***-**-1234\"\n    },\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4aeeb90-1719-4448-8cfc-d6cb9cd296df",
+          "name": "Update Customer Invoice",
+          "request": {
+            "name": "Update Customer Invoice",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Customer Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_record_id\": \"<string>\",\n  \"owner\": {\n    \"id\": \"<string>\"\n  },\n  \"patient\": {\n    \"id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0ffc96ff-6fc9-433d-bbb0-3fd2a6e59636",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Customer Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_record_id\": \"<string>\",\n  \"owner\": {\n    \"id\": \"<string>\"\n  },\n  \"patient\": {\n    \"id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inv-ab12C345DeF6\",\n  \"amount_in_cents\": 4999,\n  \"charges_count\": 1,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"date\": \"2017-02-05\",\n  \"due_in_cents\": 4999,\n  \"human_status\": \"draft\",\n  \"integration_record_id\": \"ABCD0012016\",\n  \"invoice_number\": 1,\n  \"last_sent_at\": null,\n  \"last_viewed_at\": null,\n  \"paid_at\": null,\n  \"paid_in_cents\": 0,\n  \"payment_status\": null,\n  \"payments_count\": 0,\n  \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6/charges/inv-ab12C345DeF6\",\n  \"received_in_cents\": 0,\n  \"status\": \"draft\",\n  \"subtotal_in_cents\": 4999,\n  \"tax_in_cents\": 0,\n  \"total_in_cents\": 4999,\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"active\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"account\": {\n      \"name\": \"Gordon Thomas Sumner\",\n      \"past_due_in_cents\": 0\n    },\n    \"company\": {\n      \"id\": \"com-ab12C345DeF6\",\n      \"name\": \"Schmoogle Inc.\"\n    },\n    \"emergency_contact\": {\n      \"id\": \"emc-ab12C345DeF6\",\n      \"first_name\": \"Eliot\",\n      \"last_name\": \"Sumner\",\n      \"email\": \"bass_eliot@iblamecoco.com\",\n      \"name\": \"Eliot Sumner\",\n      \"relationship\": \"sibling\",\n      \"phone\": {\n        \"number\": \"5553050051\",\n        \"type\": \"mobile\",\n        \"us_formattable\": true\n      }\n    },\n    \"external_records\": [],\n    \"known_practice\": null,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"location\": {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": null,\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    },\n    \"location_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"membership_members\": [],\n    \"memberships\": [],\n    \"merged_into\": null,\n    \"phones\": [],\n    \"practitioner\": {\n      \"id\": \"pct-ab12C345DeF6\",\n      \"accepts_enrollments_from_employer\": true,\n      \"accepts_enrollments_from_retail\": true,\n      \"bio\": \"Reginalds biography...\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"education\": [\n        \"The University of Hint\"\n      ],\n      \"email\": \"rocket_man@emi.com\",\n      \"gender\": \"male\",\n      \"gender_other\": null,\n      \"integration_record_id\": null,\n      \"max_patient_age\": 50,\n      \"min_patient_age\": 0,\n      \"name\": \"Reginald Dwight\",\n      \"online_signup_visibility\": true,\n      \"panel_size\": 150,\n      \"panel_size_limit\": 200,\n      \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"locations\": [\n        {\n          \"id\": \"loc-ab12C345DeF6\",\n          \"address_city\": \"New York\",\n          \"address_country\": \"United States\",\n          \"address_latitude\": 40.7227998,\n          \"address_line1\": \"157 E Houston St\",\n          \"address_line2\": \"Suite 2402\",\n          \"address_longitude\": -73.9892241,\n          \"address_state\": \"NY\",\n          \"address_zip\": \"10002\",\n          \"distance\": null,\n          \"name\": \"San Francisco HQ\",\n          \"phone_number\": \"5553050019\",\n          \"virtual\": false,\n          \"location_group\": {\n            \"id\": \"prg-ab12C345DeF6\",\n            \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n            \"integration_record_id\": null,\n            \"name\": \"Downtown Location Group\",\n            \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n          }\n        }\n      ],\n      \"npi\": {\n        \"first_name\": \"REGINALD\",\n        \"last_name\": \"DWIGHT\",\n        \"number\": 123456879,\n        \"organization_name\": \"HINT HEALTH\",\n        \"type\": \"individual\"\n      },\n      \"specialties\": [\n        {\n          \"id\": \"spe-ab12C345DeF6\",\n          \"name\": \"Internal Medicine\"\n        }\n      ]\n    },\n    \"practitioner_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"employee\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"ssn\": {\n      \"masked_number\": \"***-**-1234\"\n    },\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7cbe8d73-4fa5-45aa-9dc3-632e7d8ae299",
+          "name": "Issue Customer Invoice",
+          "request": {
+            "name": "Issue Customer Invoice",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices",
+                ":id",
+                "issue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Customer Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f340fb43-26e4-4539-b7e7-1d4695540e36",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices",
+                    ":id",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Customer Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inv-ab12C345DeF6\",\n  \"amount_in_cents\": 4999,\n  \"charges_count\": 1,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"date\": \"2017-02-05\",\n  \"due_in_cents\": 4999,\n  \"human_status\": \"needs_payment_info\",\n  \"integration_record_id\": \"ABCD0012021\",\n  \"invoice_number\": 1,\n  \"last_sent_at\": null,\n  \"last_viewed_at\": null,\n  \"paid_at\": null,\n  \"paid_in_cents\": 0,\n  \"payment_status\": null,\n  \"payments_count\": 0,\n  \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6/charges/inv-ab12C345DeF6\",\n  \"received_in_cents\": 0,\n  \"status\": \"issued\",\n  \"subtotal_in_cents\": 4999,\n  \"tax_in_cents\": 0,\n  \"total_in_cents\": 4999,\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"active\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"account\": {\n      \"name\": \"Gordon Thomas Sumner\",\n      \"past_due_in_cents\": 4999\n    },\n    \"company\": {\n      \"id\": \"com-ab12C345DeF6\",\n      \"name\": \"Schmoogle Inc.\"\n    },\n    \"emergency_contact\": {\n      \"id\": \"emc-ab12C345DeF6\",\n      \"first_name\": \"Eliot\",\n      \"last_name\": \"Sumner\",\n      \"email\": \"bass_eliot@iblamecoco.com\",\n      \"name\": \"Eliot Sumner\",\n      \"relationship\": \"sibling\",\n      \"phone\": {\n        \"number\": \"5553050051\",\n        \"type\": \"mobile\",\n        \"us_formattable\": true\n      }\n    },\n    \"external_records\": [],\n    \"known_practice\": null,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"location\": {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": null,\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    },\n    \"location_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"membership_members\": [],\n    \"memberships\": [],\n    \"merged_into\": null,\n    \"phones\": [],\n    \"practitioner\": {\n      \"id\": \"pct-ab12C345DeF6\",\n      \"accepts_enrollments_from_employer\": true,\n      \"accepts_enrollments_from_retail\": true,\n      \"bio\": \"Reginalds biography...\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"education\": [\n        \"The University of Hint\"\n      ],\n      \"email\": \"rocket_man@emi.com\",\n      \"gender\": \"male\",\n      \"gender_other\": null,\n      \"integration_record_id\": null,\n      \"max_patient_age\": 50,\n      \"min_patient_age\": 0,\n      \"name\": \"Reginald Dwight\",\n      \"online_signup_visibility\": true,\n      \"panel_size\": 150,\n      \"panel_size_limit\": 200,\n      \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"locations\": [\n        {\n          \"id\": \"loc-ab12C345DeF6\",\n          \"address_city\": \"New York\",\n          \"address_country\": \"United States\",\n          \"address_latitude\": 40.7227998,\n          \"address_line1\": \"157 E Houston St\",\n          \"address_line2\": \"Suite 2402\",\n          \"address_longitude\": -73.9892241,\n          \"address_state\": \"NY\",\n          \"address_zip\": \"10002\",\n          \"distance\": null,\n          \"name\": \"San Francisco HQ\",\n          \"phone_number\": \"5553050019\",\n          \"virtual\": false,\n          \"location_group\": {\n            \"id\": \"prg-ab12C345DeF6\",\n            \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n            \"integration_record_id\": null,\n            \"name\": \"Downtown Location Group\",\n            \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n          }\n        }\n      ],\n      \"npi\": {\n        \"first_name\": \"REGINALD\",\n        \"last_name\": \"DWIGHT\",\n        \"number\": 123456879,\n        \"organization_name\": \"HINT HEALTH\",\n        \"type\": \"individual\"\n      },\n      \"specialties\": [\n        {\n          \"id\": \"spe-ab12C345DeF6\",\n          \"name\": \"Internal Medicine\"\n        }\n      ]\n    },\n    \"practitioner_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"employee\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"ssn\": {\n      \"masked_number\": \"***-**-1234\"\n    },\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76959f49-80d7-4f1e-aa75-079cfb10daa9",
+          "name": "Return Customer Invoice To Draft",
+          "request": {
+            "name": "Return Customer Invoice To Draft",
+            "description": {
+              "content": "Return to draft removes the financial information including revenue from all reports.\nThis action is not possible if the invoice is in a locked reporting period or has any payments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices",
+                ":id",
+                "return_to_draft"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Customer Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed28a755-5325-4d14-a726-bdcf29b2fc13",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices",
+                    ":id",
+                    "return_to_draft"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Customer Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inv-ab12C345DeF6\",\n  \"amount_in_cents\": 4999,\n  \"charges_count\": 1,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"date\": \"2017-02-05\",\n  \"due_in_cents\": 4999,\n  \"human_status\": \"draft\",\n  \"integration_record_id\": \"ABCD0012016\",\n  \"invoice_number\": 1,\n  \"last_sent_at\": null,\n  \"last_viewed_at\": null,\n  \"paid_at\": null,\n  \"paid_in_cents\": 0,\n  \"payment_status\": null,\n  \"payments_count\": 0,\n  \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6/charges/inv-ab12C345DeF6\",\n  \"received_in_cents\": 0,\n  \"status\": \"draft\",\n  \"subtotal_in_cents\": 4999,\n  \"tax_in_cents\": 0,\n  \"total_in_cents\": 4999,\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"active\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"account\": {\n      \"name\": \"Gordon Thomas Sumner\",\n      \"past_due_in_cents\": 0\n    },\n    \"company\": {\n      \"id\": \"com-ab12C345DeF6\",\n      \"name\": \"Schmoogle Inc.\"\n    },\n    \"emergency_contact\": {\n      \"id\": \"emc-ab12C345DeF6\",\n      \"first_name\": \"Eliot\",\n      \"last_name\": \"Sumner\",\n      \"email\": \"bass_eliot@iblamecoco.com\",\n      \"name\": \"Eliot Sumner\",\n      \"relationship\": \"sibling\",\n      \"phone\": {\n        \"number\": \"5553050051\",\n        \"type\": \"mobile\",\n        \"us_formattable\": true\n      }\n    },\n    \"external_records\": [],\n    \"known_practice\": null,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"location\": {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": null,\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    },\n    \"location_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"membership_members\": [],\n    \"memberships\": [],\n    \"merged_into\": null,\n    \"phones\": [],\n    \"practitioner\": {\n      \"id\": \"pct-ab12C345DeF6\",\n      \"accepts_enrollments_from_employer\": true,\n      \"accepts_enrollments_from_retail\": true,\n      \"bio\": \"Reginalds biography...\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"education\": [\n        \"The University of Hint\"\n      ],\n      \"email\": \"rocket_man@emi.com\",\n      \"gender\": \"male\",\n      \"gender_other\": null,\n      \"integration_record_id\": null,\n      \"max_patient_age\": 50,\n      \"min_patient_age\": 0,\n      \"name\": \"Reginald Dwight\",\n      \"online_signup_visibility\": true,\n      \"panel_size\": 150,\n      \"panel_size_limit\": 200,\n      \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"locations\": [\n        {\n          \"id\": \"loc-ab12C345DeF6\",\n          \"address_city\": \"New York\",\n          \"address_country\": \"United States\",\n          \"address_latitude\": 40.7227998,\n          \"address_line1\": \"157 E Houston St\",\n          \"address_line2\": \"Suite 2402\",\n          \"address_longitude\": -73.9892241,\n          \"address_state\": \"NY\",\n          \"address_zip\": \"10002\",\n          \"distance\": null,\n          \"name\": \"San Francisco HQ\",\n          \"phone_number\": \"5553050019\",\n          \"virtual\": false,\n          \"location_group\": {\n            \"id\": \"prg-ab12C345DeF6\",\n            \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n            \"integration_record_id\": null,\n            \"name\": \"Downtown Location Group\",\n            \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n          }\n        }\n      ],\n      \"npi\": {\n        \"first_name\": \"REGINALD\",\n        \"last_name\": \"DWIGHT\",\n        \"number\": 123456879,\n        \"organization_name\": \"HINT HEALTH\",\n        \"type\": \"individual\"\n      },\n      \"specialties\": [\n        {\n          \"id\": \"spe-ab12C345DeF6\",\n          \"name\": \"Internal Medicine\"\n        }\n      ]\n    },\n    \"practitioner_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"employee\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"ssn\": {\n      \"masked_number\": \"***-**-1234\"\n    },\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e4b907c-f4a9-4fb3-8181-60193389f745",
+          "name": "Void Customer Invoice",
+          "request": {
+            "name": "Void Customer Invoice",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "customer_invoices",
+                ":id",
+                "void"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Customer Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eda36fb0-2947-48e0-b5bf-38a9438e35b3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "customer_invoices",
+                    ":id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Customer Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inv-ab12C345DeF6\",\n  \"amount_in_cents\": 4999,\n  \"charges_count\": 1,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"date\": \"2017-02-05\",\n  \"due_in_cents\": 4999,\n  \"human_status\": \"cancelled\",\n  \"integration_record_id\": \"ABCD0012026\",\n  \"invoice_number\": 1,\n  \"last_sent_at\": null,\n  \"last_viewed_at\": null,\n  \"paid_at\": null,\n  \"paid_in_cents\": 0,\n  \"payment_status\": null,\n  \"payments_count\": 0,\n  \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6/charges/inv-ab12C345DeF6\",\n  \"received_in_cents\": 0,\n  \"status\": \"cancelled\",\n  \"subtotal_in_cents\": 4999,\n  \"tax_in_cents\": 0,\n  \"total_in_cents\": 4999,\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"owner\": {\n    \"id\": \"pat-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"age\": 65,\n    \"chosen_first_name\": null,\n    \"chosen_last_name\": null,\n    \"chosen_middle_name\": null,\n    \"chosen_suffix\": null,\n    \"chosen_title\": null,\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"dob\": \"1952-01-01\",\n    \"electronic_communication_consent_accepted\": true,\n    \"electronic_communication_consent_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"email\": \"bass_man@bumblebeeinc.com\",\n    \"engaged\": false,\n    \"external_link_id\": null,\n    \"first_name\": \"Gordon\",\n    \"gender\": \"male\",\n    \"gender_identity\": \"man\",\n    \"gender_other\": null,\n    \"health_insurance_group_id\": \"12345\",\n    \"health_insurance_member_id\": \"A22222222\",\n    \"health_insurance_payer_id\": 39,\n    \"health_insurance_payer_name\": \"Anthem Blue Cross California\",\n    \"hipaa_authorization_accepted\": true,\n    \"hipaa_authorization_accepted_at\": \"2017-01-29T06:23:00.000000-08:00\",\n    \"import_id\": null,\n    \"import_source\": null,\n    \"joined_practice_date\": \"2017-02-05\",\n    \"last_engagement_date\": null,\n    \"last_name\": \"Sumner\",\n    \"lead_source_other\": \"Downtown marketing event\",\n    \"master_record_sponsor\": null,\n    \"membership_status\": \"active\",\n    \"middle_name\": \"Thomas\",\n    \"name\": \"Gordon Thomas Sumner\",\n    \"patient_agreement_accepted\": false,\n    \"patient_agreement_accepted_at\": null,\n    \"preferred_language\": \"en\",\n    \"pronouns\": null,\n    \"provider_web_link\": \"https://app.hint.com/patients/pat-ab12C345DeF6\",\n    \"sex\": \"male\",\n    \"suffix\": null,\n    \"terms_accepted\": false,\n    \"terms_accepted_at\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"uses_tobacco\": false,\n    \"account\": {\n      \"name\": \"Gordon Thomas Sumner\",\n      \"past_due_in_cents\": 0\n    },\n    \"company\": {\n      \"id\": \"com-ab12C345DeF6\",\n      \"name\": \"Schmoogle Inc.\"\n    },\n    \"emergency_contact\": {\n      \"id\": \"emc-ab12C345DeF6\",\n      \"first_name\": \"Eliot\",\n      \"last_name\": \"Sumner\",\n      \"email\": \"bass_eliot@iblamecoco.com\",\n      \"name\": \"Eliot Sumner\",\n      \"relationship\": \"sibling\",\n      \"phone\": {\n        \"number\": \"5553050051\",\n        \"type\": \"mobile\",\n        \"us_formattable\": true\n      }\n    },\n    \"external_records\": [],\n    \"known_practice\": null,\n    \"lead_source\": {\n      \"id\": \"lds-ab12C345DeF6\",\n      \"name\": \"Other\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"location\": {\n      \"id\": \"loc-ab12C345DeF6\",\n      \"address_city\": \"New York\",\n      \"address_country\": \"United States\",\n      \"address_latitude\": 40.7227998,\n      \"address_line1\": \"157 E Houston St\",\n      \"address_line2\": \"Suite 2402\",\n      \"address_longitude\": -73.9892241,\n      \"address_state\": \"NY\",\n      \"address_zip\": \"10002\",\n      \"distance\": null,\n      \"name\": \"San Francisco HQ\",\n      \"phone_number\": null,\n      \"virtual\": false,\n      \"location_group\": {\n        \"id\": \"prg-ab12C345DeF6\",\n        \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n        \"integration_record_id\": null,\n        \"name\": \"Downtown Location Group\",\n        \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n      }\n    },\n    \"location_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"membership_members\": [],\n    \"memberships\": [],\n    \"merged_into\": null,\n    \"phones\": [],\n    \"practitioner\": {\n      \"id\": \"pct-ab12C345DeF6\",\n      \"accepts_enrollments_from_employer\": true,\n      \"accepts_enrollments_from_retail\": true,\n      \"bio\": \"Reginalds biography...\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"education\": [\n        \"The University of Hint\"\n      ],\n      \"email\": \"rocket_man@emi.com\",\n      \"gender\": \"male\",\n      \"gender_other\": null,\n      \"integration_record_id\": null,\n      \"max_patient_age\": 50,\n      \"min_patient_age\": 0,\n      \"name\": \"Reginald Dwight\",\n      \"online_signup_visibility\": true,\n      \"panel_size\": 150,\n      \"panel_size_limit\": 200,\n      \"photo_url\": \"practitioners/000/000/115/photos/original.png\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"locations\": [\n        {\n          \"id\": \"loc-ab12C345DeF6\",\n          \"address_city\": \"New York\",\n          \"address_country\": \"United States\",\n          \"address_latitude\": 40.7227998,\n          \"address_line1\": \"157 E Houston St\",\n          \"address_line2\": \"Suite 2402\",\n          \"address_longitude\": -73.9892241,\n          \"address_state\": \"NY\",\n          \"address_zip\": \"10002\",\n          \"distance\": null,\n          \"name\": \"San Francisco HQ\",\n          \"phone_number\": \"5553050019\",\n          \"virtual\": false,\n          \"location_group\": {\n            \"id\": \"prg-ab12C345DeF6\",\n            \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n            \"integration_record_id\": null,\n            \"name\": \"Downtown Location Group\",\n            \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n          }\n        }\n      ],\n      \"npi\": {\n        \"first_name\": \"REGINALD\",\n        \"last_name\": \"DWIGHT\",\n        \"number\": 123456879,\n        \"organization_name\": \"HINT HEALTH\",\n        \"type\": \"individual\"\n      },\n      \"specialties\": [\n        {\n          \"id\": \"spe-ab12C345DeF6\",\n          \"name\": \"Internal Medicine\"\n        }\n      ]\n    },\n    \"practitioner_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    },\n    \"sponsorships\": [\n      {\n        \"id\": \"creg-ab12C345DeF6\",\n        \"external_id\": \"ext_id_from_another_system012345\",\n        \"is_subscriber\": true,\n        \"type\": \"employee\",\n        \"company\": {\n          \"id\": \"com-ab12C345DeF6\",\n          \"name\": \"Schmoogle Inc.\"\n        },\n        \"family\": {\n          \"id\": \"cac-ab12C345DeF6\"\n        }\n      }\n    ],\n    \"ssn\": {\n      \"masked_number\": \"***-**-1234\"\n    },\n    \"integration_error_message\": null,\n    \"integration_last_synced_at\": null,\n    \"integration_record_id\": null,\n    \"integration_sync_status\": \"enabled\",\n    \"integration_web_link\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "165db123-ca26-442c-99f2-01a84f75df37",
+    "name": "Hint Health AccountAccessToken CustomerInvoice API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

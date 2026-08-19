@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken MembershipMember API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MembershipMember",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancel MembershipMember",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/memberships/:membership_id/members/:id/cancel",
+            "params": [
+              {
+                "name": "membership_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership Member ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel MembershipMember"
+        },
+        {
+          "info": {
+            "name": "List All MembershipMembers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/memberships/:membership_id/members",
+            "params": [
+              {
+                "name": "membership_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              }
+            ]
+          },
+          "docs": "List All MembershipMembers"
+        },
+        {
+          "info": {
+            "name": "Create MembershipMember",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/memberships/:membership_id/members",
+            "params": [
+              {
+                "name": "membership_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create MembershipMember"
+        },
+        {
+          "info": {
+            "name": "Show MembershipMember",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/memberships/:membership_id/members/:id",
+            "params": [
+              {
+                "name": "membership_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership Member ID"
+              }
+            ]
+          },
+          "docs": "Show MembershipMember"
+        },
+        {
+          "info": {
+            "name": "Update Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/memberships/:membership_id/members/:id",
+            "params": [
+              {
+                "name": "membership_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership Member ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Member"
+        },
+        {
+          "info": {
+            "name": "Destroy MembershipMember",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/memberships/:membership_id/members/:id",
+            "params": [
+              {
+                "name": "membership_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Membership Member ID"
+              }
+            ]
+          },
+          "docs": "Destroy MembershipMember"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

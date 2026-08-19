@@ -1,0 +1,421 @@
+{
+  "item": [
+    {
+      "id": "23672daf-a773-410c-a439-dea28c0b8dc6",
+      "name": "LabInteraction",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f453ea2a-79d4-41cd-aacc-ce7099794395",
+          "name": "Create Lab Interaction",
+          "request": {
+            "name": "Create Lab Interaction",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "interactions",
+                "lab"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"vendor_order_id\": \"<string>\",\n  \"event_timestamp\": \"<dateTime>\",\n  \"order\": {\n    \"lab_reference_id\": \"<string>\",\n    \"ordered_from\": \"<string>\",\n    \"authored_on\": \"<string>\",\n    \"collected_at\": \"<dateTime>\",\n    \"author\": \"<string>\",\n    \"author_reference\": \"<string>\",\n    \"actions\": [\n      {\n        \"reference\": \"<string>\",\n        \"display\": \"<string>\"\n      },\n      {\n        \"reference\": \"<string>\",\n        \"display\": \"<string>\"\n      }\n    ],\n    \"intent\": \"<string>\",\n    \"subject\": {\n      \"reference\": \"<string>\",\n      \"display\": \"<string>\"\n    },\n    \"lab_account_id\": \"<string>\"\n  },\n  \"report\": {\n    \"issued\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"lab_reference_id\": \"<string>\",\n    \"order_reference\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"code\": [\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        }\n      ],\n      \"code_text\": \"<string>\",\n      \"issued\": \"<dateTime>\",\n      \"value_quantity\": {\n        \"value\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"value_string\": \"<string>\",\n      \"text\": \"<string>\",\n      \"interpretation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ranges\": [\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        },\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        }\n      ],\n      \"subject\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"code\": [\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        }\n      ],\n      \"code_text\": \"<string>\",\n      \"issued\": \"<dateTime>\",\n      \"value_quantity\": {\n        \"value\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"value_string\": \"<string>\",\n      \"text\": \"<string>\",\n      \"interpretation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ranges\": [\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        },\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        }\n      ],\n      \"subject\": \"<string>\"\n    }\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87185ef6-94d0-458a-866f-dda2e69784b5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "interactions",
+                    "lab"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"vendor_order_id\": \"<string>\",\n  \"event_timestamp\": \"<dateTime>\",\n  \"order\": {\n    \"lab_reference_id\": \"<string>\",\n    \"ordered_from\": \"<string>\",\n    \"authored_on\": \"<string>\",\n    \"collected_at\": \"<dateTime>\",\n    \"author\": \"<string>\",\n    \"author_reference\": \"<string>\",\n    \"actions\": [\n      {\n        \"reference\": \"<string>\",\n        \"display\": \"<string>\"\n      },\n      {\n        \"reference\": \"<string>\",\n        \"display\": \"<string>\"\n      }\n    ],\n    \"intent\": \"<string>\",\n    \"subject\": {\n      \"reference\": \"<string>\",\n      \"display\": \"<string>\"\n    },\n    \"lab_account_id\": \"<string>\"\n  },\n  \"report\": {\n    \"issued\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"lab_reference_id\": \"<string>\",\n    \"order_reference\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"code\": [\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        }\n      ],\n      \"code_text\": \"<string>\",\n      \"issued\": \"<dateTime>\",\n      \"value_quantity\": {\n        \"value\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"value_string\": \"<string>\",\n      \"text\": \"<string>\",\n      \"interpretation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ranges\": [\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        },\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        }\n      ],\n      \"subject\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"code\": [\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        }\n      ],\n      \"code_text\": \"<string>\",\n      \"issued\": \"<dateTime>\",\n      \"value_quantity\": {\n        \"value\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"value_string\": \"<string>\",\n      \"text\": \"<string>\",\n      \"interpretation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ranges\": [\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        },\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        }\n      ],\n      \"subject\": \"<string>\"\n    }\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inter-2f93f9da35eb293f\",\n  \"event_timestamp\": \"2017-02-05T14:23:00Z\",\n  \"status\": \"fulfilled\",\n  \"type\": \"lab\",\n  \"vendor_order_id\": \"123456\",\n  \"order\": {\n    \"lab_reference_id\": \"ord-ref-123456\",\n    \"ordered_from\": \"San Francisco Lab\",\n    \"authored_on\": \"2017-02-05T14:23:00Z\",\n    \"collected_at\": \"2017-02-05T14:23:00Z\",\n    \"author\": \"John Doe\",\n    \"author_reference\": \"aut-ref-123456\",\n    \"intent\": \"diagnostic\",\n    \"lab_account_id\": \"lab-acc-123456\",\n    \"actions\": [\n      {\n        \"reference\": \"act-ref-123\",\n        \"display\": \"LabCorp\"\n      }\n    ],\n    \"subject\": {\n      \"reference\": \"sub-ref-456\",\n      \"display\": \"John Doe\"\n    }\n  },\n  \"report\": {\n    \"issued\": \"2017-02-05T14:23:00Z\",\n    \"status\": \"final\",\n    \"lab_reference_id\": \"lab-ref-123456\",\n    \"order_reference\": \"order-ref-123456\"\n  },\n  \"results\": [\n    {\n      \"id\": \"res-id-123\",\n      \"code_text\": \"lab-code-text-123\",\n      \"issued\": \"2017-02-05T14:23:00Z\",\n      \"value_string\": \"100 mg/dL\",\n      \"text\": \"Normal\",\n      \"interpretation\": [\n        \"normal\"\n      ],\n      \"subject\": \"John Doe\",\n      \"code\": [\n        {\n          \"code\": \"lab-code-123\",\n          \"display\": \"lab-code-display-123\"\n        }\n      ],\n      \"value_quantity\": {\n        \"value\": 100,\n        \"unit\": \"mg/dL\"\n      },\n      \"ranges\": [\n        {\n          \"text\": \"120-140 mg/dL\",\n          \"low\": {\n            \"value\": 120,\n            \"unit\": \"mg/dL\"\n          },\n          \"high\": {\n            \"value\": 140,\n            \"unit\": \"mg/dL\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"res-id-456\",\n      \"code_text\": \"lab-code-text-456\",\n      \"issued\": \"2017-02-05T14:23:00Z\",\n      \"value_string\": \"110 mg/dL\",\n      \"text\": \"Normal\",\n      \"interpretation\": [\n        \"normal\"\n      ],\n      \"subject\": \"John Doe\",\n      \"code\": [\n        {\n          \"code\": \"lab-code-456\",\n          \"display\": \"lab-code-display-456\"\n        }\n      ],\n      \"value_quantity\": {\n        \"value\": 110,\n        \"unit\": \"mg/dL\"\n      },\n      \"ranges\": [\n        {\n          \"text\": \"100-120 mg/dL\",\n          \"low\": {\n            \"value\": 100,\n            \"unit\": \"mg/dL\"\n          },\n          \"high\": {\n            \"value\": 120,\n            \"unit\": \"mg/dL\"\n          }\n        }\n      ]\n    }\n  ],\n  \"integration_error_message\": null,\n  \"integration_last_synced_at\": null,\n  \"integration_record_id\": null,\n  \"integration_sync_status\": \"enabled\",\n  \"integration_web_link\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "305a9c39-ea51-4447-91e4-358ef8e21fef",
+          "name": "Show Lab Interaction",
+          "request": {
+            "name": "Show Lab Interaction",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "interactions",
+                "lab",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Lab Interaction ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2d74f88-febb-48ff-9628-659547180f73",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "interactions",
+                    "lab",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Lab Interaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inter-2f93f9da35eb293f\",\n  \"event_timestamp\": \"2017-02-05T14:23:00Z\",\n  \"status\": \"fulfilled\",\n  \"type\": \"lab\",\n  \"vendor_order_id\": \"123456\",\n  \"order\": {\n    \"lab_reference_id\": \"ord-ref-123456\",\n    \"ordered_from\": \"San Francisco Lab\",\n    \"authored_on\": \"2017-02-05T14:23:00Z\",\n    \"collected_at\": \"2017-02-05T14:23:00Z\",\n    \"author\": \"John Doe\",\n    \"author_reference\": \"aut-ref-123456\",\n    \"intent\": \"diagnostic\",\n    \"lab_account_id\": \"lab-acc-123456\",\n    \"actions\": [\n      {\n        \"reference\": \"act-ref-123\",\n        \"display\": \"LabCorp\"\n      }\n    ],\n    \"subject\": {\n      \"reference\": \"sub-ref-456\",\n      \"display\": \"John Doe\"\n    }\n  },\n  \"report\": {\n    \"issued\": \"2017-02-05T14:23:00Z\",\n    \"status\": \"final\",\n    \"lab_reference_id\": \"lab-ref-123456\",\n    \"order_reference\": \"order-ref-123456\"\n  },\n  \"results\": [\n    {\n      \"id\": \"res-id-123\",\n      \"code_text\": \"lab-code-text-123\",\n      \"issued\": \"2017-02-05T14:23:00Z\",\n      \"value_string\": \"100 mg/dL\",\n      \"text\": \"Normal\",\n      \"interpretation\": [\n        \"normal\"\n      ],\n      \"subject\": \"John Doe\",\n      \"code\": [\n        {\n          \"code\": \"lab-code-123\",\n          \"display\": \"lab-code-display-123\"\n        }\n      ],\n      \"value_quantity\": {\n        \"value\": 100,\n        \"unit\": \"mg/dL\"\n      },\n      \"ranges\": [\n        {\n          \"text\": \"120-140 mg/dL\",\n          \"low\": {\n            \"value\": 120,\n            \"unit\": \"mg/dL\"\n          },\n          \"high\": {\n            \"value\": 140,\n            \"unit\": \"mg/dL\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"res-id-456\",\n      \"code_text\": \"lab-code-text-456\",\n      \"issued\": \"2017-02-05T14:23:00Z\",\n      \"value_string\": \"110 mg/dL\",\n      \"text\": \"Normal\",\n      \"interpretation\": [\n        \"normal\"\n      ],\n      \"subject\": \"John Doe\",\n      \"code\": [\n        {\n          \"code\": \"lab-code-456\",\n          \"display\": \"lab-code-display-456\"\n        }\n      ],\n      \"value_quantity\": {\n        \"value\": 110,\n        \"unit\": \"mg/dL\"\n      },\n      \"ranges\": [\n        {\n          \"text\": \"100-120 mg/dL\",\n          \"low\": {\n            \"value\": 100,\n            \"unit\": \"mg/dL\"\n          },\n          \"high\": {\n            \"value\": 120,\n            \"unit\": \"mg/dL\"\n          }\n        }\n      ]\n    }\n  ],\n  \"integration_error_message\": null,\n  \"integration_last_synced_at\": null,\n  \"integration_record_id\": null,\n  \"integration_sync_status\": \"enabled\",\n  \"integration_web_link\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0355fc0f-20e9-4ad1-a0c4-a033be81ad74",
+          "name": "Update Lab Interaction",
+          "request": {
+            "name": "Update Lab Interaction",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "patients",
+                ":patient_id",
+                "interactions",
+                "lab",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "patient_id",
+                  "description": "(Required) Unique Patient ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Lab Interaction ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"vendor_order_id\": \"<string>\",\n  \"event_timestamp\": \"<dateTime>\",\n  \"order\": {\n    \"lab_reference_id\": \"<string>\",\n    \"ordered_from\": \"<string>\",\n    \"authored_on\": \"<string>\",\n    \"collected_at\": \"<dateTime>\",\n    \"author\": \"<string>\",\n    \"author_reference\": \"<string>\",\n    \"actions\": [\n      {\n        \"reference\": \"<string>\",\n        \"display\": \"<string>\"\n      },\n      {\n        \"reference\": \"<string>\",\n        \"display\": \"<string>\"\n      }\n    ],\n    \"intent\": \"<string>\",\n    \"subject\": {\n      \"reference\": \"<string>\",\n      \"display\": \"<string>\"\n    },\n    \"lab_account_id\": \"<string>\"\n  },\n  \"report\": {\n    \"issued\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"lab_reference_id\": \"<string>\",\n    \"order_reference\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"code\": [\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        }\n      ],\n      \"code_text\": \"<string>\",\n      \"issued\": \"<dateTime>\",\n      \"value_quantity\": {\n        \"value\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"value_string\": \"<string>\",\n      \"text\": \"<string>\",\n      \"interpretation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ranges\": [\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        },\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        }\n      ],\n      \"subject\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"code\": [\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        }\n      ],\n      \"code_text\": \"<string>\",\n      \"issued\": \"<dateTime>\",\n      \"value_quantity\": {\n        \"value\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"value_string\": \"<string>\",\n      \"text\": \"<string>\",\n      \"interpretation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ranges\": [\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        },\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        }\n      ],\n      \"subject\": \"<string>\"\n    }\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6ff10249-f14a-479f-a08d-06d022eef9db",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "patients",
+                    ":patient_id",
+                    "interactions",
+                    "lab",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "patient_id",
+                      "description": "(Required) Unique Patient ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Lab Interaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"vendor_order_id\": \"<string>\",\n  \"event_timestamp\": \"<dateTime>\",\n  \"order\": {\n    \"lab_reference_id\": \"<string>\",\n    \"ordered_from\": \"<string>\",\n    \"authored_on\": \"<string>\",\n    \"collected_at\": \"<dateTime>\",\n    \"author\": \"<string>\",\n    \"author_reference\": \"<string>\",\n    \"actions\": [\n      {\n        \"reference\": \"<string>\",\n        \"display\": \"<string>\"\n      },\n      {\n        \"reference\": \"<string>\",\n        \"display\": \"<string>\"\n      }\n    ],\n    \"intent\": \"<string>\",\n    \"subject\": {\n      \"reference\": \"<string>\",\n      \"display\": \"<string>\"\n    },\n    \"lab_account_id\": \"<string>\"\n  },\n  \"report\": {\n    \"issued\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"lab_reference_id\": \"<string>\",\n    \"order_reference\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"code\": [\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        }\n      ],\n      \"code_text\": \"<string>\",\n      \"issued\": \"<dateTime>\",\n      \"value_quantity\": {\n        \"value\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"value_string\": \"<string>\",\n      \"text\": \"<string>\",\n      \"interpretation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ranges\": [\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        },\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        }\n      ],\n      \"subject\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"code\": [\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"display\": \"<string>\"\n        }\n      ],\n      \"code_text\": \"<string>\",\n      \"issued\": \"<dateTime>\",\n      \"value_quantity\": {\n        \"value\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      \"value_string\": \"<string>\",\n      \"text\": \"<string>\",\n      \"interpretation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ranges\": [\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        },\n        {\n          \"low\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"high\": {\n            \"value\": \"<integer>\",\n            \"unit\": \"<string>\"\n          },\n          \"text\": \"<string>\"\n        }\n      ],\n      \"subject\": \"<string>\"\n    }\n  ],\n  \"integration_record_id\": \"<string>\",\n  \"integration_error_message\": \"<string>\",\n  \"integration_web_link\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"inter-2f93f9da35eb293f\",\n  \"event_timestamp\": \"2017-02-05T14:23:00Z\",\n  \"status\": \"fulfilled\",\n  \"type\": \"lab\",\n  \"vendor_order_id\": \"123456\",\n  \"order\": {\n    \"lab_reference_id\": \"ord-ref-123456\",\n    \"ordered_from\": \"San Francisco Lab\",\n    \"authored_on\": \"2017-02-05T14:23:00Z\",\n    \"collected_at\": \"2017-02-05T14:23:00Z\",\n    \"author\": \"John Doe\",\n    \"author_reference\": \"aut-ref-123456\",\n    \"intent\": \"diagnostic\",\n    \"lab_account_id\": \"lab-acc-123456\",\n    \"actions\": [\n      {\n        \"reference\": \"act-ref-123\",\n        \"display\": \"LabCorp\"\n      }\n    ],\n    \"subject\": {\n      \"reference\": \"sub-ref-456\",\n      \"display\": \"John Doe\"\n    }\n  },\n  \"report\": {\n    \"issued\": \"2017-02-05T14:23:00Z\",\n    \"status\": \"final\",\n    \"lab_reference_id\": \"lab-ref-123456\",\n    \"order_reference\": \"order-ref-123456\"\n  },\n  \"results\": [\n    {\n      \"id\": \"res-id-123\",\n      \"code_text\": \"lab-code-text-123\",\n      \"issued\": \"2017-02-05T14:23:00Z\",\n      \"value_string\": \"100 mg/dL\",\n      \"text\": \"Normal\",\n      \"interpretation\": [\n        \"normal\"\n      ],\n      \"subject\": \"John Doe\",\n      \"code\": [\n        {\n          \"code\": \"lab-code-123\",\n          \"display\": \"lab-code-display-123\"\n        }\n      ],\n      \"value_quantity\": {\n        \"value\": 100,\n        \"unit\": \"mg/dL\"\n      },\n      \"ranges\": [\n        {\n          \"text\": \"120-140 mg/dL\",\n          \"low\": {\n            \"value\": 120,\n            \"unit\": \"mg/dL\"\n          },\n          \"high\": {\n            \"value\": 140,\n            \"unit\": \"mg/dL\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"res-id-456\",\n      \"code_text\": \"lab-code-text-456\",\n      \"issued\": \"2017-02-05T14:23:00Z\",\n      \"value_string\": \"110 mg/dL\",\n      \"text\": \"Normal\",\n      \"interpretation\": [\n        \"normal\"\n      ],\n      \"subject\": \"John Doe\",\n      \"code\": [\n        {\n          \"code\": \"lab-code-456\",\n          \"display\": \"lab-code-display-456\"\n        }\n      ],\n      \"value_quantity\": {\n        \"value\": 110,\n        \"unit\": \"mg/dL\"\n      },\n      \"ranges\": [\n        {\n          \"text\": \"100-120 mg/dL\",\n          \"low\": {\n            \"value\": 100,\n            \"unit\": \"mg/dL\"\n          },\n          \"high\": {\n            \"value\": 120,\n            \"unit\": \"mg/dL\"\n          }\n        }\n      ]\n    }\n  ],\n  \"integration_error_message\": null,\n  \"integration_last_synced_at\": null,\n  \"integration_record_id\": null,\n  \"integration_sync_status\": \"enabled\",\n  \"integration_web_link\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0d5104f1-9e0a-448f-aa9f-c8d1a67f15ad",
+    "name": "Hint Health AccountAccessToken LabInteraction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

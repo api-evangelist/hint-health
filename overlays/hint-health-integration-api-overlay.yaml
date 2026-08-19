@@ -1,0 +1,181 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay for Hint Health AccountAccessToken Integration API
+  version: 1.0.0
+x-provenance:
+  generated: '2026-08-15'
+  method: generated
+  source: openapi/hint-health-integration-api-openapi.yml
+  note: Non-destructive OpenAPI Overlay 1.0.0. Applies API Evangelist enrichment to the refined spec without
+    mutating it. Every value below is carried from a repo artifact searched or probed from Hint Health's
+    own published material — see conventions/, errors/, rate-limits/, lifecycle/, authentication/ and
+    conformance/.
+extends: ../openapi/hint-health-integration-api-openapi.yml
+actions:
+- target: $.info
+  description: Record catalogue, support and operational-transparency discovery metadata.
+  update:
+    contact:
+      name: Hint Health Developer Support
+      email: devsupport@hint.com
+      url: https://developers.hint.com/
+    termsOfService: https://www.hint.com/terms
+    x-api-evangelist:
+      provider: hint-health
+      catalog: https://apis.io/
+      documentation: https://developers.hint.com/reference/making-requests
+      status-page: https://status.hint.com/
+      pricing: https://www.hint.com/core/pricing
+      api-access: Paid add-on ($100/mo) on Core and Clinical; bundled at Core Enterprise.
+- target: $.info
+  description: Declare the runtime semantics Hint documents in prose but omits from the machine-readable
+    contract.
+  update:
+    x-conventions:
+      source: conventions/hint-health-conventions.yml
+      pagination:
+        style: limit-offset
+        params:
+        - limit
+        - offset
+        limit_max: 100
+        limit_default: 10
+        response_headers:
+        - x-count
+        - x-total-count
+        envelope: bare JSON array — not {data:[...]}
+      sorting:
+        param: sort
+        descending_prefix: '-'
+      filtering:
+        operators:
+        - gt
+        - gte
+        - lt
+        - lte
+        - eq
+        archive:
+          default: archived excluded
+          values:
+          - filter=archived
+          - filter=all
+        availability: advanced querying is enabled per endpoint on request
+      expansion:
+        param: expand
+        note: webhook payloads are always UNEXPANDED
+      http_methods: PUT and PATCH behave identically; PATCH preferred
+      money: all monetary fields are integer *_in_cents; no currency field
+    x-idempotency:
+      supported: true
+      mechanism: caller-supplied natural key
+      field: integration_record_id
+      header: null
+      uniqueness: per object type, per practice
+      retry_semantics: A duplicate create is REJECTED (422), not replayed. There is no Idempotency-Key
+        header and no stored-response replay.
+      source: conventions/hint-health-conventions.yml
+- target: $.info
+  description: Record the error envelope and rate-limit posture the spec declares no responses for.
+  update:
+    x-error-envelope:
+      format: proprietary
+      rfc9457: false
+      content_type: application/json
+      shape:
+        status: integer HTTP status repeated in the body
+        message: human-readable string, NOT a stable machine identifier
+      statuses:
+      - 400
+      - 401
+      - 403
+      - 404
+      - 422
+      - 429
+      - 5xx
+      source: errors/hint-health-problem-types.yml
+      note: This refined spec declares only 2xx responses. The error surface exists only in Hint's prose
+        documentation.
+    x-rate-limits:
+      per_second: 20
+      per_day: 500000
+      scope: per partner, across every API key
+      reset: 00:00 UTC
+      exhaustion_status: 429
+      response_headers: null
+      retry_after: false
+      guidance: exponential backoff with jitter — no server-provided delay
+      source: rate-limits/hint-health-rate-limits.yml
+- target: $.info
+  description: Record the authentication model, environment selector and event surface.
+  update:
+    x-authentication:
+      style: bearer
+      header: 'Authorization: Bearer <token>'
+      standard: RFC 6750
+      scopes: null
+      token_families:
+      - name: practice access token
+        surface: /api/provider/*
+      - name: partner API key
+        surface: /api/partner/*
+      environment_selector: key prefix (sbx-), not host
+      warning: Never use the partner API key against /api/provider/* — Hint states this crosses practice
+        boundaries.
+      source: authentication/hint-health-authentication.yml
+    x-events:
+      asyncapi_published: false
+      transport: signed webhooks
+      signature_header: X-Hint-Signature
+      algorithm: HMAC-SHA256
+      event_count: 32
+      registry: GET /partner/webhook_events
+      compatibility: new resource.action pairs are added without a version bump
+      source: asyncapi/hint-health-webhooks.yml
+    x-lifecycle:
+      versioning: unversioned — no path segment, no version header
+      change_policy: additive
+      deprecation_policy: false
+      sunset_header: false
+      changelog: false
+      status_page: https://status.hint.com/
+      source: lifecycle/hint-health-lifecycle.yml
+    x-compliance:
+      certifications:
+      - SOC 2
+      - ISO 27001
+      - PCI DSS
+      - HIPAA
+      url: https://www.hint.com/security
+      phi: Provider-surface operations carry PHI; Hint acts as a business associate to the practice.
+      source: security/hint-health-trust-center.yml
+- target: $.info
+  description: Record the agent surface an MCP client can reach today.
+  update:
+    x-agent-surface:
+      mcp:
+        mode: remote
+        endpoint: https://developers.hint.com/mcp
+        auth: none
+        tools:
+        - list-endpoints
+        - get-endpoint
+        - search-endpoints
+        - execute-request
+        note: Documentation/discovery server. execute-request is a generic HAR proxy that carries no credentials
+          of its own.
+      llms_txt: https://developers.hint.com/llms.txt
+      agent_card: null
+      well_known: null
+      source: mcp/hint-health-mcp.yml
+- target: $.tags
+  description: Record the resource this document covers and its operation inventory.
+  update:
+    x-api-evangelist-coverage:
+      resource: Integration
+      operations:
+      - Integration.ActivateIntegration
+      - Integration.DeactivateIntegration
+      - Integration.ListAllIntegrations
+      - Integration.ShowIntegration
+      - Integration.UpdateIntegration
+      operation_count: 5

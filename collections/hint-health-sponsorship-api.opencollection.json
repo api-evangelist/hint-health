@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Sponsorship API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sponsorship",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Sponsorhips",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/sponsorships",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              },
+              {
+                "name": "family_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List All Sponsorhips"
+        },
+        {
+          "info": {
+            "name": "Create Sponsorship",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/sponsorships",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Sponsorship"
+        },
+        {
+          "info": {
+            "name": "Show Sponsorship",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/sponsorships/:id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Sponsorship ID"
+              }
+            ]
+          },
+          "docs": "Show Sponsorship"
+        },
+        {
+          "info": {
+            "name": "Update Sponsorship",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/sponsorships/:id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Sponsorship ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Sponsorship"
+        },
+        {
+          "info": {
+            "name": "Destroy Sponsorship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/sponsorships/:id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Sponsorship ID"
+              }
+            ]
+          },
+          "docs": "If the subscriber is destroyed all dependents will be destroyed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

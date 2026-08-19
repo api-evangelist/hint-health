@@ -1,0 +1,549 @@
+{
+  "item": [
+    {
+      "id": "9a7dbcc5-f1a2-47cb-a506-f92712352df8",
+      "name": "Location",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab4bed4e-edd1-4f43-98ca-eb9453f563d6",
+          "name": "Create Location",
+          "request": {
+            "name": "Create Location",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address_line1\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_state\": \"<string>\",\n  \"address_zip\": \"<string>\",\n  \"address_country\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"virtual\": \"<boolean>\",\n  \"location_group\": {\n    \"id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "10aa4735-50db-42f4-a479-97f6e568ceb8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address_line1\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_state\": \"<string>\",\n  \"address_zip\": \"<string>\",\n  \"address_country\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"virtual\": \"<boolean>\",\n  \"location_group\": {\n    \"id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"loc-ab12C345DeF6\",\n  \"address_city\": \"New York\",\n  \"address_country\": \"United States\",\n  \"address_latitude\": 40.7227998,\n  \"address_line1\": \"157 E Houston St\",\n  \"address_line2\": \"Suite 2402\",\n  \"address_longitude\": -73.9892241,\n  \"address_state\": \"NY\",\n  \"address_zip\": \"10002\",\n  \"distance\": null,\n  \"name\": \"San Francisco HQ\",\n  \"phone_number\": \"5553050019\",\n  \"virtual\": false,\n  \"location_group\": {\n    \"id\": \"prg-ab12C345DeF6\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"integration_record_id\": null,\n    \"name\": \"Downtown Location Group\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51644c3c-693c-4b51-b8f9-da4a66bd9aa1",
+          "name": "List All Locations",
+          "request": {
+            "name": "List All Locations",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "near_zip",
+                  "value": "<string>",
+                  "description": "The zip code in the centre of your search"
+                },
+                {
+                  "disabled": false,
+                  "key": "distance",
+                  "value": "<integer>",
+                  "description": "The search radius in miles. Defaults to 20 if near_zip is not blank"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "08432180-b45c-4abc-be8f-57e4b32d4e86",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "near_zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "distance",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"loc-ab12C345DeF6\",\n    \"address_city\": \"New York\",\n    \"address_country\": \"United States\",\n    \"address_latitude\": 40.7227998,\n    \"address_line1\": \"157 E Houston St\",\n    \"address_line2\": \"Suite 2402\",\n    \"address_longitude\": -73.9892241,\n    \"address_state\": \"NY\",\n    \"address_zip\": \"10002\",\n    \"distance\": null,\n    \"name\": \"San Francisco HQ\",\n    \"phone_number\": \"5553050019\",\n    \"virtual\": false,\n    \"location_group\": {\n      \"id\": \"prg-ab12C345DeF6\",\n      \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n      \"integration_record_id\": null,\n      \"name\": \"Downtown Location Group\",\n      \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffc48160-6cac-469c-a3f8-faa39016ebb8",
+          "name": "Delete Location",
+          "request": {
+            "name": "Delete Location",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "locations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Location ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e26064aa-ff77-47df-80bc-aab70c48c538",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "locations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Location ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e11092e-ac45-484c-8618-fdc016fd8ad3",
+          "name": "Show Location",
+          "request": {
+            "name": "Show Location",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "locations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Location ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b3c050f-a44e-4de7-bd19-e9518b5210bc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "locations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Location ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"loc-ab12C345DeF6\",\n  \"address_city\": \"New York\",\n  \"address_country\": \"United States\",\n  \"address_latitude\": 40.7227998,\n  \"address_line1\": \"157 E Houston St\",\n  \"address_line2\": \"Suite 2402\",\n  \"address_longitude\": -73.9892241,\n  \"address_state\": \"NY\",\n  \"address_zip\": \"10002\",\n  \"distance\": null,\n  \"name\": \"San Francisco HQ\",\n  \"phone_number\": \"5553050019\",\n  \"virtual\": false,\n  \"location_group\": {\n    \"id\": \"prg-ab12C345DeF6\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"integration_record_id\": null,\n    \"name\": \"Downtown Location Group\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7427b7a2-3680-47ac-8bb5-82c9e9f295ba",
+          "name": "Update Location",
+          "request": {
+            "name": "Update Location",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "locations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Location ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address_line1\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_state\": \"<string>\",\n  \"address_zip\": \"<string>\",\n  \"address_country\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"virtual\": \"<boolean>\",\n  \"location_group\": {\n    \"id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9bbe0fe2-ed24-4185-b388-b2770c94c5e4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "locations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Location ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address_line1\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_state\": \"<string>\",\n  \"address_zip\": \"<string>\",\n  \"address_country\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"virtual\": \"<boolean>\",\n  \"location_group\": {\n    \"id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"loc-ab12C345DeF6\",\n  \"address_city\": \"New York\",\n  \"address_country\": \"United States\",\n  \"address_latitude\": 40.7227998,\n  \"address_line1\": \"157 E Houston St\",\n  \"address_line2\": \"Suite 2402\",\n  \"address_longitude\": -73.9892241,\n  \"address_state\": \"NY\",\n  \"address_zip\": \"10002\",\n  \"distance\": null,\n  \"name\": \"San Francisco HQ\",\n  \"phone_number\": \"5553050019\",\n  \"virtual\": false,\n  \"location_group\": {\n    \"id\": \"prg-ab12C345DeF6\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"integration_record_id\": null,\n    \"name\": \"Downtown Location Group\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e0d0bf10-f54a-4efc-ba51-e8aea2aaa6ab",
+    "name": "Hint Health AccountAccessToken Location API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

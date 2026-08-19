@@ -1,0 +1,207 @@
+generated: '2026-08-15'
+method: searched
+source: https://developers.hint.com/reference/making-requests
+docs:
+  - https://developers.hint.com/reference/making-requests
+  - https://developers.hint.com/reference/webhooks
+  - https://developers.hint.com/docs/hint-mcp-server
+  - https://www.hint.com/security
+name: Hint Health Standards Conformance
+description: >-
+  Which cross-cutting API and security standards the Hint REST API actually
+  conforms to, asserted from Hint's own published documentation and from the
+  2026-07-01 OpenAPI harvest in openapi/_original/. Hint's posture is a
+  conventional bearer-token REST API with a strong compliance program and a
+  deliberately thin standards surface: it adopts the HTTP-level standards it
+  needs (Bearer, HMAC webhook signatures, OpenAPI 3.1, MCP) and none of the
+  API-governance RFCs (problem+json, RateLimit headers, Sunset, security.txt,
+  well-known discovery).
+
+standards:
+  - id: openapi-3.1
+    conforms: true
+    evidence: >-
+      Hint publishes OpenAPI 3.1.0 documents inside every reference page
+      (info.version 2026-07-01, title "Partner Endpoints"). Harvested to
+      openapi/_original/hint-health-partner-endpoints-2026-07-01-openapi.yml —
+      200 operations, 247 component schemas.
+
+  - id: rfc6750-bearer-token
+    conforms: true
+    evidence: >-
+      "Making Requests" documents Authorization: Bearer <api_key> on every
+      endpoint. The harvested spec declares one securityScheme, hint_api_key
+      (type apiKey, in header, name AUTHORIZATION), whose own description tells
+      callers to send `Bearer {your_api_key}` — i.e. RFC 6750 syntax carried in
+      an apiKey scheme rather than declared as http/bearer.
+
+  - id: oauth2-authorization-code
+    conforms: partial
+    evidence: >-
+      Hint runs an authorization-code exchange for partner installs — POST
+      /oauth/tokens (Exchange Code for Access Token) and the newer POST
+      /partner/installations/connect, both returning a bearer access_token. But
+      there is no published authorization-server metadata, no token endpoint
+      documented as an OAuth endpoint, no refresh flow (refresh_token is null in
+      Hint's own example), no scope parameter and no scope registry. It is an
+      OAuth-shaped credential handoff, not an RFC 6749 authorization server.
+    note: >-
+      derive-oauth-scopes.py finds 0 oauth2 securitySchemes and 0 scopes across
+      the repo, so no scopes/ artifact is emitted.
+
+  - id: rfc8414-authorization-server-metadata
+    conforms: false
+    evidence: '/.well-known/oauth-authorization-server returns 404 on all four Hint hosts (see well-known/).'
+
+  - id: rfc9728-protected-resource-metadata
+    conforms: false
+    evidence: '/.well-known/oauth-protected-resource returns 404 on all four Hint hosts.'
+
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use a proprietary two-field envelope {status, message} with
+      Content-Type application/json, not application/problem+json. See
+      errors/hint-health-problem-types.yml.
+
+  - id: ratelimit-headers
+    conforms: false
+    evidence: >-
+      Hint states plainly that rate-limit responses carry no Retry-After and no
+      header reporting remaining quota or reset time. Neither the IETF
+      RateLimit-* draft headers nor X-RateLimit-* equivalents are emitted, even
+      though hard limits (20/s, 500,000/day) are published.
+
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: 'No Sunset or Deprecation response headers and no deprecation policy are documented.'
+
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: '/.well-known/security.txt returns 404 on www.hint.com, hint.com, developers.hint.com and api.hint.com.'
+
+  - id: rfc8615-well-known-uris
+    conforms: false
+    evidence: 'No /.well-known/ document of any kind is served. See well-known/hint-health-well-known.yml.'
+
+  - id: hmac-webhook-signature
+    conforms: true
+    evidence: >-
+      Webhooks are signed with X-Hint-Signature in the form sha256=<hmac>,
+      HMAC-SHA256 over the raw request body, keyed by the partner's webhook
+      signature key. See asyncapi/hint-health-webhooks.yml.
+
+  - id: asyncapi
+    conforms: false
+    evidence: >-
+      Hint documents a 32-event webhook catalogue and a live registry endpoint
+      (GET /partner/webhook_events) but publishes no AsyncAPI document,
+      CloudEvents mapping or EventBridge schema.
+
+  - id: cloudevents
+    conforms: false
+    evidence: >-
+      The webhook envelope is proprietary — {id, type, practice_id, created_at,
+      object} — with no specversion, source or datacontenttype field.
+
+  - id: mcp
+    conforms: true
+    evidence: >-
+      Hint operates a hosted remote MCP server at https://developers.hint.com/mcp
+      over streamable HTTP. An anonymous tools/list returned HTTP 200 with four
+      tools and full JSON Schema 2020-12 inputSchemas on 2026-08-15.
+
+  - id: a2a
+    conforms: false
+    evidence: >-
+      /.well-known/agent-card.json and /.well-known/agent.json return 404 on
+      every Hint host. No agent card is published, so no a2a/ artifact exists.
+
+  - id: fhir-r4
+    conforms: false
+    evidence: >-
+      No FHIR endpoint, no resourceType field, no CapabilityStatement — the
+      strings "fhir" and "resourceType" appear zero times in the harvested spec.
+      Hint's lab interaction payloads are nonetheless FHIR-INFLUENCED: the
+      Interaction lab serializers carry snake_cased renamings of R4 elements
+      (order.intent, order.authored_on, order.subject.reference/display,
+      result.code.display, result.value_quantity{value,unit},
+      result.interpretation, result.ranges{low,high}, report.issued/status).
+      Recorded as influence, not conformance — an agent cannot treat these as
+      FHIR resources.
+    note: >-
+      Hint's lab surface is fed by Health Gorilla (named as a dependency on
+      status.hint.com), which is a FHIR-native network. The FHIR shape almost
+      certainly arrives with that integration rather than being a Hint
+      commitment.
+
+  - id: hl7-v2
+    conforms: false
+    evidence: 'No HL7 v2 interface is documented on the public API.'
+
+  - id: scim2
+    conforms: false
+    evidence: 'No /scim/v2 paths and no SCIM schemas. User provisioning is not exposed as SCIM.'
+
+  - id: json-api
+    conforms: false
+    evidence: >-
+      List endpoints return BARE JSON ARRAYS with no top-level data/included
+      envelope and no type/attributes members.
+
+  - id: cursor-pagination
+    conforms: false
+    evidence: >-
+      Pagination is limit/offset with x-count and x-total-count response
+      headers. No cursor, no Link header (RFC 8288) relations.
+
+  - id: idempotency-key-header
+    conforms: false
+    evidence: >-
+      Hint implements idempotency, but through a caller-supplied natural key
+      (integration_record_id, unique per object type) rather than the
+      Idempotency-Key header of draft-ietf-httpapi-idempotency-key-header. A
+      retried create returns a duplicate error, not the original response. See
+      conventions/hint-health-conventions.yml.
+
+  - id: llms-txt
+    conforms: true
+    evidence: >-
+      https://developers.hint.com/llms.txt returns 200 and indexes 22 guides and
+      204 reference pages, each with a .md twin carrying the endpoint's OpenAPI
+      definition.
+
+compliance_program:
+  published: true
+  url: https://www.hint.com/security
+  certifications:
+    - SOC 2
+    - ISO 27001
+    - PCI DSS
+    - HIPAA
+  note: >-
+    Certifications are named on Hint's public security page and captured in
+    security/hint-health-trust-center.yml. HIPAA is the operative regime — Hint
+    is a business associate to its practices, and Core Enterprise plans
+    reference a custom MSA/BAA.
+  regulatory_context:
+    - regime: HIPAA
+      role: business associate
+      applies: PHI flows through /api/provider/* on every practice-scoped call.
+    - regime: PCI DSS
+      role: delegated
+      note: >-
+        Card data is captured by the practice's processor — Hint Payments
+        (Rainforest) or Stripe — never by Hint's own API. Payment methods are
+        created with rainforest_id or stripe_id, not a PAN.
+
+gaps:
+  - >-
+    Zero /.well-known/ surface. For a HIPAA-scoped platform with a paid API
+    add-on, the absence of security.txt is the cheapest fix on this list.
+  - >-
+    No error taxonomy beyond HTTP status plus an unstable human message string,
+    and the machine-readable spec declares no 4xx/5xx responses at all.
+  - >-
+    Published rate limits with no runtime signal. An agent can read the number
+    in the docs but cannot learn its remaining quota from a response.

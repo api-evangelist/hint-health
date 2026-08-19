@@ -1,0 +1,90 @@
+generated: '2026-08-14'
+method: searched
+source: https://developers.hint.com/reference/making-requests
+name: Hint Health Error Catalog
+description: >-
+  The error contract for the Hint REST API, read from Hint's own "Making
+  Requests" reference. Hint uses a proprietary two-field JSON envelope
+  ({status, message}) rather than RFC 9457 problem+json, and does not publish
+  machine-readable error codes — the discriminator is the HTTP status plus a
+  human-readable message string.
+format: proprietary
+rfc9457: false
+content_type: application/json
+
+envelope:
+  fields:
+    - {name: status, type: integer, description: The HTTP status code, repeated in the body}
+    - {name: message, type: string, description: Human-readable explanation. Not a stable machine identifier.}
+  example: |
+    {
+      "status": 422,
+      "message": "Validation failed: First name can't be blank"
+    }
+
+problem_types:
+  - status: 400
+    title: Bad Request
+    meaning: Malformed syntax or invalid parameters.
+    remediation: Fix the request syntax or parameter values before retrying. Not retryable as-is.
+    retryable: false
+  - status: 401
+    title: Unauthorized
+    meaning: Missing or invalid API key.
+    remediation: >-
+      Supply Authorization: Bearer <key>. Confirm you are using the right token
+      type — practice access token for /api/provider/*, partner API key for
+      /api/partner/*.
+    retryable: false
+  - status: 403
+    title: Forbidden
+    meaning: >-
+      Valid key but insufficient permissions, OR a security flag. Hint also
+      returns 403 for security anomalies that would otherwise be rate-limit
+      events.
+    remediation: >-
+      Check the token's scope against the endpoint family. If the call is
+      correct and volume is high, treat as a possible anomaly block and contact
+      devsupport@hint.com.
+    retryable: false
+  - status: 404
+    title: Not Found
+    meaning: Resource does not exist.
+    remediation: >-
+      Verify the id. Note that list endpoints exclude archived records by
+      default — a "missing" record may be archived. Retry with ?filter=all.
+    retryable: false
+  - status: 422
+    title: Unprocessable Entity
+    meaning: Validation failed.
+    remediation: >-
+      Read `message` for the failing field. Also returned when a domain action
+      is impossible — e.g. emailing a customer invoice whose owner has no email
+      address, an invalid address, or a previously bounced address; or
+      requesting a download URL for a non-PDF interaction file.
+    retryable: false
+  - status: 429
+    title: Too Many Requests
+    meaning: Rate limit exceeded (20 req/s or 500,000 req/day, per partner).
+    body: '{"status": 429, "message": "Enhance your calm"}'
+    remediation: >-
+      Retry with exponential backoff and jitter. No Retry-After header is
+      returned. The daily limit resets at 00:00 UTC.
+    retryable: true
+  - status: 5xx
+    title: Server Error
+    meaning: Server-side failure.
+    remediation: Retry with exponential backoff.
+    retryable: true
+
+derivation_note: >-
+  Nothing here is derived from openapi/. The 49 refined Hint specs in this repo
+  declare only 200/201/204 responses — no 4xx or 5xx response objects exist to
+  derive from. That is itself a finding: the machine-readable contract omits the
+  error surface entirely, so an agent reading only the OpenAPI would not know
+  the shape of a Hint failure.
+
+coverage:
+  documented_statuses: 6
+  derived_from_openapi: 0
+  openapi_declares_error_responses: false

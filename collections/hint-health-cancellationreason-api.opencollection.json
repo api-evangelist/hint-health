@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken CancellationReason API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CancellationReason",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All CancellationReasons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/cancellation_reasons"
+          },
+          "docs": "List All CancellationReasons"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

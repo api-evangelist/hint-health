@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Invoice API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/invoices",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              }
+            ]
+          },
+          "docs": "List All Invoices"
+        },
+        {
+          "info": {
+            "name": "Show Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/invoices/:id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Invoice ID"
+              }
+            ]
+          },
+          "docs": "Show Invoice"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

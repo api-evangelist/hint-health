@@ -1,0 +1,222 @@
+{
+  "item": [
+    {
+      "id": "b9d3600b-0b59-4216-8d44-dfa9d312c130",
+      "name": "Practice",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77f1e696-7e81-4b94-a48d-1cf796f2391f",
+          "name": "Get Practice",
+          "request": {
+            "name": "Get Practice",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "practice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "72dd2e62-e115-4b9a-9873-a9b24b7aafff",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "practice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"pra-ab12C345DeF6\",\n  \"address_city\": \"New York\",\n  \"address_country\": \"United States\",\n  \"address_line1\": \"157 E Houston St\",\n  \"address_line2\": \"Suite 2402\",\n  \"address_state\": \"NY\",\n  \"address_zip\": \"10002\",\n  \"email\": \"hintclinic@example.com\",\n  \"name\": \"Hint Health Clinic\",\n  \"url\": \"https://www.hint.com\",\n  \"logo_url\": \"https://www.hint.com/logo.png\",\n  \"integration_record_id\": null,\n  \"phones\": [\n    {\n      \"number\": \"4158546466\",\n      \"type\": \"mobile\",\n      \"us_formattable\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eab45e35-eac4-4f36-92a4-6228dc82a638",
+          "name": "Update Practice",
+          "request": {
+            "name": "Update Practice",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "practice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address_line1\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_state\": \"<string>\",\n  \"address_zip\": \"<string>\",\n  \"address_country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phones\": [\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    }\n  ],\n  \"url\": \"<string>\",\n  \"logo_url\": \"<string>\",\n  \"integration_record_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbaee854-e8ae-4888-9a40-f7b5787b3dee",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "practice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address_line1\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_state\": \"<string>\",\n  \"address_zip\": \"<string>\",\n  \"address_country\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phones\": [\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<number>\",\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"us_formattable\": \"<boolean>\"\n    }\n  ],\n  \"url\": \"<string>\",\n  \"logo_url\": \"<string>\",\n  \"integration_record_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"pra-ab12C345DeF6\",\n  \"address_city\": \"New York\",\n  \"address_country\": \"United States\",\n  \"address_line1\": \"157 E Houston St\",\n  \"address_line2\": \"Suite 2402\",\n  \"address_state\": \"NY\",\n  \"address_zip\": \"10002\",\n  \"email\": \"hintclinic@example.com\",\n  \"name\": \"Hint Health Clinic\",\n  \"url\": \"https://www.hint.com\",\n  \"logo_url\": \"https://www.hint.com/logo.png\",\n  \"integration_record_id\": null,\n  \"phones\": [\n    {\n      \"number\": \"4158546466\",\n      \"type\": \"mobile\",\n      \"us_formattable\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3edf5a45-0582-4f4b-a584-5105070da3ec",
+    "name": "Hint Health AccountAccessToken Practice API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

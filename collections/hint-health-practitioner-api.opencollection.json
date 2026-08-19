@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Practitioner API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Practitioner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Practitioners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/practitioners",
+            "params": [
+              {
+                "name": "near_zip",
+                "value": "",
+                "type": "query",
+                "description": "The zip code in the centre of your search"
+              },
+              {
+                "name": "distance",
+                "value": "",
+                "type": "query",
+                "description": "The search radius in miles. Defaults to 20 if near_zip is not blank"
+              }
+            ]
+          },
+          "docs": "List All Practitioners"
+        },
+        {
+          "info": {
+            "name": "Create Practitioner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/practitioners",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Practitioner"
+        },
+        {
+          "info": {
+            "name": "Show Practitioner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/practitioners/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Practitioner ID"
+              }
+            ]
+          },
+          "docs": "Show Practitioner"
+        },
+        {
+          "info": {
+            "name": "Update Practitioner",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/practitioners/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Practitioner ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Practitioner"
+        },
+        {
+          "info": {
+            "name": "Delete Practitioner",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/practitioners/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Practitioner ID"
+              }
+            ]
+          },
+          "docs": "Delete Practitioner"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

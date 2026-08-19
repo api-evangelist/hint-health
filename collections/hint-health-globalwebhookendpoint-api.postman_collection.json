@@ -1,0 +1,517 @@
+{
+  "item": [
+    {
+      "id": "d4ac2c15-ba88-4e88-b9c2-15f581363b17",
+      "name": "GlobalWebhookEndpoint",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7da0b0cc-212b-4313-9ec8-b71aa7e0c468",
+          "name": "Create Webhook Endpoint",
+          "request": {
+            "name": "Create Webhook Endpoint",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "global_webhook_endpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhook_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83e557c7-761a-48bf-a982-615dce66dcd5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "global_webhook_endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"whep-ab12C345DeF6\",\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"last_delivered_at\": null,\n  \"localhost_webhook_url\": \"http://localhost:3000/hint/webhook\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"webhook_url\": \"https://api.partner/webhook_endpoint_url\",\n  \"partner_backend\": {\n    \"id\": \"pbnd-ab12C345DeF6\",\n    \"name\": \"Default\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdc2b8a5-d587-4eb9-84dd-90632ca0f875",
+          "name": "List All Webhook Endpoints",
+          "request": {
+            "name": "List All Webhook Endpoints",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "global_webhook_endpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac79dda9-a965-44df-970f-c4296801b030",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "global_webhook_endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"whep-ab12C345DeF6\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"last_delivered_at\": null,\n    \"localhost_webhook_url\": \"http://localhost:3000/hint/webhook\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"webhook_url\": \"https://api.partner/webhook_endpoint_url\",\n    \"partner_backend\": {\n      \"id\": \"pbnd-ab12C345DeF6\",\n      \"name\": \"Default\"\n    }\n  },\n  {\n    \"id\": \"whep-ab12C345DeF6\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"last_delivered_at\": null,\n    \"localhost_webhook_url\": \"http://localhost:3000/hint/webhook\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"webhook_url\": \"https://api.partner/webhook_endpoint_url\",\n    \"partner_backend\": {\n      \"id\": \"pbnd-ab12C345DeF6\",\n      \"name\": \"Default\"\n    }\n  },\n  {\n    \"id\": \"whep-ab12C345DeF6\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"last_delivered_at\": null,\n    \"localhost_webhook_url\": \"http://localhost:3000/hint/webhook\",\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"webhook_url\": \"https://api.partner/webhook_endpoint_url\",\n    \"partner_backend\": {\n      \"id\": \"pbnd-ab12C345DeF6\",\n      \"name\": \"Default\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aebe6d8b-f8a9-4d03-9ea3-66aaffdc44fe",
+          "name": "Delete Webhook Endpoint",
+          "request": {
+            "name": "Delete Webhook Endpoint",
+            "description": {
+              "content": "This operation will take effect immediately and cancel all pending and retrying webhooks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "global_webhook_endpoints",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Global Webhook Endpoint ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1b375aa-78cb-4e1b-9d2a-1ab27ca4ae69",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "global_webhook_endpoints",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Global Webhook Endpoint ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "214d5652-e8ef-4673-bc10-b59fd12f0203",
+          "name": "Show Webhook Endpoint",
+          "request": {
+            "name": "Show Webhook Endpoint",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "global_webhook_endpoints",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Global Webhook Endpoint ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc5e3f39-a237-439a-bf57-9b67e3067be7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "global_webhook_endpoints",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Global Webhook Endpoint ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"whep-ab12C345DeF6\",\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"last_delivered_at\": null,\n  \"localhost_webhook_url\": \"http://localhost:3000/hint/webhook\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"webhook_url\": \"https://api.partner/webhook_endpoint_url\",\n  \"partner_backend\": {\n    \"id\": \"pbnd-ab12C345DeF6\",\n    \"name\": \"Default\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df69b334-42de-41a4-acb9-3a1a87f9a643",
+          "name": "Update Webhook Endpoint",
+          "request": {
+            "name": "Update Webhook Endpoint",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "global_webhook_endpoints",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Global Webhook Endpoint ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhook_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4398f433-0c63-4ae5-9320-772ec55471b5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "global_webhook_endpoints",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Global Webhook Endpoint ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"whep-ab12C345DeF6\",\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"last_delivered_at\": null,\n  \"localhost_webhook_url\": \"http://localhost:3000/hint/webhook\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"webhook_url\": \"https://api.partner/webhook_endpoint_url\",\n  \"partner_backend\": {\n    \"id\": \"pbnd-ab12C345DeF6\",\n    \"name\": \"Default\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dec6a7c1-8326-4570-bb7a-f5c520ffebe2",
+    "name": "Hint Health AccountAccessToken GlobalWebhookEndpoint API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Plan API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plan",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/plans",
+            "params": [
+              {
+                "name": "plan_type",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering by plan_type. May be one of \"company\", \"retail\" or \"sponsor_fixed_fee\". If not given all resources will be returned."
+              }
+            ]
+          },
+          "docs": "List All Plans"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

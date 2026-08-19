@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken PaymentMethod API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PaymentMethod",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Payment Methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/payment_methods",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ]
+          },
+          "docs": "List All Payment Methods"
+        },
+        {
+          "info": {
+            "name": "Create Payment Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/payment_methods",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exactly one of `rainforest_id` or `stripe_id` must be provided. Practices on Hint Payments\n(Rainforest) submit a `rainforest_id`; practices on Stripe submit a `stripe_id`."
+        },
+        {
+          "info": {
+            "name": "Create Setup Intent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/payment_methods/setup",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The response shape depends on the practice's payment processor (`payment_processor` in the response):\n- When `rainforest`: `payment_method_config_id`, `session_key`, and `allowed_methods` are returned.\n- When `stripe`: `stripe_client_secret` is returned instead.\nThe example below shows the `rainforest` variant."
+        },
+        {
+          "info": {
+            "name": "Show Payment Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/payment_methods/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Payment Method ID"
+              }
+            ]
+          },
+          "docs": "Show Payment Method"
+        },
+        {
+          "info": {
+            "name": "Delete Payment Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/patients/:patient_id/payment_methods/:id",
+            "params": [
+              {
+                "name": "patient_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Patient ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Payment Method ID"
+              }
+            ]
+          },
+          "docs": "Delete Payment Method"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

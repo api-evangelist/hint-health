@@ -1,0 +1,253 @@
+{
+  "item": [
+    {
+      "id": "fa2ba485-4803-4f71-9d89-d55d79924289",
+      "name": "Coupon",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34b4c411-f7b2-4a17-a20e-a22e41633d3f",
+          "name": "List All Coupons",
+          "request": {
+            "name": "List All Coupons",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "coupons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<string>",
+                  "description": "Allows filtering by archived status. May be \"true\" to show only archived coupons, \"false\" to show only unarchived coupons. If not given all resources will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "redeemable",
+                  "value": "<string>",
+                  "description": "Allows filtering by redeemable status. May be \"true\" to show only currently redeemable coupons. If not given all resources will be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09c36988-d65b-4d4d-b94b-386f4645c03f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "archived",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redeemable",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of resources returned in this request",
+                  "key": "X-Count",
+                  "value": "7697"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of resources available (scoped to query params)",
+                  "key": "X-Total-Count",
+                  "value": "7697"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"cou-ab12C345DeF6\",\n    \"amount_off_in_cents\": null,\n    \"apply_to_each_patient\": true,\n    \"code\": \"GETHEALTHYNOWFORCHEAPER1\",\n    \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n    \"description\": null,\n    \"duration_in_months\": null,\n    \"is_archived\": false,\n    \"is_redeemable\": false,\n    \"percent_off\": \"15.0\",\n    \"redeemable_from\": \"2020-01-01\",\n    \"redeemable_until\": null,\n    \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5152c87-526d-42b4-904a-718680b5c84c",
+          "name": "Show Coupon",
+          "request": {
+            "name": "Show Coupon",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "coupons",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Coupon ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d4f7ff8-6e07-43f4-aa6e-1d3a05ffd59c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "coupons",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Coupon ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cou-ab12C345DeF6\",\n  \"code\": \"GETHEALTHYNOWFORCHEAPER2\",\n  \"description\": null,\n  \"amount_off_in_cents\": null,\n  \"apply_to_each_patient\": true,\n  \"created_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"duration_in_months\": null,\n  \"percent_off\": \"15.0\",\n  \"updated_at\": \"2017-02-05T06:23:00.000000-08:00\",\n  \"is_redeemable\": false,\n  \"is_archived\": false,\n  \"redeemable_from\": \"2020-01-01\",\n  \"redeemable_until\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4b0e45e4-e4b4-49ba-bb38-e17031cb7a5c",
+    "name": "Hint Health AccountAccessToken Coupon API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

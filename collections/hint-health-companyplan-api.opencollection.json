@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken CompanyPlan API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CompanyPlan",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Company Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/company_plans",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              }
+            ]
+          },
+          "docs": "List All Company Plans"
+        },
+        {
+          "info": {
+            "name": "Create Company Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/company_plans",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Company Plan"
+        },
+        {
+          "info": {
+            "name": "Update Company Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/company_plans/:id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company Plan ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Company Plan"
+        },
+        {
+          "info": {
+            "name": "Destroy CompanyPlan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/companies/:company_id/company_plans/:id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Company Plan ID"
+              }
+            ]
+          },
+          "docs": "Destroy CompanyPlan"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

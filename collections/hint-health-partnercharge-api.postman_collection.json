@@ -1,0 +1,332 @@
+{
+  "item": [
+    {
+      "id": "061aa8da-6537-4b38-8568-3f3f7309f46b",
+      "name": "PartnerCharge",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b0cc3ea-7dbd-4d9e-9c04-917bb73104aa",
+          "name": "Create Partner Charge",
+          "request": {
+            "name": "Create Partner Charge",
+            "description": {
+              "content": "**Workflows:**\nCharging a patient: Set the payer to the be the patient.\nCharging a patient: Set the payer to the be practice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "partner_charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"integration_record_id\": \"<string>\",\n  \"patient\": {\n    \"id\": \"<string>\"\n  },\n  \"lines\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"price_in_cents\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"charge_item\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"code\": \"<string>\",\n        \"code_type\": \"<string>\",\n        \"manufacturer\": \"<string>\",\n        \"days_supply\": \"<integer>\"\n      }\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"price_in_cents\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"charge_item\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"code\": \"<string>\",\n        \"code_type\": \"<string>\",\n        \"manufacturer\": \"<string>\",\n        \"days_supply\": \"<integer>\"\n      }\n    }\n  ],\n  \"cost_in_cents\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cad4a327-0d3f-4e4b-80da-09f0ccf80b9d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "partner_charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount_in_cents\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"integration_record_id\": \"<string>\",\n  \"patient\": {\n    \"id\": \"<string>\"\n  },\n  \"lines\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"price_in_cents\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"charge_item\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"code\": \"<string>\",\n        \"code_type\": \"<string>\",\n        \"manufacturer\": \"<string>\",\n        \"days_supply\": \"<integer>\"\n      }\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"price_in_cents\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"charge_item\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"code\": \"<string>\",\n        \"code_type\": \"<string>\",\n        \"manufacturer\": \"<string>\",\n        \"days_supply\": \"<integer>\"\n      }\n    }\n  ],\n  \"cost_in_cents\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ptrchg-ab12C345DeF6\",\n  \"amount_in_cents\": 1000,\n  \"description\": \"Partner charge\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92952d1e-14b8-4033-8bd7-f17d045a759f",
+          "name": "List All Partner Charges",
+          "request": {
+            "name": "List All Partner Charges",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "partner_charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "23d8a7fc-63b6-4b7c-a676-423ad99905e0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "partner_charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of resources returned in this request",
+                  "key": "X-Count",
+                  "value": "4039"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of resources available (scoped to query params)",
+                  "key": "X-Total-Count",
+                  "value": "4039"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  [\n    {\n      \"id\": \"string\",\n      \"amount_in_cents\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"amount_in_cents\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  [\n    {\n      \"id\": \"string\",\n      \"amount_in_cents\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"amount_in_cents\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7db4f063-50c6-482c-8779-6e8eae141c8c",
+          "name": "Show Partner Charge",
+          "request": {
+            "name": "Show Partner Charge",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                "partner_charges",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique Partner Charge ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb9b5ef1-4c98-47b8-a0b0-09d79bd99b9e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    "partner_charges",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique Partner Charge ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ptrchg-ab12C345DeF6\",\n  \"amount_in_cents\": 1000,\n  \"description\": \"Partner charge\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.hint.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "95f3fbb8-6615-4683-a73b-1fcad3f018e1",
+    "name": "Hint Health AccountAccessToken PartnerCharge API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.\n\nContact Support:\n Name: Hint Health Developer Support\n Email: devsupport@hint.com",
+      "type": "text/plain"
+    }
+  }
+}

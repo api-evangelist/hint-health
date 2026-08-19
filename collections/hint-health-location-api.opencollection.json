@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken Location API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Location",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/locations",
+            "params": [
+              {
+                "name": "near_zip",
+                "value": "",
+                "type": "query",
+                "description": "The zip code in the centre of your search"
+              },
+              {
+                "name": "distance",
+                "value": "",
+                "type": "query",
+                "description": "The search radius in miles. Defaults to 20 if near_zip is not blank"
+              }
+            ]
+          },
+          "docs": "List All Locations"
+        },
+        {
+          "info": {
+            "name": "Create Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/locations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Location"
+        },
+        {
+          "info": {
+            "name": "Show Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.hint.com/api/provider/locations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Location ID"
+              }
+            ]
+          },
+          "docs": "Show Location"
+        },
+        {
+          "info": {
+            "name": "Update Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.hint.com/api/provider/locations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Location ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Location"
+        },
+        {
+          "info": {
+            "name": "Delete Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/locations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Location ID"
+              }
+            ]
+          },
+          "docs": "Delete Location"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

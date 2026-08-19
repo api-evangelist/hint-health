@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken InteractionNotifications API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "InteractionNotifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Interaction Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/interactions/:interaction_id/notifications",
+            "params": [
+              {
+                "name": "interaction_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Interaction ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Interaction Notification"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hint Health AccountAccessToken AffiliatePatient API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AffiliatePatient",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Assign patient to an affiliation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.hint.com/api/provider/affiliates/:affiliate_id/patients",
+            "params": [
+              {
+                "name": "affiliate_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Affiliate ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Assign patient to an affiliation"
+        },
+        {
+          "info": {
+            "name": "Remove patient from an affiliation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.hint.com/api/provider/affiliates/:affiliate_id/patients/:id",
+            "params": [
+              {
+                "name": "affiliate_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Affiliate ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique Affiliate Patient ID"
+              }
+            ]
+          },
+          "docs": "Remove patient from an affiliation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

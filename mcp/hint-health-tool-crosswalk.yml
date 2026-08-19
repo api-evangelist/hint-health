@@ -1,0 +1,90 @@
+generated: '2026-08-14'
+method: derived
+source: >-
+  mcp/hint-health-mcp-tools.json (live tools/list from
+  https://developers.hint.com/mcp) bound against openapi/*.yml
+name: Hint Health MCP ↔ REST Tool Crosswalk
+description: >-
+  Binds each tool exposed by Hint's hosted MCP server to the REST operations it
+  can reach. Hint's MCP server is a documentation/discovery server, not a
+  resource-per-tool server: three of its four tools are meta-tools over Hint's
+  own OpenAPI, and the fourth (execute-request) is a generic HAR proxy that can
+  invoke ANY Hint operation with caller-supplied credentials. The result is an
+  unusual crosswalk shape — near-total reachability through one tool, and zero
+  one-to-one tool→operation bindings.
+
+surfaces:
+  openapi:
+    path: openapi/
+    files: 49
+    operations: 153
+    servers:
+      - https://api.hint.com/api
+      - https://api.sandbox.hint.com/api
+    gated: false
+  mcp:
+    url: https://developers.hint.com/mcp
+    gated: false
+    note: anonymous tools/list returned 200
+  graphql:
+    present: false
+
+crosswalk:
+  - tool: execute-request
+    category: generic-proxy
+    rest:
+      - '*'
+    binding: generic-proxy
+    confidence: high
+    note: >-
+      Accepts an arbitrary HAR request object (method, url, headers, body), so
+      every one of the 153 catalogued operations — and every Hint operation not
+      in our catalogue — is reachable through it. It carries no credentials of
+      its own; the agent must supply `Authorization: Bearer <key>` in
+      harRequest.headers. Annotated destructiveHint:true, openWorldHint:true by
+      Hint, which is accurate: this tool can POST, PATCH and DELETE against
+      production PHI.
+
+mcp_only:
+  - tool: list-endpoints
+    reason: >-
+      Meta-tool over Hint's own OpenAPI document. It enumerates paths and
+      methods; it does not correspond to any REST operation Hint exposes.
+  - tool: get-endpoint
+    reason: >-
+      Meta-tool. Returns one operation's detail (including security schemes and
+      servers) from the OpenAPI. No backing REST operation.
+  - tool: search-endpoints
+    reason: >-
+      Meta-tool. Full-text search across paths, operations and parameters in the
+      OpenAPI. No backing REST operation.
+
+rest_only:
+  note: >-
+    No operation is unreachable — execute-request covers the whole surface — so
+    rest_only is empty by construction rather than by coverage. Listing 153
+    operationIds here would misrepresent a proxy as a gap.
+  operations: []
+
+coverage:
+  mcp_tools: 4
+  tools_bound_to_rest: 1
+  tools_meta_only: 3
+  rest_operations_catalogued: 153
+  rest_operations_reachable_via_mcp: 153
+  one_to_one_bindings: 0
+
+findings:
+  - >-
+    Hint's live MCP `list-endpoints` returned a LARGER operation inventory than
+    our catalogue holds — it includes /provider/appointments,
+    /provider/appointment_types, /provider/communication_authorizations, the
+    /provider/partner-invisible/patients/{id}/{allergies,diagnoses,medications,
+    family-history,social-history} clinical chart endpoints, and the whole
+    /partner/products,/partner/installations,/partner/backends marketplace
+    surface. Our openapi/ set was harvested before those shipped. This is a real
+    catalogue gap, recorded rather than papered over.
+  - >-
+    Because the only executing tool is a generic proxy, an agent using Hint's
+    MCP server gets discovery for free but gets no per-operation input schema
+    enforcement, no scoping, and no server-side guardrail on destructive calls.
