@@ -50,6 +50,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Affiliates
+  tags_raw:
   - Affiliate
   properties:
   - type: OpenAPI
@@ -92,6 +94,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Cancellation Reason
+  tags_raw:
   - CancellationReason
   properties:
   - type: OpenAPI
@@ -219,6 +223,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Credit Line
+  tags_raw:
   - CreditLine
   properties:
   - type: OpenAPI
@@ -433,6 +439,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Lead Source
+  tags_raw:
   - LeadSource
   properties:
   - type: OpenAPI
@@ -503,6 +511,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
@@ -573,6 +583,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Payment Method
+  tags_raw:
   - PaymentMethod
   properties:
   - type: OpenAPI
@@ -629,6 +641,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Quotes
+  tags_raw:
   - Quote
   properties:
   - type: OpenAPI
@@ -713,6 +727,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Webhook Endpoint
+  tags_raw:
   - WebhookEndpoint
   properties:
   - type: OpenAPI
