@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken CustomerInvoicePayment API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Customer Invoice Payment API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged CustomerInvoicePayment across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: CustomerInvoicePayment
 paths:
@@ -57,6 +53,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.PaymentsController.create_body'
+      security:
+      - BearerAuth: []
     get:
       tags:
       - CustomerInvoicePayment
@@ -87,6 +85,13 @@ paths:
                 source:
                   id: card-ab12C345DeF6
                   type: Card
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/customer_invoices/{customer_invoice_id}/payments/{id}:
     get:
       tags:
@@ -124,31 +129,22 @@ paths:
                 source:
                   id: card-ab12C345DeF6
                   type: Card
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
-    Public.PaymentBlueprint_one:
+    Public.SourceBlueprint_leaf:
       type: object
       properties:
         id:
           type: string
-        error_message:
+        type:
           type: string
-        memo:
-          type: string
-        status:
-          type: string
-        date:
-          type: string
-          format: date-time
-        amount_in_cents:
-          type: integer
-          format: int32
-        external:
-          type: boolean
-        external_type:
-          type: string
-        source:
-          $ref: '#/components/schemas/Public.SourceBlueprint_leaf'
     Provider.PaymentsController.create_body:
       title: Create Payment
       type: object
@@ -172,6 +168,39 @@ components:
         source:
           $ref: '#/components/schemas/PaymentSource'
           description: A payment source to process the payment can be specified, if empty the patient's default payment source will be used. The request fails if the patient has no default payment source and source is not specified.
+    PaymentSource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+      required:
+      - id
+      - type
+    Public.PaymentBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        error_message:
+          type: string
+        memo:
+          type: string
+        status:
+          type: string
+        date:
+          type: string
+          format: date-time
+        amount_in_cents:
+          type: integer
+          format: int32
+        external:
+          type: boolean
+        external_type:
+          type: string
+        source:
+          $ref: '#/components/schemas/Public.SourceBlueprint_leaf'
     Public.PaymentBlueprint_all:
       type: array
       items:
@@ -197,25 +226,16 @@ components:
             type: string
           source:
             $ref: '#/components/schemas/Public.SourceBlueprint_leaf'
-    Public.SourceBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    PaymentSource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-      required:
-      - id
-      - type
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

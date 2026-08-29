@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken WebhookEndpoint API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Webhook Endpoint API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged WebhookEndpoint across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: WebhookEndpoint
 paths:
@@ -57,6 +53,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Platform.WebhookEndpointsController.create_body'
+      security:
+      - BearerAuth: []
     get:
       tags:
       - WebhookEndpoint
@@ -107,6 +105,13 @@ paths:
                 partner_backend:
                   id: pbnd-ab12C345DeF6
                   name: Default
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /integrations/{integration_id}/webhook_endpoints/{id}:
     delete:
       tags:
@@ -130,6 +135,8 @@ paths:
       responses:
         '204':
           description: No content
+      security:
+      - BearerAuth: []
     get:
       tags:
       - WebhookEndpoint
@@ -166,6 +173,8 @@ paths:
                 partner_backend:
                   id: pbnd-ab12C345DeF6
                   name: Default
+      security:
+      - BearerAuth: []
     patch:
       tags:
       - WebhookEndpoint
@@ -208,6 +217,158 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Platform.WebhookEndpointsController.update_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
+  /partner/webhook_endpoints:
+    get:
+      tags:
+      - WebhookEndpoint
+      operationId: WebhookEndpoint.ListWebhookEndpoints
+      summary: List Webhook Endpoints
+      description: ''
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        description: Allows limiting the number of webhook endpoints returned.
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        required: false
+        description: Allows offsetting the start of the returned page.
+        schema:
+          type: integer
+          format: int32
+      - name: webhook_url
+        in: query
+        required: false
+        description: Filter by exact URL match.
+        schema:
+          type: string
+      - name: created_at
+        in: query
+        required: false
+        description: Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information.
+        schema:
+          type: string
+          format: date-time
+      - name: last_delivered_at
+        in: query
+        required: false
+        description: Same shape as `created_at`.
+        schema:
+          type: string
+          format: date-time
+      - name: backend
+        in: query
+        required: false
+        description: Filter by the owning backend's public id (`pbnd-...`). Accepts a single value or comma-separated list.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.WebhookEndpointBlueprint_all'
+              example:
+              - id: whep-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                last_delivered_at: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                webhook_url: https://api.partner/webhook_endpoint_url
+                partner_backend:
+                  id: pbnd-ab12C345DeF6
+                  name: Default
+              - id: whep-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                last_delivered_at: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                webhook_url: https://api.partner/webhook_endpoint_url
+                partner_backend:
+                  id: pbnd-ab12C345DeF6
+                  name: Default
+              - id: whep-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                last_delivered_at: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                webhook_url: https://api.partner/webhook_endpoint_url
+                partner_backend:
+                  id: pbnd-ab12C345DeF6
+                  name: Default
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+    servers:
+    - url: https://api.sandbox.hint.com/api
+  /partner/webhook_endpoints/{id}:
+    patch:
+      tags:
+      - WebhookEndpoint
+      operationId: WebhookEndpoint.UpdateWebhookEndpoint
+      summary: Update Webhook Endpoint
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Webhook Endpoint ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.WebhookEndpointBlueprint_one'
+              example:
+                id: whep-ab12C345DeF6
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                last_delivered_at: null
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                webhook_url: https://api.partner/webhook_endpoint_url
+                partner_backend:
+                  id: pbnd-ab12C345DeF6
+                  name: Default
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner.WebhookEndpointsController.update_body'
+    delete:
+      tags:
+      - WebhookEndpoint
+      operationId: WebhookEndpoint.DeleteWebhookEndpoint
+      summary: Delete Webhook Endpoint
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Webhook Endpoint ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+    servers:
+    - url: https://api.sandbox.hint.com/api
 components:
   schemas:
     Platform.WebhookEndpointsController.update_body:
@@ -216,6 +377,13 @@ components:
       properties:
         webhook_url:
           type: string
+    Platform.WebhookEndpointsController.create_body:
+      type: object
+      properties:
+        webhook_url:
+          type: string
+      required:
+      - webhook_url
     Platform.WebhookEndpointBlueprint_one:
       type: object
       properties:
@@ -244,15 +412,61 @@ components:
             type: string
           webhook_url:
             type: string
-    Platform.WebhookEndpointsController.create_body:
+    Public.WebhookEndpointBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+        last_delivered_at:
+          type: string
+        updated_at:
+          type: string
+        webhook_url:
+          type: string
+        partner_backend:
+          $ref: '#/components/schemas/Public.BackendBlueprint_min'
+    Public.BackendBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.WebhookEndpointBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+          last_delivered_at:
+            type: string
+          updated_at:
+            type: string
+          webhook_url:
+            type: string
+          partner_backend:
+            $ref: '#/components/schemas/Public.BackendBlueprint_min'
+    Partner.WebhookEndpointsController.update_body:
+      title: Update_WebhookEndpoint
       type: object
       properties:
         webhook_url:
           type: string
-      required:
-      - webhook_url
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

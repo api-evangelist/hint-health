@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken CompanyPlan API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Company Plan API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged CompanyPlan across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: CompanyPlan
 paths:
@@ -55,6 +51,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.CompanyPlansController.create_body'
+      security:
+      - BearerAuth: []
     get:
       tags:
       - CompanyPlan
@@ -85,6 +83,13 @@ paths:
                   id: pln-ab12C345DeF6
                   name: Memberships
                   plan_type: company
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/companies/{company_id}/company_plans/{id}:
     delete:
       tags:
@@ -118,6 +123,8 @@ paths:
                   id: pln-ab12C345DeF6
                   name: Memberships
                   plan_type: company
+      security:
+      - BearerAuth: []
     patch:
       tags:
       - CompanyPlan
@@ -158,54 +165,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.CompanyPlansController.update_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
-    Provider.CompanyPlansController.update_body:
-      title: Update_Company_Plan
-      type: object
-      properties:
-        available_for_enrollment:
-          type: boolean
-    Public.CompanyPlanBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        available_for_enrollment:
-          type: boolean
-        is_default:
-          type: boolean
-        plan:
-          $ref: '#/components/schemas/Public.PlanBlueprint_min'
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Public.CompanyPlanBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          available_for_enrollment:
-            type: boolean
-          is_default:
-            type: boolean
-          plan:
-            $ref: '#/components/schemas/Public.PlanBlueprint_min'
-    Public.PlanBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        plan_type:
-          type: string
     Provider.CompanyPlansController.create_body:
       title: Create_Company_Plan
       type: object
@@ -219,8 +187,62 @@ components:
       required:
       - plan
       - available_for_enrollment
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+    Public.CompanyPlanBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          available_for_enrollment:
+            type: boolean
+          is_default:
+            type: boolean
+          plan:
+            $ref: '#/components/schemas/Public.PlanBlueprint_min'
+    Public.CompanyPlanBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        available_for_enrollment:
+          type: boolean
+        is_default:
+          type: boolean
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+    Provider.CompanyPlansController.update_body:
+      title: Update_Company_Plan
+      type: object
+      properties:
+        available_for_enrollment:
+          type: boolean
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

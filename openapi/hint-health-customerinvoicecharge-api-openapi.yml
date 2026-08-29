@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken CustomerInvoiceCharge API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Customer Invoice Charge API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged CustomerInvoiceCharge across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: CustomerInvoiceCharge
 paths:
@@ -250,6 +246,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.CustomerInvoices.ChargesController.create_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/customer_invoices/{customer_invoice_id}/charges/{id}:
     delete:
       tags:
@@ -273,6 +276,8 @@ paths:
       responses:
         '204':
           description: No content
+      security:
+      - BearerAuth: []
     patch:
       tags:
       - CustomerInvoiceCharge
@@ -508,6 +513,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.CustomerInvoices.ChargesController.update_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
     Provider.CustomerInvoices.ChargesController.update_body:
@@ -577,8 +589,78 @@ components:
           type: string
       required:
       - id
+    Provider.CustomerInvoices.ChargesController.update_body_2:
+      type: object
+      properties:
+        quantity:
+          type: number
+          format: double
+        price_in_cents:
+          type: number
+          format: double
+        name:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+        patient:
+          $ref: '#/components/schemas/Association'
+        practitioner:
+          $ref: '#/components/schemas/Association'
+        category:
+          $ref: '#/components/schemas/Association'
+        charge_item:
+          $ref: '#/components/schemas/Association'
+        location:
+          $ref: '#/components/schemas/Association'
+          description: Updating the invoice's location later will overwrite this value.
+      required:
+      - quantity
+      - price_in_cents
+      - name
+    Provider.CustomerInvoices.ChargesController.create_body_2:
+      type: object
+      properties:
+        quantity:
+          type: number
+          format: double
+        price_in_cents:
+          type: number
+          format: double
+        name:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+        patient:
+          $ref: '#/components/schemas/Association'
+        practitioner:
+          $ref: '#/components/schemas/Association'
+        category:
+          $ref: '#/components/schemas/Association'
+        charge_item:
+          $ref: '#/components/schemas/Association'
+        location:
+          $ref: '#/components/schemas/Association'
+          description: Optional. Defaults to the invoice's location, else the patient's.
+      required:
+      - quantity
+      - price_in_cents
+      - name
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

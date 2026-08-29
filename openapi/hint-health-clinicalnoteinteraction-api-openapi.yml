@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken ClinicalNoteInteraction API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Clinical Note Interaction API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged ClinicalNoteInteraction across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: ClinicalNoteInteraction
 paths:
@@ -64,6 +60,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Interaction.ClinicalNoteSanitizer'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/patients/{patient_id}/interactions/clinical_note/{id}:
     get:
       tags:
@@ -108,6 +111,8 @@ paths:
                 integration_record_id: null
                 integration_sync_status: enabled
                 integration_web_link: null
+      security:
+      - BearerAuth: []
     patch:
       tags:
       - ClinicalNoteInteraction
@@ -157,33 +162,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Interaction.ClinicalNoteSanitizer'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
-    Public.Interaction.ClinicalNoteBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        author:
-          type: string
-        event_timestamp:
-          type: string
-        files:
-          type: string
-        formatted_text:
-          type: string
-        patient_id:
-          type: string
-        signed:
-          type: string
-        status:
-          type: string
-        text:
-          type: string
-        title:
-          type: string
-        type:
-          type: string
     Interaction.ClinicalNoteSanitizer:
       type: object
       properties:
@@ -217,8 +204,78 @@ components:
           type: string
         integration_web_link:
           type: string
+    Public.Interaction.ClinicalNoteBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        author:
+          type: string
+        event_timestamp:
+          type: string
+        files:
+          type: string
+        formatted_text:
+          type: string
+        patient_id:
+          type: string
+        signed:
+          type: string
+        status:
+          type: string
+        text:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+    Public.Interaction.ClinicalNoteBlueprint_one_2:
+      type: object
+      properties:
+        id:
+          type: string
+        author:
+          type: string
+        event_timestamp:
+          type: string
+          format: date-time
+        formatted_text:
+          type: string
+        patient_access:
+          type: boolean
+        patient_id:
+          type: string
+        signed:
+          type: string
+        status:
+          type: string
+        text:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.Interaction.FileBlueprint_leaf'
+    Public.Interaction.FileBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

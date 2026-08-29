@@ -1,0 +1,136 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints Partner Product Overview API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: PartnerProductOverview
+  description: ''
+paths:
+  /partner/products/{product_id}/overview:
+    get:
+      tags:
+      - PartnerProductOverview
+      operationId: PartnerProductOverview.GetProductOverview
+      summary: Get Product Overview
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PartnerProductOverviewBlueprint_one'
+              example:
+                description: Hint-Partner EMR keeps your team in flow. The chart, the schedule, and the patient inbox all live in one tab — and Hint-Partner stays out of the way until you need it.
+                images:
+                - id: ptrimg-ab12C345DeF6
+                  file_url: null
+                  alt: Hint-Partner EMR overview screenshot
+    patch:
+      tags:
+      - PartnerProductOverview
+      operationId: PartnerProductOverview.UpdateProductOverview
+      summary: Update Product Overview
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PartnerProductOverviewBlueprint_one'
+              example:
+                description: Hint-Partner EMR keeps your team in flow. The chart, the schedule, and the patient inbox all live in one tab — and Hint-Partner stays out of the way until you need it.
+                images:
+                - id: ptrimg-ab12C345DeF6
+                  file_url: null
+                  alt: Hint-Partner EMR overview screenshot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductOverviewSanitizer'
+components:
+  schemas:
+    ProductOverviewSanitizer.ImageSanitizer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Public id of an existing image (e.g. `"ptrimg-..."`). Include to edit; omit to create a new image.
+        url:
+          type: string
+          description: 'Image as a base64 data URI (e.g. `"data:image/png;base64,..."`). Required when creating a new image; ignored when editing. **Note: the field name differs across listing sections.** Overview images use `url`; highlights (`ProductHighlightSanitizer`) use `image`. Both take the same data-URI payload — only the key differs.'
+        alt:
+          type: string
+          description: Alt text used for accessibility.
+    ProductOverviewSanitizer:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Overview body. Renders on the marketplace listing. **Length:** ~500 chars is recommended (the marketplace listing card truncates longer copy in display). hint-api does not currently enforce a hard cap, but partners should treat 500 as the design target.
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductOverviewSanitizer.ImageSanitizer'
+          description: 'Overview images. The array is reconciled by `id`: entries with a matching `id` are edited in place, entries without an `id` are created, and any existing images not represented in the array are deleted. Omitting the `images` key entirely leaves images unchanged.'
+    Public.PartnerProductImageBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        file_url:
+          type: string
+        alt:
+          type: string
+    Public.PartnerProductOverviewBlueprint_one:
+      type: object
+      properties:
+        description:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.PartnerProductImageBlueprint_shared'
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

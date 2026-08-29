@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken MembershipMember API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Membership Member API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged MembershipMember across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: MembershipMember
 paths:
@@ -136,6 +132,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.MembersController.cancel_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/memberships/{membership_id}/members:
     post:
       tags:
@@ -246,6 +249,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MembershipPatientSanitizer'
+      security:
+      - BearerAuth: []
     get:
       tags:
       - MembershipMember
@@ -358,6 +363,13 @@ paths:
               description: The total number of resources available (scoped to query params)
               schema:
                 type: integer
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/memberships/{membership_id}/members/{id}:
     delete:
       tags:
@@ -466,6 +478,8 @@ paths:
                   integration_record_id: null
                   integration_sync_status: enabled
                   integration_web_link: null
+      security:
+      - BearerAuth: []
     get:
       tags:
       - MembershipMember
@@ -575,6 +589,8 @@ paths:
                   integration_record_id: null
                   integration_sync_status: enabled
                   integration_web_link: null
+      security:
+      - BearerAuth: []
     patch:
       tags:
       - MembershipMember
@@ -690,8 +706,89 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MembershipPatientSanitizer'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
+    Public.MembershipMemberBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          end_date:
+            type: string
+          fixed_period_rate_in_cents:
+            type: integer
+            format: int32
+          list_price_in_cents:
+            type: integer
+            format: int32
+          member_type:
+            type: string
+          period_rate_in_cents:
+            type: integer
+            format: int32
+          revenue_in_cents:
+            type: integer
+            format: int32
+          start_date:
+            type: string
+            format: date
+          status:
+            type: string
+          patient:
+            $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
+    Public.CompanySponsorshipBlueprint_for_patient:
+      type: object
+      properties:
+        id:
+          type: string
+        external_id:
+          type: string
+        is_subscriber:
+          type: boolean
+        type:
+          type: string
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        family:
+          $ref: '#/components/schemas/Public.CompanyAccountBlueprint_min'
+    MembershipPatientSanitizer:
+      type: object
+      properties:
+        patient:
+          $ref: '#/components/schemas/MembershipPatientSanitizer.PatientSanitizer'
+        start_date:
+          type: string
+          format: date
+          description: Defaults to Membership start date if not given. Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD.
+        member_type:
+          type: string
+          description: 'Choose one below. You can think of "spouse" as "adult". This is a naming issue that will hopefully be addressed in the future. Note: "employee" is not an accepted value as you cannot add employees to existing memberships.'
+          enum:
+          - child
+          - spouse
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+          description: Use this to override the standard rates that the membership plan would generate
+      required:
+      - patient
+      - member_type
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     Public.PatientBlueprint_leaf:
       type: object
       properties:
@@ -811,107 +908,6 @@ components:
           $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
         sponsorships:
           $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
-    Public.PhoneBlueprint_leaf:
-      type: object
-      properties:
-        number:
-          type: string
-        type:
-          type: string
-    Public.CompanySponsorshipBlueprint_for_patient:
-      type: object
-      properties:
-        id:
-          type: string
-        external_id:
-          type: string
-        is_subscriber:
-          type: boolean
-        type:
-          type: string
-        company:
-          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
-        family:
-          $ref: '#/components/schemas/Public.CompanyAccountBlueprint_min'
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Public.CompanyBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.LeadSourceBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-    Public.MembershipMemberBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          end_date:
-            type: string
-          fixed_period_rate_in_cents:
-            type: integer
-            format: int32
-          list_price_in_cents:
-            type: integer
-            format: int32
-          member_type:
-            type: string
-          period_rate_in_cents:
-            type: integer
-            format: int32
-          revenue_in_cents:
-            type: integer
-            format: int32
-          start_date:
-            type: string
-            format: date
-          status:
-            type: string
-          patient:
-            $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
-    MembershipPatientSanitizer:
-      type: object
-      properties:
-        patient:
-          $ref: '#/components/schemas/MembershipPatientSanitizer.PatientSanitizer'
-        start_date:
-          type: string
-          format: date
-          description: Defaults to Membership start date if not given. Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD.
-        member_type:
-          type: string
-          description: 'Choose one below. You can think of "spouse" as "adult". This is a naming issue that will hopefully be addressed in the future. Note: "employee" is not an accepted value as you cannot add employees to existing memberships.'
-          enum:
-          - child
-          - spouse
-        fixed_period_rate_in_cents:
-          type: integer
-          format: int32
-          description: Use this to override the standard rates that the membership plan would generate
-      required:
-      - patient
-      - member_type
     Provider.MembersController.cancel_body:
       type: object
       properties:
@@ -926,11 +922,6 @@ components:
           description: Description required when sending cancellation_reason of "Other"
       required:
       - cancellation_reason
-    Public.CompanyAccountBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
     Public.MembershipMemberBlueprint_one:
       type: object
       properties:
@@ -959,6 +950,13 @@ components:
           type: string
         patient:
           $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
+    Public.CompanyBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     MembershipPatientSanitizer.PatientSanitizer:
       type: object
       properties:
@@ -968,8 +966,113 @@ components:
           type: boolean
       required:
       - id
+    Public.LeadSourceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Public.CompanyAccountBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+    Public.MembershipMemberBlueprint_all_2:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          end_date:
+            type: string
+          enrollment_requested_on:
+            type: string
+            format: date
+          enrollment_status:
+            type: string
+          fixed_period_rate_in_cents:
+            type: integer
+            format: int32
+          list_price_in_cents:
+            type: integer
+            format: int32
+          member_type:
+            type: string
+          period_rate_in_cents:
+            type: integer
+            format: int32
+          revenue_in_cents:
+            type: integer
+            format: int32
+          start_date:
+            type: string
+            format: date
+          status:
+            type: string
+          uses_tobacco:
+            type: boolean
+          patient:
+            $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
+    Public.MembershipMemberBlueprint_one_2:
+      type: object
+      properties:
+        id:
+          type: string
+        end_date:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        enrollment_status:
+          type: string
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+        list_price_in_cents:
+          type: integer
+          format: int32
+        member_type:
+          type: string
+        period_rate_in_cents:
+          type: integer
+          format: int32
+        revenue_in_cents:
+          type: integer
+          format: int32
+        start_date:
+          type: string
+          format: date
+        status:
+          type: string
+        uses_tobacco:
+          type: boolean
+        patient:
+          $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

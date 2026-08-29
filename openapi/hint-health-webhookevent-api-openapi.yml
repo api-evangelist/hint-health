@@ -1,0 +1,110 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints Webhook Event API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: WebhookEvent
+  description: ''
+paths:
+  /partner/webhook_events:
+    get:
+      tags:
+      - WebhookEvent
+      operationId: WebhookEvent.ListWebhookEvents
+      summary: List Webhook Event Types
+      description: 'Returns the canonical list of event types delivered to partner webhook
+
+        endpoints — every string is a `resource.action` pair (e.g. `patient.created`,
+
+        `customer_invoice.paid`, `membership.updated`). Use this list to type-check
+
+        incoming webhook payloads against the platform''s current event registry.
+
+        Today there is no per-endpoint subscription filter — once a webhook endpoint
+
+        is registered (`POST /partner/webhook_endpoints`), it receives the full set
+
+        of events emitted for the partner''s connected practices. Implementations
+
+        should ignore unknown event types; new resource/action pairs may be added
+
+        without a version bump.'
+      parameters: []
+      responses:
+        '200':
+          description: Flat array of `resource.action` event-type strings, ordered by resource then action.
+          content:
+            application/json:
+              example:
+              - company.created
+              - company.updated
+              - company.destroyed
+              - customer_invoice.created
+              - customer_invoice.updated
+              - customer_invoice.destroyed
+              - customer_invoice.draft
+              - customer_invoice.issued
+              - customer_invoice.paid
+              - customer_invoice.cancelled
+              - invoice.created
+              - invoice.updated
+              - invoice.destroyed
+              - invoice.draft
+              - invoice.issued
+              - invoice.paid
+              - invoice.cancelled
+              - employee_division.created
+              - employee_division.updated
+              - employee_division.destroyed
+              - membership.created
+              - membership.updated
+              - membership.destroyed
+              - patient.created
+              - patient.updated
+              - patient.destroyed
+              - patient.inactive
+              - prospect.created
+              - prospect.updated
+              - practitioner.created
+              - practitioner.updated
+              - practitioner.destroyed
+              - integration.activated
+              - integration.deactivated
+              - installation.activated
+              - installation.deactivated
+              - signup_attempt.created
+              - signup_attempt.updated
+              - location.created
+              - location.updated
+              - location.destroyed
+              - practice.created
+              - practice.updated
+              - practice.destroyed
+              - practice.deactivated
+components:
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

@@ -1,0 +1,263 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints Installation API Keys API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: InstallationApiKeys
+  description: ''
+paths:
+  /partner/installations/{installation_id}/api_keys:
+    get:
+      tags:
+      - InstallationApiKeys
+      operationId: InstallationApiKeys.ListApiKeys
+      summary: List Installation API Keys
+      description: 'Lists the API keys for this installation''s practice connection. Keys are
+
+        connection-scoped, so installs of the same practice''s products share them.'
+      parameters:
+      - name: installation_id
+        in: path
+        required: true
+        description: Unique Installation ID
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        description: Allows limiting the number of API keys returned.
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        required: false
+        description: Allows offsetting the start of the returned page.
+        schema:
+          type: integer
+          format: int32
+      - name: label
+        in: query
+        required: false
+        description: Filter by exact label match.
+        schema:
+          type: string
+      - name: created_at
+        in: query
+        required: false
+        description: Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information.
+        schema:
+          type: string
+          format: date-time
+      - name: last_used_at
+        in: query
+        required: false
+        description: Same shape as `created_at`.
+        schema:
+          type: string
+          format: date-time
+      - name: deactivated_at
+        in: query
+        required: false
+        description: 'Same shape as `created_at`. Pass `{ "is_present": true }` to include only deactivated keys.'
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ApiKeyBlueprint_all'
+              example:
+              - created_at: '2017-02-05T06:23:00.000000-08:00'
+                deactivated_at: null
+                label: API Key
+                last_used_at: null
+                token_last_4: tVG3
+              - created_at: '2017-02-05T06:23:00.000000-08:00'
+                deactivated_at: null
+                label: API Key
+                last_used_at: null
+                token_last_4: tVG3
+              - created_at: '2017-02-05T06:23:00.000000-08:00'
+                deactivated_at: null
+                label: API Key
+                last_used_at: null
+                token_last_4: tVG3
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+    post:
+      tags:
+      - InstallationApiKeys
+      operationId: InstallationApiKeys.CreateApiKey
+      summary: Create Installation API Key
+      description: 'The full `token` value is only returned in this response. Store it
+
+        securely — it cannot be retrieved later.'
+      parameters:
+      - name: installation_id
+        in: path
+        required: true
+        description: Unique Installation ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ApiKeyBlueprint_one'
+              example:
+                id: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                deactivated_at: null
+                label: API Key
+                last_used_at: null
+                token: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner.Installations.ApiKeysController.create_body'
+  /partner/installations/{installation_id}/api_keys/{id}:
+    patch:
+      tags:
+      - InstallationApiKeys
+      operationId: InstallationApiKeys.UpdateApiKey
+      summary: Update Installation API Key
+      description: ''
+      parameters:
+      - name: installation_id
+        in: path
+        required: true
+        description: Unique Installation ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Installation Api Keys ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ApiKeyBlueprint_one'
+              example:
+                id: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                deactivated_at: null
+                label: API Key
+                last_used_at: null
+                token: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner.Installations.ApiKeysController.update_body'
+    delete:
+      tags:
+      - InstallationApiKeys
+      operationId: InstallationApiKeys.DeleteApiKey
+      summary: Delete Installation API Key
+      description: ''
+      parameters:
+      - name: installation_id
+        in: path
+        required: true
+        description: Unique Installation ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Installation Api Keys ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful response
+components:
+  schemas:
+    Partner.Installations.ApiKeysController.create_body:
+      title: Create_InstallationApiKey
+      type: object
+      properties:
+        label:
+          type: string
+    Public.ApiKeyBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+        deactivated_at:
+          type: string
+        label:
+          type: string
+        last_used_at:
+          type: string
+        token:
+          type: string
+    Partner.Installations.ApiKeysController.update_body:
+      type: object
+      properties:
+        label:
+          type: string
+    Public.ApiKeyBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          created_at:
+            type: string
+          deactivated_at:
+            type: string
+          label:
+            type: string
+          last_used_at:
+            type: string
+          token_last_4:
+            type: string
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

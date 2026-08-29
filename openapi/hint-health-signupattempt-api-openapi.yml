@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken SignupAttempt API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Signup Attempt API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged SignupAttempt across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: SignupAttempt
 paths:
@@ -127,6 +123,13 @@ paths:
               description: The total number of resources available (scoped to query params)
               schema:
                 type: integer
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/signup_attempts/{id}:
     get:
       tags:
@@ -165,6 +168,13 @@ paths:
                 signup_page:
                   id: spg-ab12C345DeF6
                   slug: annual-membership
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
     Public.SignupPageBlueprint_leaf:
@@ -174,6 +184,37 @@ components:
           type: string
         slug:
           type: string
+    Public.SignupAttemptBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          email:
+            type: string
+          first_name:
+            type: string
+          last_name:
+            type: string
+          lead_source_other:
+            type: string
+          phone_number:
+            type: string
+          status:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          zip:
+            type: string
+          lead_source:
+            $ref: '#/components/schemas/Public.LeadSourceBlueprint_leaf'
+          signup_page:
+            $ref: '#/components/schemas/Public.SignupPageBlueprint_leaf'
     Public.LeadSourceBlueprint_leaf:
       type: object
       properties:
@@ -210,39 +251,16 @@ components:
           $ref: '#/components/schemas/Public.LeadSourceBlueprint_leaf'
         signup_page:
           $ref: '#/components/schemas/Public.SignupPageBlueprint_leaf'
-    Public.SignupAttemptBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          created_at:
-            type: string
-            format: date-time
-          email:
-            type: string
-          first_name:
-            type: string
-          last_name:
-            type: string
-          lead_source_other:
-            type: string
-          phone_number:
-            type: string
-          status:
-            type: string
-          updated_at:
-            type: string
-            format: date-time
-          zip:
-            type: string
-          lead_source:
-            $ref: '#/components/schemas/Public.LeadSourceBlueprint_leaf'
-          signup_page:
-            $ref: '#/components/schemas/Public.SignupPageBlueprint_leaf'
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

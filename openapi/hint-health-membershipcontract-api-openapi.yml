@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken MembershipContract API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Membership Contract API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged MembershipContract across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: MembershipContract
 paths:
@@ -48,6 +44,13 @@ paths:
                 end_date: '2018-02-05'
                 memo: null
                 start_date: '2016-08-05'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/memberships/{membership_id}/contracts/renew:
     post:
       tags:
@@ -80,6 +83,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.MembershipContractsController.renew_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/memberships/{membership_id}/contracts/{id}:
     patch:
       tags:
@@ -118,8 +128,20 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.MembershipContractsController.update_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
+    Provider.MembershipContractsController.renew_body:
+      type: object
+      properties:
+        memo:
+          type: string
     Provider.MembershipContractsController.update_body:
       type: object
       properties:
@@ -127,6 +149,19 @@ components:
           type: string
           format: date
         billing_end_date:
+          type: string
+          format: date
+    Public.MembershipContractBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        end_date:
+          type: string
+          format: date
+        memo:
+          type: string
+        start_date:
           type: string
           format: date
     Public.MembershipContractBlueprint_all:
@@ -144,26 +179,16 @@ components:
           start_date:
             type: string
             format: date
-    Provider.MembershipContractsController.renew_body:
-      type: object
-      properties:
-        memo:
-          type: string
-    Public.MembershipContractBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        end_date:
-          type: string
-          format: date
-        memo:
-          type: string
-        start_date:
-          type: string
-          format: date
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

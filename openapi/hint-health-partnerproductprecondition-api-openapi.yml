@@ -1,0 +1,186 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints Partner Product Precondition API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: PartnerProductPrecondition
+  description: ''
+paths:
+  /partner/products/{product_id}/preconditions:
+    get:
+      tags:
+      - PartnerProductPrecondition
+      operationId: PartnerProductPrecondition.ListProductPreconditions
+      summary: List Product Preconditions
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PartnerProductPreconditionBlueprint_all'
+              example:
+              - id: pppc-ab12C345DeF6
+                type: external_account
+                url: https://hint-partner-emr.com/signup
+    post:
+      tags:
+      - PartnerProductPrecondition
+      operationId: PartnerProductPrecondition.CreateProductPrecondition
+      summary: Create Product Precondition
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PartnerProductPreconditionBlueprint_one'
+              example:
+                id: pppc-ab12C345DeF6
+                type: external_account
+                url: https://hint-partner-emr.com/signup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductPreconditionSanitizer'
+  /partner/products/{product_id}/preconditions/{id}:
+    patch:
+      tags:
+      - PartnerProductPrecondition
+      operationId: PartnerProductPrecondition.UpdateProductPrecondition
+      summary: Update Product Precondition
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Partner Product Precondition ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PartnerProductPreconditionBlueprint_one'
+              example:
+                id: pppc-ab12C345DeF6
+                type: external_account
+                url: https://hint-partner-emr.com/signup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductPreconditionSanitizer'
+    delete:
+      tags:
+      - PartnerProductPrecondition
+      operationId: PartnerProductPrecondition.DestroyProductPrecondition
+      summary: Destroy Product Precondition
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Partner Product Precondition ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful response
+components:
+  schemas:
+    Public.PartnerProductPreconditionBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          type:
+            type: string
+          url:
+            type: string
+    ProductPreconditionSanitizer:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Kind of pre-install step the practice must complete.
+          enum:
+          - external_account
+          - external_install
+          - onboarding_call
+        url:
+          type: string
+          description: URL the practice is sent to in order to complete the precondition (signup form, install link, or scheduling page depending on `type`).
+      required:
+      - type
+      - url
+    Public.PartnerProductPreconditionBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

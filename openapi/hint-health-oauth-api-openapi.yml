@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken OAuth API
+  title: Hint Health O Auth API
   description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
   version: '1.0'
   contact:
@@ -68,12 +68,14 @@ paths:
               $ref: '#/components/schemas/Platform.OauthsController.tokens_body'
 components:
   schemas:
-    Platform.PracticeBlueprint_for_integration:
+    Platform.PartnerProductBlueprint_min:
       type: object
       properties:
         id:
           type: string
         name:
+          type: string
+        slug:
           type: string
     Platform.IntegrationBlueprint_one_with_access_token:
       type: object
@@ -104,14 +106,12 @@ components:
           $ref: '#/components/schemas/Platform.PracticeBlueprint_for_integration'
         product:
           $ref: '#/components/schemas/Platform.PartnerProductBlueprint_min'
-    Platform.UserBlueprint_min:
+    Platform.PracticeBlueprint_for_integration:
       type: object
       properties:
         id:
           type: string
         name:
-          type: string
-        email:
           type: string
     Platform.OauthsController.tokens_body:
       title: OAuth
@@ -127,15 +127,6 @@ components:
       required:
       - grant_type
       - code
-    Platform.PartnerProductBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        slug:
-          type: string
     Platform.ApiKeyBlueprint_shared:
       type: object
       properties:
@@ -146,6 +137,15 @@ components:
         last_used_at:
           type: string
         token:
+          type: string
+    Platform.UserBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
           type: string
   securitySchemes:
     BearerAuth:

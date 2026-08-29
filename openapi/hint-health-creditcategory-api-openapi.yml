@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken CreditCategory API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Credit Category API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged CreditCategory across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: CreditCategory
 paths:
@@ -46,6 +42,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.CreditCategoriesController.create_body'
+      security:
+      - BearerAuth: []
     get:
       tags:
       - CreditCategory
@@ -67,6 +65,13 @@ paths:
                 created_at: '2017-02-05T06:23:00.000000-08:00'
                 name: Credit Category 1
                 updated_at: '2017-02-05T06:23:00.000000-08:00'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/credit_categories/{id}:
     delete:
       tags:
@@ -84,6 +89,8 @@ paths:
       responses:
         '204':
           description: No content
+      security:
+      - BearerAuth: []
     get:
       tags:
       - CreditCategory
@@ -109,6 +116,8 @@ paths:
                 created_at: '2017-02-05T06:23:00.000000-08:00'
                 name: Credit Category 2
                 updated_at: '2017-02-05T06:23:00.000000-08:00'
+      security:
+      - BearerAuth: []
     patch:
       tags:
       - CreditCategory
@@ -140,21 +149,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.CreditCategoriesController.update_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
-    Public.CreditCategoryBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        name:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
     Public.CreditCategoryBlueprint_all:
       type: array
       items:
@@ -170,14 +173,6 @@ components:
           updated_at:
             type: string
             format: date-time
-    Provider.CreditCategoriesController.create_body:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Value is case sensitive. If you delete a Credit Category, you can restore it by POSTing with the same name.
-      required:
-      - name
     Provider.CreditCategoriesController.update_body:
       type: object
       properties:
@@ -186,8 +181,37 @@ components:
           description: Value is case sensitive. If you delete a Credit Category, you can restore it by POSTing with the same name.
       required:
       - name
+    Provider.CreditCategoriesController.create_body:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Value is case sensitive. If you delete a Credit Category, you can restore it by POSTing with the same name.
+      required:
+      - name
+    Public.CreditCategoryBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        name:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken PartnerCharge API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Partner Charge API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged PartnerCharge across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: PartnerCharge
 paths:
@@ -49,6 +45,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.PartnerChargesController.create_body'
+      security:
+      - BearerAuth: []
     get:
       tags:
       - PartnerCharge
@@ -74,6 +72,13 @@ paths:
               description: The total number of resources available (scoped to query params)
               schema:
                 type: integer
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/partner_charges/{id}:
     get:
       tags:
@@ -99,8 +104,22 @@ paths:
                 id: ptrchg-ab12C345DeF6
                 amount_in_cents: 1000
                 description: Partner charge
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     Public.PartnerChargeBlueprint_one:
       type: object
       properties:
@@ -110,48 +129,6 @@ components:
           type: string
         description:
           type: string
-    Provider.PartnerChargesController.create_body:
-      title: Create_PartnerCharge
-      type: object
-      properties:
-        amount_in_cents:
-          type: integer
-          format: int32
-        description:
-          type: string
-        patient:
-          $ref: '#/components/schemas/Association'
-        integration_record_id:
-          type: string
-        lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartnerChargeLine'
-        cost_in_cents:
-          type: integer
-          format: int32
-      required:
-      - amount_in_cents
-      - description
-      - integration_record_id
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Public.PartnerChargeBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          amount_in_cents:
-            type: string
-          description:
-            type: string
     PartnerChargeLine:
       type: object
       properties:
@@ -193,8 +170,93 @@ components:
       required:
       - id
       - type
+    Public.PartnerChargeBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          amount_in_cents:
+            type: string
+          description:
+            type: string
+    Provider.PartnerChargesController.create_body:
+      title: Create_PartnerCharge
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+        description:
+          type: string
+        patient:
+          $ref: '#/components/schemas/Association'
+        integration_record_id:
+          type: string
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerChargeLine'
+        cost_in_cents:
+          type: integer
+          format: int32
+      required:
+      - amount_in_cents
+      - description
+      - integration_record_id
+    PartnerChargeLine_2:
+      type: object
+      properties:
+        quantity:
+          type: integer
+        price_in_cents:
+          type: integer
+        description:
+          type: string
+        charge_item:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Optional if name, code and code_type are specified
+            name:
+              type: string
+              description: Required if no ID
+            code:
+              type: string
+              description: Required if no ID
+            code_type:
+              type: string
+              description: Required if no ID. Use 'proprietary' for non-standard codes, namespaced as '<namespace>:<code>' (e.g. 'acmelab:LP12345').
+              enum:
+              - cpt
+              - ndc
+              - loinc
+              - snomed
+              - proprietary
+            manufacturer:
+              type: string
+            days_supply:
+              type: integer
+          required:
+          - id
+          - name
+          - code
+          - code_type
+      required:
+      - id
+      - type
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

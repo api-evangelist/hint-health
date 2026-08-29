@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken GlobalWebhookEndpoint API
+  title: Hint Health Global Webhook Endpoint API
   description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
   version: '1.0'
   contact:
@@ -186,6 +186,13 @@ components:
       properties:
         webhook_url:
           type: string
+    Platform.WebhookEndpointsController.create_body:
+      type: object
+      properties:
+        webhook_url:
+          type: string
+      required:
+      - webhook_url
     Platform.WebhookEndpointBlueprint_one:
       type: object
       properties:
@@ -214,13 +221,6 @@ components:
             type: string
           webhook_url:
             type: string
-    Platform.WebhookEndpointsController.create_body:
-      type: object
-      properties:
-        webhook_url:
-          type: string
-      required:
-      - webhook_url
   securitySchemes:
     BearerAuth:
       type: http

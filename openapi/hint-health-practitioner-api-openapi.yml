@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken Practitioner API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Practitioner API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Practitioner across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: Practitioner
 paths:
@@ -90,6 +86,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.PractitionersController.create_body'
+      security:
+      - BearerAuth: []
     get:
       tags:
       - Practitioner
@@ -168,6 +166,13 @@ paths:
                 specialties:
                 - id: spe-ab12C345DeF6
                   name: Internal Medicine
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/practitioners/{id}:
     delete:
       tags:
@@ -185,6 +190,8 @@ paths:
       responses:
         '204':
           description: No content
+      security:
+      - BearerAuth: []
     get:
       tags:
       - Practitioner
@@ -254,6 +261,8 @@ paths:
                 specialties:
                 - id: spe-ab12C345DeF6
                   name: Internal Medicine
+      security:
+      - BearerAuth: []
     patch:
       tags:
       - Practitioner
@@ -329,41 +338,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.PractitionersController.update_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
-    Public.LocationBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        address_city:
-          type: string
-        address_country:
-          type: string
-        address_latitude:
-          type: number
-          format: float
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_longitude:
-          type: number
-          format: float
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        distance:
-          type: string
-        name:
-          type: string
-        phone_number:
-          type: string
-        virtual:
-          type: boolean
-        location_group:
-          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
     Provider.PractitionersController.update_body:
       title: Create_Practitioner
       type: object
@@ -395,6 +378,13 @@ components:
           $ref: '#/components/schemas/Npi'
         practitioner_group:
           $ref: '#/components/schemas/Association'
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     Public.SpecialtyBlueprint_all:
       type: array
       items:
@@ -404,44 +394,6 @@ components:
             type: string
           name:
             type: string
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Provider.PractitionersController.create_body:
-      title: Create_Practitioner
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        bio:
-          type: string
-        gender:
-          type: string
-          enum:
-          - male
-          - female
-          - other
-        gender_other:
-          type: string
-        photo:
-          type: string
-          description: Base64 encoded photo.
-        education:
-          type: array
-          items:
-            type: string
-        integration_record_id:
-          type: string
-        npi:
-          $ref: '#/components/schemas/Npi'
-        practitioner_group:
-          $ref: '#/components/schemas/Association'
     Public.PractitionerBlueprint_all:
       type: array
       items:
@@ -497,21 +449,50 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
-    Public.LocationGroupBlueprint_leaf:
+    Provider.PractitionersController.create_body:
+      title: Create_Practitioner
       type: object
       properties:
-        id:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        integration_record_id:
-          type: string
         name:
           type: string
-        updated_at:
+        email:
           type: string
-          format: date-time
+        bio:
+          type: string
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+        gender_other:
+          type: string
+        photo:
+          type: string
+          description: Base64 encoded photo.
+        education:
+          type: array
+          items:
+            type: string
+        integration_record_id:
+          type: string
+        npi:
+          $ref: '#/components/schemas/Npi'
+        practitioner_group:
+          $ref: '#/components/schemas/Association'
+    Public.NpiBlueprint_shared:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        number:
+          type: string
+        organization_name:
+          type: string
+        type:
+          type: string
     Public.PractitionerBlueprint_one:
       type: object
       properties:
@@ -570,21 +551,64 @@ components:
       properties:
         number:
           type: integer
-    Public.NpiBlueprint_shared:
+    Public.LocationGroupBlueprint_leaf:
       type: object
       properties:
-        first_name:
+        id:
           type: string
-        last_name:
+        created_at:
           type: string
-        number:
+          format: date-time
+        integration_record_id:
           type: string
-        organization_name:
+        name:
           type: string
-        type:
+        updated_at:
           type: string
+          format: date-time
+    Public.LocationBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_latitude:
+          type: number
+          format: float
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_longitude:
+          type: number
+          format: float
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        distance:
+          type: string
+        name:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

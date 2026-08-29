@@ -1,0 +1,431 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints Appointment API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: Appointment
+  description: ''
+paths:
+  /provider/appointment_types:
+    get:
+      tags:
+      - Appointment
+      operationId: Appointment.ListAllAppointmentTypes
+      summary: List All Appointment Types
+      description: 'Returns the practice''s active appointment types. Inactive, archived, and deleted appointment types
+
+        are excluded. As a result, an appointment''s `appointment_type_id` may reference a type that no longer
+
+        appears in this list (for example, one archived after the appointment was booked). Treat an
+
+        unfamiliar `appointment_type_id` as an unknown/retired type rather than an error.'
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        description: Defaults to 10, maximum 100.
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        required: false
+        description: Defaults to 0.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.AppointmentTypeBlueprint_all'
+              example:
+              - id: appty-3f9a2b7c4d1e6058
+                name: Discovery Call
+                duration: 30
+                created_at: '2026-04-30T09:00:00.000Z'
+                updated_at: '2026-05-06T13:55:00.000Z'
+              - id: appty-8b1c5e9a2f7d3406
+                name: Follow-up Visit
+                duration: 15
+                created_at: '2026-05-02T10:00:00.000Z'
+                updated_at: '2026-05-02T10:00:00.000Z'
+              - id: appty-c4a7f2e83b9d1560
+                name: Annual Physical
+                duration: 60
+                created_at: '2026-05-01T15:30:00.000Z'
+                updated_at: '2026-05-07T08:12:00.000Z'
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /provider/appointments:
+    get:
+      tags:
+      - Appointment
+      operationId: Appointment.ListAllAppointments
+      summary: List All Appointments
+      description: 'Declined appointments are not returned by this endpoint.
+
+        Recurring appointments are stored once and expanded into one appointment object per occurrence
+
+        that falls within `start_date`/`end_date`. Occurrences that haven''t been individually modified
+
+        share the base appointment''s `id`; once an occurrence''s status is changed (for example, checking
+
+        a patient in), it''s returned as its own appointment with a new `id` and a `recurring_appointment_id`
+
+        pointing back to the original recurring appointment. See [Recurring Appointments](https://developers.hint.com/docs/recurring-appointments)
+
+        for details, including what happens when a series is edited after an occurrence has already split off.'
+      parameters:
+      - name: start_date
+        in: query
+        required: false
+        description: Start of the query window (inclusive). Must be a valid ISO 8601 date string.
+        schema:
+          type: string
+      - name: end_date
+        in: query
+        required: false
+        description: End of the query window (inclusive). Must be a valid ISO 8601 date string. Range may not exceed 31 days.
+        schema:
+          type: string
+      - name: patient
+        in: query
+        required: false
+        description: Filter by patient attendee. A patient id, such as `pat-` (or `sbx-pat-` in sandbox).
+        schema:
+          type: string
+      - name: status
+        in: query
+        required: false
+        description: ' Allows filtering appointments by status.'
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - unconfirmed
+            - confirmed
+            - cancelled
+      - name: limit
+        in: query
+        required: false
+        description: Defaults to 10, maximum 100.
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        required: false
+        description: Defaults to 0.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.AppointmentBlueprint_all'
+              example:
+              - id: appt-ab12C345DeF6
+                start: '2026-05-06T14:00:00.000Z'
+                end: '2026-05-06T14:30:00.000Z'
+                status: confirmed
+                workflow_status: waiting_for_provider
+                title: Annual wellness visit
+                description: Routine annual physical and wellness check-in.
+                created_at: '2026-04-30T09:00:00.000Z'
+                updated_at: '2026-05-06T13:55:00.000Z'
+                appointment_type_id: appty-3f9a2b7c4d1e6058
+                recurring_appointment_id: appt-Cd34E567FgH8
+                host:
+                  id: user-ab12C345DeF6
+                  email: joe_374@example.com
+                  first_name: Sara
+                  last_name: Chen
+                  name: Sara Chen
+                  phones: []
+                  product_users: []
+                location:
+                  id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  name: San Francisco HQ
+                attendees:
+                - type: patient
+                  patient:
+                    id: pat-ab12C345DeF6
+                    name: Jordan Rivera
+                  contact: null
+              - id: appt-ab12C345DeF6
+                start: '2026-05-07T09:00:00.000Z'
+                end: '2026-05-07T09:30:00.000Z'
+                status: unconfirmed
+                workflow_status: null
+                title: Follow-up consultation
+                description: Lab review and treatment plan.
+                created_at: '2026-05-02T10:00:00.000Z'
+                updated_at: '2026-05-02T10:00:00.000Z'
+                appointment_type_id: appty-8b1c5e9a2f7d3406
+                recurring_appointment_id: null
+                host:
+                  id: user-ab12C345DeF6
+                  email: joe_376@example.com
+                  first_name: Sara
+                  last_name: Chen
+                  name: Sara Chen
+                  phones: []
+                  product_users: []
+                location:
+                  id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  name: San Francisco HQ
+                attendees:
+                - type: patient
+                  patient:
+                    id: pat-ab12C345DeF6
+                    name: Jordan Rivera
+                  contact: null
+                - type: contact
+                  patient: null
+                  contact:
+                    first: Alex
+                    last: Rivera
+                    email: alex.rivera@example.com
+              - id: appt-ab12C345DeF6
+                start: '2026-05-08T11:00:00.000Z'
+                end: '2026-05-08T11:30:00.000Z'
+                status: cancelled
+                workflow_status: null
+                title: New patient intake
+                description: Cancelled by patient via portal.
+                created_at: '2026-05-01T15:30:00.000Z'
+                updated_at: '2026-05-07T08:12:00.000Z'
+                appointment_type_id: appty-c4a7f2e83b9d1560
+                recurring_appointment_id: null
+                host:
+                  id: user-ab12C345DeF6
+                  email: joe_378@example.com
+                  first_name: Sara
+                  last_name: Chen
+                  name: Sara Chen
+                  phones: []
+                  product_users: []
+                location:
+                  id: loc-ab12C345DeF6
+                  address_city: New York
+                  address_country: United States
+                  address_line1: 157 E Houston St
+                  address_line2: Suite 2402
+                  address_state: NY
+                  address_zip: '10002'
+                  name: San Francisco HQ
+                attendees:
+                - type: patient
+                  patient:
+                    id: pat-ab12C345DeF6
+                    name: Jordan Rivera
+                  contact: null
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+components:
+  schemas:
+    Public.PatientBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.Appointment.AttendeeBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+          patient:
+            $ref: '#/components/schemas/Public.PatientBlueprint_min'
+          contact:
+            $ref: '#/components/schemas/Public.Appointment.ContactBlueprint_min'
+    Public.Appointment.ContactBlueprint_min:
+      type: object
+      properties:
+        first:
+          type: string
+        last:
+          type: string
+        email:
+          type: string
+    Public.AppointmentTypeBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+          duration:
+            type: integer
+            format: int32
+          created_at:
+            type: string
+          updated_at:
+            type: string
+    Public.AppointmentBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          start:
+            type: string
+          end:
+            type: string
+          status:
+            type: string
+            enum:
+            - unconfirmed
+            - confirmed
+            - cancelled
+          workflow_status:
+            type: string
+            enum:
+            - check_in
+            - waiting_for_provider
+            - in_progress
+            - completed
+            - checked_out
+            - no_show
+          title:
+            type: string
+          description:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          appointment_type_id:
+            type: string
+          recurring_appointment_id:
+            type: string
+          host:
+            $ref: '#/components/schemas/Public.UserBlueprint_shared'
+          location:
+            $ref: '#/components/schemas/Public.LocationBlueprint_shared'
+          attendees:
+            $ref: '#/components/schemas/Public.Appointment.AttendeeBlueprint_all'
+    Public.PartnerAppUserBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        roles:
+          type: string
+        product:
+          $ref: '#/components/schemas/Public.ProductBlueprint_leaf'
+    Public.ProductBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.LocationBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        name:
+          type: string
+    Public.UserBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        name:
+          type: string
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+        product_users:
+          $ref: '#/components/schemas/Public.PartnerAppUserBlueprint_leaf'
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

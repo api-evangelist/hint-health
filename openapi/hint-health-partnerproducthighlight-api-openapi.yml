@@ -1,0 +1,202 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints Partner Product Highlight API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: PartnerProductHighlight
+  description: ''
+paths:
+  /partner/products/{product_id}/highlights:
+    get:
+      tags:
+      - PartnerProductHighlight
+      operationId: PartnerProductHighlight.ListProductHighlights
+      summary: List Product Highlights
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PartnerProductHighlightBlueprint_all'
+              example:
+              - id: pprohl-ab12C345DeF6
+                description: A chart, schedule, and patient inbox that fit how DPC clinics actually work.
+                image_url: null
+                position: 1
+                title: Built for primary care
+    post:
+      tags:
+      - PartnerProductHighlight
+      operationId: PartnerProductHighlight.CreateProductHighlight
+      summary: Create Product Highlight
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PartnerProductHighlightBlueprint_one'
+              example:
+                id: pprohl-ab12C345DeF6
+                description: A chart, schedule, and patient inbox that fit how DPC clinics actually work.
+                image_url: null
+                position: 1
+                title: Built for primary care
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductHighlightSanitizer'
+  /partner/products/{product_id}/highlights/{id}:
+    patch:
+      tags:
+      - PartnerProductHighlight
+      operationId: PartnerProductHighlight.UpdateProductHighlight
+      summary: Update Product Highlight
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Partner Product Highlight ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.PartnerProductHighlightBlueprint_one'
+              example:
+                id: pprohl-ab12C345DeF6
+                description: A chart, schedule, and patient inbox that fit how DPC clinics actually work.
+                image_url: null
+                position: 1
+                title: Built for primary care
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductHighlightSanitizer'
+    delete:
+      tags:
+      - PartnerProductHighlight
+      operationId: PartnerProductHighlight.DestroyProductHighlight
+      summary: Destroy Product Highlight
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Partner Product Highlight ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful response
+components:
+  schemas:
+    Public.PartnerProductHighlightBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          description:
+            type: string
+          image_url:
+            type: string
+          position:
+            type: integer
+            format: int32
+          title:
+            type: string
+    Public.PartnerProductHighlightBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        image_url:
+          type: string
+        position:
+          type: integer
+          format: int32
+        title:
+          type: string
+    ProductHighlightSanitizer:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Short title (1–4 words) shown above the description.
+        description:
+          type: string
+          description: One-line description of the highlight.
+        image:
+          type: string
+          description: 'Image as a base64 data URI ("data:image/png;base64,..."). **Note: the field name differs across listing sections.** Highlights use `image`; overview images (`ProductOverviewSanitizer.ImageSanitizer`) use `url`. Both take the same data-URI payload — only the key differs.'
+        position:
+          type: integer
+          format: int32
+          description: Display order. Optional — defaults to the next position via `acts_as_list`.
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

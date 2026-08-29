@@ -1,0 +1,165 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints Product Category API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: ProductCategory
+  description: ''
+paths:
+  /partner/products/categories:
+    get:
+      tags:
+      - ProductCategory
+      operationId: ProductCategory.ListAvailableProductCategories
+      summary: List Available Product Categories
+      description: 'Flat list of all marketplace categories currently in use. Useful for partners picking
+
+        which categories to attach to their product — pick from this list to align with
+
+        existing marketplace browse, or supply a new name to introduce one.'
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ProductCategoryBlueprint_all'
+              example:
+              - id: pproc-ab12C345DeF6
+                name: Communication
+  /partner/products/{product_id}/categories:
+    get:
+      tags:
+      - ProductCategory
+      operationId: ProductCategory.ListProductCategories
+      summary: List Product Categories
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ProductCategoryBlueprint_all'
+              example:
+              - id: pproc-ab12C345DeF6
+                name: Communication
+    post:
+      tags:
+      - ProductCategory
+      operationId: ProductCategory.AttachProductCategory
+      summary: Attach Product Category
+      description: 'Attach a category to the product, either by `category_id` (an existing category from
+
+        `GET /partner/products/categories`) or by `name`. A name must match an existing category —
+
+        partners cannot mint new category names. If the category you need isn''t listed, contact
+
+        devsupport@hint.com.'
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ProductCategoryBlueprint_one'
+              example:
+                id: pproc-ab12C345DeF6
+                name: Communication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCategorySanitizer'
+  /partner/products/{product_id}/categories/{id}:
+    delete:
+      tags:
+      - ProductCategory
+      operationId: ProductCategory.DetachProductCategory
+      summary: Detach Product Category
+      description: Detach the category from the product. The category itself is preserved (other products may still be using it).
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Product Category ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful response
+components:
+  schemas:
+    Public.ProductCategoryBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+    Public.ProductCategoryBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    ProductCategorySanitizer:
+      type: object
+      properties:
+        category_id:
+          type: string
+          description: Public id of an existing category from `GET /partner/products/categories`. Provide this to attach an existing category; takes precedence over `name`.
+        name:
+          type: string
+          description: Category name. Free-form — pick from the list returned by `GET /partner/products/categories` to match an existing category, or supply a new name to create one. Most marketplace listings have 1–3 categories.
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

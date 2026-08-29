@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken Interaction API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Interaction API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Interaction across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: Interaction
 paths:
@@ -147,6 +143,87 @@ paths:
               description: The total number of resources available (scoped to query params)
               schema:
                 type: integer
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
+  /provider/interactions/{interaction_id}/files/download_urls:
+    get:
+      tags:
+      - Interaction
+      operationId: Interaction.ListInteractionFileDownloadUrls
+      summary: List Interaction File Download URLs
+      description: 'Returns a short-lived, single-use download URL for every file attached to
+
+        the interaction. Only PDFs are downloadable; other file types are listed
+
+        with a null url. The URLs cannot be saved and refetched later.'
+      parameters:
+      - name: interaction_id
+        in: path
+        required: true
+        description: Unique Interaction ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.Interaction.FileBlueprint_download_url'
+              example:
+              - id: Fah-3TWDJuQ1MSe-lBTiPh
+                expires_at: '2026-07-01T12:05:00.000Z'
+                filename: lab-results.pdf
+                url: https://practice-bucket.s3.amazonaws.com/public/pat-123456/lab-results.pdf?X-Amz-Signature=EXAMPLE
+              - id: Znd8CviNr5RERx6L-v5auf
+                expires_at: null
+                filename: scan.tiff
+                url: null
+    servers:
+    - url: https://api.sandbox.hint.com/api
+  /provider/interactions/{interaction_id}/files/{id}/download_url:
+    get:
+      tags:
+      - Interaction
+      operationId: Interaction.GetInteractionFileDownloadUrl
+      summary: Get Interaction File Download URL
+      description: 'Returns a short-lived, single-use download URL for one file on the
+
+        interaction, addressed by its id. Responds 404 when the id does not match
+
+        a file on the interaction, and 422 when the file is not a PDF.'
+      parameters:
+      - name: interaction_id
+        in: path
+        required: true
+        description: Unique Interaction ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique Interaction ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.Interaction.FileBlueprint_download_url'
+              example:
+                id: Fah-3TWDJuQ1MSe-lBTiPh
+                expires_at: '2026-07-01T12:05:00.000Z'
+                filename: lab-results.pdf
+                url: https://practice-bucket.s3.amazonaws.com/public/pat-123456/lab-results.pdf?X-Amz-Signature=EXAMPLE
+    servers:
+    - url: https://api.sandbox.hint.com/api
 components:
   schemas:
     Public.InteractionBlueprint_all:
@@ -166,8 +243,60 @@ components:
             type: string
           type:
             type: string
+    Public.Interaction.FileBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+    Public.Interaction.FileBlueprint_download_url:
+      type: object
+      properties:
+        id:
+          type: string
+        expires_at:
+          type: string
+        filename:
+          type: string
+        url:
+          type: string
+    Public.InteractionBlueprint_all_2:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          body:
+            type: string
+          event_timestamp:
+            type: string
+            format: date-time
+          patient_access:
+            type: boolean
+          patient_id:
+            type: string
+          status:
+            type: string
+          title:
+            type: string
+          type:
+            type: string
+          files:
+            type: array
+            items:
+              $ref: '#/components/schemas/Public.Interaction.FileBlueprint_leaf'
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

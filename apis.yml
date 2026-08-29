@@ -749,6 +749,191 @@ apis:
     url: overlays/hint-health-webhookendpoint-api-overlay.yaml
   - type: Documentation
     url: https://developers.hint.com/docs/overview
+- aid: hint-health:hint-health-affiliateancillarycharge-api
+  name: Hint Health Affiliate Ancillary Charge API
+  description: >-
+    The AffiliateAncillaryCharge API from Hint Health — 1 operation(s) for affiliateancillarycharge.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - AffiliateAncillaryCharge
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-affiliateancillarycharge-api-openapi.yml
+- aid: hint-health:hint-health-apikey-api
+  name: Hint Health API Key API
+  description: The ApiKey API from Hint Health — 1 operation(s) for apikey.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - ApiKey
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-apikey-api-openapi.yml
+- aid: hint-health:hint-health-app-api
+  name: Hint Health App API
+  description: The App API from Hint Health — 1 operation(s) for app.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - App
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-app-api-openapi.yml
+- aid: hint-health:hint-health-appointment-api
+  name: Hint Health Appointment API
+  description: The Appointment API from Hint Health — 2 operation(s) for appointment.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Appointment
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-appointment-api-openapi.yml
+- aid: hint-health:hint-health-appsurface-api
+  name: Hint Health App Surface API
+  description: The AppSurface API from Hint Health — 2 operation(s) for appsurface.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - AppSurface
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-appsurface-api-openapi.yml
+- aid: hint-health:hint-health-backend-api
+  name: Hint Health Backend API
+  description: The Backend API from Hint Health — 2 operation(s) for backend.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Backend
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-backend-api-openapi.yml
+- aid: hint-health:hint-health-installation-api
+  name: Hint Health Installation API
+  description: The Installation API from Hint Health — 5 operation(s) for installation.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Installation
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-installation-api-openapi.yml
+- aid: hint-health:hint-health-installationapikeys-api
+  name: Hint Health Installation API Keys API
+  description: The InstallationApiKeys API from Hint Health — 2 operation(s) for installationapikeys.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - InstallationApiKeys
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-installationapikeys-api-openapi.yml
+- aid: hint-health:hint-health-installationwebhookendpoints-api
+  name: Hint Health Installation Webhook Endpoints API
+  description: >-
+    The InstallationWebhookEndpoints API from Hint Health — 2 operation(s) for installationwebhookendpoints.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - InstallationWebhookEndpoints
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-installationwebhookendpoints-api-openapi.yml
+- aid: hint-health:hint-health-partnerproducthighlight-api
+  name: Hint Health Partner Product Highlight API
+  description: >-
+    The PartnerProductHighlight API from Hint Health — 2 operation(s) for partnerproducthighlight.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - PartnerProductHighlight
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-partnerproducthighlight-api-openapi.yml
+- aid: hint-health:hint-health-partnerproductlink-api
+  name: Hint Health Partner Product Link API
+  description: The PartnerProductLink API from Hint Health — 2 operation(s) for partnerproductlink.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - PartnerProductLink
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-partnerproductlink-api-openapi.yml
+- aid: hint-health:hint-health-partnerproductoverview-api
+  name: Hint Health Partner Product Overview API
+  description: >-
+    The PartnerProductOverview API from Hint Health — 1 operation(s) for partnerproductoverview.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - PartnerProductOverview
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-partnerproductoverview-api-openapi.yml
+- aid: hint-health:hint-health-partnerproductprecondition-api
+  name: Hint Health Partner Product Precondition API
+  description: >-
+    The PartnerProductPrecondition API from Hint Health — 2 operation(s) for partnerproductprecondition.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - PartnerProductPrecondition
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-partnerproductprecondition-api-openapi.yml
+- aid: hint-health:hint-health-product-api
+  name: Hint Health Product API
+  description: The Product API from Hint Health — 3 operation(s) for product.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Product
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-product-api-openapi.yml
+- aid: hint-health:hint-health-productcategory-api
+  name: Hint Health Product Category API
+  description: The ProductCategory API from Hint Health — 3 operation(s) for productcategory.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - ProductCategory
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-productcategory-api-openapi.yml
+- aid: hint-health:hint-health-testimonial-api
+  name: Hint Health Testimonial API
+  description: The Testimonial API from Hint Health — 2 operation(s) for testimonial.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - Testimonial
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-testimonial-api-openapi.yml
+- aid: hint-health:hint-health-webhookevent-api
+  name: Hint Health Webhook Event API
+  description: The WebhookEvent API from Hint Health — 1 operation(s) for webhookevent.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - WebhookEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-webhookevent-api-openapi.yml
+- aid: hint-health:hint-health-webhookrequest-api
+  name: Hint Health Webhook Request API
+  description: The WebhookRequest API from Hint Health — 1 operation(s) for webhookrequest.
+  humanURL: https://developers.hint.com/
+  baseURL: https://api.hint.com
+  tags:
+  - WebhookRequest
+  properties:
+  - type: OpenAPI
+    url: openapi/hint-health-webhookrequest-api-openapi.yml
 common:
   - type: CapabilityMap
     url: capabilities/hint-health-capability-edges.yml

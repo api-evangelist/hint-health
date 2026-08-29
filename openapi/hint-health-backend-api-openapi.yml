@@ -1,0 +1,369 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints Backend API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: Backend
+  description: ''
+paths:
+  /partner/backends:
+    get:
+      tags:
+      - Backend
+      operationId: Backend.ListBackends
+      summary: List Partner Backends
+      description: 'Each backend owns its own webhook delivery, OAuth config, and product
+
+        catalog.'
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        description: Allows limiting the number of partner backends returned.
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        required: false
+        description: Allows offsetting the start of the returned page.
+        schema:
+          type: integer
+          format: int32
+      - name: created_at
+        in: query
+        required: false
+        description: Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information.
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.BackendBlueprint_all'
+              example:
+              - id: pbnd-ab12C345DeF6
+                activation_type: instant
+                auth_type: manual
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                listened_events:
+                - '*'
+                localhost_redirect_url: http://localhost:3000/login?from=hint
+                localhost_webhook_url: null
+                max_requests_per_minute: null
+                name: Default
+                redirect_url: https://hint-partner-emr.com/login?from=hint
+                unmute_self_webhooks: false
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                webhooks_disabled: false
+                webhooks_paused: false
+                api_credentials_configuration: null
+                products: []
+                webhooks_signature_api_key:
+                  id: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+                  label: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  last_used_at: null
+                  deactivated_at: null
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /partner/backends/{id}:
+    get:
+      tags:
+      - Backend
+      operationId: Backend.ShowBackend
+      summary: Show Partner Backend
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Backend ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.BackendBlueprint_one'
+              example:
+                id: pbnd-ab12C345DeF6
+                activation_type: instant
+                auth_type: manual
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                listened_events:
+                - '*'
+                localhost_redirect_url: http://localhost:3000/login?from=hint
+                localhost_webhook_url: null
+                max_requests_per_minute: null
+                name: Default
+                redirect_url: https://hint-partner-emr.com/login?from=hint
+                unmute_self_webhooks: false
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                webhooks_disabled: false
+                webhooks_paused: false
+                api_credentials_configuration: null
+                products: []
+                webhooks_signature_api_key:
+                  id: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+                  label: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  last_used_at: null
+                  deactivated_at: null
+    patch:
+      tags:
+      - Backend
+      operationId: Backend.UpdateBackend
+      summary: Update Partner Backend
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Backend ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.BackendBlueprint_one'
+              example:
+                id: pbnd-ab12C345DeF6
+                activation_type: instant
+                auth_type: manual
+                created_at: '2017-02-05T06:23:00.000000-08:00'
+                listened_events:
+                - '*'
+                localhost_redirect_url: http://localhost:3000/login?from=hint
+                localhost_webhook_url: null
+                max_requests_per_minute: null
+                name: Default
+                redirect_url: https://hint-partner-emr.com/login?from=hint
+                unmute_self_webhooks: false
+                updated_at: '2017-02-05T06:23:00.000000-08:00'
+                webhooks_disabled: false
+                webhooks_paused: false
+                api_credentials_configuration: null
+                products: []
+                webhooks_signature_api_key:
+                  id: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+                  label: null
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  last_used_at: null
+                  deactivated_at: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner.BackendsController.update_body'
+components:
+  schemas:
+    Public.PartnerApiCredentialsConfigurationBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        spec_url:
+          type: string
+        docs_url:
+          type: string
+        issuance_mode:
+          type: string
+        exchange_url:
+          type: string
+        call_path:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    Public.ApiKeyBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        created_at:
+          type: string
+        last_used_at:
+          type: string
+        deactivated_at:
+          type: string
+    Partner.BackendsController.update_body:
+      title: Update_Backend
+      type: object
+      properties:
+        name:
+          type: string
+          description: Human-readable label for the backend.
+        auth_type:
+          type: string
+          description: One of `manual`, `automatic_redirect`, `automatic_headless`.
+        activation_type:
+          type: string
+          description: One of `instant`, `partner_activate`, `practice_activate`.
+        redirect_url:
+          type: string
+          description: OAuth redirect URL invoked after `authorization_code` issuance.
+        localhost_redirect_url:
+          type: string
+          description: HTTP localhost URL used in place of `redirect_url` when the requesting browser session has localhost mode enabled. Sandbox partners only.
+        localhost_webhook_url:
+          type: string
+          description: HTTP localhost URL the browser proxies this backend's webhook deliveries to when localhost mode is enabled. Sandbox partners only.
+        webhooks_disabled:
+          type: boolean
+          description: Disables webhook delivery for this backend's endpoints.
+        webhooks_paused:
+          type: boolean
+          description: Pauses webhook delivery for this backend's endpoints.
+        unmute_self_webhooks:
+          type: boolean
+          description: Delivers webhooks for events triggered by this backend's own requests.
+        max_requests_per_minute:
+          type: integer
+          format: int32
+          description: Webhook delivery rate ceiling for this backend.
+        listened_events:
+          type: array
+          items:
+            type: string
+          description: Event types delivered to this backend's endpoints.
+        webhooks_signature_api_key:
+          type: object
+          description: 'The partner-owned api key whose secret signs this backend''s webhooks. Pass `{ "id": "<api key id>" }`.'
+        api_credentials_configuration:
+          type: object
+          description: The backend's API-publishing configuration. Accepts `spec_url`, `docs_url`, `issuance_mode` (`push`/`pull`), `exchange_url`, and `call_path` (`proxy`/`direct`).
+    Public.BackendBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        activation_type:
+          type: string
+        auth_type:
+          type: string
+        created_at:
+          type: string
+        listened_events:
+          type: string
+        localhost_redirect_url:
+          type: string
+        localhost_webhook_url:
+          type: string
+        max_requests_per_minute:
+          type: string
+        name:
+          type: string
+        redirect_url:
+          type: string
+        unmute_self_webhooks:
+          type: string
+        updated_at:
+          type: string
+        webhooks_disabled:
+          type: string
+        webhooks_paused:
+          type: string
+        api_credentials_configuration:
+          $ref: '#/components/schemas/Public.PartnerApiCredentialsConfigurationBlueprint_shared'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.ProductBlueprint_min'
+        webhooks_signature_api_key:
+          $ref: '#/components/schemas/Public.ApiKeyBlueprint_shared'
+    Public.BackendBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          activation_type:
+            type: string
+          auth_type:
+            type: string
+          created_at:
+            type: string
+          listened_events:
+            type: string
+          localhost_redirect_url:
+            type: string
+          localhost_webhook_url:
+            type: string
+          max_requests_per_minute:
+            type: string
+          name:
+            type: string
+          redirect_url:
+            type: string
+          unmute_self_webhooks:
+            type: string
+          updated_at:
+            type: string
+          webhooks_disabled:
+            type: string
+          webhooks_paused:
+            type: string
+          api_credentials_configuration:
+            $ref: '#/components/schemas/Public.PartnerApiCredentialsConfigurationBlueprint_shared'
+          products:
+            type: array
+            items:
+              $ref: '#/components/schemas/Public.ProductBlueprint_min'
+          webhooks_signature_api_key:
+            $ref: '#/components/schemas/Public.ApiKeyBlueprint_shared'
+    Public.ProductBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

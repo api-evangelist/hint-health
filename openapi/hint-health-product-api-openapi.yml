@@ -1,0 +1,291 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints Product API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: Product
+  description: ''
+paths:
+  /partner/products:
+    get:
+      tags:
+      - Product
+      operationId: Product.ListProducts
+      summary: List Products
+      description: ''
+      parameters:
+      - name: backend
+        in: query
+        required: false
+        description: Filter by the owning backend's public id (`pbnd-...`). Accepts a single value or comma-separated list.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ProductBlueprint_all'
+              example:
+              - id: ppro-ab12C345DeF6
+                built_by_name: Hint-Partner
+                built_by_url: https://hint-partner-emr.com
+                icon_url: null
+                name: Hint-Partner EMR
+                slug: hint-partner-emr
+                summary: A patient-friendly EMR that lives where your team already works.
+                partner_backend:
+                  id: pbnd-ab12C345DeF6
+                  name: Default
+    post:
+      tags:
+      - Product
+      operationId: Product.CreateProduct
+      summary: Create Product
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ProductBlueprint_one'
+              example:
+                id: ppro-ab12C345DeF6
+                built_by_name: Hint-Partner
+                built_by_url: https://hint-partner-emr.com
+                icon_url: null
+                name: Hint-Partner EMR
+                slug: hint-partner-emr
+                summary: A patient-friendly EMR that lives where your team already works.
+                partner_backend:
+                  id: pbnd-ab12C345DeF6
+                  name: Default
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductSanitizer'
+  /partner/products/{id}:
+    get:
+      tags:
+      - Product
+      operationId: Product.GetProduct
+      summary: Get Product
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ProductBlueprint_one'
+              example:
+                id: ppro-ab12C345DeF6
+                built_by_name: Hint-Partner
+                built_by_url: https://hint-partner-emr.com
+                icon_url: null
+                name: Hint-Partner EMR
+                slug: hint-partner-emr
+                summary: A patient-friendly EMR that lives where your team already works.
+                partner_backend:
+                  id: pbnd-ab12C345DeF6
+                  name: Default
+    patch:
+      tags:
+      - Product
+      operationId: Product.UpdateProduct
+      summary: Update Product
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ProductBlueprint_one'
+              example:
+                id: ppro-ab12C345DeF6
+                built_by_name: Hint-Partner
+                built_by_url: https://hint-partner-emr.com
+                icon_url: null
+                name: Hint-Partner EMR
+                slug: hint-partner-emr
+                summary: A patient-friendly EMR that lives where your team already works.
+                partner_backend:
+                  id: pbnd-ab12C345DeF6
+                  name: Default
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductSanitizer'
+    delete:
+      tags:
+      - Product
+      operationId: Product.DestroyProduct
+      summary: Destroy Product
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful response
+  /partner/products/{id}/request_review:
+    post:
+      tags:
+      - Product
+      operationId: Product.RequestProductReview
+      summary: Request Product Review
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.ProductBlueprint_one'
+              example:
+                id: ppro-ab12C345DeF6
+                built_by_name: Hint-Partner
+                built_by_url: https://hint-partner-emr.com
+                icon_url: null
+                name: Hint-Partner EMR
+                slug: hint-partner-emr
+                summary: A patient-friendly EMR that lives where your team already works.
+                partner_backend:
+                  id: pbnd-ab12C345DeF6
+                  name: Default
+components:
+  schemas:
+    ProductSanitizer:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name of the marketplace listing.
+        slug:
+          type: string
+          description: URL-safe identifier (e.g. "my-product"). Only settable on create — contact Hint support to change it later.
+        type:
+          type: string
+          description: Kind of marketplace listing.
+          enum:
+          - app
+          - integration
+          - solution
+        summary:
+          type: string
+          description: Short tagline shown on the marketplace card (max 80 chars).
+        built_by_name:
+          type: string
+          description: Display name of the maker, shown under the listing as "Built by <name>".
+        built_by_url:
+          type: string
+          description: Url the "Built by" link points to.
+        icon:
+          type: string
+          description: Listing icon as a base64 data URI (e.g. "data:image/png;base64,..."). **Note the field-name asymmetry:** the request field is `icon` (data URI input); the GET response surfaces the uploaded image as `icon_url` (hosted URL). Sending `icon_url` as a request field is silently ignored. The listing icon is distinct from the Core Page sidebar icon (`surface.core_page_icon`) — see the surface endpoints for that.
+    Public.BackendBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.ProductBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        built_by_name:
+          type: string
+        built_by_url:
+          type: string
+        icon_url:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        summary:
+          type: string
+        partner_backend:
+          $ref: '#/components/schemas/Public.BackendBlueprint_min'
+    Public.ProductBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          built_by_name:
+            type: string
+          built_by_url:
+            type: string
+          icon_url:
+            type: string
+          name:
+            type: string
+          slug:
+            type: string
+          summary:
+            type: string
+          partner_backend:
+            $ref: '#/components/schemas/Public.BackendBlueprint_min'
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

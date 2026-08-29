@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken Company API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Company API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Company across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: Company
 paths:
@@ -65,6 +61,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CompanyCreateSanitizer'
+      security:
+      - BearerAuth: []
     get:
       tags:
       - Company
@@ -105,6 +103,13 @@ paths:
                 phones:
                 - number: '5553050004'
                   type: mobile
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/companies/{id}/deactivate:
     post:
       tags:
@@ -150,6 +155,13 @@ paths:
                 phones:
                 - number: '5553050005'
                   type: mobile
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/companies/{id}:
     get:
       tags:
@@ -195,6 +207,8 @@ paths:
                 phones:
                 - number: '5553050005'
                   type: mobile
+      security:
+      - BearerAuth: []
     patch:
       tags:
       - Company
@@ -245,15 +259,43 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CompanyUpdateSanitizer'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
-    Public.PractitionerBlueprint_min:
+    Public.LocationBlueprint_min:
       type: object
       properties:
         id:
           type: string
         name:
           type: string
+    CompanyCreateSanitizer:
+      type: object
+      properties:
+        default_plan:
+          $ref: '#/components/schemas/Association'
+          description: You must use plans of type "company"
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     PhoneNumber:
       type: object
       properties:
@@ -269,13 +311,77 @@ components:
       required:
       - number
       - type
-    Public.PhoneBlueprint_leaf:
+    Public.EmployeeDivisionBlueprint_leaf:
       type: object
       properties:
-        number:
+        id:
           type: string
-        type:
+        name:
           type: string
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+      required:
+      - line1
+      - city
+      - state
+      - zip
+    Public.CompanyBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        employee_divisions_count:
+          type: integer
+          format: int32
+        name:
+          type: string
+        status:
+          type: string
+        address:
+          $ref: '#/components/schemas/Public.AddressBlueprint_leaf'
+        default_location:
+          $ref: '#/components/schemas/Public.LocationBlueprint_min'
+        default_plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+        default_practitioner:
+          $ref: '#/components/schemas/Public.PractitionerBlueprint_min'
+        employee_divisions:
+          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+    CompanyUpdateSanitizer:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
     Public.CompanyBlueprint_all:
       type: array
       items:
@@ -302,81 +408,6 @@ components:
             $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
           phones:
             $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
-    CompanyUpdateSanitizer:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        phones:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumber'
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Address:
-      type: object
-      properties:
-        line1:
-          type: string
-        line2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        country:
-          type: string
-      required:
-      - line1
-      - city
-      - state
-      - zip
-    CompanyCreateSanitizer:
-      type: object
-      properties:
-        default_plan:
-          $ref: '#/components/schemas/Association'
-          description: You must use plans of type "company"
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        phones:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumber'
-    Public.EmployeeDivisionBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.LocationBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.PlanBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        plan_type:
-          type: string
     Public.AddressBlueprint_leaf:
       type: object
       properties:
@@ -400,32 +431,30 @@ components:
         longitude:
           type: number
           format: float
-    Public.CompanyBlueprint_one:
+    Public.PractitionerBlueprint_min:
       type: object
       properties:
         id:
           type: string
-        employee_divisions_count:
-          type: integer
-          format: int32
         name:
           type: string
-        status:
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
           type: string
-        address:
-          $ref: '#/components/schemas/Public.AddressBlueprint_leaf'
-        default_location:
-          $ref: '#/components/schemas/Public.LocationBlueprint_min'
-        default_plan:
-          $ref: '#/components/schemas/Public.PlanBlueprint_min'
-        default_practitioner:
-          $ref: '#/components/schemas/Public.PractitionerBlueprint_min'
-        employee_divisions:
-          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
-        phones:
-          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+        type:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

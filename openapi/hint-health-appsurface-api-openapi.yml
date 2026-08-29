@@ -1,0 +1,235 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints App Surface API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: AppSurface
+  description: ''
+paths:
+  /partner/products/{product_id}/app/surfaces:
+    post:
+      tags:
+      - AppSurface
+      operationId: AppSurface.CreateProductAppSurface
+      summary: Create App Surface
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.AppSurfaceBlueprint_one'
+              example:
+                id: panch-ab12C345DeF6
+                source_url: https://hint-partner-emr.com/hint/core_page
+                localhost_source_url: http://localhost:3000/hint/core_page
+                type: core_page
+                core_page_icon_url: null
+                core_page_icon_label: Partner EMR
+                core_page_auto_adjust_height: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner.PartnerProductApps.SurfacesController.create_body'
+  /partner/products/{product_id}/app/surfaces/{id}:
+    patch:
+      tags:
+      - AppSurface
+      operationId: AppSurface.UpdateProductAppSurface
+      summary: Update App Surface
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique App Surface ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.AppSurfaceBlueprint_one'
+              example:
+                id: panch-ab12C345DeF6
+                source_url: https://hint-partner-emr.com/hint/core_page
+                localhost_source_url: http://localhost:3000/hint/core_page
+                type: core_page
+                core_page_icon_url: null
+                core_page_icon_label: Partner EMR
+                core_page_auto_adjust_height: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner.PartnerProductApps.SurfacesController.update_body'
+    delete:
+      tags:
+      - AppSurface
+      operationId: AppSurface.DeleteProductAppSurface
+      summary: Delete App Surface
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        description: Unique App Surface ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+components:
+  schemas:
+    Partner.PartnerProductApps.SurfacesController.create_body:
+      title: Create_AppSurface
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - core_page
+          - clinical_interaction
+          - clinical_chart
+          - settings
+        source_url:
+          type: string
+        localhost_source_url:
+          type: string
+          description: HTTP localhost URL used in place of `source_url` when the requesting browser session has localhost mode enabled. Sandbox partners only.
+        core_page_icon:
+          type: string
+          description: Base64-encoded data URI of the icon image (e.g. `data:image/png;base64,...`). Max 5MB. Used only for `core_page` surfaces. **Note the field-name asymmetry:** the request field is `core_page_icon` (data URI input); the GET response surfaces the uploaded image as `core_page_icon_url` (hosted URL). Sending `core_page_icon_url` as a request field is silently ignored.
+        core_page_icon_label:
+          type: string
+          description: Sidebar text shown next to the icon — tooltip on hover on desktop, visible text on mobile sidebars. Recommended ≤14 characters (longer labels overflow the nav rail). Used only for `core_page` surfaces.
+        core_page_auto_adjust_height:
+          type: boolean
+        interaction_title:
+          type: string
+        interaction_description:
+          type: string
+        interaction_type:
+          type: string
+        clinical_chart_icon:
+          type: string
+          description: Base64-encoded data URI of the icon image (e.g. `data:image/png;base64,...`). Max 5MB. Used only for `clinical_chart` surfaces. **Note the field-name asymmetry:** the request field is `clinical_chart_icon` (data URI input); the GET response surfaces the uploaded image as `clinical_chart_icon_url` (hosted URL). Sending `clinical_chart_icon_url` as a request field is silently ignored.
+        clinical_chart_icon_label:
+          type: string
+          description: Sidebar text shown next to the icon — tooltip on hover on desktop, visible text on mobile sidebars. Recommended ≤14 characters. Used only for `clinical_chart` surfaces.
+        settings_label:
+          type: string
+      required:
+      - type
+      - source_url
+    Public.AppSurfaceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        source_url:
+          type: string
+        localhost_source_url:
+          type: string
+        type:
+          type: string
+        interaction_title:
+          type: string
+        interaction_description:
+          type: string
+        interaction_type:
+          type: string
+        core_page_icon_url:
+          type: string
+        core_page_icon_label:
+          type: string
+        core_page_auto_adjust_height:
+          type: boolean
+        clinical_chart_icon_url:
+          type: string
+        clinical_chart_icon_label:
+          type: string
+        settings_label:
+          type: string
+    Partner.PartnerProductApps.SurfacesController.update_body:
+      title: Update_AppSurface
+      type: object
+      properties:
+        source_url:
+          type: string
+        localhost_source_url:
+          type: string
+          description: HTTP localhost URL used in place of `source_url` when the requesting browser session has localhost mode enabled. Sandbox partners only.
+        core_page_icon:
+          type: string
+          description: Base64-encoded data URI of the icon image (e.g. `data:image/png;base64,...`). Max 5MB. Used only for `core_page` surfaces. **Note the field-name asymmetry:** the request field is `core_page_icon` (data URI input); the GET response surfaces the uploaded image as `core_page_icon_url` (hosted URL). Sending `core_page_icon_url` as a request field is silently ignored.
+        core_page_icon_label:
+          type: string
+          description: Sidebar text shown next to the icon — tooltip on hover on desktop, visible text on mobile sidebars. Recommended ≤14 characters (longer labels overflow the nav rail). Used only for `core_page` surfaces.
+        core_page_auto_adjust_height:
+          type: boolean
+        interaction_title:
+          type: string
+        interaction_description:
+          type: string
+        interaction_type:
+          type: string
+        clinical_chart_icon:
+          type: string
+          description: Base64-encoded data URI of the icon image (e.g. `data:image/png;base64,...`). Max 5MB. Used only for `clinical_chart` surfaces. **Note the field-name asymmetry:** the request field is `clinical_chart_icon` (data URI input); the GET response surfaces the uploaded image as `clinical_chart_icon_url` (hosted URL). Sending `clinical_chart_icon_url` as a request field is silently ignored.
+        clinical_chart_icon_label:
+          type: string
+          description: Sidebar text shown next to the icon — tooltip on hover on desktop, visible text on mobile sidebars. Recommended ≤14 characters. Used only for `clinical_chart` surfaces.
+        settings_label:
+          type: string
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

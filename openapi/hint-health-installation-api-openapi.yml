@@ -1,0 +1,356 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints Installation API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: Installation
+  description: ''
+paths:
+  /partner/installations:
+    get:
+      tags:
+      - Installation
+      operationId: Installation.ListInstallations
+      summary: List Installations
+      description: 'Returns the partner''s installations — one per (product × practice connection). Each row carries the
+
+        connected practice and product and survives the install/uninstall cycle (deactivated installs are
+
+        returned too).'
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        description: Allows limiting the number of installations returned.
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        required: false
+        description: Allows offsetting the start of the returned page.
+        schema:
+          type: integer
+          format: int32
+      - name: status
+        in: query
+        required: false
+        description: Filter by installation status (`onboarding`, `pending`, `active`, `deactivated`).
+        schema:
+          type: string
+      - name: created_at
+        in: query
+        required: false
+        description: Allows filtering by date or time. Accepts an object with allowed keys of [gte, gt, lte, lt] and a value of the date or time in iso8601 format. See [advanced querying](https://developers.hint.com/reference/making-requests#advanced-querying) for more information.
+        schema:
+          type: string
+          format: date-time
+      - name: partner_product
+        in: query
+        required: false
+        description: Filter by the public id of the partner product.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.InstallationBlueprint_all'
+              example:
+              - id: inst-ab12C345DeF6
+                auto_grant_partner_app_access: true
+                default_partner_app_admin_role: admin
+                default_partner_app_non_admin_role: user
+                status: active
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+                product:
+                  id: ppro-ab12C345DeF6
+                  name: Hint-Partner EMR
+                  slug: hint-partner-emr
+          headers:
+            X-Count:
+              description: The number of resources returned in this request
+              schema:
+                type: integer
+            X-Total-Count:
+              description: The total number of resources available (scoped to query params)
+              schema:
+                type: integer
+  /partner/installations/connect:
+    post:
+      tags:
+      - Installation
+      operationId: Installation.ConnectInstallation
+      summary: Connect Installation
+      description: 'Exchanges the authorization code issued when the practice installed the product and returns the
+
+        installation with the API credentials the practice''s app uses to authenticate its requests.'
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.InstallationBlueprint_one_with_credential'
+              example:
+                id: inst-ab12C345DeF6
+                auto_grant_partner_app_access: true
+                default_partner_app_admin_role: admin
+                default_partner_app_non_admin_role: user
+                status: active
+                api_keys:
+                - id: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+                  created_at: '2017-02-05T06:23:00.000000-08:00'
+                  deactivated_at: null
+                  label: null
+                  last_used_at: null
+                  token: i22X3eTjsV9kfNapfpuKYPrFU0hINpK9tVG3
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+                product:
+                  id: ppro-ab12C345DeF6
+                  name: Hint-Partner EMR
+                  slug: hint-partner-emr
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner.InstallationsController.connect_body'
+  /partner/installations/{id}:
+    get:
+      tags:
+      - Installation
+      operationId: Installation.ShowInstallation
+      summary: Show Installation
+      description: 'Returns a single installation by id. Deactivated installations are also
+
+        returned — uninstall is reactivation-shaped, so a partner can inspect
+
+        the durable per-product install row across the install/uninstall cycle.'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Installation ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.InstallationBlueprint_one'
+              example:
+                id: inst-ab12C345DeF6
+                auto_grant_partner_app_access: true
+                default_partner_app_admin_role: admin
+                default_partner_app_non_admin_role: user
+                status: active
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+                product:
+                  id: ppro-ab12C345DeF6
+                  name: Hint-Partner EMR
+                  slug: hint-partner-emr
+  /partner/installations/{id}/activate:
+    post:
+      tags:
+      - Installation
+      operationId: Installation.ActivateInstallation
+      summary: Activate Installation
+      description: 'Activates a pending installation. The practice must have activated the connection first; the
+
+        connection is activated as part of this call if it is not already active.'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Installation ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.InstallationBlueprint_one'
+              example:
+                id: inst-ab12C345DeF6
+                auto_grant_partner_app_access: true
+                default_partner_app_admin_role: admin
+                default_partner_app_non_admin_role: user
+                status: active
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+                product:
+                  id: ppro-ab12C345DeF6
+                  name: Hint-Partner EMR
+                  slug: hint-partner-emr
+  /partner/installations/{id}/deactivate:
+    post:
+      tags:
+      - Installation
+      operationId: Installation.DeactivateInstallation
+      summary: Deactivate Installation
+      description: Deactivates the installation. The practice's other installations are not affected.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique Installation ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.InstallationBlueprint_one'
+              example:
+                id: inst-ab12C345DeF6
+                auto_grant_partner_app_access: true
+                default_partner_app_admin_role: admin
+                default_partner_app_non_admin_role: user
+                status: deactivated
+                practice:
+                  id: pra-ab12C345DeF6
+                  name: Dr. Phil
+                product:
+                  id: ppro-ab12C345DeF6
+                  name: Hint-Partner EMR
+                  slug: hint-partner-emr
+components:
+  schemas:
+    Partner.InstallationsController.connect_body:
+      title: Connect_Installation
+      type: object
+      properties:
+        code:
+          type: string
+          description: The authorization code issued when the practice installed the product.
+      required:
+      - code
+    Public.ApiKeyBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+        deactivated_at:
+          type: string
+        label:
+          type: string
+        last_used_at:
+          type: string
+        token:
+          type: string
+    Public.InstallationBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        auto_grant_partner_app_access:
+          type: string
+        default_partner_app_admin_role:
+          type: string
+        default_partner_app_non_admin_role:
+          type: string
+        status:
+          type: string
+        practice:
+          $ref: '#/components/schemas/Public.PracticeBlueprint_min'
+        product:
+          $ref: '#/components/schemas/Public.ProductBlueprint_min'
+    Public.InstallationBlueprint_one_with_credential:
+      type: object
+      properties:
+        id:
+          type: string
+        auto_grant_partner_app_access:
+          type: string
+        default_partner_app_admin_role:
+          type: string
+        default_partner_app_non_admin_role:
+          type: string
+        status:
+          type: string
+        api_keys:
+          $ref: '#/components/schemas/Public.ApiKeyBlueprint_one'
+        practice:
+          $ref: '#/components/schemas/Public.PracticeBlueprint_min'
+        product:
+          $ref: '#/components/schemas/Public.ProductBlueprint_min'
+    Public.InstallationBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          auto_grant_partner_app_access:
+            type: string
+          default_partner_app_admin_role:
+            type: string
+          default_partner_app_non_admin_role:
+            type: string
+          status:
+            type: string
+          practice:
+            $ref: '#/components/schemas/Public.PracticeBlueprint_min'
+          product:
+            $ref: '#/components/schemas/Public.ProductBlueprint_min'
+    Public.PracticeBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.ProductBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

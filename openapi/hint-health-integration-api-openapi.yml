@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken Integration API
+  title: Hint Health Integration API
   description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
   version: '1.0'
   contact:
@@ -183,6 +183,13 @@ paths:
               $ref: '#/components/schemas/Platform.IntegrationsController.update_body'
 components:
   schemas:
+    Platform.PracticeBlueprint_for_integration:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     Platform.IntegrationBlueprint_one:
       type: object
       properties:
@@ -227,13 +234,6 @@ components:
             deprecated: true
           practice:
             $ref: '#/components/schemas/Platform.PracticeBlueprint_for_integration'
-    Platform.PracticeBlueprint_for_integration:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Platform.IntegrationsController.update_body:
       title: Update_Integration
       type: object

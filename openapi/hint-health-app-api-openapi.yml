@@ -1,0 +1,284 @@
+openapi: 3.2.0
+info:
+  version: '2026-07-01'
+  title: Partner Endpoints App API
+  description: Hint Health API
+  contact:
+    name: Hint
+    email: devsupport@hint.com
+    url: https://developers.hint.com
+  license:
+    name: Private
+  termsOfService: https://www.hint.com/terms
+  x-api-evangelist-harvest:
+    generated: '2026-08-15'
+    method: searched
+    source: https://developers.hint.com/reference/<slug>.md (204 pages indexed by https://developers.hint.com/llms.txt)
+    note: 'Assembled from the per-endpoint OpenAPI 3.1 documents Hint publishes verbatim inside each ReadMe reference page''s ''# OpenAPI definition'' fenced JSON block. Every path item, schema, tag and server value is Hint''s own text; only the union of paths and components was computed. Ownership is not in question: info.title ''Partner Endpoints'', info.contact devsupport@hint.com, info.termsOfService https://www.hint.com/terms and servers api.sandbox.hint.com all name Hint Health.'
+    pages_fetched: 204
+    pages_carrying_a_spec: 200
+    operations: 200
+    supersedes: openapi/_original/hint-health-hint-health-api-openapi.yml (harvested 2026-06-13, 153 operations)
+    follow_up: NOT yet split into per-tag specs and deliberately NOT wired into apis.yml — the 49 refined specs in openapi/ still derive from the June harvest. Re-run refine-openapis to re-split from this document and pick up the 47 operations the catalogue is missing (appointments, appointment types, communication authorizations, the partner-invisible clinical chart endpoints, and the products/installations/backends marketplace surface).
+servers:
+- url: https://api.sandbox.hint.com/api
+tags:
+- name: App
+  description: ''
+paths:
+  /partner/products/{product_id}/app:
+    get:
+      tags:
+      - App
+      operationId: App.GetProductApp
+      summary: Get App
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.AppBlueprint_one'
+              example:
+                id: papp-ab12C345DeF6
+                browser_allow_list: []
+                default_admin_role: admin
+                default_non_admin_role: clinician
+                handshake_url: https://hint-partner-emr.com/hint/handshake
+                localhost_handshake_url: http://localhost:3000/hint/handshake
+                name: Hint-Partner EMR
+                prepopulate_role_mappings: true
+                status: in_development
+                partner_roles:
+                - name: admin
+                  description: Full access to all features
+                - name: clinician
+                  description: Can read patient charts and write notes
+                surfaces:
+                - id: panch-ab12C345DeF6
+                  source_url: https://hint-partner-emr.com/hint/core_page
+                  localhost_source_url: http://localhost:3000/hint/core_page
+                  type: core_page
+                  core_page_icon_url: null
+                  core_page_icon_label: Partner EMR
+                  core_page_auto_adjust_height: true
+    patch:
+      tags:
+      - App
+      operationId: App.UpdateProductApp
+      summary: Update App
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.AppBlueprint_one'
+              example:
+                id: papp-ab12C345DeF6
+                browser_allow_list: []
+                default_admin_role: admin
+                default_non_admin_role: clinician
+                handshake_url: https://hint-partner-emr.com/hint/handshake
+                localhost_handshake_url: http://localhost:3000/hint/handshake
+                name: Hint-Partner EMR
+                prepopulate_role_mappings: true
+                status: in_development
+                partner_roles:
+                - name: admin
+                  description: Full access to all features
+                - name: clinician
+                  description: Can read patient charts and write notes
+                surfaces:
+                - id: panch-ab12C345DeF6
+                  source_url: https://hint-partner-emr.com/hint/core_page
+                  localhost_source_url: http://localhost:3000/hint/core_page
+                  type: core_page
+                  core_page_icon_url: null
+                  core_page_icon_label: Partner EMR
+                  core_page_auto_adjust_height: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppSanitizer'
+    post:
+      tags:
+      - App
+      operationId: App.CreateProductApp
+      summary: Create App
+      description: ''
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        description: Unique Product ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Public.AppBlueprint_one'
+              example:
+                id: papp-ab12C345DeF6
+                browser_allow_list: []
+                default_admin_role: admin
+                default_non_admin_role: clinician
+                handshake_url: https://hint-partner-emr.com/hint/handshake
+                localhost_handshake_url: http://localhost:3000/hint/handshake
+                name: Hint-Partner EMR
+                prepopulate_role_mappings: true
+                status: in_development
+                partner_roles:
+                - name: admin
+                  description: Full access to all features
+                - name: clinician
+                  description: Can read patient charts and write notes
+                surfaces:
+                - id: panch-ab12C345DeF6
+                  source_url: https://hint-partner-emr.com/hint/core_page
+                  localhost_source_url: http://localhost:3000/hint/core_page
+                  type: core_page
+                  core_page_icon_url: null
+                  core_page_icon_label: Partner EMR
+                  core_page_auto_adjust_height: true
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppSanitizer'
+components:
+  schemas:
+    AppSanitizer:
+      type: object
+      properties:
+        handshake_url:
+          type: string
+          description: URL where Hint POSTs the handshake payload during embed bootstrapping. Must be https.
+        localhost_handshake_url:
+          type: string
+          description: HTTP localhost URL used in place of `handshake_url` when the current session has localhost mode enabled. Sandbox partners only.
+        default_admin_role:
+          type: string
+          description: Role name to apply to hinters and to admin users by default. Must match the `name` of one of the entries in partner_roles.
+        default_non_admin_role:
+          type: string
+          description: Role name to apply to non-admin users by default. Must match the `name` of one of the entries in partner_roles.
+        prepopulate_role_mappings:
+          type: boolean
+          description: When true, new practice→role mappings are prepopulated with the default role.
+        partner_roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppSanitizer.PartnerRoleSanitizer'
+          description: List of partner-defined roles. Each entry has a `name` (unique, required) and a `description` (free text, optional).
+        browser_allow_list:
+          type: array
+          items:
+            type: string
+          description: 'Browser capabilities delegated to the app''s embedded iframes via the Permissions Policy `allow` attribute. Supported values: `camera`, `microphone`, `geolocation`. Defaults to `[]` (no delegation). The end user still sees the browser''s own permission prompt for each capability. Changes apply the next time a surface is embedded — already-open surfaces must be reloaded.'
+    Public.AppBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        browser_allow_list:
+          type: array
+          items:
+            type: string
+        default_admin_role:
+          type: string
+        default_non_admin_role:
+          type: string
+        handshake_url:
+          type: string
+        localhost_handshake_url:
+          type: string
+        name:
+          type: string
+        prepopulate_role_mappings:
+          type: boolean
+        status:
+          type: string
+        partner_roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.PartnerRoleBlueprint_one'
+        surfaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.AppSurfaceBlueprint_one'
+    Public.AppSurfaceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        source_url:
+          type: string
+        localhost_source_url:
+          type: string
+        type:
+          type: string
+        interaction_title:
+          type: string
+        interaction_description:
+          type: string
+        interaction_type:
+          type: string
+        core_page_icon_url:
+          type: string
+        core_page_icon_label:
+          type: string
+        core_page_auto_adjust_height:
+          type: boolean
+        clinical_chart_icon_url:
+          type: string
+        clinical_chart_icon_label:
+          type: string
+        settings_label:
+          type: string
+    Public.PartnerRoleBlueprint_one:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    AppSanitizer.PartnerRoleSanitizer:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Stable identifier for the role. Required; must be unique across the app's roles.
+        description:
+          type: string
+          description: Free-form description of what the role grants.
+      required:
+      - name
+  securitySchemes:
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'

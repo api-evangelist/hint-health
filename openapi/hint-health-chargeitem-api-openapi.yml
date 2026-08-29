@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken ChargeItem API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Charge Item API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged ChargeItem across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: ChargeItem
 paths:
@@ -52,6 +48,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.ChargeItemsController.create_body'
+      security:
+      - BearerAuth: []
     get:
       tags:
       - ChargeItem
@@ -88,6 +86,13 @@ paths:
               description: The total number of resources available (scoped to query params)
               schema:
                 type: integer
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/charge_items/{id}:
     delete:
       tags:
@@ -105,6 +110,8 @@ paths:
       responses:
         '204':
           description: No content
+      security:
+      - BearerAuth: []
     get:
       tags:
       - ChargeItem
@@ -136,6 +143,8 @@ paths:
                 quantity_in_stock: 50
                 updated_at: '2017-02-05T06:23:00.000000-08:00'
                 category: null
+      security:
+      - BearerAuth: []
     patch:
       tags:
       - ChargeItem
@@ -173,64 +182,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.ChargeItemsController.update_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
-    Public.ChargeItemBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        code:
-          type: string
-        description:
-          type: string
-        name:
-          type: string
-        provider_web_link:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        price_in_cents:
-          type: number
-          format: float
-        quantity_in_stock:
-          type: integer
-          format: int32
-        updated_at:
-          type: string
-          format: date-time
-        category:
-          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
-    Provider.ChargeItemsController.create_body:
-      title: Create_Charge_Item
-      type: object
-      properties:
-        name:
-          type: string
-        price_in_cents:
-          type: number
-          format: double
-        type:
-          type: string
-        description:
-          type: string
-      required:
-      - name
-      - price_in_cents
-      - type
-    Public.CategoryBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        default_for_memberships:
-          type: boolean
     Public.ChargeItemBlueprint_all:
       type: array
       items:
@@ -277,8 +237,72 @@ components:
       - name
       - price_in_cents
       - type
+    Provider.ChargeItemsController.create_body:
+      title: Create_Charge_Item
+      type: object
+      properties:
+        name:
+          type: string
+        price_in_cents:
+          type: number
+          format: double
+        type:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - price_in_cents
+      - type
+    Public.ChargeItemBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        provider_web_link:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        price_in_cents:
+          type: number
+          format: float
+        quantity_in_stock:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+        category:
+          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
+    Public.CategoryBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        default_for_memberships:
+          type: boolean
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

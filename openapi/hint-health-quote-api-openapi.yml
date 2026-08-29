@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken Quote API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Quote API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Quote across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: Quote
 paths:
@@ -70,35 +66,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/QuoteSanitizer'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
-    QuoteSanitizer:
-      type: object
-      properties:
-        plan:
-          $ref: '#/components/schemas/Association'
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuoteSanitizer.MemberSanitizer'
-        period_in_months:
-          type: integer
-          format: int32
-          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
-          enum:
-          - '1'
-          - '3'
-          - '6'
-          - '12'
-        coupon:
-          $ref: '#/components/schemas/Association'
-          description: The coupon to apply to the quote (optional)
-        coupon_code:
-          type: string
-          description: The coupon code to apply to the quote (alternative to coupon object)
-      required:
-      - plan
-      - members
     Association:
       type: object
       properties:
@@ -132,26 +108,15 @@ components:
       required:
       - type
       - uses_tobacco
-    Public.QuoteBlueprint_one:
+    Public.PlanBlueprint_min:
       type: object
       properties:
-        billing_period:
+        id:
           type: string
-        members:
+        name:
           type: string
-        coupon_discount_in_cents:
-          type: integer
-          format: int32
-        ongoing_amount_in_cents:
-          type: integer
-          format: int32
-        registration_fee_in_cents:
-          type: integer
-          format: int32
-        plan:
-          $ref: '#/components/schemas/Public.PlanBlueprint_min'
-        coupon:
-          $ref: '#/components/schemas/Public.CouponBlueprint_one'
+        plan_type:
+          type: string
     Public.CouponBlueprint_one:
       type: object
       properties:
@@ -188,17 +153,63 @@ components:
         redeemable_until:
           type: string
           format: date-time
-    Public.PlanBlueprint_min:
+    Public.QuoteBlueprint_one:
       type: object
       properties:
-        id:
+        billing_period:
           type: string
-        name:
+        members:
           type: string
-        plan_type:
+        coupon_discount_in_cents:
+          type: integer
+          format: int32
+        ongoing_amount_in_cents:
+          type: integer
+          format: int32
+        registration_fee_in_cents:
+          type: integer
+          format: int32
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+        coupon:
+          $ref: '#/components/schemas/Public.CouponBlueprint_one'
+    QuoteSanitizer:
+      type: object
+      properties:
+        plan:
+          $ref: '#/components/schemas/Association'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuoteSanitizer.MemberSanitizer'
+        period_in_months:
+          type: integer
+          format: int32
+          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
+          enum:
+          - '1'
+          - '3'
+          - '6'
+          - '12'
+        coupon:
+          $ref: '#/components/schemas/Association'
+          description: The coupon to apply to the quote (optional)
+        coupon_code:
           type: string
+          description: The coupon code to apply to the quote (alternative to coupon object)
+      required:
+      - plan
+      - members
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml

@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Hint Health AccountAccessToken DocumentInteraction API
-  description: REST API providing programmatic access to Hint Health's direct primary care platform, covering patient and membership management, billing, charges, invoices, clinical data, practice configuration, partner integrations, and webhook event delivery.
-  version: '1.0'
-  contact:
-    name: Hint Health Developer Support
-    email: devsupport@hint.com
-    url: https://developers.hint.com
+  title: Hint Health Document Interaction API
   license:
     name: Private
   termsOfService: https://www.hint.com/terms
+  x-refined-note:
+  - x-api-evangelist-harvest differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged DocumentInteraction across 2 of this provider''s published API definitions: hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.hint.com/api
   description: Production
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
-security:
-- BearerAuth: []
 tags:
 - name: DocumentInteraction
 paths:
@@ -59,6 +55,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.Patients.Interactions.DocumentController.create_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
   /provider/patients/{patient_id}/interactions/document/{id}:
     get:
       tags:
@@ -98,6 +101,8 @@ paths:
                 integration_record_id: null
                 integration_sync_status: enabled
                 integration_web_link: null
+      security:
+      - BearerAuth: []
     patch:
       tags:
       - DocumentInteraction
@@ -142,6 +147,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provider.Patients.Interactions.DocumentController.update_body'
+      security:
+      - BearerAuth: []
+    servers:
+    - url: https://api.hint.com/api
+      description: Production
+    - url: https://api.sandbox.hint.com/api
+      description: Sandbox
 components:
   schemas:
     Public.InteractionBlueprint_one:
@@ -223,8 +235,119 @@ components:
           type: string
       required:
       - status
+    Public.InteractionBlueprint_one_2:
+      type: object
+      properties:
+        id:
+          type: string
+        body:
+          type: string
+        event_timestamp:
+          type: string
+          format: date-time
+        patient_access:
+          type: boolean
+        patient_id:
+          type: string
+        status:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.Interaction.FileBlueprint_leaf'
+    Provider.Patients.Interactions.DocumentController.update_body_2:
+      title: Update_DocumentInteraction
+      type: object
+      properties:
+        status:
+          type: string
+          description: ' The status of the interaction.'
+          enum:
+          - draft
+          - signed
+          - addended
+          - deleted
+          - failed
+        title:
+          type: string
+          description: The title of the interaction.
+        body:
+          type: string
+          description: The body of the interaction.
+        files:
+          type: array
+          items:
+            type: string
+          description: The files to attach to the interaction. They will be downloaded as part of the request. If provided it will OVERRIDE the files on the interaction, so include all the files you want to keep.
+        event_timestamp:
+          type: string
+          format: date-time
+          description: The event timestamp of the interaction.
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+      required:
+      - status
+    Provider.Patients.Interactions.DocumentController.create_body_2:
+      title: Create_DocumentInteraction
+      type: object
+      properties:
+        status:
+          type: string
+          description: ' The status of the interaction.'
+          enum:
+          - draft
+          - signed
+          - addended
+          - deleted
+          - failed
+        title:
+          type: string
+          description: The title of the interaction.
+        body:
+          type: string
+          description: The body of the interaction. Markdown formatted.
+        files:
+          type: array
+          items:
+            type: string
+          description: The files to attach to the interaction. They will be downloaded as part of the request.
+        event_timestamp:
+          type: string
+          format: date-time
+          description: The event timestamp of the interaction.
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+      required:
+      - status
+    Public.Interaction.FileBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       description: Practice access token or Partner API key (Bearer authentication)
+    hint_api_key:
+      type: apiKey
+      name: AUTHORIZATION
+      in: header
+      description: 'Enter your token in the format: `Bearer {your_api_key}`'
+x-refined-from:
+- hint-health-hint-health-api-openapi.yml
+- hint-health-partner-endpoints-2026-07-01-openapi.yml
