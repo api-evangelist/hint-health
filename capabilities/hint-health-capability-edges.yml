@@ -11,93 +11,76 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 9
+edge_count: 7
 edges:
 - tag: ClinicalNoteInteraction
   spec_file: hint-health-clinicalnoteinteraction-api-openapi.yml
   capability_id: BC-2830.10
   capability_id_l1: BC-2830
   capability_name: Clinical Note Documentation
-  confidence: 0.9
-  evidence: POST /provider/patients/{patient_id}/interactions/clinical_note  ClinicalNoteInteraction.CreateClinicalNoteInteraction  Create
-    Clinical Note Interaction
-  reason: Authoring and updating clinical notes attached to a patient is clinical note documentation.
+  confidence: 0.92
+  evidence: POST /provider/patients/{patient_id}/interactions/clinical_note  Create Clinical Note Interaction
+  reason: Authoring and updating clinical notes attached to a patient record is clinical note documentation.
 - tag: Appointment
   spec_file: hint-health-appointment-api-openapi.yml
   capability_id: BC-2800.10
   capability_id_l1: BC-2800
   capability_name: Scheduling & Appointment Management
-  confidence: 0.85
+  confidence: 0.88
   evidence: GET /provider/appointments  Appointment.ListAllAppointments  List All Appointments; GET /provider/appointment_types
-  reason: Operations expose clinic appointments and appointment types with patient, provider and location
-    schemas — provider-side scheduling/appointment management.
-- tag: GlobalWebhookEndpoint
-  spec_file: hint-health-globalwebhookendpoint-api-openapi.yml
-  capability_id: BC-4270.80
-  capability_id_l1: BC-4270
-  capability_name: Webhook & Event Subscription Management
-  confidence: 0.8
-  evidence: POST /global_webhook_endpoints  Create Webhook Endpoint; schema Platform.WebhookEndpointBlueprint_one;
-    description mentions 'webhook event delivery'
-  reason: CRUD over webhook endpoint registrations for outbound event delivery — squarely webhook and
-    event subscription management in the platform's developer/API ecosystem.
-- tag: InstallationApiKeys
-  spec_file: hint-health-installationapikeys-api-openapi.yml
-  capability_id: BC-4270.40
-  capability_id_l1: BC-4270
-  capability_name: Developer Identity & Credential Management
-  confidence: 0.8
-  evidence: POST /partner/installations/{installation_id}/api_keys  Create Installation API Key; schema
-    Public.ApiKeyBlueprint_one
-  reason: Issuance, rotation and revocation of API keys for partner installations — developer credential
-    management, technical plumbing of the API ecosystem rather than a healthcare capability.
-- tag: InstallationWebhookEndpoints
-  spec_file: hint-health-installationwebhookendpoints-api-openapi.yml
-  capability_id: BC-4270.80
-  capability_id_l1: BC-4270
-  capability_name: Webhook & Event Subscription Management
-  confidence: 0.8
-  evidence: POST /partner/installations/{installation_id}/webhook_endpoints  Create Installation Webhook
-    Endpoint; schema Public.WebhookEndpointBlueprint_all
-  reason: Lifecycle management of per-installation outbound webhook subscriptions — webhook and event
-    subscription management.
+  reason: Operations expose patient appointments and appointment types for a primary-care practice platform,
+    which is provider scheduling/appointment management under Patient Access.
 - tag: Charge
   spec_file: hint-health-charge-api-openapi.yml
   capability_id: BC-2870.10
   capability_id_l1: BC-2870
   capability_name: Charge Capture & Chargemaster Management
-  confidence: 0.75
+  confidence: 0.78
   evidence: POST /provider/charges  Charge.CreateCharge  Create Charge; Public.ChargeBlueprint_one_with_invoice,
-    Public.ChargeItemBlueprint_one, Public.PatientBlueprint_one
-  reason: Creation of patient charges composed of charge items and linked to invoices is charge capture
-    within the provider revenue cycle.
+    ChargeItem
+  reason: Creating a charge against a patient that flows to an invoice is charge capture within the provider
+    revenue cycle.
 - tag: Patient
   spec_file: hint-health-patient-api-openapi.yml
   capability_id: BC-2800.20
   capability_id_l1: BC-2800
   capability_name: Patient Registration Management
-  confidence: 0.72
-  evidence: POST /provider/patients "Create Patient", POST /provider/patients/matching "Match Patients";
-    schemas "Public.PatientBlueprint_one", "Common.SocialSecurityNumberBlueprint_masked", "Public.MembershipMemberBlueprint_for_patient"
-  reason: Creates and maintains patient demographic/identity records (name, phone, SSN, membership linkage)
-    for a practice — patient registration/enrolment stewardship. Some overlap with master patient index
-    work given the Match Patients endpoint, hence not higher confidence on the L2.
-- tag: AccountAccessToken
-  spec_file: hint-health-accountaccesstoken-api-openapi.yml
-  capability_id: BC-2910.20
-  capability_id_l1: BC-2910
-  capability_name: Patient Portal & Digital Services
-  confidence: 0.7
-  evidence: POST /provider/patients/{patient_id}/account_access_tokens — "Create Patient Portal access
-    token"
-  reason: The single operation mints access to the patient-facing portal for a specific patient, supporting
-    patient portal / digital self-service operation, though it is a credential-issuance mechanism.
+  confidence: 0.78
+  evidence: POST /provider/patients  Create Patient; POST /provider/patients/matching  Match Patients;
+    Common.SocialSecurityNumberBlueprint_masked, PhoneNumber
+  reason: Creates, updates and matches patient records holding demographic and identity data (phone, SSN,
+    membership links), which is registration-level capture and stewardship of patient demographic/identity
+    data for a practice. Patient matching also touches MPI stewardship, hence not full confidence on the
+    sub-capability.
 - tag: ChargeItem
   spec_file: hint-health-chargeitem-api-openapi.yml
   capability_id: BC-2870.10
   capability_id_l1: BC-2870
   capability_name: Charge Capture & Chargemaster Management
-  confidence: 0.7
+  confidence: 0.75
   evidence: POST /provider/charge_items  ChargeItem.CreateChargeItem  Create Charge Item; Public.CategoryBlueprint_one
-  reason: CRUD over the practice's catalogue of billable charge items and their categories — chargemaster/charge
-    capture stewardship rather than generic product catalogue.
+  reason: CRUD over the catalogue of billable charge items with categories is chargemaster stewardship
+    feeding charge capture.
+- tag: Membership
+  spec_file: hint-health-membership-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.75
+  evidence: POST /provider/memberships/{id}/bill  Bill Membership; POST /provider/memberships/{id}/cancel  Cancel
+    Membership; POST /provider/memberships/{id}/confirm  Confirm Membership
+  reason: Create, confirm, bill, update and cancel recurring memberships is the commercial subscription
+    lifecycle for a direct-primary-care practice, matching the vendor's stated 'membership management,
+    automated billing'. Operations span provisioning, modification and cancellation, so the L1 is the
+    right level.
+- tag: LabInteraction
+  spec_file: hint-health-labinteraction-api-openapi.yml
+  capability_id: BC-2860.60
+  capability_id_l1: BC-2860
+  capability_name: Diagnostic Results Management
+  confidence: 0.7
+  evidence: POST /provider/patients/{patient_id}/interactions/lab  Create Lab Interaction; schemas Public.Interaction.Lab.OrderBlueprint_leaf,
+    Public.Interaction.Lab.ResultBlueprint_leaf, Public.Interaction.Lab.ReportBlueprint_leaf, Public.Interaction.Lab.Result.RangeBlueprint_leaf
+  reason: The schemas model lab orders, results with quantities and reference ranges, and lab reports
+    against a patient — capture and distribution of diagnostic laboratory results. Diagnostic Results
+    Management is the closest sub-capability, though the order side also touches order entry.
