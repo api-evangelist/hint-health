@@ -750,6 +750,9 @@ apis:
   - type: Documentation
     url: https://developers.hint.com/docs/overview
 common:
+  - type: CapabilityMap
+    url: capabilities/hint-health-capability-edges.yml
+    name: Hint Health Business Capability Map
   - type: AgenticAccess
     url: agentic-access/hint-health-agentic-access.yml
   - type: TrustCenter
