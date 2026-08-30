@@ -1,31 +1,33 @@
 ---
 kin_checks:
   slug: hint-health
-  schema_version: 0.15.1
-  scored_at: '2026-08-28'
-  run_ts: 2026-08-28T221322
+  schema_version: 0.16.0
+  scored_at: '2026-08-29'
+  run_ts: 2026-08-29T230545
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.15.1.yml; counts below let you verify that.
+    in rubric/scoring-0.16.0.yml; counts below let you verify that.
   counts:
     total: 130
-    earned: 60
-    partial: 16
-    missed: 35
+    earned: 56
+    partial: 18
+    missed: 37
     na: 19
   checks:
+  - id: maintainer_present
+    status: missed
   - id: well_known_published
     status: missed
   - id: apis_json_self_hosted
     status: missed
   - id: openapi_3_2
     status: missed
-    detail: 0 of 49 openapi documents pass
+    detail: 0 of 67 openapi documents pass
   - id: error_responses_documented
     status: missed
-    detail: 0 of 49 openapi documents pass
+    detail: 0 of 67 openapi documents pass
   - id: webhooks_or_callbacks
     status: missed
-    detail: 0 of 49 openapi documents pass
+    detail: 0 of 67 openapi documents pass
   - id: json_schema_present
     status: missed
   - id: json_schema_per_resource
@@ -37,6 +39,8 @@ kin_checks:
   - id: rules_substantial
     status: missed
   - id: vocabulary_published
+    status: missed
+  - id: overlay_published
     status: missed
   - id: change_log_present
     status: missed
@@ -86,17 +90,25 @@ kin_checks:
     status: missed
   - id: agentic_commerce
     status: missed
+  - id: info_complete
+    status: partial
+    earned: 0.18
+    detail: 3 of 67 openapi documents pass
   - id: operations_description_coverage
     status: partial
-    earned: 0.12
-    detail: 1 of 49 openapi documents pass
+    earned: 0.45
+    detail: 5 of 67 openapi documents pass
   - id: examples_present
     status: partial
-    earned: 3.68
+    earned: 3.63
   - id: components_reuse
     status: partial
-    earned: 1.1
-    detail: 18 of 49 openapi documents pass
+    earned: 1.3
+    detail: 29 of 67 openapi documents pass
+  - id: security_applied
+    status: partial
+    earned: 2.19
+    detail: 49 of 67 openapi documents pass
   - id: rules_present
     status: partial
     earned: 2.5
