@@ -106,7 +106,7 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
-  - CancellationReason
+  - Cancellation Reason
   tags_raw:
   - CancellationReason
   properties:
@@ -235,7 +235,7 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
-  - CreditLine
+  - Credit Line
   tags_raw:
   - CreditLine
   properties:
@@ -451,7 +451,7 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
-  - LeadSource
+  - Lead Source
   tags_raw:
   - LeadSource
   properties:
@@ -739,7 +739,7 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
-  - WebhookEndpoint
+  - Webhook Endpoint
   tags_raw:
   - WebhookEndpoint
   properties:
