@@ -24,7 +24,10 @@ accessModel:
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/hint-health.png
 url: https://raw.githubusercontent.com/api-evangelist/hint-health/refs/heads/main/apis.yml
