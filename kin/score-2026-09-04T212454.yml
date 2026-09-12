@@ -1,0 +1,58 @@
+# Kin Score artifact — hint-health — 2026-09-04T212454
+# The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
+---
+kin_score:
+  slug: hint-health
+  schema_version: 0.18.3
+  scored_at: '2026-09-04'
+  run_ts: 2026-09-04T212454
+  composite: 67.6
+  band: exemplar
+  facets:
+    discoverability: 51.9
+    contract_quality: 69.0
+    governance: 28.0
+    operational_transparency: 47.4
+    developer_ergonomics: 64.3
+    commercial_clarity: 100.0
+    contract_governance: 28.0
+    access_clarity: 100.0
+  agent_readiness:
+    score: 44.0
+    band: agent-native
+    dimensions:
+      spec_presence: true
+      agentic_access: derived
+      reversibility_documented: documented
+      mcp_server: documented
+      auth_clarity: bearer
+      idempotency: documented
+      error_semantics: documented
+      openapi_examples: verified
+      rate_limit_signal: documented
+      event_surface_described: true
+      agent_skills: true
+      well_known_catalog: false
+      consent_identity: false
+      agent_card: false
+      dry_run_mode: false
+      delegated_identity: false
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Health
+    regime_id: health
+    score: 37.5
+    matched_via: tags
+  provenance:
+    mcp: first-party
+    skills: first-party
+    agentic_access: derived
+    conformance: first-party
+    contracts:
+      total: 67
+      derived: 0
+      coverage: 26.9
+      callable: 100.0
