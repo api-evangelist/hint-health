@@ -366,6 +366,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Invoices
+  tags_raw:
   - Invoice
   properties:
   - type: OpenAPI
@@ -464,6 +466,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Partners
+  tags_raw:
   - Partner
   properties:
   - type: OpenAPI
@@ -506,6 +510,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Patients
+  tags_raw:
   - Patient
   properties:
   - type: OpenAPI
@@ -807,6 +813,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
@@ -819,6 +827,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - APIKeys
+  tags_raw:
   - API Key
   properties:
   - type: OpenAPI
@@ -855,6 +865,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - FormResponse
+  tags_raw:
   - Form Response
   properties:
   - type: OpenAPI
@@ -915,6 +927,8 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
+  - WebhookEvent
+  tags_raw:
   - Webhook Event
   properties:
   - type: OpenAPI
