@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 7
+edge_count: 20
 edges:
 - tag: ClinicalNoteInteraction
   spec_file: hint-health-clinicalnoteinteraction-api-openapi.yml
@@ -21,6 +21,17 @@ edges:
   confidence: 0.92
   evidence: POST /provider/patients/{patient_id}/interactions/clinical_note  Create Clinical Note Interaction
   reason: Authoring and updating clinical notes attached to a patient record is clinical note documentation.
+- tag: WebhookEndpoint
+  spec_file: hint-health-webhook-endpoint-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.92
+  evidence: POST /integrations/{integration_id}/webhook_endpoints  Create Webhook Endpoint; Platform.WebhookEndpointBlueprint_all
+  reason: Full lifecycle management of outbound webhook endpoints registered under an integration, matching
+    webhook and event subscription management exactly.
+  recovered_from: sweep-20260829T005356Z-edges.json
+  reanchored_from: hint-health-webhookendpoint-api-openapi.yml
 - tag: Appointment
   spec_file: hint-health-appointment-api-openapi.yml
   capability_id: BC-2800.10
@@ -30,6 +41,62 @@ edges:
   evidence: GET /provider/appointments  Appointment.ListAllAppointments  List All Appointments; GET /provider/appointment_types
   reason: Operations expose patient appointments and appointment types for a primary-care practice platform,
     which is provider scheduling/appointment management under Patient Access.
+- tag: GlobalWebhookEndpoint
+  spec_file: hint-health-globalwebhookendpoint-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.87
+  evidence: 'POST /global_webhook_endpoints  Create Webhook Endpoint ... schemas: Platform.WebhookEndpointBlueprint_one'
+  reason: Full CRUD lifecycle over outbound webhook endpoints, matching Webhook & Event Subscription Management.
+    Vendor description also cites 'webhook event delivery'.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: CustomerInvoice
+  spec_file: hint-health-customerinvoice-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.85
+  evidence: POST /provider/customer_invoices/{id}/issue  Issue Customer Invoice; POST /provider/customer_invoices/{id}/void  Void
+    Customer Invoice; POST /provider/customer_invoices/{customer_invoice_id}/pdf  Generate PDF for Customer
+    Invoice
+  reason: Complete customer invoice lifecycle — draft, issue, return-to-draft, void, PDF generation —
+    against patients and companies. This is unambiguously customer invoicing / accounts receivable.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: InstallationApiKeys
+  spec_file: hint-health-installationapikeys-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.8
+  evidence: POST /partner/installations/{installation_id}/api_keys  Create Installation API Key; schema
+    Public.ApiKeyBlueprint_one
+  reason: Issuance, rotation and revocation of API keys for partner installations — developer credential
+    management, technical plumbing of the API ecosystem rather than a healthcare capability.
+  recovered_from: healthcare-vertical-edges.json
+- tag: InstallationWebhookEndpoints
+  spec_file: hint-health-installationwebhookendpoints-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.8
+  evidence: POST /partner/installations/{installation_id}/webhook_endpoints  Create Installation Webhook
+    Endpoint; schema Public.WebhookEndpointBlueprint_all
+  reason: Lifecycle management of per-installation outbound webhook subscriptions — webhook and event
+    subscription management.
+  recovered_from: healthcare-vertical-edges.json
+- tag: PaymentMethod
+  spec_file: hint-health-payment-method-api-openapi.yml
+  capability_id: BC-4250.40
+  capability_id_l1: BC-4250
+  capability_name: Payment Collection & Dunning
+  confidence: 0.8
+  evidence: POST /provider/patients/{patient_id}/payment_methods  Create Payment Method; POST /provider/patients/{patient_id}/payment_methods/setup  Create
+    Setup Intent
+  reason: Stores, lists and deletes payment methods on file for a payer and creates a setup intent to
+    tokenise a card — squarely payment-method management within Payment Collection & Dunning.
+  recovered_from: sweep-20260829T005356Z-edges.json
+  reanchored_from: hint-health-paymentmethod-api-openapi.yml
 - tag: Charge
   spec_file: hint-health-charge-api-openapi.yml
   capability_id: BC-2870.10
@@ -61,6 +128,27 @@ edges:
   evidence: POST /provider/charge_items  ChargeItem.CreateChargeItem  Create Charge Item; Public.CategoryBlueprint_one
   reason: CRUD over the catalogue of billable charge items with categories is chargemaster stewardship
     feeding charge capture.
+- tag: CustomerInvoiceCharge
+  spec_file: hint-health-customerinvoicecharge-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.75
+  evidence: POST /provider/customer_invoices/{customer_invoice_id}/charges  Create CustomerInvoiceCharge
+  reason: Manages the charge lines attached to a customer invoice (create, update, delete), which is invoice
+    composition within customer invoicing / receivables.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: InvoicePayment
+  spec_file: hint-health-invoicepayment-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.75
+  evidence: POST /provider/companies/{company_id}/invoices/{invoice_id}/payments  InvoicePayment.CreatePayment  Create
+    Payment
+  reason: Creating and listing payments against company invoices with a PaymentSource — cash application
+    against customer receivables.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: Membership
   spec_file: hint-health-membership-api-openapi.yml
   capability_id: BC-4240
@@ -73,6 +161,49 @@ edges:
     lifecycle for a direct-primary-care practice, matching the vendor's stated 'membership management,
     automated billing'. Operations span provisioning, modification and cancellation, so the L1 is the
     right level.
+- tag: CustomerInvoicePayment
+  spec_file: hint-health-customerinvoicepayment-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.72
+  evidence: POST /provider/customer_invoices/{customer_invoice_id}/payments  CustomerInvoicePayment.CreatePayment  Create
+    Payment
+  reason: Operations record and list payments applied against customer invoices, i.e. cash application
+    against receivables. Accounts Receivable Management is the closest honest fit; the alternative SaaS
+    subscription-billing reading is less certain since these are provider-issued patient/company invoices.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: AccountAccessToken
+  spec_file: hint-health-accountaccesstoken-api-openapi.yml
+  capability_id: BC-2910.20
+  capability_id_l1: BC-2910
+  capability_name: Patient Portal & Digital Services
+  confidence: 0.7
+  evidence: POST /provider/patients/{patient_id}/account_access_tokens — "Create Patient Portal access
+    token"
+  reason: The single operation mints access to the patient-facing portal for a specific patient, supporting
+    patient portal / digital self-service operation, though it is a credential-issuance mechanism.
+  recovered_from: healthcare-vertical-edges.json
+- tag: Coupon
+  spec_file: hint-health-coupon-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.7
+  evidence: GET /provider/coupons  Coupon.ListAllCoupons  List All Coupons; Public.CouponBlueprint_one
+  reason: Coupons in a membership-billing platform are discount instruments applied to charges/invoices,
+    which is discount and promotion management. Read-only surface only, so moderate confidence.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Invoice
+  spec_file: hint-health-invoice-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: GET /provider/companies/{company_id}/invoices  Invoice.ListAllInvoices  List All Invoices
+  reason: Read access to invoices issued to client companies, i.e. customer invoicing under Accounts Receivable
+    Management. Read-only and no schemas listed, so confidence is moderate.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: LabInteraction
   spec_file: hint-health-labinteraction-api-openapi.yml
   capability_id: BC-2860.60
@@ -84,3 +215,15 @@ edges:
   reason: The schemas model lab orders, results with quantities and reference ranges, and lab reports
     against a patient — capture and distribution of diagnostic laboratory results. Diagnostic Results
     Management is the closest sub-capability, though the order side also touches order entry.
+- tag: MembershipContract
+  spec_file: hint-health-membershipcontract-api-openapi.yml
+  capability_id: BC-4240.50
+  capability_id_l1: BC-4240
+  capability_name: Renewal Management
+  confidence: 0.7
+  evidence: POST /provider/memberships/{membership_id}/contracts/renew  MembershipContract.RenewMembershipContract  Renew
+    Membership Contract
+  reason: Operations list and renew the contract terms attached to a recurring membership, which is renewal
+    processing within the subscription/membership commercial lifecycle. Contract-artefact capture (BC-4240.20)
+    is also arguable, but the explicit 'renew' action points at Renewal Management.
+  recovered_from: sweep-20260829T005356Z-edges.json
