@@ -158,30 +158,7 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.CreditCategoryBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          created_at:
-            type: string
-            format: date-time
-          name:
-            type: string
-          updated_at:
-            type: string
-            format: date-time
     Provider.CreditCategoriesController.update_body:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Value is case sensitive. If you delete a Credit Category, you can restore it by POSTing with the same name.
-      required:
-      - name
-    Provider.CreditCategoriesController.create_body:
       type: object
       properties:
         name:
@@ -202,6 +179,29 @@ components:
         updated_at:
           type: string
           format: date-time
+    Provider.CreditCategoriesController.create_body:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Value is case sensitive. If you delete a Credit Category, you can restore it by POSTing with the same name.
+      required:
+      - name
+    Public.CreditCategoryBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          name:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
   securitySchemes:
     BearerAuth:
       type: http

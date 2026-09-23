@@ -126,47 +126,6 @@ paths:
           description: Successful response
 components:
   schemas:
-    Partner.PartnerProductApps.SurfacesController.create_body:
-      title: Create_AppSurface
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - core_page
-          - clinical_interaction
-          - clinical_chart
-          - settings
-        source_url:
-          type: string
-        localhost_source_url:
-          type: string
-          description: HTTP localhost URL used in place of `source_url` when the requesting browser session has localhost mode enabled. Sandbox partners only.
-        core_page_icon:
-          type: string
-          description: Base64-encoded data URI of the icon image (e.g. `data:image/png;base64,...`). Max 5MB. Used only for `core_page` surfaces. **Note the field-name asymmetry:** the request field is `core_page_icon` (data URI input); the GET response surfaces the uploaded image as `core_page_icon_url` (hosted URL). Sending `core_page_icon_url` as a request field is silently ignored.
-        core_page_icon_label:
-          type: string
-          description: Sidebar text shown next to the icon — tooltip on hover on desktop, visible text on mobile sidebars. Recommended ≤14 characters (longer labels overflow the nav rail). Used only for `core_page` surfaces.
-        core_page_auto_adjust_height:
-          type: boolean
-        interaction_title:
-          type: string
-        interaction_description:
-          type: string
-        interaction_type:
-          type: string
-        clinical_chart_icon:
-          type: string
-          description: Base64-encoded data URI of the icon image (e.g. `data:image/png;base64,...`). Max 5MB. Used only for `clinical_chart` surfaces. **Note the field-name asymmetry:** the request field is `clinical_chart_icon` (data URI input); the GET response surfaces the uploaded image as `clinical_chart_icon_url` (hosted URL). Sending `clinical_chart_icon_url` as a request field is silently ignored.
-        clinical_chart_icon_label:
-          type: string
-          description: Sidebar text shown next to the icon — tooltip on hover on desktop, visible text on mobile sidebars. Recommended ≤14 characters. Used only for `clinical_chart` surfaces.
-        settings_label:
-          type: string
-      required:
-      - type
-      - source_url
     Public.AppSurfaceBlueprint_one:
       type: object
       properties:
@@ -227,6 +186,47 @@ components:
           description: Sidebar text shown next to the icon — tooltip on hover on desktop, visible text on mobile sidebars. Recommended ≤14 characters. Used only for `clinical_chart` surfaces.
         settings_label:
           type: string
+    Partner.PartnerProductApps.SurfacesController.create_body:
+      title: Create_AppSurface
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - core_page
+          - clinical_interaction
+          - clinical_chart
+          - settings
+        source_url:
+          type: string
+        localhost_source_url:
+          type: string
+          description: HTTP localhost URL used in place of `source_url` when the requesting browser session has localhost mode enabled. Sandbox partners only.
+        core_page_icon:
+          type: string
+          description: Base64-encoded data URI of the icon image (e.g. `data:image/png;base64,...`). Max 5MB. Used only for `core_page` surfaces. **Note the field-name asymmetry:** the request field is `core_page_icon` (data URI input); the GET response surfaces the uploaded image as `core_page_icon_url` (hosted URL). Sending `core_page_icon_url` as a request field is silently ignored.
+        core_page_icon_label:
+          type: string
+          description: Sidebar text shown next to the icon — tooltip on hover on desktop, visible text on mobile sidebars. Recommended ≤14 characters (longer labels overflow the nav rail). Used only for `core_page` surfaces.
+        core_page_auto_adjust_height:
+          type: boolean
+        interaction_title:
+          type: string
+        interaction_description:
+          type: string
+        interaction_type:
+          type: string
+        clinical_chart_icon:
+          type: string
+          description: Base64-encoded data URI of the icon image (e.g. `data:image/png;base64,...`). Max 5MB. Used only for `clinical_chart` surfaces. **Note the field-name asymmetry:** the request field is `clinical_chart_icon` (data URI input); the GET response surfaces the uploaded image as `clinical_chart_icon_url` (hosted URL). Sending `clinical_chart_icon_url` as a request field is silently ignored.
+        clinical_chart_icon_label:
+          type: string
+          description: Sidebar text shown next to the icon — tooltip on hover on desktop, visible text on mobile sidebars. Recommended ≤14 characters. Used only for `clinical_chart` surfaces.
+        settings_label:
+          type: string
+      required:
+      - type
+      - source_url
   securitySchemes:
     hint_api_key:
       type: apiKey

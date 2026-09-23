@@ -14,12 +14,12 @@ servers:
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
 tags:
-- name: WebhookEndpoint
+- name: Webhook Endpoint
 paths:
   /integrations/{integration_id}/webhook_endpoints:
     post:
       tags:
-      - WebhookEndpoint
+      - Webhook Endpoint
       operationId: WebhookEndpoint.CreateWebhookEndpointLegacy
       summary: Create Webhook Endpoint
       description: ''
@@ -57,7 +57,7 @@ paths:
       - BearerAuth: []
     get:
       tags:
-      - WebhookEndpoint
+      - Webhook Endpoint
       operationId: WebhookEndpoint.WebhookEndpointsLegacy
       summary: List All Webhook Endpoints
       description: ''
@@ -115,7 +115,7 @@ paths:
   /integrations/{integration_id}/webhook_endpoints/{id}:
     delete:
       tags:
-      - WebhookEndpoint
+      - Webhook Endpoint
       operationId: WebhookEndpoint.DeleteWebhookEndpointLegacy
       summary: Delete Webhook Endpoint
       description: This operation will take effect immediately and cancel all pending and retrying webhooks.
@@ -139,7 +139,7 @@ paths:
       - BearerAuth: []
     get:
       tags:
-      - WebhookEndpoint
+      - Webhook Endpoint
       operationId: WebhookEndpoint.ShowWebhookEndpointLegacy
       summary: Show Webhook Endpoint
       description: ''
@@ -177,7 +177,7 @@ paths:
       - BearerAuth: []
     patch:
       tags:
-      - WebhookEndpoint
+      - Webhook Endpoint
       operationId: WebhookEndpoint.UpdateWebhookEndpointLegacy
       summary: Update Webhook Endpoint
       description: ''
@@ -227,7 +227,7 @@ paths:
   /partner/webhook_endpoints:
     get:
       tags:
-      - WebhookEndpoint
+      - Webhook Endpoint
       operationId: WebhookEndpoint.ListWebhookEndpoints
       summary: List Webhook Endpoints
       description: ''
@@ -318,7 +318,7 @@ paths:
   /partner/webhook_endpoints/{id}:
     patch:
       tags:
-      - WebhookEndpoint
+      - Webhook Endpoint
       operationId: WebhookEndpoint.UpdateWebhookEndpoint
       summary: Update Webhook Endpoint
       description: ''
@@ -353,7 +353,7 @@ paths:
               $ref: '#/components/schemas/Partner.WebhookEndpointsController.update_body'
     delete:
       tags:
-      - WebhookEndpoint
+      - Webhook Endpoint
       operationId: WebhookEndpoint.DeleteWebhookEndpoint
       summary: Delete Webhook Endpoint
       description: ''
@@ -371,19 +371,6 @@ paths:
     - url: https://api.sandbox.hint.com/api
 components:
   schemas:
-    Platform.WebhookEndpointsController.update_body:
-      title: Update_WebhookEndpoint_Legacy
-      type: object
-      properties:
-        webhook_url:
-          type: string
-    Platform.WebhookEndpointsController.create_body:
-      type: object
-      properties:
-        webhook_url:
-          type: string
-      required:
-      - webhook_url
     Platform.WebhookEndpointBlueprint_one:
       type: object
       properties:
@@ -412,6 +399,26 @@ components:
             type: string
           webhook_url:
             type: string
+    Platform.WebhookEndpointsController.update_body:
+      title: Update_WebhookEndpoint_Legacy
+      type: object
+      properties:
+        webhook_url:
+          type: string
+    Platform.WebhookEndpointsController.create_body:
+      type: object
+      properties:
+        webhook_url:
+          type: string
+      required:
+      - webhook_url
+    Public.BackendBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     Public.WebhookEndpointBlueprint_one:
       type: object
       properties:
@@ -427,12 +434,11 @@ components:
           type: string
         partner_backend:
           $ref: '#/components/schemas/Public.BackendBlueprint_min'
-    Public.BackendBlueprint_min:
+    Partner.WebhookEndpointsController.update_body:
+      title: Update_WebhookEndpoint
       type: object
       properties:
-        id:
-          type: string
-        name:
+        webhook_url:
           type: string
     Public.WebhookEndpointBlueprint_all:
       type: array
@@ -451,12 +457,6 @@ components:
             type: string
           partner_backend:
             $ref: '#/components/schemas/Public.BackendBlueprint_min'
-    Partner.WebhookEndpointsController.update_body:
-      title: Update_WebhookEndpoint
-      type: object
-      properties:
-        webhook_url:
-          type: string
   securitySchemes:
     BearerAuth:
       type: http

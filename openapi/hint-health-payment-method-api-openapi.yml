@@ -14,12 +14,12 @@ servers:
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
 tags:
-- name: PaymentMethod
+- name: Payment Method
 paths:
   /provider/patients/{patient_id}/payment_methods:
     post:
       tags:
-      - PaymentMethod
+      - Payment Method
       operationId: PaymentMethod.CreatePaymentMethod
       summary: Create Payment Method
       description: 'Exactly one of `rainforest_id` or `stripe_id` must be provided. Practices on Hint Payments
@@ -60,7 +60,7 @@ paths:
       - BearerAuth: []
     get:
       tags:
-      - PaymentMethod
+      - Payment Method
       operationId: PaymentMethod.ListAllPaymentMethods
       summary: List All Payment Methods
       description: ''
@@ -127,7 +127,7 @@ paths:
   /provider/patients/{patient_id}/payment_methods/setup:
     post:
       tags:
-      - PaymentMethod
+      - Payment Method
       operationId: PaymentMethod.CreateSetupIntent
       summary: Create Setup Intent
       description: 'The response shape depends on the practice''s payment processor (`payment_processor` in the response):
@@ -170,7 +170,7 @@ paths:
   /provider/patients/{patient_id}/payment_methods/{id}:
     delete:
       tags:
-      - PaymentMethod
+      - Payment Method
       operationId: PaymentMethod.DeletePaymentMethod
       summary: Delete Payment Method
       description: ''
@@ -194,7 +194,7 @@ paths:
       - BearerAuth: []
     get:
       tags:
-      - PaymentMethod
+      - Payment Method
       operationId: PaymentMethod.ShowPaymentMethod
       summary: Show Payment Method
       description: ''

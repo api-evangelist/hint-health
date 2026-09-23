@@ -160,14 +160,6 @@ components:
           type: string
         logo_url:
           type: string
-    Partner.PartnersController.update_body:
-      title: Update_Partner
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
     Public.PartnerBlueprint_one:
       type: object
       properties:
@@ -178,6 +170,14 @@ components:
         logo_url:
           type: string
         name:
+          type: string
+    Partner.PartnersController.update_body:
+      title: Update_Partner
+      type: object
+      properties:
+        name:
+          type: string
+        email:
           type: string
   securitySchemes:
     BearerAuth:

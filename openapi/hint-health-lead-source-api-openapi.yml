@@ -14,12 +14,12 @@ servers:
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
 tags:
-- name: LeadSource
+- name: Lead Source
 paths:
   /provider/lead_sources/{id}:
     delete:
       tags:
-      - LeadSource
+      - Lead Source
       operationId: LeadSource.DeleteLeadSource
       summary: Delete Lead Source
       description: ''
@@ -37,7 +37,7 @@ paths:
       - BearerAuth: []
     patch:
       tags:
-      - LeadSource
+      - Lead Source
       operationId: LeadSource.UpdateLeadSource
       summary: Update Lead Source
       description: ''
@@ -76,7 +76,7 @@ paths:
   /provider/lead_sources:
     post:
       tags:
-      - LeadSource
+      - Lead Source
       operationId: LeadSource.LeadSource
       summary: Create LeadSource
       description: ''
@@ -103,7 +103,7 @@ paths:
       - BearerAuth: []
     get:
       tags:
-      - LeadSource
+      - Lead Source
       operationId: LeadSource.LeadSources
       summary: List All Lead Sources
       description: ''
@@ -131,12 +131,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Provider.LeadSourcesController.update_body:
-      title: Create_LeadSource
-      type: object
-      properties:
-        name:
-          type: string
     Public.LeadSourceBlueprint_all:
       type: array
       items:
@@ -153,6 +147,12 @@ components:
             type: string
             format: date-time
     Provider.LeadSourcesController.create_body:
+      title: Create_LeadSource
+      type: object
+      properties:
+        name:
+          type: string
+    Provider.LeadSourcesController.update_body:
       title: Create_LeadSource
       type: object
       properties:

@@ -171,6 +171,31 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Public.Interaction.ClinicalNoteBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        author:
+          type: string
+        event_timestamp:
+          type: string
+        files:
+          type: string
+        formatted_text:
+          type: string
+        patient_id:
+          type: string
+        signed:
+          type: string
+        status:
+          type: string
+        text:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
     Interaction.ClinicalNoteSanitizer:
       type: object
       properties:
@@ -203,31 +228,6 @@ components:
         integration_error_message:
           type: string
         integration_web_link:
-          type: string
-    Public.Interaction.ClinicalNoteBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        author:
-          type: string
-        event_timestamp:
-          type: string
-        files:
-          type: string
-        formatted_text:
-          type: string
-        patient_id:
-          type: string
-        signed:
-          type: string
-        status:
-          type: string
-        text:
-          type: string
-        title:
-          type: string
-        type:
           type: string
     Public.Interaction.ClinicalNoteBlueprint_one_2:
       type: object

@@ -156,8 +156,23 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Provider.Patients.Interactions.PartnerController.update_body:
-      title: Update_PartnerInteraction
+    Public.InteractionBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        body:
+          type: string
+        patient_id:
+          type: string
+        status:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+    Provider.Patients.Interactions.PartnerController.create_body:
+      title: Create_PartnerInteraction
       type: object
       properties:
         status:
@@ -180,23 +195,8 @@ components:
           type: string
       required:
       - status
-    Public.InteractionBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        body:
-          type: string
-        patient_id:
-          type: string
-        status:
-          type: string
-        title:
-          type: string
-        type:
-          type: string
-    Provider.Patients.Interactions.PartnerController.create_body:
-      title: Create_PartnerInteraction
+    Provider.Patients.Interactions.PartnerController.update_body:
+      title: Update_PartnerInteraction
       type: object
       properties:
         status:

@@ -96,35 +96,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.PracticeBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        address_city:
-          type: string
-        address_country:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        email:
-          type: string
-        name:
-          type: string
-        url:
-          type: string
-        logo_url:
-          type: string
-        integration_record_id:
-          type: string
-        phones:
-          $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
     Provider.PracticesController.update_body:
       title: Update_Practice
       type: object
@@ -155,15 +126,6 @@ components:
           type: string
         integration_record_id:
           type: string
-    Common.PhoneBlueprint_shared:
-      type: object
-      properties:
-        number:
-          type: string
-        type:
-          type: string
-        us_formattable:
-          type: string
     PhoneNumber:
       type: object
       properties:
@@ -179,6 +141,44 @@ components:
       required:
       - number
       - type
+    Public.PracticeBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+        logo_url:
+          type: string
+        integration_record_id:
+          type: string
+        phones:
+          $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
+    Common.PhoneBlueprint_shared:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+        us_formattable:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

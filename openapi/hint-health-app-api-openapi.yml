@@ -170,6 +170,13 @@ paths:
               $ref: '#/components/schemas/AppSanitizer'
 components:
   schemas:
+    Public.PartnerRoleBlueprint_one:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
     AppSanitizer:
       type: object
       properties:
@@ -229,6 +236,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Public.AppSurfaceBlueprint_one'
+    AppSanitizer.PartnerRoleSanitizer:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Stable identifier for the role. Required; must be unique across the app's roles.
+        description:
+          type: string
+          description: Free-form description of what the role grants.
+      required:
+      - name
     Public.AppSurfaceBlueprint_one:
       type: object
       properties:
@@ -258,24 +276,6 @@ components:
           type: string
         settings_label:
           type: string
-    Public.PartnerRoleBlueprint_one:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-    AppSanitizer.PartnerRoleSanitizer:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Stable identifier for the role. Required; must be unique across the app's roles.
-        description:
-          type: string
-          description: Free-form description of what the role grants.
-      required:
-      - name
   securitySchemes:
     hint_api_key:
       type: apiKey

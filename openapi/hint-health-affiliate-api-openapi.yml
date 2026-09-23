@@ -91,13 +91,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.AffiliationBlueprint_affiliate_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.AffiliationBlueprint_all:
       type: array
       items:
@@ -107,6 +100,13 @@ components:
             type: string
           name:
             type: string
+    Public.AffiliationBlueprint_affiliate_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

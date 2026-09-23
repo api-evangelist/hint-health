@@ -77,6 +77,40 @@ components:
           type: string
         slug:
           type: string
+    Platform.OauthsController.tokens_body:
+      title: OAuth
+      type: object
+      properties:
+        grant_type:
+          type: string
+        code:
+          type: string
+        activate:
+          type: boolean
+          description: Defaults to true. Pass false to keep the integration pending after token exchange.
+      required:
+      - grant_type
+      - code
+    Platform.ApiKeyBlueprint_shared:
+      type: object
+      properties:
+        deactivated_at:
+          type: string
+        description:
+          type: string
+        last_used_at:
+          type: string
+        token:
+          type: string
+    Platform.UserBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
     Platform.IntegrationBlueprint_one_with_access_token:
       type: object
       properties:
@@ -112,40 +146,6 @@ components:
         id:
           type: string
         name:
-          type: string
-    Platform.OauthsController.tokens_body:
-      title: OAuth
-      type: object
-      properties:
-        grant_type:
-          type: string
-        code:
-          type: string
-        activate:
-          type: boolean
-          description: Defaults to true. Pass false to keep the integration pending after token exchange.
-      required:
-      - grant_type
-      - code
-    Platform.ApiKeyBlueprint_shared:
-      type: object
-      properties:
-        deactivated_at:
-          type: string
-        description:
-          type: string
-        last_used_at:
-          type: string
-        token:
-          type: string
-    Platform.UserBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        email:
           type: string
   securitySchemes:
     BearerAuth:

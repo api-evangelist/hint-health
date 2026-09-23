@@ -194,38 +194,6 @@ paths:
               $ref: '#/components/schemas/Partner.BackendsController.update_body'
 components:
   schemas:
-    Public.PartnerApiCredentialsConfigurationBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        spec_url:
-          type: string
-        docs_url:
-          type: string
-        issuance_mode:
-          type: string
-        exchange_url:
-          type: string
-        call_path:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-    Public.ApiKeyBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-        created_at:
-          type: string
-        last_used_at:
-          type: string
-        deactivated_at:
-          type: string
     Partner.BackendsController.update_body:
       title: Update_Backend
       type: object
@@ -272,45 +240,6 @@ components:
         api_credentials_configuration:
           type: object
           description: The backend's API-publishing configuration. Accepts `spec_url`, `docs_url`, `issuance_mode` (`push`/`pull`), `exchange_url`, and `call_path` (`proxy`/`direct`).
-    Public.BackendBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        activation_type:
-          type: string
-        auth_type:
-          type: string
-        created_at:
-          type: string
-        listened_events:
-          type: string
-        localhost_redirect_url:
-          type: string
-        localhost_webhook_url:
-          type: string
-        max_requests_per_minute:
-          type: string
-        name:
-          type: string
-        redirect_url:
-          type: string
-        unmute_self_webhooks:
-          type: string
-        updated_at:
-          type: string
-        webhooks_disabled:
-          type: string
-        webhooks_paused:
-          type: string
-        api_credentials_configuration:
-          $ref: '#/components/schemas/Public.PartnerApiCredentialsConfigurationBlueprint_shared'
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/Public.ProductBlueprint_min'
-        webhooks_signature_api_key:
-          $ref: '#/components/schemas/Public.ApiKeyBlueprint_shared'
     Public.BackendBlueprint_all:
       type: array
       items:
@@ -352,6 +281,77 @@ components:
               $ref: '#/components/schemas/Public.ProductBlueprint_min'
           webhooks_signature_api_key:
             $ref: '#/components/schemas/Public.ApiKeyBlueprint_shared'
+    Public.BackendBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        activation_type:
+          type: string
+        auth_type:
+          type: string
+        created_at:
+          type: string
+        listened_events:
+          type: string
+        localhost_redirect_url:
+          type: string
+        localhost_webhook_url:
+          type: string
+        max_requests_per_minute:
+          type: string
+        name:
+          type: string
+        redirect_url:
+          type: string
+        unmute_self_webhooks:
+          type: string
+        updated_at:
+          type: string
+        webhooks_disabled:
+          type: string
+        webhooks_paused:
+          type: string
+        api_credentials_configuration:
+          $ref: '#/components/schemas/Public.PartnerApiCredentialsConfigurationBlueprint_shared'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.ProductBlueprint_min'
+        webhooks_signature_api_key:
+          $ref: '#/components/schemas/Public.ApiKeyBlueprint_shared'
+    Public.ApiKeyBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        created_at:
+          type: string
+        last_used_at:
+          type: string
+        deactivated_at:
+          type: string
+    Public.PartnerApiCredentialsConfigurationBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        spec_url:
+          type: string
+        docs_url:
+          type: string
+        issuance_mode:
+          type: string
+        exchange_url:
+          type: string
+        call_path:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
     Public.ProductBlueprint_min:
       type: object
       properties:

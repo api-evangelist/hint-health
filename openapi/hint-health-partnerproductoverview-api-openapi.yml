@@ -99,6 +99,15 @@ components:
         alt:
           type: string
           description: Alt text used for accessibility.
+    Public.PartnerProductImageBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        file_url:
+          type: string
+        alt:
+          type: string
     ProductOverviewSanitizer:
       type: object
       properties:
@@ -110,15 +119,6 @@ components:
           items:
             $ref: '#/components/schemas/ProductOverviewSanitizer.ImageSanitizer'
           description: 'Overview images. The array is reconciled by `id`: entries with a matching `id` are edited in place, entries without an `id` are created, and any existing images not represented in the array are deleted. Omitting the `images` key entirely leaves images unchanged.'
-    Public.PartnerProductImageBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        file_url:
-          type: string
-        alt:
-          type: string
     Public.PartnerProductOverviewBlueprint_one:
       type: object
       properties:

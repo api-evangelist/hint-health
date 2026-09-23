@@ -171,14 +171,12 @@ paths:
                 type: integer
 components:
   schemas:
-    Public.Payable.InvoiceBlueprint_min:
+    Public.CompanyBlueprint_leaf:
       type: object
       properties:
         id:
           type: string
-        invoice_number:
-          type: string
-        type:
+        name:
           type: string
     Public.PatientBlueprint_min:
       type: object
@@ -231,13 +229,6 @@ components:
           type: string
         name:
           type: string
-    Public.CompanyBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.AffiliateAncillaryChargeBlueprint_all:
       type: array
       items:
@@ -275,6 +266,15 @@ components:
           format: date-time
         default_for_memberships:
           type: boolean
+    Public.Payable.InvoiceBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        invoice_number:
+          type: string
+        type:
+          type: string
   securitySchemes:
     hint_api_key:
       type: apiKey

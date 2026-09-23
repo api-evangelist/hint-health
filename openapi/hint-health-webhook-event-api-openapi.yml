@@ -23,13 +23,13 @@ info:
 servers:
 - url: https://api.sandbox.hint.com/api
 tags:
-- name: WebhookEvent
+- name: Webhook Event
   description: ''
 paths:
   /partner/webhook_events:
     get:
       tags:
-      - WebhookEvent
+      - Webhook Event
       operationId: WebhookEvent.ListWebhookEvents
       summary: List Webhook Event Types
       description: 'Returns the canonical list of event types delivered to partner webhook

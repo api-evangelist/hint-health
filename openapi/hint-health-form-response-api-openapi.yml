@@ -14,12 +14,12 @@ servers:
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
 tags:
-- name: FormResponse
+- name: Form Response
 paths:
   /provider/patients/{patient_id}/form_responses:
     get:
       tags:
-      - FormResponse
+      - Form Response
       operationId: FormResponse.ListAllFormResponses
       summary: List All Form Responses
       description: ''
@@ -70,7 +70,7 @@ paths:
   /provider/patients/{patient_id}/form_responses/{id}:
     get:
       tags:
-      - FormResponse
+      - Form Response
       operationId: FormResponse.ShowFormResponse
       summary: Show Form Response
       description: ''
@@ -124,15 +124,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.FormResponseItemBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        answer:
-          type: string
-        respondent:
-          $ref: '#/components/schemas/Common.RecordBlueprint_min'
     Public.FormBlueprint_leaf:
       type: object
       properties:
@@ -147,36 +138,6 @@ components:
           format: date-time
         form_items:
           $ref: '#/components/schemas/Public.FormItemBlueprint_leaf'
-    Public.FormResponseBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        form:
-          $ref: '#/components/schemas/Public.FormBlueprint_leaf'
-        form_response_items:
-          $ref: '#/components/schemas/Public.FormResponseItemBlueprint_leaf'
-        subject:
-          $ref: '#/components/schemas/Common.RecordBlueprint_min'
-    Public.FormResponseBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          created_at:
-            type: string
-            format: date-time
-          form:
-            $ref: '#/components/schemas/Public.FormBlueprint_leaf'
-          form_response_items:
-            $ref: '#/components/schemas/Public.FormResponseItemBlueprint_leaf'
-          subject:
-            $ref: '#/components/schemas/Common.RecordBlueprint_min'
     Public.FormItemBlueprint_leaf:
       type: object
       properties:
@@ -195,6 +156,45 @@ components:
       properties:
         id:
           type: string
+    Public.FormResponseBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          form:
+            $ref: '#/components/schemas/Public.FormBlueprint_leaf'
+          form_response_items:
+            $ref: '#/components/schemas/Public.FormResponseItemBlueprint_leaf'
+          subject:
+            $ref: '#/components/schemas/Common.RecordBlueprint_min'
+    Public.FormResponseBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        form:
+          $ref: '#/components/schemas/Public.FormBlueprint_leaf'
+        form_response_items:
+          $ref: '#/components/schemas/Public.FormResponseItemBlueprint_leaf'
+        subject:
+          $ref: '#/components/schemas/Common.RecordBlueprint_min'
+    Public.FormResponseItemBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        answer:
+          type: string
+        respondent:
+          $ref: '#/components/schemas/Common.RecordBlueprint_min'
   securitySchemes:
     BearerAuth:
       type: http

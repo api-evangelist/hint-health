@@ -180,19 +180,6 @@ paths:
               $ref: '#/components/schemas/Platform.WebhookEndpointsController.update_body'
 components:
   schemas:
-    Platform.WebhookEndpointsController.update_body:
-      title: Update_WebhookEndpoint_Legacy
-      type: object
-      properties:
-        webhook_url:
-          type: string
-    Platform.WebhookEndpointsController.create_body:
-      type: object
-      properties:
-        webhook_url:
-          type: string
-      required:
-      - webhook_url
     Platform.WebhookEndpointBlueprint_one:
       type: object
       properties:
@@ -221,6 +208,19 @@ components:
             type: string
           webhook_url:
             type: string
+    Platform.WebhookEndpointsController.update_body:
+      title: Update_WebhookEndpoint_Legacy
+      type: object
+      properties:
+        webhook_url:
+          type: string
+    Platform.WebhookEndpointsController.create_body:
+      type: object
+      properties:
+        webhook_url:
+          type: string
+      required:
+      - webhook_url
   securitySchemes:
     BearerAuth:
       type: http

@@ -161,13 +161,36 @@ components:
           type: string
       required:
       - amount_in_cents
-    Association:
+    Public.CreditBlueprint_one:
       type: object
       properties:
         id:
           type: string
-      required:
-      - id
+        amount_in_cents:
+          type: integer
+          format: int32
+        balance_in_cents:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        integration_record_id:
+          type: string
+        reason:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        credit_category:
+          $ref: '#/components/schemas/Public.CreditCategoryBlueprint_min'
+    Public.CreditCategoryBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     Public.CreditBlueprint_all:
       type: array
       items:
@@ -193,36 +216,6 @@ components:
             format: date-time
           credit_category:
             $ref: '#/components/schemas/Public.CreditCategoryBlueprint_min'
-    Public.CreditCategoryBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.CreditBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        amount_in_cents:
-          type: integer
-          format: int32
-        balance_in_cents:
-          type: integer
-          format: int32
-        created_at:
-          type: string
-          format: date-time
-        integration_record_id:
-          type: string
-        reason:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
-        credit_category:
-          $ref: '#/components/schemas/Public.CreditCategoryBlueprint_min'
     Provider.CreditsController.create_body:
       title: Create_Credit
       type: object
@@ -240,6 +233,13 @@ components:
       required:
       - credit_category
       - amount_in_cents
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
   securitySchemes:
     BearerAuth:
       type: http

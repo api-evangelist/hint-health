@@ -348,25 +348,92 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Interaction.LabSanitizer.ResultCodeSanitizer:
+    Public.Interaction.Lab.OrderBlueprint_leaf:
       type: object
       properties:
-        code:
+        lab_reference_id:
           type: string
-          description: LOINC code value (only LOINC is supported)
-        display:
+        ordered_from:
           type: string
-          description: Human-readable name
-      required:
-      - code
-      - display
-    Public.Interaction.Lab.Result.CodeBlueprint_leaf:
+        authored_on:
+          type: string
+        collected_at:
+          type: string
+        author:
+          type: string
+        author_reference:
+          type: string
+        intent:
+          type: string
+        lab_account_id:
+          type: string
+        actions:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Order.ActionBlueprint_leaf'
+        subject:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Order.SubjectBlueprint_leaf'
+    Public.Interaction.Lab.Order.ActionBlueprint_leaf:
       type: object
       properties:
-        code:
+        reference:
           type: string
         display:
           type: string
+    Interaction.LabSanitizer:
+      type: object
+      properties:
+        status:
+          type: string
+          description: The status of the interaction. Defaults to "SENT"
+          enum:
+          - sent
+          - fulfilled
+        vendor_order_id:
+          type: string
+          description: External vendor order ID (used for idempotency)
+        event_timestamp:
+          type: string
+          format: date-time
+          description: Defaults to current time
+        order:
+          $ref: '#/components/schemas/Interaction.LabSanitizer.OrderSanitizer'
+          description: Lab order details
+        report:
+          $ref: '#/components/schemas/Interaction.LabSanitizer.ReportSanitizer'
+          description: Diagnostic report details
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Interaction.LabSanitizer.ResultSanitizer'
+          description: Lab result observations
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+    Public.Interaction.Lab.ResultBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        code_text:
+          type: string
+        issued:
+          type: string
+        value_string:
+          type: string
+        text:
+          type: string
+        interpretation:
+          type: string
+        subject:
+          type: string
+        code:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Result.CodeBlueprint_leaf'
+        value_quantity:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf'
+        ranges:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Result.RangeBlueprint_leaf'
     Interaction.LabSanitizer.ResultSanitizer:
       type: object
       properties:
@@ -412,50 +479,28 @@ components:
       - code
       - code_text
       - issued
-    Interaction.LabSanitizer.ResultRangeSanitizer:
+    Public.Interaction.Lab.Result.RangeBlueprint_leaf:
       type: object
       properties:
-        low:
-          $ref: '#/components/schemas/Interaction.LabSanitizer.ResultQuantitySanitizer'
-          description: Lower bound of range
-        high:
-          $ref: '#/components/schemas/Interaction.LabSanitizer.ResultQuantitySanitizer'
-          description: Upper bound of range
         text:
           type: string
-          description: Textual range description
-    Interaction.LabSanitizer:
+        low:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf'
+        high:
+          $ref: '#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf'
+    Public.Interaction.Lab.Result.QuantityBlueprint_leaf:
       type: object
       properties:
-        status:
+        value:
           type: string
-          description: The status of the interaction. Defaults to "SENT"
-          enum:
-          - sent
-          - fulfilled
-        vendor_order_id:
+        unit:
           type: string
-          description: External vendor order ID (used for idempotency)
-        event_timestamp:
+    Public.Interaction.Lab.Order.SubjectBlueprint_leaf:
+      type: object
+      properties:
+        reference:
           type: string
-          format: date-time
-          description: Defaults to current time
-        order:
-          $ref: '#/components/schemas/Interaction.LabSanitizer.OrderSanitizer'
-          description: Lab order details
-        report:
-          $ref: '#/components/schemas/Interaction.LabSanitizer.ReportSanitizer'
-          description: Diagnostic report details
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Interaction.LabSanitizer.ResultSanitizer'
-          description: Lab result observations
-        integration_record_id:
-          type: string
-        integration_error_message:
-          type: string
-        integration_web_link:
+        display:
           type: string
     Interaction.LabSanitizer.OrderSanitizer:
       type: object
@@ -493,13 +538,6 @@ components:
         lab_account_id:
           type: string
           description: Lab account identifier
-    Public.Interaction.Lab.Order.SubjectBlueprint_leaf:
-      type: object
-      properties:
-        reference:
-          type: string
-        display:
-          type: string
     Interaction.LabSanitizer.SubjectSanitizer:
       type: object
       properties:
@@ -509,110 +547,18 @@ components:
         display:
           type: string
           description: Subject display name
-    Public.Interaction.Lab.OrderBlueprint_leaf:
+    Interaction.LabSanitizer.ResultRangeSanitizer:
       type: object
       properties:
-        lab_reference_id:
-          type: string
-        ordered_from:
-          type: string
-        authored_on:
-          type: string
-        collected_at:
-          type: string
-        author:
-          type: string
-        author_reference:
-          type: string
-        intent:
-          type: string
-        lab_account_id:
-          type: string
-        actions:
-          $ref: '#/components/schemas/Public.Interaction.Lab.Order.ActionBlueprint_leaf'
-        subject:
-          $ref: '#/components/schemas/Public.Interaction.Lab.Order.SubjectBlueprint_leaf'
-    Interaction.LabSanitizer.ActionSanitizer:
-      type: object
-      properties:
-        reference:
-          type: string
-          description: Reference code for the test
-        display:
-          type: string
-          description: Human-readable test name
-      required:
-      - reference
-      - display
-    Public.Interaction.Lab.Order.ActionBlueprint_leaf:
-      type: object
-      properties:
-        reference:
-          type: string
-        display:
-          type: string
-    Public.Interaction.Lab.ResultBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        code_text:
-          type: string
-        issued:
-          type: string
-        value_string:
-          type: string
+        low:
+          $ref: '#/components/schemas/Interaction.LabSanitizer.ResultQuantitySanitizer'
+          description: Lower bound of range
+        high:
+          $ref: '#/components/schemas/Interaction.LabSanitizer.ResultQuantitySanitizer'
+          description: Upper bound of range
         text:
           type: string
-        interpretation:
-          type: string
-        subject:
-          type: string
-        code:
-          $ref: '#/components/schemas/Public.Interaction.Lab.Result.CodeBlueprint_leaf'
-        value_quantity:
-          $ref: '#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf'
-        ranges:
-          $ref: '#/components/schemas/Public.Interaction.Lab.Result.RangeBlueprint_leaf'
-    Public.Interaction.LabBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        event_timestamp:
-          type: string
-        status:
-          type: string
-        type:
-          type: string
-        vendor_order_id:
-          type: string
-        order:
-          $ref: '#/components/schemas/Public.Interaction.Lab.OrderBlueprint_leaf'
-        report:
-          $ref: '#/components/schemas/Public.Interaction.Lab.ReportBlueprint_leaf'
-        results:
-          $ref: '#/components/schemas/Public.Interaction.Lab.ResultBlueprint_leaf'
-    Public.Interaction.Lab.Result.QuantityBlueprint_leaf:
-      type: object
-      properties:
-        value:
-          type: string
-        unit:
-          type: string
-    Interaction.LabSanitizer.ResultQuantitySanitizer:
-      type: object
-      properties:
-        value:
-          type: integer
-          format: int32
-          description: The measured value
-        unit:
-          type: string
-          description: Unit of measure (e.g., "mg/dL")
-      required:
-      - value
-      - unit
+          description: Textual range description
     Interaction.LabSanitizer.ReportSanitizer:
       type: object
       properties:
@@ -632,15 +578,32 @@ components:
       required:
       - issued
       - status
-    Public.Interaction.Lab.Result.RangeBlueprint_leaf:
+    Public.Interaction.LabBlueprint_one:
       type: object
       properties:
-        text:
+        id:
           type: string
-        low:
-          $ref: '#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf'
-        high:
-          $ref: '#/components/schemas/Public.Interaction.Lab.Result.QuantityBlueprint_leaf'
+        event_timestamp:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        vendor_order_id:
+          type: string
+        order:
+          $ref: '#/components/schemas/Public.Interaction.Lab.OrderBlueprint_leaf'
+        report:
+          $ref: '#/components/schemas/Public.Interaction.Lab.ReportBlueprint_leaf'
+        results:
+          $ref: '#/components/schemas/Public.Interaction.Lab.ResultBlueprint_leaf'
+    Public.Interaction.Lab.Result.CodeBlueprint_leaf:
+      type: object
+      properties:
+        code:
+          type: string
+        display:
+          type: string
     Public.Interaction.Lab.ReportBlueprint_leaf:
       type: object
       properties:
@@ -652,12 +615,24 @@ components:
           type: string
         order_reference:
           type: string
-    Interaction.LabSanitizer.ResultQuantitySanitizer_2:
+    Interaction.LabSanitizer.ActionSanitizer:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: Reference code for the test
+        display:
+          type: string
+          description: Human-readable test name
+      required:
+      - reference
+      - display
+    Interaction.LabSanitizer.ResultQuantitySanitizer:
       type: object
       properties:
         value:
-          type: number
-          format: float
+          type: integer
+          format: int32
           description: The measured value
         unit:
           type: string
@@ -665,6 +640,26 @@ components:
       required:
       - value
       - unit
+    Interaction.LabSanitizer.ResultCodeSanitizer:
+      type: object
+      properties:
+        code:
+          type: string
+          description: LOINC code value (only LOINC is supported)
+        display:
+          type: string
+          description: Human-readable name
+      required:
+      - code
+      - display
+    Public.Interaction.Lab.Result.QuantityBlueprint_leaf_2:
+      type: object
+      properties:
+        value:
+          type: number
+          format: float
+        unit:
+          type: string
     Public.Interaction.LabBlueprint_one_2:
       type: object
       properties:
@@ -698,14 +693,19 @@ components:
           type: string
         filename:
           type: string
-    Public.Interaction.Lab.Result.QuantityBlueprint_leaf_2:
+    Interaction.LabSanitizer.ResultQuantitySanitizer_2:
       type: object
       properties:
         value:
           type: number
           format: float
+          description: The measured value
         unit:
           type: string
+          description: Unit of measure (e.g., "mg/dL")
+      required:
+      - value
+      - unit
   securitySchemes:
     BearerAuth:
       type: http

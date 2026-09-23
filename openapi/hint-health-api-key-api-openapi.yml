@@ -23,13 +23,13 @@ info:
 servers:
 - url: https://api.sandbox.hint.com/api
 tags:
-- name: ApiKey
+- name: API Key
   description: ''
 paths:
   /partner/api_keys:
     get:
       tags:
-      - ApiKey
+      - API Key
       operationId: ApiKey.ListApiKeys
       summary: List API Keys
       description: ''
@@ -109,7 +109,7 @@ paths:
                 type: integer
     post:
       tags:
-      - ApiKey
+      - API Key
       operationId: ApiKey.CreateApiKey
       summary: Create API Key
       description: 'The full `token` value is only returned in this response. Store it
@@ -138,6 +138,21 @@ paths:
               $ref: '#/components/schemas/Partner.ApiKeysController.create_body'
 components:
   schemas:
+    Public.ApiKeyBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          created_at:
+            type: string
+          deactivated_at:
+            type: string
+          label:
+            type: string
+          last_used_at:
+            type: string
+          token_last_4:
+            type: string
     Partner.ApiKeysController.create_body:
       title: Create_ApiKey
       type: object
@@ -159,21 +174,6 @@ components:
           type: string
         token:
           type: string
-    Public.ApiKeyBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          created_at:
-            type: string
-          deactivated_at:
-            type: string
-          label:
-            type: string
-          last_used_at:
-            type: string
-          token_last_4:
-            type: string
   securitySchemes:
     hint_api_key:
       type: apiKey

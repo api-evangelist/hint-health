@@ -75,39 +75,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    QuoteSanitizer.MemberSanitizer:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Choose one below. You can think of "spouse" as "adult". This is a naming issue that will hopefully be addressed in the future
-          enum:
-          - primary
-          - child
-          - spouse
-        age:
-          type: integer
-          format: int32
-        uses_tobacco:
-          type: boolean
-        dob:
-          type: string
-          format: date
-          description: Date must be formatted as YYYY-MM-DD.
-        start_date:
-          type: string
-          format: date
-          description: Date must be formatted as YYYY-MM-DD.
-      required:
-      - type
-      - uses_tobacco
     Public.PlanBlueprint_min:
       type: object
       properties:
@@ -117,6 +84,26 @@ components:
           type: string
         plan_type:
           type: string
+    Public.QuoteBlueprint_one:
+      type: object
+      properties:
+        billing_period:
+          type: string
+        members:
+          type: string
+        coupon_discount_in_cents:
+          type: integer
+          format: int32
+        ongoing_amount_in_cents:
+          type: integer
+          format: int32
+        registration_fee_in_cents:
+          type: integer
+          format: int32
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+        coupon:
+          $ref: '#/components/schemas/Public.CouponBlueprint_one'
     Public.CouponBlueprint_one:
       type: object
       properties:
@@ -153,26 +140,39 @@ components:
         redeemable_until:
           type: string
           format: date-time
-    Public.QuoteBlueprint_one:
+    Association:
       type: object
       properties:
-        billing_period:
+        id:
           type: string
-        members:
+      required:
+      - id
+    QuoteSanitizer.MemberSanitizer:
+      type: object
+      properties:
+        type:
           type: string
-        coupon_discount_in_cents:
+          description: Choose one below. You can think of "spouse" as "adult". This is a naming issue that will hopefully be addressed in the future
+          enum:
+          - primary
+          - child
+          - spouse
+        age:
           type: integer
           format: int32
-        ongoing_amount_in_cents:
-          type: integer
-          format: int32
-        registration_fee_in_cents:
-          type: integer
-          format: int32
-        plan:
-          $ref: '#/components/schemas/Public.PlanBlueprint_min'
-        coupon:
-          $ref: '#/components/schemas/Public.CouponBlueprint_one'
+        uses_tobacco:
+          type: boolean
+        dob:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        start_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+      required:
+      - type
+      - uses_tobacco
     QuoteSanitizer:
       type: object
       properties:

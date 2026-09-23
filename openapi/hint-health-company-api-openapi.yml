@@ -268,56 +268,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.LocationBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    CompanyCreateSanitizer:
-      type: object
-      properties:
-        default_plan:
-          $ref: '#/components/schemas/Association'
-          description: You must use plans of type "company"
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        phones:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumber'
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    PhoneNumber:
-      type: object
-      properties:
-        id:
-          type: string
-        number:
-          type: number
-        type:
-          type: string
-        us_formattable:
-          type: boolean
-          description: Make this false if your number is not exactly 10 digits
-      required:
-      - number
-      - type
-    Public.EmployeeDivisionBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.PlanBlueprint_min:
       type: object
       properties:
@@ -347,6 +297,31 @@ components:
       - city
       - state
       - zip
+    CompanyUpdateSanitizer:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+    CompanyCreateSanitizer:
+      type: object
+      properties:
+        default_plan:
+          $ref: '#/components/schemas/Association'
+          description: You must use plans of type "company"
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
     Public.CompanyBlueprint_one:
       type: object
       properties:
@@ -371,17 +346,51 @@ components:
           $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
         phones:
           $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
-    CompanyUpdateSanitizer:
+    Public.AddressBlueprint_leaf:
       type: object
       properties:
+        id:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+    Public.EmployeeDivisionBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
         name:
           type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        phones:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumber'
+    PhoneNumber:
+      type: object
+      properties:
+        id:
+          type: string
+        number:
+          type: number
+        type:
+          type: string
+        us_formattable:
+          type: boolean
+          description: Make this false if your number is not exactly 10 digits
+      required:
+      - number
+      - type
     Public.CompanyBlueprint_all:
       type: array
       items:
@@ -408,42 +417,33 @@ components:
             $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
           phones:
             $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
-    Public.AddressBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        city:
-          type: string
-        country:
-          type: string
-        line1:
-          type: string
-        line2:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        latitude:
-          type: number
-          format: float
-        longitude:
-          type: number
-          format: float
-    Public.PractitionerBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.PhoneBlueprint_leaf:
       type: object
       properties:
         number:
           type: string
         type:
+          type: string
+    Public.LocationBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.PractitionerBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
           type: string
   securitySchemes:
     BearerAuth:

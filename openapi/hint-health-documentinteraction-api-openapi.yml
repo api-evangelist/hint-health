@@ -156,6 +156,38 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Provider.Patients.Interactions.DocumentController.create_body:
+      title: Create_DocumentInteraction
+      type: object
+      properties:
+        status:
+          type: string
+          description: ' The status of the interaction.'
+          enum:
+          - draft
+          - signed
+          - addended
+          - deleted
+          - failed
+        title:
+          type: string
+          description: The title of the interaction.
+        body:
+          type: string
+          description: The body of the interaction. Markdown formatted.
+        attachments:
+          type: array
+          items:
+            type: string
+          description: The attachments of the interaction. Files will be downloaded as part of the request.
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+      required:
+      - status
     Public.InteractionBlueprint_one:
       type: object
       properties:
@@ -203,7 +235,7 @@ components:
           type: string
       required:
       - status
-    Provider.Patients.Interactions.DocumentController.create_body:
+    Provider.Patients.Interactions.DocumentController.create_body_2:
       title: Create_DocumentInteraction
       type: object
       properties:
@@ -222,11 +254,15 @@ components:
         body:
           type: string
           description: The body of the interaction. Markdown formatted.
-        attachments:
+        files:
           type: array
           items:
             type: string
-          description: The attachments of the interaction. Files will be downloaded as part of the request.
+          description: The files to attach to the interaction. They will be downloaded as part of the request.
+        event_timestamp:
+          type: string
+          format: date-time
+          description: The event timestamp of the interaction.
         integration_record_id:
           type: string
         integration_error_message:
@@ -283,42 +319,6 @@ components:
           items:
             type: string
           description: The files to attach to the interaction. They will be downloaded as part of the request. If provided it will OVERRIDE the files on the interaction, so include all the files you want to keep.
-        event_timestamp:
-          type: string
-          format: date-time
-          description: The event timestamp of the interaction.
-        integration_record_id:
-          type: string
-        integration_error_message:
-          type: string
-        integration_web_link:
-          type: string
-      required:
-      - status
-    Provider.Patients.Interactions.DocumentController.create_body_2:
-      title: Create_DocumentInteraction
-      type: object
-      properties:
-        status:
-          type: string
-          description: ' The status of the interaction.'
-          enum:
-          - draft
-          - signed
-          - addended
-          - deleted
-          - failed
-        title:
-          type: string
-          description: The title of the interaction.
-        body:
-          type: string
-          description: The body of the interaction. Markdown formatted.
-        files:
-          type: array
-          items:
-            type: string
-          description: The files to attach to the interaction. They will be downloaded as part of the request.
         event_timestamp:
           type: string
           format: date-time

@@ -14,12 +14,12 @@ servers:
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
 tags:
-- name: CreditLine
+- name: Credit Line
 paths:
   /provider/credit_lines:
     get:
       tags:
-      - CreditLine
+      - Credit Line
       operationId: CreditLine.ListCreditLines
       summary: List All Credit Lines
       description: ''
@@ -80,11 +80,6 @@ components:
           type: string
         owner:
           $ref: '#/components/schemas/Public.Payable.OwnerBlueprint_min'
-    Public.CreditBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
     Public.Payable.OwnerBlueprint_min:
       type: object
       properties:
@@ -114,6 +109,11 @@ components:
             $ref: '#/components/schemas/Public.CreditBlueprint_min'
           invoice:
             $ref: '#/components/schemas/Public.Payable.InvoiceBlueprint_min_with_owner'
+    Public.CreditBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

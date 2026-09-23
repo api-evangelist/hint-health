@@ -253,6 +253,25 @@ paths:
                   slug: hint-partner-emr
 components:
   schemas:
+    Public.InstallationBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          auto_grant_partner_app_access:
+            type: string
+          default_partner_app_admin_role:
+            type: string
+          default_partner_app_non_admin_role:
+            type: string
+          status:
+            type: string
+          practice:
+            $ref: '#/components/schemas/Public.PracticeBlueprint_min'
+          product:
+            $ref: '#/components/schemas/Public.ProductBlueprint_min'
     Partner.InstallationsController.connect_body:
       title: Connect_Installation
       type: object
@@ -262,6 +281,32 @@ components:
           description: The authorization code issued when the practice installed the product.
       required:
       - code
+    Public.PracticeBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.InstallationBlueprint_one_with_credential:
+      type: object
+      properties:
+        id:
+          type: string
+        auto_grant_partner_app_access:
+          type: string
+        default_partner_app_admin_role:
+          type: string
+        default_partner_app_non_admin_role:
+          type: string
+        status:
+          type: string
+        api_keys:
+          $ref: '#/components/schemas/Public.ApiKeyBlueprint_one'
+        practice:
+          $ref: '#/components/schemas/Public.PracticeBlueprint_min'
+        product:
+          $ref: '#/components/schemas/Public.ProductBlueprint_min'
     Public.ApiKeyBlueprint_one:
       type: object
       properties:
@@ -294,51 +339,6 @@ components:
           $ref: '#/components/schemas/Public.PracticeBlueprint_min'
         product:
           $ref: '#/components/schemas/Public.ProductBlueprint_min'
-    Public.InstallationBlueprint_one_with_credential:
-      type: object
-      properties:
-        id:
-          type: string
-        auto_grant_partner_app_access:
-          type: string
-        default_partner_app_admin_role:
-          type: string
-        default_partner_app_non_admin_role:
-          type: string
-        status:
-          type: string
-        api_keys:
-          $ref: '#/components/schemas/Public.ApiKeyBlueprint_one'
-        practice:
-          $ref: '#/components/schemas/Public.PracticeBlueprint_min'
-        product:
-          $ref: '#/components/schemas/Public.ProductBlueprint_min'
-    Public.InstallationBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          auto_grant_partner_app_access:
-            type: string
-          default_partner_app_admin_role:
-            type: string
-          default_partner_app_non_admin_role:
-            type: string
-          status:
-            type: string
-          practice:
-            $ref: '#/components/schemas/Public.PracticeBlueprint_min'
-          product:
-            $ref: '#/components/schemas/Public.ProductBlueprint_min'
-    Public.PracticeBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.ProductBlueprint_min:
       type: object
       properties:

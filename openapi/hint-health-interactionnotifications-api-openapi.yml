@@ -55,13 +55,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.InteractionNotificationBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        title:
-          type: string
     Provider.Interactions.NotificationsController.create_body:
       title: Create_InteractionNotification
       type: object
@@ -69,6 +62,13 @@ components:
         title:
           type: string
           description: The title of the interaction notification.
+    Public.InteractionNotificationBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

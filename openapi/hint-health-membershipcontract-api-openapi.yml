@@ -137,11 +137,21 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Provider.MembershipContractsController.renew_body:
-      type: object
-      properties:
-        memo:
-          type: string
+    Public.MembershipContractBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          end_date:
+            type: string
+            format: date
+          memo:
+            type: string
+          start_date:
+            type: string
+            format: date
     Provider.MembershipContractsController.update_body:
       type: object
       properties:
@@ -164,21 +174,11 @@ components:
         start_date:
           type: string
           format: date
-    Public.MembershipContractBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          end_date:
-            type: string
-            format: date
-          memo:
-            type: string
-          start_date:
-            type: string
-            format: date
+    Provider.MembershipContractsController.renew_body:
+      type: object
+      properties:
+        memo:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

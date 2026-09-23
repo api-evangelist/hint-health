@@ -102,7 +102,7 @@ paths:
 
         a patient in), it''s returned as its own appointment with a new `id` and a `recurring_appointment_id`
 
-        pointing back to the original recurring appointment. See [Recurring Appointments](https://developers.hint.com/docs/recurring-appointments)
+        pointing back to the original recurring appointment. See Recurring Appointments
 
         for details, including what happens when a series is edited after an occurrence has already split off.'
       parameters:
@@ -284,26 +284,6 @@ components:
           type: string
         name:
           type: string
-    Public.Appointment.AttendeeBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          type:
-            type: string
-          patient:
-            $ref: '#/components/schemas/Public.PatientBlueprint_min'
-          contact:
-            $ref: '#/components/schemas/Public.Appointment.ContactBlueprint_min'
-    Public.Appointment.ContactBlueprint_min:
-      type: object
-      properties:
-        first:
-          type: string
-        last:
-          type: string
-        email:
-          type: string
     Public.AppointmentTypeBlueprint_all:
       type: array
       items:
@@ -320,6 +300,43 @@ components:
             type: string
           updated_at:
             type: string
+    Public.LocationBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        name:
+          type: string
+    Public.Appointment.AttendeeBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+          patient:
+            $ref: '#/components/schemas/Public.PatientBlueprint_min'
+          contact:
+            $ref: '#/components/schemas/Public.Appointment.ContactBlueprint_min'
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
     Public.AppointmentBlueprint_all:
       type: array
       items:
@@ -364,40 +381,14 @@ components:
             $ref: '#/components/schemas/Public.LocationBlueprint_shared'
           attendees:
             $ref: '#/components/schemas/Public.Appointment.AttendeeBlueprint_all'
-    Public.PartnerAppUserBlueprint_leaf:
+    Public.Appointment.ContactBlueprint_min:
       type: object
       properties:
-        id:
+        first:
           type: string
-        roles:
+        last:
           type: string
-        product:
-          $ref: '#/components/schemas/Public.ProductBlueprint_leaf'
-    Public.ProductBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.LocationBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        address_city:
-          type: string
-        address_country:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        name:
+        email:
           type: string
     Public.UserBlueprint_shared:
       type: object
@@ -416,13 +407,22 @@ components:
           $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
         product_users:
           $ref: '#/components/schemas/Public.PartnerAppUserBlueprint_leaf'
-    Public.PhoneBlueprint_leaf:
+    Public.ProductBlueprint_leaf:
       type: object
       properties:
-        number:
+        id:
           type: string
-        type:
+        name:
           type: string
+    Public.PartnerAppUserBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        roles:
+          type: string
+        product:
+          $ref: '#/components/schemas/Public.ProductBlueprint_leaf'
   securitySchemes:
     hint_api_key:
       type: apiKey

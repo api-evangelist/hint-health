@@ -14,12 +14,12 @@ servers:
 - url: https://api.sandbox.hint.com/api
   description: Sandbox
 tags:
-- name: CancellationReason
+- name: Cancellation Reason
 paths:
   /provider/cancellation_reasons:
     get:
       tags:
-      - CancellationReason
+      - Cancellation Reason
       operationId: CancellationReason.ListCancellationReasons
       summary: List All CancellationReasons
       description: ''

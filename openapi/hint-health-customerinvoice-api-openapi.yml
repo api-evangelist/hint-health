@@ -493,7 +493,31 @@ paths:
       - CustomerInvoice
       operationId: CustomerInvoice.CreatePDF
       summary: Generate PDF for Customer Invoice
-      description: "## Usage Instructions and Security Best Practices\n - **Link Expiration:** Links expire after 15 minutes.\n - **Authenticate Users:** Only generate pdf links for authenticated users.\n - **On-Demand Links:** Generate the link only when a user requests to view or download a pdf.\n - **New Windows/Tabs:** Automatically redirect users to the URL provided, instead of showing them the link\n directly.\n - **Avoid Caching:** Do not cache or store pdf links in your application.\n - **Avoid Email Transmission:** Never send pdf links via email due to link expiry and security concerns.\n## Example Workflow\n 1. **Request Access:** User logs into your system and requests to view a pdf.\n 2. **Generate Link:** Your system makes a POST request to the pdf endpoint.\n 3. **Provide Link:** Your application receives the URL and automatically redirects the user to the URL in a new\n window or tab."
+      description: '## Usage Instructions and Security Best Practices
+
+        - **Link Expiration:** Links expire after 15 minutes.
+
+        - **Authenticate Users:** Only generate pdf links for authenticated users.
+
+        - **On-Demand Links:** Generate the link only when a user requests to view or download a pdf.
+
+        - **New Windows/Tabs:** Automatically redirect users to the URL provided, instead of showing them the link
+
+        directly.
+
+        - **Avoid Caching:** Do not cache or store pdf links in your application.
+
+        - **Avoid Email Transmission:** Never send pdf links via email due to link expiry and security concerns.
+
+        ## Example Workflow
+
+        1. **Request Access:** User logs into your system and requests to view a pdf.
+
+        2. **Generate Link:** Your system makes a POST request to the pdf endpoint.
+
+        3. **Provide Link:** Your application receives the URL and automatically redirects the user to the URL in a new
+
+        window or tab.'
       parameters:
       - name: customer_invoice_id
         in: path
@@ -1938,6 +1962,254 @@ components:
           $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
         family:
           $ref: '#/components/schemas/Public.CompanyAccountBlueprint_min'
+    Common.EmergencyContactBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        relationship:
+          type: string
+        phone:
+          $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
+    Public.PdfBlueprint_one:
+      type: object
+      properties:
+        url:
+          type: string
+    Public.ChargeBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        amount_in_cents:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        is_persisted:
+          type: boolean
+        name:
+          type: string
+        price_in_cents:
+          type: integer
+          format: int32
+        quantity:
+          type: integer
+          format: int32
+        service_date:
+          type: string
+          format: date
+        status:
+          type: string
+        subtotal_in_cents:
+          type: integer
+          format: int32
+        tax_in_cents:
+          type: integer
+          format: int32
+        total_in_cents:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+        category:
+          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
+        charge_item:
+          $ref: '#/components/schemas/Public.ChargeItemBlueprint_one'
+        location:
+          $ref: '#/components/schemas/Public.LocationBlueprint_shared'
+        patient:
+          $ref: '#/components/schemas/Public.PatientBlueprint_one'
+        practitioner:
+          $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
+    Public.ChargeItemBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        provider_web_link:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        price_in_cents:
+          type: number
+          format: float
+        quantity_in_stock:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+        category:
+          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
+    Public.MembershipBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.CompanyAccountBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.CustomerInvoiceBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          amount_in_cents:
+            type: integer
+            format: int32
+          charges_count:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          date:
+            type: string
+            format: date
+          due_in_cents:
+            type: integer
+            format: int32
+          human_status:
+            type: string
+          integration_record_id:
+            type: string
+          invoice_number:
+            type: integer
+            format: int32
+          last_sent_at:
+            type: string
+            format: date-time
+          last_viewed_at:
+            type: string
+            format: date-time
+          paid_at:
+            type: string
+            format: date-time
+          paid_in_cents:
+            type: integer
+            format: int32
+          payment_status:
+            type: string
+          payments_count:
+            type: string
+          provider_web_link:
+            type: string
+          received_in_cents:
+            type: integer
+            format: int32
+          status:
+            type: string
+          subtotal_in_cents:
+            type: integer
+            format: int32
+          tax_in_cents:
+            type: integer
+            format: int32
+          total_in_cents:
+            type: integer
+            format: int32
+          updated_at:
+            type: string
+            format: date-time
+          charges:
+            $ref: '#/components/schemas/Public.ChargeBlueprint_one'
+          owner:
+            $ref: '#/components/schemas/Public.PatientBlueprint_one'
+    Public.LocationBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        name:
+          type: string
+    Public.PractitionerBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        accepts_enrollments_from_employer:
+          type: string
+        accepts_enrollments_from_retail:
+          type: string
+        bio:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        education:
+          type: string
+        email:
+          type: string
+        gender:
+          type: string
+        gender_other:
+          type: string
+        integration_record_id:
+          type: string
+        max_patient_age:
+          type: string
+        min_patient_age:
+          type: string
+        name:
+          type: string
+        online_signup_visibility:
+          type: string
+        panel_size:
+          type: integer
+          format: int32
+        panel_size_limit:
+          type: integer
+          format: int32
+        photo_url:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.LocationBlueprint_one'
+        npi:
+          $ref: '#/components/schemas/Public.NpiBlueprint_shared'
+        specialties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
     Public.SpecialtyBlueprint_all:
       type: array
       items:
@@ -1947,6 +2219,51 @@ components:
             type: string
           name:
             type: string
+    Common.PhoneBlueprint_shared:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+        us_formattable:
+          type: string
+    Public.LeadSourceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Provider.CustomerInvoicesController.update_body:
+      title: Create_Customer_Invoice
+      type: object
+      description: Owner or patient or both must be provided. If you do not specify owner, we will either use the patient's last payer, or the patient themselves
+      properties:
+        integration_record_id:
+          type: string
+        owner:
+          $ref: '#/components/schemas/Association'
+        patient:
+          $ref: '#/components/schemas/Association'
+    Common.SocialSecurityNumberBlueprint_masked:
+      type: object
+      properties:
+        masked_number:
+          type: string
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     Public.PatientBlueprint_one:
       type: object
       properties:
@@ -2092,20 +2409,12 @@ components:
           $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
         ssn:
           $ref: '#/components/schemas/Common.SocialSecurityNumberBlueprint_masked'
-    Public.PatientBlueprint_account:
+    Public.PatientBlueprint_min:
       type: object
       properties:
+        id:
+          type: string
         name:
-          type: string
-        past_due_in_cents:
-          type: integer
-          format: int32
-    Public.ExternalRecordBlueprint_min:
-      type: object
-      properties:
-        source:
-          type: string
-        external_id:
           type: string
     Public.MembershipMemberBlueprint_for_patient:
       type: object
@@ -2128,43 +2437,87 @@ components:
           type: string
         membership:
           $ref: '#/components/schemas/Public.MembershipBlueprint_min'
-    Public.CompanyAccountBlueprint_min:
+    Public.PatientBlueprint_account:
+      type: object
+      properties:
+        name:
+          type: string
+        past_due_in_cents:
+          type: integer
+          format: int32
+    Public.MembershipPatientBlueprint_one:
+      type: object
+      properties:
+        end_date:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        enrollment_status:
+          type: string
+        member_type:
+          type: string
+        start_date:
+          type: string
+          format: date
+        status:
+          type: string
+        uses_tobacco:
+          type: boolean
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        division:
+          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
+        payer:
+          $ref: '#/components/schemas/Public.PatientBlueprint_min'
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+    Public.NpiBlueprint_shared:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        number:
+          type: string
+        organization_name:
+          type: string
+        type:
+          type: string
+    Public.LocationBlueprint_one:
       type: object
       properties:
         id:
           type: string
-    Public.ChargeItemBlueprint_one:
-      type: object
-      properties:
-        id:
+        address_city:
           type: string
-        code:
+        address_country:
           type: string
-        description:
+        address_latitude:
+          type: number
+          format: float
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_longitude:
+          type: number
+          format: float
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        distance:
           type: string
         name:
           type: string
-        provider_web_link:
+        phone_number:
           type: string
-        created_at:
-          type: string
-          format: date-time
-        price_in_cents:
-          type: number
-          format: float
-        quantity_in_stock:
-          type: integer
-          format: int32
-        updated_at:
-          type: string
-          format: date-time
-        category:
-          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
-    Public.MembershipBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
     Public.CategoryBlueprint_one:
       type: object
       properties:
@@ -2177,152 +2530,51 @@ components:
           format: date-time
         default_for_memberships:
           type: boolean
-    Common.SocialSecurityNumberBlueprint_masked:
+    Public.PlanBlueprint_min:
       type: object
       properties:
-        masked_number:
+        id:
           type: string
-    Provider.CustomerInvoicesController.create_body:
-      title: Create_Customer_Invoice
+        name:
+          type: string
+        plan_type:
+          type: string
+    Public.CompanyBlueprint_leaf:
       type: object
-      description: Owner or patient or both must be provided. If you do not specify owner, we will either use the patient's last payer, or the patient themselves
       properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.KnownPracticeBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.LocationGroupBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
         integration_record_id:
           type: string
-        owner:
-          $ref: '#/components/schemas/Association'
-        patient:
-          $ref: '#/components/schemas/Association'
-    Public.CustomerInvoiceBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          amount_in_cents:
-            type: integer
-            format: int32
-          charges_count:
-            type: string
-          created_at:
-            type: string
-            format: date-time
-          date:
-            type: string
-            format: date
-          due_in_cents:
-            type: integer
-            format: int32
-          human_status:
-            type: string
-          integration_record_id:
-            type: string
-          invoice_number:
-            type: integer
-            format: int32
-          last_sent_at:
-            type: string
-            format: date-time
-          last_viewed_at:
-            type: string
-            format: date-time
-          paid_at:
-            type: string
-            format: date-time
-          paid_in_cents:
-            type: integer
-            format: int32
-          payment_status:
-            type: string
-          payments_count:
-            type: string
-          provider_web_link:
-            type: string
-          received_in_cents:
-            type: integer
-            format: int32
-          status:
-            type: string
-          subtotal_in_cents:
-            type: integer
-            format: int32
-          tax_in_cents:
-            type: integer
-            format: int32
-          total_in_cents:
-            type: integer
-            format: int32
-          updated_at:
-            type: string
-            format: date-time
-          charges:
-            $ref: '#/components/schemas/Public.ChargeBlueprint_one'
-          owner:
-            $ref: '#/components/schemas/Public.PatientBlueprint_one'
-    Public.ChargeBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        amount_in_cents:
-          type: integer
-          format: int32
-        created_at:
-          type: string
-          format: date-time
-        description:
-          type: string
-        is_persisted:
-          type: boolean
         name:
           type: string
-        price_in_cents:
-          type: integer
-          format: int32
-        quantity:
-          type: integer
-          format: int32
-        service_date:
-          type: string
-          format: date
-        status:
-          type: string
-        subtotal_in_cents:
-          type: integer
-          format: int32
-        tax_in_cents:
-          type: integer
-          format: int32
-        total_in_cents:
-          type: integer
-          format: int32
         updated_at:
           type: string
           format: date-time
-        category:
-          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
-        charge_item:
-          $ref: '#/components/schemas/Public.ChargeItemBlueprint_one'
-        location:
-          $ref: '#/components/schemas/Public.LocationBlueprint_shared'
-        patient:
-          $ref: '#/components/schemas/Public.PatientBlueprint_one'
-        practitioner:
-          $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
-    Public.LeadSourceBlueprint_one:
+    Public.EmployeeDivisionBlueprint_leaf:
       type: object
       properties:
         id:
           type: string
         name:
           type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
     Public.PhoneBlueprint_leaf:
       type: object
       properties:
@@ -2330,20 +2582,13 @@ components:
           type: string
         type:
           type: string
-    Public.PatientBlueprint_min:
+    Public.ExternalRecordBlueprint_min:
       type: object
       properties:
-        id:
+        source:
           type: string
-        name:
+        external_id:
           type: string
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
     Public.CustomerInvoiceBlueprint_one:
       type: object
       properties:
@@ -2411,136 +2656,18 @@ components:
           $ref: '#/components/schemas/Public.ChargeBlueprint_one'
         owner:
           $ref: '#/components/schemas/Public.PatientBlueprint_one'
-    Public.NpiBlueprint_shared:
+    Provider.CustomerInvoicesController.create_body:
+      title: Create_Customer_Invoice
       type: object
+      description: Owner or patient or both must be provided. If you do not specify owner, we will either use the patient's last payer, or the patient themselves
       properties:
-        first_name:
+        integration_record_id:
           type: string
-        last_name:
-          type: string
-        number:
-          type: string
-        organization_name:
-          type: string
-        type:
-          type: string
-    Public.KnownPracticeBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.LocationBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        address_city:
-          type: string
-        address_country:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        name:
-          type: string
-    Public.CompanyBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.LocationBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        address_city:
-          type: string
-        address_country:
-          type: string
-        address_latitude:
-          type: number
-          format: float
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_longitude:
-          type: number
-          format: float
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        distance:
-          type: string
-        name:
-          type: string
-        phone_number:
-          type: string
-        virtual:
-          type: boolean
-        location_group:
-          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
-    Public.PdfBlueprint_one:
-      type: object
-      properties:
-        url:
-          type: string
-    Common.PhoneBlueprint_shared:
-      type: object
-      properties:
-        number:
-          type: string
-        type:
-          type: string
-        us_formattable:
-          type: string
-    Public.MembershipPatientBlueprint_one:
-      type: object
-      properties:
-        end_date:
-          type: string
-        enrollment_requested_on:
-          type: string
-          format: date
-        enrollment_status:
-          type: string
-        member_type:
-          type: string
-        start_date:
-          type: string
-          format: date
-        status:
-          type: string
-        uses_tobacco:
-          type: boolean
-        company:
-          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
-        division:
-          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
-        payer:
-          $ref: '#/components/schemas/Public.PatientBlueprint_min'
-        plan:
-          $ref: '#/components/schemas/Public.PlanBlueprint_min'
-    Public.PlanBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        plan_type:
-          type: string
-    Common.EmergencyContactBlueprint_shared:
+        owner:
+          $ref: '#/components/schemas/Association'
+        patient:
+          $ref: '#/components/schemas/Association'
+    Common.EmergencyContactBlueprint_shared_2:
       type: object
       properties:
         id:
@@ -2555,131 +2682,10 @@ components:
           type: string
         relationship:
           type: string
+        relationship_other:
+          type: string
         phone:
           $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
-    Public.PractitionerBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        accepts_enrollments_from_employer:
-          type: string
-        accepts_enrollments_from_retail:
-          type: string
-        bio:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        education:
-          type: string
-        email:
-          type: string
-        gender:
-          type: string
-        gender_other:
-          type: string
-        integration_record_id:
-          type: string
-        max_patient_age:
-          type: string
-        min_patient_age:
-          type: string
-        name:
-          type: string
-        online_signup_visibility:
-          type: string
-        panel_size:
-          type: integer
-          format: int32
-        panel_size_limit:
-          type: integer
-          format: int32
-        photo_url:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Public.LocationBlueprint_one'
-        npi:
-          $ref: '#/components/schemas/Public.NpiBlueprint_shared'
-        specialties:
-          type: array
-          items:
-            $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
-    Provider.CustomerInvoicesController.update_body:
-      title: Create_Customer_Invoice
-      type: object
-      description: Owner or patient or both must be provided. If you do not specify owner, we will either use the patient's last payer, or the patient themselves
-      properties:
-        integration_record_id:
-          type: string
-        owner:
-          $ref: '#/components/schemas/Association'
-        patient:
-          $ref: '#/components/schemas/Association'
-    Public.LocationGroupBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        integration_record_id:
-          type: string
-        name:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
-    Public.EmployeeDivisionBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.MembershipMemberBlueprint_for_patient_2:
-      type: object
-      properties:
-        id:
-          type: string
-        end_date:
-          type: string
-        enrollment_requested_on:
-          type: string
-          format: date
-        enrollment_status:
-          type: string
-        member_type:
-          type: string
-        start_date:
-          type: string
-          format: date
-        status:
-          type: string
-        uses_tobacco:
-          type: boolean
-        membership:
-          $ref: '#/components/schemas/Public.MembershipBlueprint_min'
-    Provider.CustomerInvoicesController.create_body_2:
-      title: Create_Customer_Invoice
-      type: object
-      description: Owner or patient or both must be provided. If you do not specify owner, we will either use the patient's last payer, or the patient themselves
-      properties:
-        integration_record_id:
-          type: string
-        owner:
-          $ref: '#/components/schemas/Association'
-        patient:
-          $ref: '#/components/schemas/Association'
-        location:
-          $ref: '#/components/schemas/Association'
-          description: Optional. Defaults to the payer's location; new charges inherit it.
     Public.CustomerInvoiceBlueprint_all_2:
       type: array
       items:
@@ -2749,6 +2755,43 @@ components:
             $ref: '#/components/schemas/Public.LocationBlueprint_shared'
           owner:
             $ref: '#/components/schemas/Public.PatientBlueprint_one'
+    Provider.CustomerInvoicesController.update_body_2:
+      title: Create_Customer_Invoice
+      type: object
+      description: Owner or patient or both must be provided. If you do not specify owner, we will either use the patient's last payer, or the patient themselves
+      properties:
+        integration_record_id:
+          type: string
+        owner:
+          $ref: '#/components/schemas/Association'
+        patient:
+          $ref: '#/components/schemas/Association'
+        location:
+          $ref: '#/components/schemas/Association'
+          description: Changing this re-applies the location to every charge on the invoice.
+    Public.MembershipMemberBlueprint_for_patient_2:
+      type: object
+      properties:
+        id:
+          type: string
+        end_date:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        enrollment_status:
+          type: string
+        member_type:
+          type: string
+        start_date:
+          type: string
+          format: date
+        status:
+          type: string
+        uses_tobacco:
+          type: boolean
+        membership:
+          $ref: '#/components/schemas/Public.MembershipBlueprint_min'
     Public.CustomerInvoiceBlueprint_one_2:
       type: object
       properties:
@@ -2818,26 +2861,7 @@ components:
           $ref: '#/components/schemas/Public.LocationBlueprint_shared'
         owner:
           $ref: '#/components/schemas/Public.PatientBlueprint_one'
-    Common.EmergencyContactBlueprint_shared_2:
-      type: object
-      properties:
-        id:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-        name:
-          type: string
-        relationship:
-          type: string
-        relationship_other:
-          type: string
-        phone:
-          $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
-    Provider.CustomerInvoicesController.update_body_2:
+    Provider.CustomerInvoicesController.create_body_2:
       title: Create_Customer_Invoice
       type: object
       description: Owner or patient or both must be provided. If you do not specify owner, we will either use the patient's last payer, or the patient themselves
@@ -2850,7 +2874,7 @@ components:
           $ref: '#/components/schemas/Association'
         location:
           $ref: '#/components/schemas/Association'
-          description: Changing this re-applies the location to every charge on the invoice.
+          description: Optional. Defaults to the payer's location; new charges inherit it.
   securitySchemes:
     BearerAuth:
       type: http
