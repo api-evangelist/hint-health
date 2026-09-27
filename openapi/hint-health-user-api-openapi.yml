@@ -105,6 +105,13 @@ components:
           type: string
         name:
           type: string
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
     Public.PartnerAppUserBlueprint_leaf:
       type: object
       properties:
@@ -114,13 +121,6 @@ components:
           type: string
         product:
           $ref: '#/components/schemas/Public.PartnerProductBlueprint_leaf'
-    Public.PhoneBlueprint_leaf:
-      type: object
-      properties:
-        number:
-          type: string
-        type:
-          type: string
     Public.ProductBlueprint_leaf:
       type: object
       properties:

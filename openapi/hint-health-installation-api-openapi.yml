@@ -272,55 +272,12 @@ components:
             $ref: '#/components/schemas/Public.PracticeBlueprint_min'
           product:
             $ref: '#/components/schemas/Public.ProductBlueprint_min'
-    Partner.InstallationsController.connect_body:
-      title: Connect_Installation
-      type: object
-      properties:
-        code:
-          type: string
-          description: The authorization code issued when the practice installed the product.
-      required:
-      - code
     Public.PracticeBlueprint_min:
       type: object
       properties:
         id:
           type: string
         name:
-          type: string
-    Public.InstallationBlueprint_one_with_credential:
-      type: object
-      properties:
-        id:
-          type: string
-        auto_grant_partner_app_access:
-          type: string
-        default_partner_app_admin_role:
-          type: string
-        default_partner_app_non_admin_role:
-          type: string
-        status:
-          type: string
-        api_keys:
-          $ref: '#/components/schemas/Public.ApiKeyBlueprint_one'
-        practice:
-          $ref: '#/components/schemas/Public.PracticeBlueprint_min'
-        product:
-          $ref: '#/components/schemas/Public.ProductBlueprint_min'
-    Public.ApiKeyBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        created_at:
-          type: string
-        deactivated_at:
-          type: string
-        label:
-          type: string
-        last_used_at:
-          type: string
-        token:
           type: string
     Public.InstallationBlueprint_one:
       type: object
@@ -348,6 +305,49 @@ components:
           type: string
         slug:
           type: string
+    Partner.InstallationsController.connect_body:
+      title: Connect_Installation
+      type: object
+      properties:
+        code:
+          type: string
+          description: The authorization code issued when the practice installed the product.
+      required:
+      - code
+    Public.ApiKeyBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+        deactivated_at:
+          type: string
+        label:
+          type: string
+        last_used_at:
+          type: string
+        token:
+          type: string
+    Public.InstallationBlueprint_one_with_credential:
+      type: object
+      properties:
+        id:
+          type: string
+        auto_grant_partner_app_access:
+          type: string
+        default_partner_app_admin_role:
+          type: string
+        default_partner_app_non_admin_role:
+          type: string
+        status:
+          type: string
+        api_keys:
+          $ref: '#/components/schemas/Public.ApiKeyBlueprint_one'
+        practice:
+          $ref: '#/components/schemas/Public.PracticeBlueprint_min'
+        product:
+          $ref: '#/components/schemas/Public.ProductBlueprint_min'
   securitySchemes:
     hint_api_key:
       type: apiKey

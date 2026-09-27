@@ -157,26 +157,28 @@ paths:
           description: Successful response
 components:
   schemas:
-    Public.PartnerProductLinkBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        composed_url:
-          type: string
-        link_type:
-          type: string
-        position:
-          type: integer
-          format: int32
-        title:
-          type: string
-        utm_campaign:
-          type: string
-        utm_content:
-          type: string
-        value:
-          type: string
+    Public.PartnerProductLinkBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          composed_url:
+            type: string
+          link_type:
+            type: string
+          position:
+            type: integer
+            format: int32
+          title:
+            type: string
+          utm_campaign:
+            type: string
+          utm_content:
+            type: string
+          value:
+            type: string
     ProductLinkSanitizer:
       type: object
       properties:
@@ -206,28 +208,26 @@ components:
       required:
       - link_type
       - value
-    Public.PartnerProductLinkBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          composed_url:
-            type: string
-          link_type:
-            type: string
-          position:
-            type: integer
-            format: int32
-          title:
-            type: string
-          utm_campaign:
-            type: string
-          utm_content:
-            type: string
-          value:
-            type: string
+    Public.PartnerProductLinkBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        composed_url:
+          type: string
+        link_type:
+          type: string
+        position:
+          type: integer
+          format: int32
+        title:
+          type: string
+        utm_campaign:
+          type: string
+        utm_content:
+          type: string
+        value:
+          type: string
   securitySchemes:
     hint_api_key:
       type: apiKey

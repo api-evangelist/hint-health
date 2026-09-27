@@ -142,22 +142,6 @@ paths:
           description: Successful response
 components:
   schemas:
-    ProductPreconditionSanitizer:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Kind of pre-install step the practice must complete.
-          enum:
-          - external_account
-          - external_install
-          - onboarding_call
-        url:
-          type: string
-          description: URL the practice is sent to in order to complete the precondition (signup form, install link, or scheduling page depending on `type`).
-      required:
-      - type
-      - url
     Public.PartnerProductPreconditionBlueprint_one:
       type: object
       properties:
@@ -178,6 +162,22 @@ components:
             type: string
           url:
             type: string
+    ProductPreconditionSanitizer:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Kind of pre-install step the practice must complete.
+          enum:
+          - external_account
+          - external_install
+          - onboarding_call
+        url:
+          type: string
+          description: URL the practice is sent to in order to complete the precondition (signup form, install link, or scheduling page depending on `type`).
+      required:
+      - type
+      - url
   securitySchemes:
     hint_api_key:
       type: apiKey

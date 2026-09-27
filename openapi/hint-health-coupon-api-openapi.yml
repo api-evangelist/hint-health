@@ -119,42 +119,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.CouponBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        code:
-          type: string
-        description:
-          type: string
-        amount_off_in_cents:
-          type: integer
-          format: int32
-        apply_to_each_patient:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-        duration_in_months:
-          type: integer
-          format: int32
-        percent_off:
-          type: number
-          format: float
-        updated_at:
-          type: string
-          format: date-time
-        is_redeemable:
-          type: boolean
-        is_archived:
-          type: boolean
-        redeemable_from:
-          type: string
-          format: date-time
-        redeemable_until:
-          type: string
-          format: date-time
     Public.CouponBlueprint_all:
       type: array
       items:
@@ -193,6 +157,42 @@ components:
           updated_at:
             type: string
             format: date-time
+    Public.CouponBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        amount_off_in_cents:
+          type: integer
+          format: int32
+        apply_to_each_patient:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        duration_in_months:
+          type: integer
+          format: int32
+        percent_off:
+          type: number
+          format: float
+        updated_at:
+          type: string
+          format: date-time
+        is_redeemable:
+          type: boolean
+        is_archived:
+          type: boolean
+        redeemable_from:
+          type: string
+          format: date-time
+        redeemable_until:
+          type: string
+          format: date-time
   securitySchemes:
     BearerAuth:
       type: http

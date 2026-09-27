@@ -347,68 +347,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Provider.PractitionersController.create_body:
-      title: Create_Practitioner
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        bio:
-          type: string
-        gender:
-          type: string
-          enum:
-          - male
-          - female
-          - other
-        gender_other:
-          type: string
-        photo:
-          type: string
-          description: Base64 encoded photo.
-        education:
-          type: array
-          items:
-            type: string
-        integration_record_id:
-          type: string
-        npi:
-          $ref: '#/components/schemas/Npi'
-        practitioner_group:
-          $ref: '#/components/schemas/Association'
-    Provider.PractitionersController.update_body:
-      title: Create_Practitioner
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        bio:
-          type: string
-        gender:
-          type: string
-          enum:
-          - male
-          - female
-          - other
-        gender_other:
-          type: string
-        photo:
-          type: string
-          description: Base64 encoded photo.
-        education:
-          type: array
-          items:
-            type: string
-        integration_record_id:
-          type: string
-        npi:
-          $ref: '#/components/schemas/Npi'
-        practitioner_group:
-          $ref: '#/components/schemas/Association'
     Public.PractitionerBlueprint_all:
       type: array
       items:
@@ -464,21 +402,44 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
-    Public.LocationGroupBlueprint_leaf:
+    Provider.PractitionersController.update_body:
+      title: Create_Practitioner
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        bio:
+          type: string
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+        gender_other:
+          type: string
+        photo:
+          type: string
+          description: Base64 encoded photo.
+        education:
+          type: array
+          items:
+            type: string
+        integration_record_id:
+          type: string
+        npi:
+          $ref: '#/components/schemas/Npi'
+        practitioner_group:
+          $ref: '#/components/schemas/Association'
+    Association:
       type: object
       properties:
         id:
           type: string
-        created_at:
-          type: string
-          format: date-time
-        integration_record_id:
-          type: string
-        name:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
+      required:
+      - id
     Public.PractitionerBlueprint_one:
       type: object
       properties:
@@ -532,6 +493,42 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
+    Npi:
+      type: object
+      properties:
+        number:
+          type: integer
+    Provider.PractitionersController.create_body:
+      title: Create_Practitioner
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        bio:
+          type: string
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+        gender_other:
+          type: string
+        photo:
+          type: string
+          description: Base64 encoded photo.
+        education:
+          type: array
+          items:
+            type: string
+        integration_record_id:
+          type: string
+        npi:
+          $ref: '#/components/schemas/Npi'
+        practitioner_group:
+          $ref: '#/components/schemas/Association'
     Public.SpecialtyBlueprint_all:
       type: array
       items:
@@ -541,31 +538,6 @@ components:
             type: string
           name:
             type: string
-    Public.NpiBlueprint_shared:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        number:
-          type: string
-        organization_name:
-          type: string
-        type:
-          type: string
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Npi:
-      type: object
-      properties:
-        number:
-          type: integer
     Public.LocationBlueprint_one:
       type: object
       properties:
@@ -599,6 +571,34 @@ components:
           type: boolean
         location_group:
           $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+    Public.NpiBlueprint_shared:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        number:
+          type: string
+        organization_name:
+          type: string
+        type:
+          type: string
+    Public.LocationGroupBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        integration_record_id:
+          type: string
+        name:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
   securitySchemes:
     BearerAuth:
       type: http

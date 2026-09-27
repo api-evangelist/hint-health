@@ -171,21 +171,35 @@ paths:
                 type: integer
 components:
   schemas:
-    Public.CompanyBlueprint_leaf:
+    Public.Payable.InvoiceBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        invoice_number:
+          type: string
+        type:
+          type: string
+    Public.PracticeBlueprint_min:
       type: object
       properties:
         id:
           type: string
         name:
           type: string
+    Public.CategoryBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        default_for_memberships:
+          type: boolean
     Public.PatientBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.AffiliationBlueprint_leaf:
       type: object
       properties:
         id:
@@ -222,13 +236,6 @@ components:
           $ref: '#/components/schemas/Public.CategoryBlueprint_one'
         invoice:
           $ref: '#/components/schemas/Public.Payable.InvoiceBlueprint_min'
-    Public.PracticeBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.AffiliateAncillaryChargeBlueprint_all:
       type: array
       items:
@@ -254,26 +261,19 @@ components:
             $ref: '#/components/schemas/Public.ChargeBlueprint_for_affiliate_ancillary_charge'
           sponsor_charge:
             $ref: '#/components/schemas/Public.ChargeBlueprint_for_affiliate_ancillary_charge'
-    Public.CategoryBlueprint_one:
+    Public.AffiliationBlueprint_leaf:
       type: object
       properties:
         id:
           type: string
         name:
           type: string
-        created_at:
-          type: string
-          format: date-time
-        default_for_memberships:
-          type: boolean
-    Public.Payable.InvoiceBlueprint_min:
+    Public.CompanyBlueprint_leaf:
       type: object
       properties:
         id:
           type: string
-        invoice_number:
-          type: string
-        type:
+        name:
           type: string
   securitySchemes:
     hint_api_key:

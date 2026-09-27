@@ -208,41 +208,6 @@ paths:
                   name: Default
 components:
   schemas:
-    Public.BackendBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    ProductSanitizer:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Display name of the marketplace listing.
-        slug:
-          type: string
-          description: URL-safe identifier (e.g. "my-product"). Only settable on create — contact Hint support to change it later.
-        type:
-          type: string
-          description: Kind of marketplace listing.
-          enum:
-          - app
-          - integration
-          - solution
-        summary:
-          type: string
-          description: Short tagline shown on the marketplace card (max 80 chars).
-        built_by_name:
-          type: string
-          description: Display name of the maker, shown under the listing as "Built by <name>".
-        built_by_url:
-          type: string
-          description: Url the "Built by" link points to.
-        icon:
-          type: string
-          description: Listing icon as a base64 data URI (e.g. "data:image/png;base64,..."). **Note the field-name asymmetry:** the request field is `icon` (data URI input); the GET response surfaces the uploaded image as `icon_url` (hosted URL). Sending `icon_url` as a request field is silently ignored. The listing icon is distinct from the Core Page sidebar icon (`surface.core_page_icon`) — see the surface endpoints for that.
     Public.ProductBlueprint_all:
       type: array
       items:
@@ -283,6 +248,41 @@ components:
           type: string
         partner_backend:
           $ref: '#/components/schemas/Public.BackendBlueprint_min'
+    ProductSanitizer:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name of the marketplace listing.
+        slug:
+          type: string
+          description: URL-safe identifier (e.g. "my-product"). Only settable on create — contact Hint support to change it later.
+        type:
+          type: string
+          description: Kind of marketplace listing.
+          enum:
+          - app
+          - integration
+          - solution
+        summary:
+          type: string
+          description: Short tagline shown on the marketplace card (max 80 chars).
+        built_by_name:
+          type: string
+          description: Display name of the maker, shown under the listing as "Built by <name>".
+        built_by_url:
+          type: string
+          description: Url the "Built by" link points to.
+        icon:
+          type: string
+          description: Listing icon as a base64 data URI (e.g. "data:image/png;base64,..."). **Note the field-name asymmetry:** the request field is `icon` (data URI input); the GET response surfaces the uploaded image as `icon_url` (hosted URL). Sending `icon_url` as a request field is silently ignored. The listing icon is distinct from the Core Page sidebar icon (`surface.core_page_icon`) — see the surface endpoints for that.
+    Public.BackendBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
   securitySchemes:
     hint_api_key:
       type: apiKey

@@ -399,12 +399,6 @@ components:
             type: string
           webhook_url:
             type: string
-    Platform.WebhookEndpointsController.update_body:
-      title: Update_WebhookEndpoint_Legacy
-      type: object
-      properties:
-        webhook_url:
-          type: string
     Platform.WebhookEndpointsController.create_body:
       type: object
       properties:
@@ -412,6 +406,12 @@ components:
           type: string
       required:
       - webhook_url
+    Platform.WebhookEndpointsController.update_body:
+      title: Update_WebhookEndpoint_Legacy
+      type: object
+      properties:
+        webhook_url:
+          type: string
     Public.BackendBlueprint_min:
       type: object
       properties:

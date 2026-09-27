@@ -183,29 +183,6 @@ paths:
               $ref: '#/components/schemas/Platform.IntegrationsController.update_body'
 components:
   schemas:
-    Platform.IntegrationBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          expires_in:
-            type: string
-          refresh_token:
-            type: string
-          status:
-            type: string
-          token_type:
-            type: string
-          webhook_url_default:
-            type: string
-            deprecated: true
-          webhook_url_override:
-            type: string
-            deprecated: true
-          practice:
-            $ref: '#/components/schemas/Platform.PracticeBlueprint_for_integration'
     Platform.PracticeBlueprint_for_integration:
       type: object
       properties:
@@ -241,6 +218,29 @@ components:
         webhook_url_override:
           type: string
           deprecated: true
+    Platform.IntegrationBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          expires_in:
+            type: string
+          refresh_token:
+            type: string
+          status:
+            type: string
+          token_type:
+            type: string
+          webhook_url_default:
+            type: string
+            deprecated: true
+          webhook_url_override:
+            type: string
+            deprecated: true
+          practice:
+            $ref: '#/components/schemas/Platform.PracticeBlueprint_for_integration'
   securitySchemes:
     BearerAuth:
       type: http

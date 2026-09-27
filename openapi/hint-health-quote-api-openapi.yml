@@ -75,6 +75,40 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    QuoteSanitizer:
+      type: object
+      properties:
+        plan:
+          $ref: '#/components/schemas/Association'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuoteSanitizer.MemberSanitizer'
+        period_in_months:
+          type: integer
+          format: int32
+          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
+          enum:
+          - '1'
+          - '3'
+          - '6'
+          - '12'
+        coupon:
+          $ref: '#/components/schemas/Association'
+          description: The coupon to apply to the quote (optional)
+        coupon_code:
+          type: string
+          description: The coupon code to apply to the quote (alternative to coupon object)
+      required:
+      - plan
+      - members
     Public.PlanBlueprint_min:
       type: object
       properties:
@@ -84,6 +118,32 @@ components:
           type: string
         plan_type:
           type: string
+    QuoteSanitizer.MemberSanitizer:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Choose one below. You can think of "spouse" as "adult". This is a naming issue that will hopefully be addressed in the future
+          enum:
+          - primary
+          - child
+          - spouse
+        age:
+          type: integer
+          format: int32
+        uses_tobacco:
+          type: boolean
+        dob:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        start_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+      required:
+      - type
+      - uses_tobacco
     Public.QuoteBlueprint_one:
       type: object
       properties:
@@ -140,66 +200,6 @@ components:
         redeemable_until:
           type: string
           format: date-time
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    QuoteSanitizer.MemberSanitizer:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Choose one below. You can think of "spouse" as "adult". This is a naming issue that will hopefully be addressed in the future
-          enum:
-          - primary
-          - child
-          - spouse
-        age:
-          type: integer
-          format: int32
-        uses_tobacco:
-          type: boolean
-        dob:
-          type: string
-          format: date
-          description: Date must be formatted as YYYY-MM-DD.
-        start_date:
-          type: string
-          format: date
-          description: Date must be formatted as YYYY-MM-DD.
-      required:
-      - type
-      - uses_tobacco
-    QuoteSanitizer:
-      type: object
-      properties:
-        plan:
-          $ref: '#/components/schemas/Association'
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuoteSanitizer.MemberSanitizer'
-        period_in_months:
-          type: integer
-          format: int32
-          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
-          enum:
-          - '1'
-          - '3'
-          - '6'
-          - '12'
-        coupon:
-          $ref: '#/components/schemas/Association'
-          description: The coupon to apply to the quote (optional)
-        coupon_code:
-          type: string
-          description: The coupon code to apply to the quote (alternative to coupon object)
-      required:
-      - plan
-      - members
   securitySchemes:
     BearerAuth:
       type: http

@@ -231,6 +231,106 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Provider.LocationsController.create_body:
+      type: object
+      properties:
+        name:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        address_country:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Association'
+      required:
+      - name
+    Public.LocationBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_latitude:
+          type: number
+          format: float
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_longitude:
+          type: number
+          format: float
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        distance:
+          type: string
+        name:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+    Public.LocationBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          address_city:
+            type: string
+          address_country:
+            type: string
+          address_latitude:
+            type: number
+            format: float
+          address_line1:
+            type: string
+          address_line2:
+            type: string
+          address_longitude:
+            type: number
+            format: float
+          address_state:
+            type: string
+          address_zip:
+            type: string
+          distance:
+            type: string
+          name:
+            type: string
+          phone_number:
+            type: string
+          virtual:
+            type: boolean
+          location_group:
+            $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
     Public.LocationGroupBlueprint_leaf:
       type: object
       properties:
@@ -271,106 +371,6 @@ components:
           $ref: '#/components/schemas/Association'
       required:
       - name
-    Public.LocationBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          address_city:
-            type: string
-          address_country:
-            type: string
-          address_latitude:
-            type: number
-            format: float
-          address_line1:
-            type: string
-          address_line2:
-            type: string
-          address_longitude:
-            type: number
-            format: float
-          address_state:
-            type: string
-          address_zip:
-            type: string
-          distance:
-            type: string
-          name:
-            type: string
-          phone_number:
-            type: string
-          virtual:
-            type: boolean
-          location_group:
-            $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
-    Provider.LocationsController.create_body:
-      type: object
-      properties:
-        name:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_city:
-          type: string
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        address_country:
-          type: string
-        phone_number:
-          type: string
-        virtual:
-          type: boolean
-        location_group:
-          $ref: '#/components/schemas/Association'
-      required:
-      - name
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Public.LocationBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        address_city:
-          type: string
-        address_country:
-          type: string
-        address_latitude:
-          type: number
-          format: float
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_longitude:
-          type: number
-          format: float
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        distance:
-          type: string
-        name:
-          type: string
-        phone_number:
-          type: string
-        virtual:
-          type: boolean
-        location_group:
-          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
   securitySchemes:
     BearerAuth:
       type: http

@@ -99,15 +99,6 @@ components:
         alt:
           type: string
           description: Alt text used for accessibility.
-    Public.PartnerProductImageBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        file_url:
-          type: string
-        alt:
-          type: string
     ProductOverviewSanitizer:
       type: object
       properties:
@@ -128,6 +119,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Public.PartnerProductImageBlueprint_shared'
+    Public.PartnerProductImageBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        file_url:
+          type: string
+        alt:
+          type: string
   securitySchemes:
     hint_api_key:
       type: apiKey

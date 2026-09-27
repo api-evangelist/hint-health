@@ -131,6 +131,19 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Public.LeadSourceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
     Public.LeadSourceBlueprint_all:
       type: array
       items:
@@ -146,31 +159,18 @@ components:
           updated_at:
             type: string
             format: date-time
-    Provider.LeadSourcesController.create_body:
-      title: Create_LeadSource
-      type: object
-      properties:
-        name:
-          type: string
     Provider.LeadSourcesController.update_body:
       title: Create_LeadSource
       type: object
       properties:
         name:
           type: string
-    Public.LeadSourceBlueprint_one:
+    Provider.LeadSourcesController.create_body:
+      title: Create_LeadSource
       type: object
       properties:
-        id:
-          type: string
         name:
           type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
   securitySchemes:
     BearerAuth:
       type: http

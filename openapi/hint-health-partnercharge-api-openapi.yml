@@ -154,6 +154,13 @@ components:
       required:
       - id
       - type
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     Provider.PartnerChargesController.create_body:
       title: Create_PartnerCharge
       type: object
@@ -198,13 +205,6 @@ components:
             type: string
           description:
             type: string
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
     PartnerChargeLine_2:
       type: object
       properties:

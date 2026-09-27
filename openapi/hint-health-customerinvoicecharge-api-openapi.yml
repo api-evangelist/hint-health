@@ -522,6 +522,36 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Provider.CustomerInvoices.ChargesController.create_body:
+      type: object
+      properties:
+        quantity:
+          type: number
+          format: double
+        price_in_cents:
+          type: number
+          format: double
+        name:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+        patient:
+          $ref: '#/components/schemas/Association'
+        practitioner:
+          $ref: '#/components/schemas/Association'
+        category:
+          $ref: '#/components/schemas/Association'
+        charge_item:
+          $ref: '#/components/schemas/Association'
+        location:
+          $ref: '#/components/schemas/Association'
+      required:
+      - quantity
+      - price_in_cents
+      - name
     Association:
       type: object
       properties:
@@ -559,7 +589,7 @@ components:
       - quantity
       - price_in_cents
       - name
-    Provider.CustomerInvoices.ChargesController.create_body:
+    Provider.CustomerInvoices.ChargesController.create_body_2:
       type: object
       properties:
         quantity:
@@ -585,6 +615,7 @@ components:
           $ref: '#/components/schemas/Association'
         location:
           $ref: '#/components/schemas/Association'
+          description: Optional. Defaults to the invoice's location, else the patient's.
       required:
       - quantity
       - price_in_cents
@@ -616,37 +647,6 @@ components:
         location:
           $ref: '#/components/schemas/Association'
           description: Updating the invoice's location later will overwrite this value.
-      required:
-      - quantity
-      - price_in_cents
-      - name
-    Provider.CustomerInvoices.ChargesController.create_body_2:
-      type: object
-      properties:
-        quantity:
-          type: number
-          format: double
-        price_in_cents:
-          type: number
-          format: double
-        name:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-          format: date
-        patient:
-          $ref: '#/components/schemas/Association'
-        practitioner:
-          $ref: '#/components/schemas/Association'
-        category:
-          $ref: '#/components/schemas/Association'
-        charge_item:
-          $ref: '#/components/schemas/Association'
-        location:
-          $ref: '#/components/schemas/Association'
-          description: Optional. Defaults to the invoice's location, else the patient's.
       required:
       - quantity
       - price_in_cents

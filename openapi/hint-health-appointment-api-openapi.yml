@@ -277,47 +277,38 @@ paths:
                 type: integer
 components:
   schemas:
-    Public.PatientBlueprint_min:
+    Public.ProductBlueprint_leaf:
       type: object
       properties:
         id:
           type: string
         name:
           type: string
-    Public.AppointmentTypeBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          name:
-            type: string
-          duration:
-            type: integer
-            format: int32
-          created_at:
-            type: string
-          updated_at:
-            type: string
-    Public.LocationBlueprint_shared:
+    Public.UserBlueprint_shared:
       type: object
       properties:
         id:
           type: string
-        address_city:
+        email:
           type: string
-        address_country:
+        first_name:
           type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_state:
-          type: string
-        address_zip:
+        last_name:
           type: string
         name:
+          type: string
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+        product_users:
+          $ref: '#/components/schemas/Public.PartnerAppUserBlueprint_leaf'
+    Public.Appointment.ContactBlueprint_min:
+      type: object
+      properties:
+        first:
+          type: string
+        last:
+          type: string
+        email:
           type: string
     Public.Appointment.AttendeeBlueprint_all:
       type: array
@@ -330,12 +321,12 @@ components:
             $ref: '#/components/schemas/Public.PatientBlueprint_min'
           contact:
             $ref: '#/components/schemas/Public.Appointment.ContactBlueprint_min'
-    Public.PhoneBlueprint_leaf:
+    Public.PatientBlueprint_min:
       type: object
       properties:
-        number:
+        id:
           type: string
-        type:
+        name:
           type: string
     Public.AppointmentBlueprint_all:
       type: array
@@ -381,39 +372,6 @@ components:
             $ref: '#/components/schemas/Public.LocationBlueprint_shared'
           attendees:
             $ref: '#/components/schemas/Public.Appointment.AttendeeBlueprint_all'
-    Public.Appointment.ContactBlueprint_min:
-      type: object
-      properties:
-        first:
-          type: string
-        last:
-          type: string
-        email:
-          type: string
-    Public.UserBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        email:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        name:
-          type: string
-        phones:
-          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
-        product_users:
-          $ref: '#/components/schemas/Public.PartnerAppUserBlueprint_leaf'
-    Public.ProductBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.PartnerAppUserBlueprint_leaf:
       type: object
       properties:
@@ -423,6 +381,48 @@ components:
           type: string
         product:
           $ref: '#/components/schemas/Public.ProductBlueprint_leaf'
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+    Public.LocationBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        name:
+          type: string
+    Public.AppointmentTypeBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+          duration:
+            type: integer
+            format: int32
+          created_at:
+            type: string
+          updated_at:
+            type: string
   securitySchemes:
     hint_api_key:
       type: apiKey

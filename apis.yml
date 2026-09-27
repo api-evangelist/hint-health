@@ -827,8 +827,6 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
-  - APIKeys
-  tags_raw:
   - API Key
   properties:
   - type: OpenAPI
@@ -865,8 +863,6 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
-  - FormResponse
-  tags_raw:
   - Form Response
   properties:
   - type: OpenAPI
@@ -927,8 +923,6 @@ apis:
   humanURL: https://developers.hint.com/
   baseURL: https://api.hint.com
   tags:
-  - WebhookEvent
-  tags_raw:
   - Webhook Event
   properties:
   - type: OpenAPI

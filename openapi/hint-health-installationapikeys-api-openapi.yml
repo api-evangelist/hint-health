@@ -220,21 +220,6 @@ components:
       properties:
         label:
           type: string
-    Public.ApiKeyBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          created_at:
-            type: string
-          deactivated_at:
-            type: string
-          label:
-            type: string
-          last_used_at:
-            type: string
-          token_last_4:
-            type: string
     Partner.Installations.ApiKeysController.update_body:
       type: object
       properties:
@@ -255,6 +240,21 @@ components:
           type: string
         token:
           type: string
+    Public.ApiKeyBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          created_at:
+            type: string
+          deactivated_at:
+            type: string
+          label:
+            type: string
+          last_used_at:
+            type: string
+          token_last_4:
+            type: string
   securitySchemes:
     hint_api_key:
       type: apiKey

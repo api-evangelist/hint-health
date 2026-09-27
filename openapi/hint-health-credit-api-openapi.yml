@@ -149,18 +149,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Provider.CreditsController.update_body:
-      title: Update_Credit
-      type: object
-      properties:
-        amount_in_cents:
-          type: integer
-          format: int32
-          description: Value must be greater than or equal to 0
-        reason:
-          type: string
-      required:
-      - amount_in_cents
     Public.CreditBlueprint_one:
       type: object
       properties:
@@ -184,6 +172,42 @@ components:
           format: date-time
         credit_category:
           $ref: '#/components/schemas/Public.CreditCategoryBlueprint_min'
+    Provider.CreditsController.update_body:
+      title: Update_Credit
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+          description: Value must be greater than or equal to 0
+        reason:
+          type: string
+      required:
+      - amount_in_cents
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Provider.CreditsController.create_body:
+      title: Create_Credit
+      type: object
+      properties:
+        credit_category:
+          $ref: '#/components/schemas/Association'
+        amount_in_cents:
+          type: integer
+          format: int32
+          description: Value must be positive
+        reason:
+          type: string
+        integration_record_id:
+          type: string
+      required:
+      - credit_category
+      - amount_in_cents
     Public.CreditCategoryBlueprint_min:
       type: object
       properties:
@@ -216,30 +240,6 @@ components:
             format: date-time
           credit_category:
             $ref: '#/components/schemas/Public.CreditCategoryBlueprint_min'
-    Provider.CreditsController.create_body:
-      title: Create_Credit
-      type: object
-      properties:
-        credit_category:
-          $ref: '#/components/schemas/Association'
-        amount_in_cents:
-          type: integer
-          format: int32
-          description: Value must be positive
-        reason:
-          type: string
-        integration_record_id:
-          type: string
-      required:
-      - credit_category
-      - amount_in_cents
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
   securitySchemes:
     BearerAuth:
       type: http

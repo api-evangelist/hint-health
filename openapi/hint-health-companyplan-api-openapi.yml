@@ -174,12 +174,13 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Provider.CompanyPlansController.update_body:
-      title: Update_Company_Plan
+    Association:
       type: object
       properties:
-        available_for_enrollment:
-          type: boolean
+        id:
+          type: string
+      required:
+      - id
     Public.PlanBlueprint_min:
       type: object
       properties:
@@ -189,6 +190,17 @@ components:
           type: string
         plan_type:
           type: string
+    Public.CompanyPlanBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        available_for_enrollment:
+          type: boolean
+        is_default:
+          type: boolean
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
     Provider.CompanyPlansController.create_body:
       title: Create_Company_Plan
       type: object
@@ -215,24 +227,12 @@ components:
             type: boolean
           plan:
             $ref: '#/components/schemas/Public.PlanBlueprint_min'
-    Public.CompanyPlanBlueprint_one:
+    Provider.CompanyPlansController.update_body:
+      title: Update_Company_Plan
       type: object
       properties:
-        id:
-          type: string
         available_for_enrollment:
           type: boolean
-        is_default:
-          type: boolean
-        plan:
-          $ref: '#/components/schemas/Public.PlanBlueprint_min'
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
   securitySchemes:
     BearerAuth:
       type: http

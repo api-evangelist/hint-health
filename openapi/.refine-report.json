@@ -74,7 +74,7 @@
     "hint-health-webhookrequest-api-openapi.yml"
   ],
   "archived": [
-    "deleted 10 superseded output(s) from the previous generation"
+    "deleted 9 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
@@ -129,7 +129,7 @@
     "tag 'User' spans 2 source specs (hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml): per-path servers applied",
     "tag 'WebhookEndpoint' spans 2 source specs (hint-health-hint-health-api-openapi.yml, hint-health-partner-endpoints-2026-07-01-openapi.yml): per-path servers applied",
     "superseded outputs removed: hint-health-api-key-api-openapi.yml, hint-health-cancellation-reason-api-openapi.yml, hint-health-credit-line-api-openapi.yml, hint-health-form-response-api-openapi.yml, hint-health-lead-source-api-openapi.yml \u2026",
-    "apis.yml register: written (+10 apis, 67 total)"
+    "apis.yml register: written (+9 apis, 67 total)"
   ],
   "skipped": [
     "hint-health-accountaccesstoken-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -174,7 +174,7 @@
     "hint-health-membership-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "hint-health-membershipcontract-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "hint-health-membershipmember-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "hint-health-o-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hint-health-oauth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "hint-health-partner-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "hint-health-partnercharge-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "hint-health-partnerinteraction-api-openapi.yml: previously refined output, superseded by openapi/_original/",

@@ -96,51 +96,15 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Provider.PracticesController.update_body:
-      title: Update_Practice
+    Common.PhoneBlueprint_shared:
       type: object
       properties:
-        name:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_city:
-          type: string
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        address_country:
-          type: string
-        email:
-          type: string
-        phones:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumber'
-        url:
-          type: string
-        logo_url:
-          type: string
-        integration_record_id:
-          type: string
-    PhoneNumber:
-      type: object
-      properties:
-        id:
-          type: string
         number:
-          type: number
+          type: string
         type:
           type: string
         us_formattable:
-          type: boolean
-          description: Make this false if your number is not exactly 10 digits
-      required:
-      - number
-      - type
+          type: string
     Public.PracticeBlueprint_one:
       type: object
       properties:
@@ -170,14 +134,50 @@ components:
           type: string
         phones:
           $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
-    Common.PhoneBlueprint_shared:
+    PhoneNumber:
       type: object
       properties:
-        number:
+        id:
           type: string
+        number:
+          type: number
         type:
           type: string
         us_formattable:
+          type: boolean
+          description: Make this false if your number is not exactly 10 digits
+      required:
+      - number
+      - type
+    Provider.PracticesController.update_body:
+      title: Update_Practice
+      type: object
+      properties:
+        name:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        address_country:
+          type: string
+        email:
+          type: string
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+        url:
+          type: string
+        logo_url:
+          type: string
+        integration_record_id:
           type: string
   securitySchemes:
     BearerAuth:

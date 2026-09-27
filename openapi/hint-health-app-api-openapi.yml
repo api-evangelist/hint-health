@@ -170,6 +170,17 @@ paths:
               $ref: '#/components/schemas/AppSanitizer'
 components:
   schemas:
+    AppSanitizer.PartnerRoleSanitizer:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Stable identifier for the role. Required; must be unique across the app's roles.
+        description:
+          type: string
+          description: Free-form description of what the role grants.
+      required:
+      - name
     Public.PartnerRoleBlueprint_one:
       type: object
       properties:
@@ -177,34 +188,6 @@ components:
           type: string
         description:
           type: string
-    AppSanitizer:
-      type: object
-      properties:
-        handshake_url:
-          type: string
-          description: URL where Hint POSTs the handshake payload during embed bootstrapping. Must be https.
-        localhost_handshake_url:
-          type: string
-          description: HTTP localhost URL used in place of `handshake_url` when the current session has localhost mode enabled. Sandbox partners only.
-        default_admin_role:
-          type: string
-          description: Role name to apply to hinters and to admin users by default. Must match the `name` of one of the entries in partner_roles.
-        default_non_admin_role:
-          type: string
-          description: Role name to apply to non-admin users by default. Must match the `name` of one of the entries in partner_roles.
-        prepopulate_role_mappings:
-          type: boolean
-          description: When true, new practice→role mappings are prepopulated with the default role.
-        partner_roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppSanitizer.PartnerRoleSanitizer'
-          description: List of partner-defined roles. Each entry has a `name` (unique, required) and a `description` (free text, optional).
-        browser_allow_list:
-          type: array
-          items:
-            type: string
-          description: 'Browser capabilities delegated to the app''s embedded iframes via the Permissions Policy `allow` attribute. Supported values: `camera`, `microphone`, `geolocation`. Defaults to `[]` (no delegation). The end user still sees the browser''s own permission prompt for each capability. Changes apply the next time a surface is embedded — already-open surfaces must be reloaded.'
     Public.AppBlueprint_one:
       type: object
       properties:
@@ -236,17 +219,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Public.AppSurfaceBlueprint_one'
-    AppSanitizer.PartnerRoleSanitizer:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Stable identifier for the role. Required; must be unique across the app's roles.
-        description:
-          type: string
-          description: Free-form description of what the role grants.
-      required:
-      - name
     Public.AppSurfaceBlueprint_one:
       type: object
       properties:
@@ -276,6 +248,34 @@ components:
           type: string
         settings_label:
           type: string
+    AppSanitizer:
+      type: object
+      properties:
+        handshake_url:
+          type: string
+          description: URL where Hint POSTs the handshake payload during embed bootstrapping. Must be https.
+        localhost_handshake_url:
+          type: string
+          description: HTTP localhost URL used in place of `handshake_url` when the current session has localhost mode enabled. Sandbox partners only.
+        default_admin_role:
+          type: string
+          description: Role name to apply to hinters and to admin users by default. Must match the `name` of one of the entries in partner_roles.
+        default_non_admin_role:
+          type: string
+          description: Role name to apply to non-admin users by default. Must match the `name` of one of the entries in partner_roles.
+        prepopulate_role_mappings:
+          type: boolean
+          description: When true, new practice→role mappings are prepopulated with the default role.
+        partner_roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppSanitizer.PartnerRoleSanitizer'
+          description: List of partner-defined roles. Each entry has a `name` (unique, required) and a `description` (free text, optional).
+        browser_allow_list:
+          type: array
+          items:
+            type: string
+          description: 'Browser capabilities delegated to the app''s embedded iframes via the Permissions Policy `allow` attribute. Supported values: `camera`, `microphone`, `geolocation`. Defaults to `[]` (no delegation). The end user still sees the browser''s own permission prompt for each capability. Changes apply the next time a surface is embedded — already-open surfaces must be reloaded.'
   securitySchemes:
     hint_api_key:
       type: apiKey

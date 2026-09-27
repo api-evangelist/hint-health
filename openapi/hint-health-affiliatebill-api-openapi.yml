@@ -75,13 +75,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.CompanyBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.AffiliateBillBlueprint_all:
       type: array
       items:
@@ -107,6 +100,13 @@ components:
             format: int32
           company:
             $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+    Public.CompanyBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http
