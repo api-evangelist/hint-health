@@ -151,24 +151,6 @@ paths:
           description: Successful response
 components:
   schemas:
-    Public.ProductTestimonialBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          author:
-            type: string
-          author_image_url:
-            type: string
-          author_title:
-            type: string
-          position:
-            type: integer
-            format: int32
-          text:
-            type: string
     ProductTestimonialSanitizer:
       type: object
       properties:
@@ -192,6 +174,24 @@ components:
       - text
       - author
       - author_title
+    Public.ProductTestimonialBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          author:
+            type: string
+          author_image_url:
+            type: string
+          author_title:
+            type: string
+          position:
+            type: integer
+            format: int32
+          text:
+            type: string
     Public.ProductTestimonialBlueprint_one:
       type: object
       properties:

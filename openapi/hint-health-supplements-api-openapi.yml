@@ -259,8 +259,8 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Provider.Patients.SupplementsController.update_body:
-      title: Update_Supplement
+    Provider.Patients.SupplementsController.create_body:
+      title: Create_Supplement
       type: object
       properties:
         product_name:
@@ -285,6 +285,8 @@ components:
           type: string
         integration_web_link:
           type: string
+      required:
+      - product_name
     Public.SupplementBlueprint_all:
       type: array
       items:
@@ -317,8 +319,8 @@ components:
           type: string
         strength_uom:
           type: string
-    Provider.Patients.SupplementsController.create_body:
-      title: Create_Supplement
+    Provider.Patients.SupplementsController.update_body:
+      title: Update_Supplement
       type: object
       properties:
         product_name:
@@ -343,8 +345,6 @@ components:
           type: string
         integration_web_link:
           type: string
-      required:
-      - product_name
   securitySchemes:
     BearerAuth:
       type: http

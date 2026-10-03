@@ -75,6 +75,61 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+    Public.QuoteBlueprint_one:
+      type: object
+      properties:
+        billing_period:
+          type: string
+        members:
+          type: string
+        coupon_discount_in_cents:
+          type: integer
+          format: int32
+        ongoing_amount_in_cents:
+          type: integer
+          format: int32
+        registration_fee_in_cents:
+          type: integer
+          format: int32
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+        coupon:
+          $ref: '#/components/schemas/Public.CouponBlueprint_one'
+    QuoteSanitizer.MemberSanitizer:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Choose one below. You can think of "spouse" as "adult". This is a naming issue that will hopefully be addressed in the future
+          enum:
+          - primary
+          - child
+          - spouse
+        age:
+          type: integer
+          format: int32
+        uses_tobacco:
+          type: boolean
+        dob:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        start_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+      required:
+      - type
+      - uses_tobacco
     Association:
       type: object
       properties:
@@ -109,61 +164,6 @@ components:
       required:
       - plan
       - members
-    Public.PlanBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        plan_type:
-          type: string
-    QuoteSanitizer.MemberSanitizer:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Choose one below. You can think of "spouse" as "adult". This is a naming issue that will hopefully be addressed in the future
-          enum:
-          - primary
-          - child
-          - spouse
-        age:
-          type: integer
-          format: int32
-        uses_tobacco:
-          type: boolean
-        dob:
-          type: string
-          format: date
-          description: Date must be formatted as YYYY-MM-DD.
-        start_date:
-          type: string
-          format: date
-          description: Date must be formatted as YYYY-MM-DD.
-      required:
-      - type
-      - uses_tobacco
-    Public.QuoteBlueprint_one:
-      type: object
-      properties:
-        billing_period:
-          type: string
-        members:
-          type: string
-        coupon_discount_in_cents:
-          type: integer
-          format: int32
-        ongoing_amount_in_cents:
-          type: integer
-          format: int32
-        registration_fee_in_cents:
-          type: integer
-          format: int32
-        plan:
-          $ref: '#/components/schemas/Public.PlanBlueprint_min'
-        coupon:
-          $ref: '#/components/schemas/Public.CouponBlueprint_one'
     Public.CouponBlueprint_one:
       type: object
       properties:

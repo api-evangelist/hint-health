@@ -1933,18 +1933,152 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.PatientBlueprint_min:
+    MembershipUpdateSanitizer:
+      type: object
+      properties:
+        membership_patients:
+          type: array
+          items:
+            $ref: '#/components/schemas/MembershipUpdateSanitizer.MembershipPatient'
+          description: Members can be used as an alias for membership_patients
+        plan:
+          $ref: '#/components/schemas/Association'
+        owner:
+          $ref: '#/components/schemas/Association'
+        start_date:
+          type: string
+          format: date
+          description: Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD.
+        end_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        period_in_months:
+          type: integer
+          format: int32
+          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
+          enum:
+          - '1'
+          - '3'
+          - '6'
+          - '12'
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+        fixed_registration_fee_in_cents:
+          type: integer
+          format: int32
+      required:
+      - membership_patients
+      - plan
+      - start_date
+      - period_in_months
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.CompanyAccountBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    MembershipCreateSanitizer:
+      type: object
+      properties:
+        membership_patients:
+          type: array
+          items:
+            $ref: '#/components/schemas/MembershipUpdateSanitizer.MembershipPatient'
+          description: Members can be used as an alias for membership_patients
+        plan:
+          $ref: '#/components/schemas/Association'
+        owner:
+          $ref: '#/components/schemas/Association'
+        sponsorship:
+          $ref: '#/components/schemas/Association'
+        start_date:
+          type: string
+          format: date
+          description: Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD.
+        end_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        period_in_months:
+          type: integer
+          format: int32
+          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
+          enum:
+          - '1'
+          - '3'
+          - '6'
+          - '12'
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+        fixed_registration_fee_in_cents:
+          type: integer
+          format: int32
+      required:
+      - membership_patients
+      - plan
+      - start_date
+      - period_in_months
+    Provider.MembershipsController.cancel_body:
+      type: object
+      properties:
+        end_date:
+          type: string
+          format: date
+          description: It must line up with the membership's bill_date (not next_bill_date). Eg. A membership that bills on the 5th must end on the 5th. Date must be formatted as YYYY-MM-DD.
+        cancellation_reason:
+          $ref: '#/components/schemas/Association'
+        cancellation_reason_other:
+          type: string
+          description: Description required when sending cancellation_reason of "Other"
+      required:
+      - end_date
+      - cancellation_reason
+    Public.PlanBlueprint_min:
       type: object
       properties:
         id:
           type: string
         name:
           type: string
-    Public.CompanyAccountBlueprint_min:
+        plan_type:
+          type: string
+    Public.MembershipPatientBlueprint_for_membership_one:
       type: object
       properties:
         id:
           type: string
+        member_type:
+          type: string
+        fixed_period_rate_in_cents:
+          type: integer
+          format: int32
+        list_price_in_cents:
+          type: integer
+          format: int32
+        period_rate_in_cents:
+          type: integer
+          format: int32
+        revenue_in_cents:
+          type: integer
+          format: int32
+        start_date:
+          type: string
+          format: date
+        uses_tobacco:
+          type: boolean
+        end_date:
+          type: string
+        patient:
+          $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
     Public.MembershipBlueprint_all:
       type: array
       items:
@@ -2039,164 +2173,6 @@ components:
             $ref: '#/components/schemas/Public.CompanyAccountBlueprint_for_membership_one'
           upcoming_bills:
             $ref: '#/components/schemas/Public.MembershipBillBlueprint_shared_with_invoice'
-    MembershipUpdateSanitizer.Patient:
-      type: object
-      properties:
-        id:
-          type: string
-        uses_tobacco:
-          type: boolean
-      required:
-      - id
-    MembershipUpdateSanitizer:
-      type: object
-      properties:
-        membership_patients:
-          type: array
-          items:
-            $ref: '#/components/schemas/MembershipUpdateSanitizer.MembershipPatient'
-          description: Members can be used as an alias for membership_patients
-        plan:
-          $ref: '#/components/schemas/Association'
-        owner:
-          $ref: '#/components/schemas/Association'
-        start_date:
-          type: string
-          format: date
-          description: Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD.
-        end_date:
-          type: string
-          format: date
-          description: Date must be formatted as YYYY-MM-DD.
-        period_in_months:
-          type: integer
-          format: int32
-          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
-          enum:
-          - '1'
-          - '3'
-          - '6'
-          - '12'
-        fixed_period_rate_in_cents:
-          type: integer
-          format: int32
-        fixed_registration_fee_in_cents:
-          type: integer
-          format: int32
-      required:
-      - membership_patients
-      - plan
-      - start_date
-      - period_in_months
-    Public.CompanyBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.MembershipPatientBlueprint_for_membership_one:
-      type: object
-      properties:
-        id:
-          type: string
-        member_type:
-          type: string
-        fixed_period_rate_in_cents:
-          type: integer
-          format: int32
-        list_price_in_cents:
-          type: integer
-          format: int32
-        period_rate_in_cents:
-          type: integer
-          format: int32
-        revenue_in_cents:
-          type: integer
-          format: int32
-        start_date:
-          type: string
-          format: date
-        uses_tobacco:
-          type: boolean
-        end_date:
-          type: string
-        patient:
-          $ref: '#/components/schemas/Public.PatientBlueprint_leaf'
-    Public.Payable.InvoiceBlueprint_for_membership_bill:
-      type: object
-      properties:
-        id:
-          type: string
-        human_status:
-          type: string
-        invoice_number:
-          type: string
-        status:
-          type: string
-        amount_in_cents:
-          type: integer
-          format: int32
-        date:
-          type: string
-          format: date
-        payment_scheduled_on:
-          type: string
-        type:
-          type: string
-    Public.PlanBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        plan_type:
-          type: string
-    Public.MembershipBillBlueprint_shared_with_invoice:
-      type: object
-      properties:
-        amount_in_cents:
-          type: integer
-          format: int32
-        charges_amount_in_cents:
-          type: integer
-          format: int32
-        coupon_discount_in_cents:
-          type: integer
-          format: int32
-        coupon_discount_months:
-          type: integer
-          format: int32
-        coupon_percent_off:
-          type: integer
-          format: int32
-        date:
-          type: string
-          format: date
-        end_date:
-          type: string
-          format: date
-        list_price_in_cents:
-          type: integer
-          format: int32
-        membership_amount_in_cents:
-          type: integer
-          format: int32
-        period_in_months:
-          type: integer
-          format: int32
-        rate_in_cents:
-          type: integer
-          format: int32
-        registration_fee_in_cents:
-          type: integer
-          format: int32
-        start_date:
-          type: string
-          format: date
-        customer_invoice:
-          $ref: '#/components/schemas/Public.Payable.InvoiceBlueprint_for_membership_bill'
     MembershipUpdateSanitizer.MembershipPatient:
       type: object
       properties:
@@ -2339,48 +2315,6 @@ components:
           $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
         sponsorships:
           $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
-    MembershipCreateSanitizer:
-      type: object
-      properties:
-        membership_patients:
-          type: array
-          items:
-            $ref: '#/components/schemas/MembershipUpdateSanitizer.MembershipPatient'
-          description: Members can be used as an alias for membership_patients
-        plan:
-          $ref: '#/components/schemas/Association'
-        owner:
-          $ref: '#/components/schemas/Association'
-        sponsorship:
-          $ref: '#/components/schemas/Association'
-        start_date:
-          type: string
-          format: date
-          description: Sponsored memberships must start on the 1st of the month. Retail memberships may start any day. Date must be formatted as YYYY-MM-DD.
-        end_date:
-          type: string
-          format: date
-          description: Date must be formatted as YYYY-MM-DD.
-        period_in_months:
-          type: integer
-          format: int32
-          description: Billing period in months. 1 = monthly, 3 = quarterly, 6 = semi-annually, 12 = annually
-          enum:
-          - '1'
-          - '3'
-          - '6'
-          - '12'
-        fixed_period_rate_in_cents:
-          type: integer
-          format: int32
-        fixed_registration_fee_in_cents:
-          type: integer
-          format: int32
-      required:
-      - membership_patients
-      - plan
-      - start_date
-      - period_in_months
     Provider.MembershipsController.bill_body:
       type: object
       properties:
@@ -2390,6 +2324,121 @@ components:
           description: Date must be formatted as YYYY-MM-DD.
       required:
       - start_date
+    Public.PatientBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    MembershipUpdateSanitizer.Patient:
+      type: object
+      properties:
+        id:
+          type: string
+        uses_tobacco:
+          type: boolean
+      required:
+      - id
+    Public.LeadSourceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Public.Payable.InvoiceBlueprint_for_membership_bill:
+      type: object
+      properties:
+        id:
+          type: string
+        human_status:
+          type: string
+        invoice_number:
+          type: string
+        status:
+          type: string
+        amount_in_cents:
+          type: integer
+          format: int32
+        date:
+          type: string
+          format: date
+        payment_scheduled_on:
+          type: string
+        type:
+          type: string
+    Public.CompanyBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+    Public.CompanyAccountBlueprint_for_membership_one:
+      type: object
+      properties:
+        id:
+          type: string
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+    Public.MembershipBillBlueprint_shared_with_invoice:
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+        charges_amount_in_cents:
+          type: integer
+          format: int32
+        coupon_discount_in_cents:
+          type: integer
+          format: int32
+        coupon_discount_months:
+          type: integer
+          format: int32
+        coupon_percent_off:
+          type: integer
+          format: int32
+        date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        list_price_in_cents:
+          type: integer
+          format: int32
+        membership_amount_in_cents:
+          type: integer
+          format: int32
+        period_in_months:
+          type: integer
+          format: int32
+        rate_in_cents:
+          type: integer
+          format: int32
+        registration_fee_in_cents:
+          type: integer
+          format: int32
+        start_date:
+          type: string
+          format: date
+        customer_invoice:
+          $ref: '#/components/schemas/Public.Payable.InvoiceBlueprint_for_membership_bill'
     Public.MembershipBlueprint_one:
       type: object
       properties:
@@ -2474,19 +2523,6 @@ components:
           $ref: '#/components/schemas/Public.CompanyAccountBlueprint_for_membership_one'
         upcoming_bills:
           $ref: '#/components/schemas/Public.MembershipBillBlueprint_shared_with_invoice'
-    Public.LeadSourceBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
     Public.CompanySponsorshipBlueprint_for_patient:
       type: object
       properties:
@@ -2538,20 +2574,6 @@ components:
         redeemable_until:
           type: string
           format: date-time
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Public.CompanyAccountBlueprint_for_membership_one:
-      type: object
-      properties:
-        id:
-          type: string
-        company:
-          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
     Public.MembershipPatientBlueprint_leaf_with_patient:
       type: object
       properties:
@@ -2573,28 +2595,6 @@ components:
           type: boolean
         patient:
           $ref: '#/components/schemas/Public.PatientBlueprint_min'
-    Public.PhoneBlueprint_leaf:
-      type: object
-      properties:
-        number:
-          type: string
-        type:
-          type: string
-    Provider.MembershipsController.cancel_body:
-      type: object
-      properties:
-        end_date:
-          type: string
-          format: date
-          description: It must line up with the membership's bill_date (not next_bill_date). Eg. A membership that bills on the 5th must end on the 5th. Date must be formatted as YYYY-MM-DD.
-        cancellation_reason:
-          $ref: '#/components/schemas/Association'
-        cancellation_reason_other:
-          type: string
-          description: Description required when sending cancellation_reason of "Other"
-      required:
-      - end_date
-      - cancellation_reason
     Public.MembershipPatientBlueprint_for_membership_one_2:
       type: object
       properties:

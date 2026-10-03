@@ -138,12 +138,6 @@ paths:
               $ref: '#/components/schemas/Partner.ApiKeysController.create_body'
 components:
   schemas:
-    Partner.ApiKeysController.create_body:
-      title: Create_ApiKey
-      type: object
-      properties:
-        label:
-          type: string
     Public.ApiKeyBlueprint_one:
       type: object
       properties:
@@ -158,6 +152,12 @@ components:
         last_used_at:
           type: string
         token:
+          type: string
+    Partner.ApiKeysController.create_body:
+      title: Create_ApiKey
+      type: object
+      properties:
+        label:
           type: string
     Public.ApiKeyBlueprint_all:
       type: array

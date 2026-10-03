@@ -96,6 +96,21 @@ paths:
       description: Sandbox
 components:
   schemas:
+    PhoneNumber:
+      type: object
+      properties:
+        id:
+          type: string
+        number:
+          type: number
+        type:
+          type: string
+        us_formattable:
+          type: boolean
+          description: Make this false if your number is not exactly 10 digits
+      required:
+      - number
+      - type
     Common.PhoneBlueprint_shared:
       type: object
       properties:
@@ -134,21 +149,6 @@ components:
           type: string
         phones:
           $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
-    PhoneNumber:
-      type: object
-      properties:
-        id:
-          type: string
-        number:
-          type: number
-        type:
-          type: string
-        us_formattable:
-          type: boolean
-          description: Make this false if your number is not exactly 10 digits
-      required:
-      - number
-      - type
     Provider.PracticesController.update_body:
       title: Update_Practice
       type: object

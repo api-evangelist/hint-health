@@ -347,6 +347,203 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Npi:
+      type: object
+      properties:
+        number:
+          type: integer
+    Public.NpiBlueprint_shared:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        number:
+          type: string
+        organization_name:
+          type: string
+        type:
+          type: string
+    Public.LocationGroupBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        integration_record_id:
+          type: string
+        name:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    Provider.PractitionersController.create_body:
+      title: Create_Practitioner
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        bio:
+          type: string
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+        gender_other:
+          type: string
+        photo:
+          type: string
+          description: Base64 encoded photo.
+        education:
+          type: array
+          items:
+            type: string
+        integration_record_id:
+          type: string
+        npi:
+          $ref: '#/components/schemas/Npi'
+        practitioner_group:
+          $ref: '#/components/schemas/Association'
+    Provider.PractitionersController.update_body:
+      title: Create_Practitioner
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        bio:
+          type: string
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+        gender_other:
+          type: string
+        photo:
+          type: string
+          description: Base64 encoded photo.
+        education:
+          type: array
+          items:
+            type: string
+        integration_record_id:
+          type: string
+        npi:
+          $ref: '#/components/schemas/Npi'
+        practitioner_group:
+          $ref: '#/components/schemas/Association'
+    Public.PractitionerBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        accepts_enrollments_from_employer:
+          type: string
+        accepts_enrollments_from_retail:
+          type: string
+        bio:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        education:
+          type: string
+        email:
+          type: string
+        gender:
+          type: string
+        gender_other:
+          type: string
+        integration_record_id:
+          type: string
+        max_patient_age:
+          type: string
+        min_patient_age:
+          type: string
+        name:
+          type: string
+        online_signup_visibility:
+          type: string
+        panel_size:
+          type: integer
+          format: int32
+        panel_size_limit:
+          type: integer
+          format: int32
+        photo_url:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.LocationBlueprint_one'
+        npi:
+          $ref: '#/components/schemas/Public.NpiBlueprint_shared'
+        specialties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.LocationBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_latitude:
+          type: number
+          format: float
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_longitude:
+          type: number
+          format: float
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        distance:
+          type: string
+        name:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+    Public.SpecialtyBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
     Public.PractitionerBlueprint_all:
       type: array
       items:
@@ -402,203 +599,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
-    Provider.PractitionersController.update_body:
-      title: Create_Practitioner
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        bio:
-          type: string
-        gender:
-          type: string
-          enum:
-          - male
-          - female
-          - other
-        gender_other:
-          type: string
-        photo:
-          type: string
-          description: Base64 encoded photo.
-        education:
-          type: array
-          items:
-            type: string
-        integration_record_id:
-          type: string
-        npi:
-          $ref: '#/components/schemas/Npi'
-        practitioner_group:
-          $ref: '#/components/schemas/Association'
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Public.PractitionerBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        accepts_enrollments_from_employer:
-          type: string
-        accepts_enrollments_from_retail:
-          type: string
-        bio:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        education:
-          type: string
-        email:
-          type: string
-        gender:
-          type: string
-        gender_other:
-          type: string
-        integration_record_id:
-          type: string
-        max_patient_age:
-          type: string
-        min_patient_age:
-          type: string
-        name:
-          type: string
-        online_signup_visibility:
-          type: string
-        panel_size:
-          type: integer
-          format: int32
-        panel_size_limit:
-          type: integer
-          format: int32
-        photo_url:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Public.LocationBlueprint_one'
-        npi:
-          $ref: '#/components/schemas/Public.NpiBlueprint_shared'
-        specialties:
-          type: array
-          items:
-            $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
-    Npi:
-      type: object
-      properties:
-        number:
-          type: integer
-    Provider.PractitionersController.create_body:
-      title: Create_Practitioner
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        bio:
-          type: string
-        gender:
-          type: string
-          enum:
-          - male
-          - female
-          - other
-        gender_other:
-          type: string
-        photo:
-          type: string
-          description: Base64 encoded photo.
-        education:
-          type: array
-          items:
-            type: string
-        integration_record_id:
-          type: string
-        npi:
-          $ref: '#/components/schemas/Npi'
-        practitioner_group:
-          $ref: '#/components/schemas/Association'
-    Public.SpecialtyBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          name:
-            type: string
-    Public.LocationBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        address_city:
-          type: string
-        address_country:
-          type: string
-        address_latitude:
-          type: number
-          format: float
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_longitude:
-          type: number
-          format: float
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        distance:
-          type: string
-        name:
-          type: string
-        phone_number:
-          type: string
-        virtual:
-          type: boolean
-        location_group:
-          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
-    Public.NpiBlueprint_shared:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        number:
-          type: string
-        organization_name:
-          type: string
-        type:
-          type: string
-    Public.LocationGroupBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        integration_record_id:
-          type: string
-        name:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
   securitySchemes:
     BearerAuth:
       type: http

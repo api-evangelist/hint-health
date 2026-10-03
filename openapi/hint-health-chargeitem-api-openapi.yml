@@ -191,6 +191,79 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Public.CategoryBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        default_for_memberships:
+          type: boolean
+    Provider.ChargeItemsController.update_body:
+      title: Create_Charge_Item
+      type: object
+      properties:
+        name:
+          type: string
+        price_in_cents:
+          type: number
+          format: double
+        type:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - price_in_cents
+      - type
+    Provider.ChargeItemsController.create_body:
+      title: Create_Charge_Item
+      type: object
+      properties:
+        name:
+          type: string
+        price_in_cents:
+          type: number
+          format: double
+        type:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - price_in_cents
+      - type
+    Public.ChargeItemBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        provider_web_link:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        price_in_cents:
+          type: number
+          format: float
+        quantity_in_stock:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+        category:
+          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
     Public.ChargeItemBlueprint_all:
       type: array
       items:
@@ -220,79 +293,6 @@ components:
             format: date-time
           category:
             $ref: '#/components/schemas/Public.CategoryBlueprint_one'
-    Provider.ChargeItemsController.create_body:
-      title: Create_Charge_Item
-      type: object
-      properties:
-        name:
-          type: string
-        price_in_cents:
-          type: number
-          format: double
-        type:
-          type: string
-        description:
-          type: string
-      required:
-      - name
-      - price_in_cents
-      - type
-    Public.CategoryBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        default_for_memberships:
-          type: boolean
-    Public.ChargeItemBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        code:
-          type: string
-        description:
-          type: string
-        name:
-          type: string
-        provider_web_link:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        price_in_cents:
-          type: number
-          format: float
-        quantity_in_stock:
-          type: integer
-          format: int32
-        updated_at:
-          type: string
-          format: date-time
-        category:
-          $ref: '#/components/schemas/Public.CategoryBlueprint_one'
-    Provider.ChargeItemsController.update_body:
-      title: Create_Charge_Item
-      type: object
-      properties:
-        name:
-          type: string
-        price_in_cents:
-          type: number
-          format: double
-        type:
-          type: string
-        description:
-          type: string
-      required:
-      - name
-      - price_in_cents
-      - type
   securitySchemes:
     BearerAuth:
       type: http

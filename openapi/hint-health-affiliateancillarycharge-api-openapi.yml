@@ -171,16 +171,7 @@ paths:
                 type: integer
 components:
   schemas:
-    Public.Payable.InvoiceBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        invoice_number:
-          type: string
-        type:
-          type: string
-    Public.PracticeBlueprint_min:
+    Public.CompanyBlueprint_leaf:
       type: object
       properties:
         id:
@@ -199,13 +190,6 @@ components:
           format: date-time
         default_for_memberships:
           type: boolean
-    Public.PatientBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.ChargeBlueprint_for_affiliate_ancillary_charge:
       type: object
       properties:
@@ -236,6 +220,29 @@ components:
           $ref: '#/components/schemas/Public.CategoryBlueprint_one'
         invoice:
           $ref: '#/components/schemas/Public.Payable.InvoiceBlueprint_min'
+    Public.Payable.InvoiceBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        invoice_number:
+          type: string
+        type:
+          type: string
+    Public.PatientBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.PracticeBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     Public.AffiliateAncillaryChargeBlueprint_all:
       type: array
       items:
@@ -262,13 +269,6 @@ components:
           sponsor_charge:
             $ref: '#/components/schemas/Public.ChargeBlueprint_for_affiliate_ancillary_charge'
     Public.AffiliationBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.CompanyBlueprint_leaf:
       type: object
       properties:
         id:

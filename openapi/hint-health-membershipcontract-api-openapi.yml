@@ -137,11 +137,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Provider.MembershipContractsController.renew_body:
-      type: object
-      properties:
-        memo:
-          type: string
     Public.MembershipContractBlueprint_one:
       type: object
       properties:
@@ -155,6 +150,11 @@ components:
         start_date:
           type: string
           format: date
+    Provider.MembershipContractsController.renew_body:
+      type: object
+      properties:
+        memo:
+          type: string
     Provider.MembershipContractsController.update_body:
       type: object
       properties:

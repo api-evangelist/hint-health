@@ -238,6 +238,15 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Provider.Patients.PaymentMethodsController.create_body:
+      type: object
+      properties:
+        rainforest_id:
+          type: string
+          description: Tokenized payment method id from Rainforest. Required if the practice uses Hint Payments.
+        stripe_id:
+          type: string
+          description: Tokenized payment method id from Stripe. Required if the practice uses Stripe.
     Provider.Patients.PaymentMethods.SetupController.create_body:
       type: object
       properties:
@@ -248,15 +257,6 @@ components:
       required:
       - user_is_owner
       - accepts_bank
-    Provider.Patients.PaymentMethodsController.create_body:
-      type: object
-      properties:
-        rainforest_id:
-          type: string
-          description: Tokenized payment method id from Rainforest. Required if the practice uses Hint Payments.
-        stripe_id:
-          type: string
-          description: Tokenized payment method id from Stripe. Required if the practice uses Stripe.
   securitySchemes:
     BearerAuth:
       type: http

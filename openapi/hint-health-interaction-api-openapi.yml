@@ -243,12 +243,16 @@ components:
             type: string
           type:
             type: string
-    Public.Interaction.FileBlueprint_leaf:
+    Public.Interaction.FileBlueprint_download_url:
       type: object
       properties:
         id:
           type: string
+        expires_at:
+          type: string
         filename:
+          type: string
+        url:
           type: string
     Public.InteractionBlueprint_all_2:
       type: array
@@ -276,16 +280,12 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Public.Interaction.FileBlueprint_leaf'
-    Public.Interaction.FileBlueprint_download_url:
+    Public.Interaction.FileBlueprint_leaf:
       type: object
       properties:
         id:
           type: string
-        expires_at:
-          type: string
         filename:
-          type: string
-        url:
           type: string
   securitySchemes:
     BearerAuth:

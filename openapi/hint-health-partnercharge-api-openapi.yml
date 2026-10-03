@@ -113,6 +113,30 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Provider.PartnerChargesController.create_body:
+      title: Create_PartnerCharge
+      type: object
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+        description:
+          type: string
+        patient:
+          $ref: '#/components/schemas/Association'
+        integration_record_id:
+          type: string
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerChargeLine'
+        cost_in_cents:
+          type: integer
+          format: int32
+      required:
+      - amount_in_cents
+      - description
+      - integration_record_id
     PartnerChargeLine:
       type: object
       properties:
@@ -154,46 +178,6 @@ components:
       required:
       - id
       - type
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Provider.PartnerChargesController.create_body:
-      title: Create_PartnerCharge
-      type: object
-      properties:
-        amount_in_cents:
-          type: integer
-          format: int32
-        description:
-          type: string
-        patient:
-          $ref: '#/components/schemas/Association'
-        integration_record_id:
-          type: string
-        lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartnerChargeLine'
-        cost_in_cents:
-          type: integer
-          format: int32
-      required:
-      - amount_in_cents
-      - description
-      - integration_record_id
-    Public.PartnerChargeBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        amount_in_cents:
-          type: string
-        description:
-          type: string
     Public.PartnerChargeBlueprint_all:
       type: array
       items:
@@ -205,6 +189,22 @@ components:
             type: string
           description:
             type: string
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.PartnerChargeBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        amount_in_cents:
+          type: string
+        description:
+          type: string
     PartnerChargeLine_2:
       type: object
       properties:

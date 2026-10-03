@@ -552,13 +552,6 @@ components:
       - quantity
       - price_in_cents
       - name
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
     Provider.CustomerInvoices.ChargesController.update_body:
       type: object
       properties:
@@ -589,6 +582,13 @@ components:
       - quantity
       - price_in_cents
       - name
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     Provider.CustomerInvoices.ChargesController.create_body_2:
       type: object
       properties:

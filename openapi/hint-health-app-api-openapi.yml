@@ -170,6 +170,13 @@ paths:
               $ref: '#/components/schemas/AppSanitizer'
 components:
   schemas:
+    Public.PartnerRoleBlueprint_one:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
     AppSanitizer.PartnerRoleSanitizer:
       type: object
       properties:
@@ -181,12 +188,34 @@ components:
           description: Free-form description of what the role grants.
       required:
       - name
-    Public.PartnerRoleBlueprint_one:
+    Public.AppSurfaceBlueprint_one:
       type: object
       properties:
-        name:
+        id:
           type: string
-        description:
+        source_url:
+          type: string
+        localhost_source_url:
+          type: string
+        type:
+          type: string
+        interaction_title:
+          type: string
+        interaction_description:
+          type: string
+        interaction_type:
+          type: string
+        core_page_icon_url:
+          type: string
+        core_page_icon_label:
+          type: string
+        core_page_auto_adjust_height:
+          type: boolean
+        clinical_chart_icon_url:
+          type: string
+        clinical_chart_icon_label:
+          type: string
+        settings_label:
           type: string
     Public.AppBlueprint_one:
       type: object
@@ -219,35 +248,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Public.AppSurfaceBlueprint_one'
-    Public.AppSurfaceBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        source_url:
-          type: string
-        localhost_source_url:
-          type: string
-        type:
-          type: string
-        interaction_title:
-          type: string
-        interaction_description:
-          type: string
-        interaction_type:
-          type: string
-        core_page_icon_url:
-          type: string
-        core_page_icon_label:
-          type: string
-        core_page_auto_adjust_height:
-          type: boolean
-        clinical_chart_icon_url:
-          type: string
-        clinical_chart_icon_label:
-          type: string
-        settings_label:
-          type: string
     AppSanitizer:
       type: object
       properties:

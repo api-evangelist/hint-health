@@ -237,6 +237,13 @@ components:
           type: string
       required:
       - type
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     Provider.CompanySponsorshipsController.create_body:
       title: Create_Sponsorship
       type: object
@@ -258,13 +265,6 @@ components:
       - is_subscriber
       - type
       - patient
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
   securitySchemes:
     BearerAuth:
       type: http

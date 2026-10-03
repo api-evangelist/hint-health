@@ -87,6 +87,24 @@ paths:
               $ref: '#/components/schemas/ProductOverviewSanitizer'
 components:
   schemas:
+    Public.PartnerProductImageBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        file_url:
+          type: string
+        alt:
+          type: string
+    Public.PartnerProductOverviewBlueprint_one:
+      type: object
+      properties:
+        description:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.PartnerProductImageBlueprint_shared'
     ProductOverviewSanitizer.ImageSanitizer:
       type: object
       properties:
@@ -110,24 +128,6 @@ components:
           items:
             $ref: '#/components/schemas/ProductOverviewSanitizer.ImageSanitizer'
           description: 'Overview images. The array is reconciled by `id`: entries with a matching `id` are edited in place, entries without an `id` are created, and any existing images not represented in the array are deleted. Omitting the `images` key entirely leaves images unchanged.'
-    Public.PartnerProductOverviewBlueprint_one:
-      type: object
-      properties:
-        description:
-          type: string
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/Public.PartnerProductImageBlueprint_shared'
-    Public.PartnerProductImageBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        file_url:
-          type: string
-        alt:
-          type: string
   securitySchemes:
     hint_api_key:
       type: apiKey

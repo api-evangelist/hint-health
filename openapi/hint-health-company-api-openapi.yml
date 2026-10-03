@@ -268,24 +268,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.LocationBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    CompanyUpdateSanitizer:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        phones:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumber'
     PhoneNumber:
       type: object
       properties:
@@ -301,49 +283,40 @@ components:
       required:
       - number
       - type
-    Association:
+    CompanyUpdateSanitizer:
       type: object
       properties:
-        id:
-          type: string
-      required:
-      - id
-    Public.PlanBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
         name:
           type: string
-        plan_type:
-          type: string
-    Public.PractitionerBlueprint_min:
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+    Public.AddressBlueprint_leaf:
       type: object
       properties:
         id:
           type: string
-        name:
+        city:
           type: string
-    Address:
-      type: object
-      properties:
+        country:
+          type: string
         line1:
           type: string
         line2:
-          type: string
-        city:
           type: string
         state:
           type: string
         zip:
           type: string
-        country:
-          type: string
-      required:
-      - line1
-      - city
-      - state
-      - zip
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
     CompanyCreateSanitizer:
       type: object
       properties:
@@ -364,6 +337,53 @@ components:
         number:
           type: string
         type:
+          type: string
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+    Public.CompanyBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        employee_divisions_count:
+          type: integer
+          format: int32
+        name:
+          type: string
+        status:
+          type: string
+        address:
+          $ref: '#/components/schemas/Public.AddressBlueprint_leaf'
+        default_location:
+          $ref: '#/components/schemas/Public.LocationBlueprint_min'
+        default_plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+        default_practitioner:
+          $ref: '#/components/schemas/Public.PractitionerBlueprint_min'
+        employee_divisions:
+          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.EmployeeDivisionBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
           type: string
     Public.CompanyBlueprint_all:
       type: array
@@ -391,54 +411,34 @@ components:
             $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
           phones:
             $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
-    Public.AddressBlueprint_leaf:
+    Public.PractitionerBlueprint_min:
       type: object
       properties:
         id:
           type: string
-        city:
+        name:
           type: string
-        country:
-          type: string
+    Address:
+      type: object
+      properties:
         line1:
           type: string
         line2:
+          type: string
+        city:
           type: string
         state:
           type: string
         zip:
           type: string
-        latitude:
-          type: number
-          format: float
-        longitude:
-          type: number
-          format: float
-    Public.CompanyBlueprint_one:
-      type: object
-      properties:
-        id:
+        country:
           type: string
-        employee_divisions_count:
-          type: integer
-          format: int32
-        name:
-          type: string
-        status:
-          type: string
-        address:
-          $ref: '#/components/schemas/Public.AddressBlueprint_leaf'
-        default_location:
-          $ref: '#/components/schemas/Public.LocationBlueprint_min'
-        default_plan:
-          $ref: '#/components/schemas/Public.PlanBlueprint_min'
-        default_practitioner:
-          $ref: '#/components/schemas/Public.PractitionerBlueprint_min'
-        employee_divisions:
-          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
-        phones:
-          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
-    Public.EmployeeDivisionBlueprint_leaf:
+      required:
+      - line1
+      - city
+      - state
+      - zip
+    Public.LocationBlueprint_min:
       type: object
       properties:
         id:

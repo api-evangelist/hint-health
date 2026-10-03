@@ -132,21 +132,6 @@ paths:
                 type: integer
 components:
   schemas:
-    Public.WebhookEndpointBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        webhook_url:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        last_delivered_at:
-          type: string
-        partner_backend:
-          $ref: '#/components/schemas/Public.BackendBlueprint_min'
     Public.BackendBlueprint_min:
       type: object
       properties:
@@ -179,6 +164,21 @@ components:
             type: string
           webhook_endpoint:
             $ref: '#/components/schemas/Public.WebhookEndpointBlueprint_shared'
+    Public.WebhookEndpointBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        webhook_url:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        last_delivered_at:
+          type: string
+        partner_backend:
+          $ref: '#/components/schemas/Public.BackendBlueprint_min'
   securitySchemes:
     hint_api_key:
       type: apiKey

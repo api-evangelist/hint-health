@@ -194,71 +194,6 @@ paths:
               $ref: '#/components/schemas/Partner.BackendsController.update_body'
 components:
   schemas:
-    Public.PartnerApiCredentialsConfigurationBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        spec_url:
-          type: string
-        docs_url:
-          type: string
-        issuance_mode:
-          type: string
-        exchange_url:
-          type: string
-        call_path:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-    Partner.BackendsController.update_body:
-      title: Update_Backend
-      type: object
-      properties:
-        name:
-          type: string
-          description: Human-readable label for the backend.
-        auth_type:
-          type: string
-          description: One of `manual`, `automatic_redirect`, `automatic_headless`.
-        activation_type:
-          type: string
-          description: One of `instant`, `partner_activate`, `practice_activate`.
-        redirect_url:
-          type: string
-          description: OAuth redirect URL invoked after `authorization_code` issuance.
-        localhost_redirect_url:
-          type: string
-          description: HTTP localhost URL used in place of `redirect_url` when the requesting browser session has localhost mode enabled. Sandbox partners only.
-        localhost_webhook_url:
-          type: string
-          description: HTTP localhost URL the browser proxies this backend's webhook deliveries to when localhost mode is enabled. Sandbox partners only.
-        webhooks_disabled:
-          type: boolean
-          description: Disables webhook delivery for this backend's endpoints.
-        webhooks_paused:
-          type: boolean
-          description: Pauses webhook delivery for this backend's endpoints.
-        unmute_self_webhooks:
-          type: boolean
-          description: Delivers webhooks for events triggered by this backend's own requests.
-        max_requests_per_minute:
-          type: integer
-          format: int32
-          description: Webhook delivery rate ceiling for this backend.
-        listened_events:
-          type: array
-          items:
-            type: string
-          description: Event types delivered to this backend's endpoints.
-        webhooks_signature_api_key:
-          type: object
-          description: 'The partner-owned api key whose secret signs this backend''s webhooks. Pass `{ "id": "<api key id>" }`.'
-        api_credentials_configuration:
-          type: object
-          description: The backend's API-publishing configuration. Accepts `spec_url`, `docs_url`, `issuance_mode` (`push`/`pull`), `exchange_url`, and `call_path` (`proxy`/`direct`).
     Public.BackendBlueprint_all:
       type: array
       items:
@@ -313,6 +248,15 @@ components:
           type: string
         deactivated_at:
           type: string
+    Public.ProductBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
     Public.BackendBlueprint_one:
       type: object
       properties:
@@ -352,14 +296,70 @@ components:
             $ref: '#/components/schemas/Public.ProductBlueprint_min'
         webhooks_signature_api_key:
           $ref: '#/components/schemas/Public.ApiKeyBlueprint_shared'
-    Public.ProductBlueprint_min:
+    Partner.BackendsController.update_body:
+      title: Update_Backend
+      type: object
+      properties:
+        name:
+          type: string
+          description: Human-readable label for the backend.
+        auth_type:
+          type: string
+          description: One of `manual`, `automatic_redirect`, `automatic_headless`.
+        activation_type:
+          type: string
+          description: One of `instant`, `partner_activate`, `practice_activate`.
+        redirect_url:
+          type: string
+          description: OAuth redirect URL invoked after `authorization_code` issuance.
+        localhost_redirect_url:
+          type: string
+          description: HTTP localhost URL used in place of `redirect_url` when the requesting browser session has localhost mode enabled. Sandbox partners only.
+        localhost_webhook_url:
+          type: string
+          description: HTTP localhost URL the browser proxies this backend's webhook deliveries to when localhost mode is enabled. Sandbox partners only.
+        webhooks_disabled:
+          type: boolean
+          description: Disables webhook delivery for this backend's endpoints.
+        webhooks_paused:
+          type: boolean
+          description: Pauses webhook delivery for this backend's endpoints.
+        unmute_self_webhooks:
+          type: boolean
+          description: Delivers webhooks for events triggered by this backend's own requests.
+        max_requests_per_minute:
+          type: integer
+          format: int32
+          description: Webhook delivery rate ceiling for this backend.
+        listened_events:
+          type: array
+          items:
+            type: string
+          description: Event types delivered to this backend's endpoints.
+        webhooks_signature_api_key:
+          type: object
+          description: 'The partner-owned api key whose secret signs this backend''s webhooks. Pass `{ "id": "<api key id>" }`.'
+        api_credentials_configuration:
+          type: object
+          description: The backend's API-publishing configuration. Accepts `spec_url`, `docs_url`, `issuance_mode` (`push`/`pull`), `exchange_url`, and `call_path` (`proxy`/`direct`).
+    Public.PartnerApiCredentialsConfigurationBlueprint_shared:
       type: object
       properties:
         id:
           type: string
-        name:
+        spec_url:
           type: string
-        slug:
+        docs_url:
+          type: string
+        issuance_mode:
+          type: string
+        exchange_url:
+          type: string
+        call_path:
+          type: string
+        created_at:
+          type: string
+        updated_at:
           type: string
   securitySchemes:
     hint_api_key:

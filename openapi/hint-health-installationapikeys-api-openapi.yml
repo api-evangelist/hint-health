@@ -214,17 +214,6 @@ paths:
           description: Successful response
 components:
   schemas:
-    Partner.Installations.ApiKeysController.create_body:
-      title: Create_InstallationApiKey
-      type: object
-      properties:
-        label:
-          type: string
-    Partner.Installations.ApiKeysController.update_body:
-      type: object
-      properties:
-        label:
-          type: string
     Public.ApiKeyBlueprint_one:
       type: object
       properties:
@@ -239,6 +228,17 @@ components:
         last_used_at:
           type: string
         token:
+          type: string
+    Partner.Installations.ApiKeysController.create_body:
+      title: Create_InstallationApiKey
+      type: object
+      properties:
+        label:
+          type: string
+    Partner.Installations.ApiKeysController.update_body:
+      type: object
+      properties:
+        label:
           type: string
     Public.ApiKeyBlueprint_all:
       type: array

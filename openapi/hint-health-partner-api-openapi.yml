@@ -121,24 +121,6 @@ paths:
     - url: https://api.sandbox.hint.com/api
 components:
   schemas:
-    Platform.PartnersController.update_body:
-      title: Update_Partner_Legacy
-      type: object
-      properties:
-        webhook_url:
-          type: string
-        marketing_url:
-          type: string
-        support_url:
-          type: string
-        product_description:
-          type: string
-        integration_description:
-          type: string
-        email:
-          type: string
-        logo_url:
-          type: string
     Platform.PartnerBlueprint_one:
       type: object
       properties:
@@ -159,6 +141,24 @@ components:
         status:
           type: string
         webhook_url:
+          type: string
+    Platform.PartnersController.update_body:
+      title: Update_Partner_Legacy
+      type: object
+      properties:
+        webhook_url:
+          type: string
+        marketing_url:
+          type: string
+        support_url:
+          type: string
+        product_description:
+          type: string
+        integration_description:
+          type: string
+        email:
+          type: string
+        logo_url:
           type: string
     Public.PartnerBlueprint_one:
       type: object

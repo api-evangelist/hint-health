@@ -126,35 +126,6 @@ paths:
           description: Successful response
 components:
   schemas:
-    Public.AppSurfaceBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        source_url:
-          type: string
-        localhost_source_url:
-          type: string
-        type:
-          type: string
-        interaction_title:
-          type: string
-        interaction_description:
-          type: string
-        interaction_type:
-          type: string
-        core_page_icon_url:
-          type: string
-        core_page_icon_label:
-          type: string
-        core_page_auto_adjust_height:
-          type: boolean
-        clinical_chart_icon_url:
-          type: string
-        clinical_chart_icon_label:
-          type: string
-        settings_label:
-          type: string
     Partner.PartnerProductApps.SurfacesController.create_body:
       title: Create_AppSurface
       type: object
@@ -196,6 +167,35 @@ components:
       required:
       - type
       - source_url
+    Public.AppSurfaceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        source_url:
+          type: string
+        localhost_source_url:
+          type: string
+        type:
+          type: string
+        interaction_title:
+          type: string
+        interaction_description:
+          type: string
+        interaction_type:
+          type: string
+        core_page_icon_url:
+          type: string
+        core_page_icon_label:
+          type: string
+        core_page_auto_adjust_height:
+          type: boolean
+        clinical_chart_icon_url:
+          type: string
+        clinical_chart_icon_label:
+          type: string
+        settings_label:
+          type: string
     Partner.PartnerProductApps.SurfacesController.update_body:
       title: Update_AppSurface
       type: object
