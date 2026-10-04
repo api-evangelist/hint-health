@@ -87,6 +87,18 @@ paths:
               $ref: '#/components/schemas/ProductOverviewSanitizer'
 components:
   schemas:
+    ProductOverviewSanitizer.ImageSanitizer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Public id of an existing image (e.g. `"ptrimg-..."`). Include to edit; omit to create a new image.
+        url:
+          type: string
+          description: 'Image as a base64 data URI (e.g. `"data:image/png;base64,..."`). Required when creating a new image; ignored when editing. **Note: the field name differs across listing sections.** Overview images use `url`; highlights (`ProductHighlightSanitizer`) use `image`. Both take the same data-URI payload — only the key differs.'
+        alt:
+          type: string
+          description: Alt text used for accessibility.
     Public.PartnerProductImageBlueprint_shared:
       type: object
       properties:
@@ -105,18 +117,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Public.PartnerProductImageBlueprint_shared'
-    ProductOverviewSanitizer.ImageSanitizer:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Public id of an existing image (e.g. `"ptrimg-..."`). Include to edit; omit to create a new image.
-        url:
-          type: string
-          description: 'Image as a base64 data URI (e.g. `"data:image/png;base64,..."`). Required when creating a new image; ignored when editing. **Note: the field name differs across listing sections.** Overview images use `url`; highlights (`ProductHighlightSanitizer`) use `image`. Both take the same data-URI payload — only the key differs.'
-        alt:
-          type: string
-          description: Alt text used for accessibility.
     ProductOverviewSanitizer:
       type: object
       properties:

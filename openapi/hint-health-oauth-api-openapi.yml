@@ -68,6 +68,42 @@ paths:
               $ref: '#/components/schemas/Platform.OauthsController.tokens_body'
 components:
   schemas:
+    Platform.UserBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+    Platform.PartnerProductBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+    Platform.PracticeBlueprint_for_integration:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Platform.ApiKeyBlueprint_shared:
+      type: object
+      properties:
+        deactivated_at:
+          type: string
+        description:
+          type: string
+        last_used_at:
+          type: string
+        token:
+          type: string
     Platform.OauthsController.tokens_body:
       title: OAuth
       type: object
@@ -82,35 +118,6 @@ components:
       required:
       - grant_type
       - code
-    Platform.PartnerProductBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        slug:
-          type: string
-    Platform.ApiKeyBlueprint_shared:
-      type: object
-      properties:
-        deactivated_at:
-          type: string
-        description:
-          type: string
-        last_used_at:
-          type: string
-        token:
-          type: string
-    Platform.UserBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
     Platform.IntegrationBlueprint_one_with_access_token:
       type: object
       properties:
@@ -140,13 +147,6 @@ components:
           $ref: '#/components/schemas/Platform.PracticeBlueprint_for_integration'
         product:
           $ref: '#/components/schemas/Platform.PartnerProductBlueprint_min'
-    Platform.PracticeBlueprint_for_integration:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
   securitySchemes:
     BearerAuth:
       type: http

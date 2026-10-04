@@ -150,20 +150,6 @@ components:
         start_date:
           type: string
           format: date
-    Provider.MembershipContractsController.renew_body:
-      type: object
-      properties:
-        memo:
-          type: string
-    Provider.MembershipContractsController.update_body:
-      type: object
-      properties:
-        end_date:
-          type: string
-          format: date
-        billing_end_date:
-          type: string
-          format: date
     Public.MembershipContractBlueprint_all:
       type: array
       items:
@@ -179,6 +165,20 @@ components:
           start_date:
             type: string
             format: date
+    Provider.MembershipContractsController.renew_body:
+      type: object
+      properties:
+        memo:
+          type: string
+    Provider.MembershipContractsController.update_body:
+      type: object
+      properties:
+        end_date:
+          type: string
+          format: date
+        billing_end_date:
+          type: string
+          format: date
   securitySchemes:
     BearerAuth:
       type: http

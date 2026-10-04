@@ -371,21 +371,6 @@ paths:
     - url: https://api.sandbox.hint.com/api
 components:
   schemas:
-    Platform.WebhookEndpointBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          created_at:
-            type: string
-          last_delivered_at:
-            type: string
-          updated_at:
-            type: string
-          webhook_url:
-            type: string
     Platform.WebhookEndpointsController.update_body:
       title: Update_WebhookEndpoint_Legacy
       type: object
@@ -405,6 +390,21 @@ components:
           type: string
         webhook_url:
           type: string
+    Platform.WebhookEndpointBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+          last_delivered_at:
+            type: string
+          updated_at:
+            type: string
+          webhook_url:
+            type: string
     Platform.WebhookEndpointsController.create_body:
       type: object
       properties:
@@ -429,13 +429,6 @@ components:
             type: string
           partner_backend:
             $ref: '#/components/schemas/Public.BackendBlueprint_min'
-    Public.BackendBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.WebhookEndpointBlueprint_one:
       type: object
       properties:
@@ -456,6 +449,13 @@ components:
       type: object
       properties:
         webhook_url:
+          type: string
+    Public.BackendBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
           type: string
   securitySchemes:
     BearerAuth:

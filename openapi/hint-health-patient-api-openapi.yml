@@ -1201,12 +1201,301 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.PatientBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        address_city:
+          type: string
+        address_country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        age:
+          type: string
+        chosen_first_name:
+          type: string
+        chosen_last_name:
+          type: string
+        chosen_middle_name:
+          type: string
+        chosen_suffix:
+          type: string
+        chosen_title:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        dob:
+          type: string
+          format: date
+        electronic_communication_consent_accepted:
+          type: string
+        electronic_communication_consent_accepted_at:
+          type: string
+        email:
+          type: string
+        engaged:
+          type: boolean
+        external_link_id:
+          type: string
+        first_name:
+          type: string
+        gender:
+          type: string
+        gender_identity:
+          type: string
+        gender_other:
+          type: string
+        health_insurance_group_id:
+          type: string
+        health_insurance_member_id:
+          type: string
+        health_insurance_payer_id:
+          type: string
+        health_insurance_payer_name:
+          type: string
+        hipaa_authorization_accepted:
+          type: boolean
+        hipaa_authorization_accepted_at:
+          type: string
+          format: date-time
+        import_id:
+          type: string
+        import_source:
+          type: string
+        joined_practice_date:
+          type: string
+          format: date
+        last_engagement_date:
+          type: string
+          format: date
+        last_name:
+          type: string
+        lead_source_other:
+          type: string
+        master_record_sponsor:
+          type: string
+        membership_status:
+          type: string
+        middle_name:
+          type: string
+        name:
+          type: string
+        patient_agreement_accepted:
+          type: boolean
+        patient_agreement_accepted_at:
+          type: string
+          format: date-time
+        preferred_language:
+          type: string
+        pronouns:
+          type: string
+        provider_web_link:
+          type: string
+        sex:
+          type: string
+        suffix:
+          type: string
+        terms_accepted:
+          type: boolean
+        terms_accepted_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        uses_tobacco:
+          type: boolean
+        account:
+          $ref: '#/components/schemas/Public.PatientBlueprint_account'
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        emergency_contact:
+          $ref: '#/components/schemas/Common.EmergencyContactBlueprint_shared'
+        external_records:
+          $ref: '#/components/schemas/Public.ExternalRecordBlueprint_min'
+        known_practice:
+          $ref: '#/components/schemas/Public.KnownPracticeBlueprint_min'
+        lead_source:
+          $ref: '#/components/schemas/Public.LeadSourceBlueprint_one'
+        location:
+          $ref: '#/components/schemas/Public.LocationBlueprint_one'
+        location_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+        membership_members:
+          $ref: '#/components/schemas/Public.MembershipMemberBlueprint_for_patient'
+        memberships:
+          $ref: '#/components/schemas/Public.MembershipPatientBlueprint_one'
+        merged_into:
+          $ref: '#/components/schemas/Public.PatientBlueprint_min'
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+        practitioner:
+          $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
+        practitioner_group:
+          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
+        sponsorships:
+          $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
+        ssn:
+          $ref: '#/components/schemas/Common.SocialSecurityNumberBlueprint_masked'
+    PhoneNumber:
+      type: object
+      properties:
+        id:
+          type: string
+        number:
+          type: number
+        type:
+          type: string
+        us_formattable:
+          type: boolean
+          description: Make this false if your number is not exactly 10 digits
+      required:
+      - number
+      - type
+    Public.EmployeeDivisionBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.LocationGroupBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        integration_record_id:
+          type: string
+        name:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
     Public.ExternalRecordBlueprint_min:
       type: object
       properties:
         source:
           type: string
         external_id:
+          type: string
+    Public.MembershipMemberBlueprint_for_patient:
+      type: object
+      properties:
+        id:
+          type: string
+        enrollment_status:
+          type: string
+        member_type:
+          type: string
+        status:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+        membership:
+          $ref: '#/components/schemas/Public.MembershipBlueprint_min'
+    Public.PatientBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Provider.PatientsController.matching_body:
+      title: Match_Patients
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        middle_name:
+          type: string
+        email:
+          type: string
+        dob:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+      required:
+      - first_name
+      - last_name
+    Public.MembershipPatientBlueprint_one:
+      type: object
+      properties:
+        end_date:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        enrollment_status:
+          type: string
+        member_type:
+          type: string
+        start_date:
+          type: string
+          format: date
+        status:
+          type: string
+        uses_tobacco:
+          type: boolean
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        division:
+          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
+        payer:
+          $ref: '#/components/schemas/Public.PatientBlueprint_min'
+        plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+    Public.LeadSourceBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
           type: string
     Public.NpiBlueprint_shared:
       type: object
@@ -1221,64 +1510,164 @@ components:
           type: string
         type:
           type: string
-    Association:
+    Public.MembershipBlueprint_min:
       type: object
       properties:
         id:
           type: string
-      required:
-      - id
-    Public.CompanyAccountBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-    Public.EmployeeDivisionBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.LocationBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        address_city:
-          type: string
-        address_country:
-          type: string
-        address_latitude:
-          type: number
-          format: float
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_longitude:
-          type: number
-          format: float
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        distance:
-          type: string
-        name:
-          type: string
-        phone_number:
-          type: string
-        virtual:
-          type: boolean
-        location_group:
-          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
-    SocialSecurityNumber:
-      title: Create_SSN
+    Public.SpecialtyBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+    Public.PhoneBlueprint_leaf:
       type: object
       properties:
         number:
           type: string
+        type:
+          type: string
+    Common.EmergencyContactBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        relationship:
+          type: string
+        phone:
+          $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
+    Common.SocialSecurityNumberBlueprint_masked:
+      type: object
+      properties:
+        masked_number:
+          type: string
+    Public.KnownPracticeBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.PractitionerBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        accepts_enrollments_from_employer:
+          type: string
+        accepts_enrollments_from_retail:
+          type: string
+        bio:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        education:
+          type: string
+        email:
+          type: string
+        gender:
+          type: string
+        gender_other:
+          type: string
+        integration_record_id:
+          type: string
+        max_patient_age:
+          type: string
+        min_patient_age:
+          type: string
+        name:
+          type: string
+        online_signup_visibility:
+          type: string
+        panel_size:
+          type: integer
+          format: int32
+        panel_size_limit:
+          type: integer
+          format: int32
+        photo_url:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.LocationBlueprint_one'
+        npi:
+          $ref: '#/components/schemas/Public.NpiBlueprint_shared'
+        specialties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
+    Public.PatientBlueprint_account:
+      type: object
+      properties:
+        name:
+          type: string
+        past_due_in_cents:
+          type: integer
+          format: int32
+    Public.CompanySponsorshipBlueprint_for_patient:
+      type: object
+      properties:
+        id:
+          type: string
+        external_id:
+          type: string
+        is_subscriber:
+          type: boolean
+        type:
+          type: string
+        company:
+          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+        family:
+          $ref: '#/components/schemas/Public.CompanyAccountBlueprint_min'
+    EmergencyContact:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        relationship:
+          type: string
+          enum:
+          - spouse
+          - parent
+          - sibling
+          - child
+          - grandparent
+          - guardian
+          - other
+        relationship_other:
+          type: string
+        phone:
+          type: object
+          properties:
+            number:
+              type: number
+            type:
+              type: string
+            us_formattable:
+              type: boolean
+              description: Make this false if your number is not exactly 10 digits
+          required:
+          - number
+          - type
     Provider.PatientsController.update_body:
       title: Create_Patient
       type: object
@@ -1387,326 +1776,6 @@ components:
       required:
       - first_name
       - last_name
-    Public.LocationGroupBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        integration_record_id:
-          type: string
-        name:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
-    Public.PlanBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        plan_type:
-          type: string
-    Common.EmergencyContactBlueprint_shared:
-      type: object
-      properties:
-        id:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-        name:
-          type: string
-        relationship:
-          type: string
-        phone:
-          $ref: '#/components/schemas/Common.PhoneBlueprint_shared'
-    Public.PractitionerBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        accepts_enrollments_from_employer:
-          type: string
-        accepts_enrollments_from_retail:
-          type: string
-        bio:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        education:
-          type: string
-        email:
-          type: string
-        gender:
-          type: string
-        gender_other:
-          type: string
-        integration_record_id:
-          type: string
-        max_patient_age:
-          type: string
-        min_patient_age:
-          type: string
-        name:
-          type: string
-        online_signup_visibility:
-          type: string
-        panel_size:
-          type: integer
-          format: int32
-        panel_size_limit:
-          type: integer
-          format: int32
-        photo_url:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Public.LocationBlueprint_one'
-        npi:
-          $ref: '#/components/schemas/Public.NpiBlueprint_shared'
-        specialties:
-          type: array
-          items:
-            $ref: '#/components/schemas/Public.SpecialtyBlueprint_all'
-    Public.MembershipPatientBlueprint_one:
-      type: object
-      properties:
-        end_date:
-          type: string
-        enrollment_requested_on:
-          type: string
-          format: date
-        enrollment_status:
-          type: string
-        member_type:
-          type: string
-        start_date:
-          type: string
-          format: date
-        status:
-          type: string
-        uses_tobacco:
-          type: boolean
-        company:
-          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
-        division:
-          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
-        payer:
-          $ref: '#/components/schemas/Public.PatientBlueprint_min'
-        plan:
-          $ref: '#/components/schemas/Public.PlanBlueprint_min'
-    Public.SpecialtyBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          name:
-            type: string
-    Public.KnownPracticeBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Common.SocialSecurityNumberBlueprint_masked:
-      type: object
-      properties:
-        masked_number:
-          type: string
-    EmergencyContact:
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        relationship:
-          type: string
-          enum:
-          - spouse
-          - parent
-          - sibling
-          - child
-          - grandparent
-          - guardian
-          - other
-        relationship_other:
-          type: string
-        phone:
-          type: object
-          properties:
-            number:
-              type: number
-            type:
-              type: string
-            us_formattable:
-              type: boolean
-              description: Make this false if your number is not exactly 10 digits
-          required:
-          - number
-          - type
-    Public.PatientBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.LeadSourceBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-    Provider.PatientsController.create_body:
-      title: Create_Patient
-      type: object
-      properties:
-        first_name:
-          type: string
-          description: This should be the patients legal first name.
-        last_name:
-          type: string
-          description: This should be the patients legal last name.
-        middle_name:
-          type: string
-          description: This should be the patients middle name.
-        title:
-          type: string
-        suffix:
-          type: string
-        chosen_first_name:
-          type: string
-        chosen_last_name:
-          type: string
-        chosen_middle_name:
-          type: string
-        chosen_title:
-          type: string
-        chosen_suffix:
-          type: string
-        pronouns:
-          type: string
-          description: May be one of `He/Him/His`, `She/Her/Hers` or `They/Them/Theirs`. Other values sent will be stored as free text.
-        email:
-          type: string
-        sex:
-          type: string
-          description: May send `male`, `female`, or `intersex`.
-        gender:
-          type: string
-          description: This field will be deprecated on March 31st 2021.
-        gender_identity:
-          type: string
-          description: May send `man`, `woman`, `trans man`, `trans woman`, `nonbinary`, or `not listed`. If you send `not listed`, please include a description in the `gender_other` field.
-        gender_other:
-          type: string
-          description: Used to specify gender identity, when not listed.
-        dob:
-          type: string
-          format: date
-          description: Date must be formatted as YYYY-MM-DD.
-        lead_source:
-          $ref: '#/components/schemas/Association'
-        practitioner:
-          $ref: '#/components/schemas/Association'
-        location:
-          $ref: '#/components/schemas/Association'
-        emergency_contact:
-          $ref: '#/components/schemas/EmergencyContact'
-        phones:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumber'
-        ssn:
-          $ref: '#/components/schemas/SocialSecurityNumber'
-        health_insurance_group_id:
-          type: string
-        health_insurance_member_id:
-          type: string
-        health_insurance_payer_name:
-          type: string
-        health_insurance_payer_id:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_city:
-          type: string
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        address_country:
-          type: string
-        import_id:
-          type: string
-          description: (deprecated)
-        import_source:
-          type: string
-          description: (deprecated)
-        external_link_id:
-          type: string
-          description: (deprecated)
-        integration_record_id:
-          type: string
-        integration_error_message:
-          type: string
-        integration_web_link:
-          type: string
-        preferred_language:
-          type: string
-          description: May send `en` or `es`.
-        last_engagement_date:
-          type: string
-          format: date
-          description: Date must be formatted as YYYY-MM-DD.
-        electronic_communication_consent_accepted:
-          type: boolean
-        patient_agreement_accepted:
-          type: boolean
-      required:
-      - first_name
-      - last_name
-    PhoneNumber:
-      type: object
-      properties:
-        id:
-          type: string
-        number:
-          type: number
-        type:
-          type: string
-        us_formattable:
-          type: boolean
-          description: Make this false if your number is not exactly 10 digits
-      required:
-      - number
-      - type
     Public.PatientBlueprint_all:
       type: array
       items:
@@ -1854,34 +1923,7 @@ components:
             $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
           ssn:
             $ref: '#/components/schemas/Common.SocialSecurityNumberBlueprint_masked'
-    Public.CompanyBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.MembershipBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-    Public.PhoneBlueprint_leaf:
-      type: object
-      properties:
-        number:
-          type: string
-        type:
-          type: string
-    Public.PatientBlueprint_account:
-      type: object
-      properties:
-        name:
-          type: string
-        past_due_in_cents:
-          type: integer
-          format: int32
-    Public.PatientBlueprint_one:
+    Public.LocationBlueprint_one:
       type: object
       properties:
         id:
@@ -1890,157 +1932,43 @@ components:
           type: string
         address_country:
           type: string
+        address_latitude:
+          type: number
+          format: float
         address_line1:
           type: string
         address_line2:
           type: string
+        address_longitude:
+          type: number
+          format: float
         address_state:
           type: string
         address_zip:
           type: string
-        age:
-          type: string
-        chosen_first_name:
-          type: string
-        chosen_last_name:
-          type: string
-        chosen_middle_name:
-          type: string
-        chosen_suffix:
-          type: string
-        chosen_title:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        dob:
-          type: string
-          format: date
-        electronic_communication_consent_accepted:
-          type: string
-        electronic_communication_consent_accepted_at:
-          type: string
-        email:
-          type: string
-        engaged:
-          type: boolean
-        external_link_id:
-          type: string
-        first_name:
-          type: string
-        gender:
-          type: string
-        gender_identity:
-          type: string
-        gender_other:
-          type: string
-        health_insurance_group_id:
-          type: string
-        health_insurance_member_id:
-          type: string
-        health_insurance_payer_id:
-          type: string
-        health_insurance_payer_name:
-          type: string
-        hipaa_authorization_accepted:
-          type: boolean
-        hipaa_authorization_accepted_at:
-          type: string
-          format: date-time
-        import_id:
-          type: string
-        import_source:
-          type: string
-        joined_practice_date:
-          type: string
-          format: date
-        last_engagement_date:
-          type: string
-          format: date
-        last_name:
-          type: string
-        lead_source_other:
-          type: string
-        master_record_sponsor:
-          type: string
-        membership_status:
-          type: string
-        middle_name:
+        distance:
           type: string
         name:
           type: string
-        patient_agreement_accepted:
+        phone_number:
+          type: string
+        virtual:
           type: boolean
-        patient_agreement_accepted_at:
-          type: string
-          format: date-time
-        preferred_language:
-          type: string
-        pronouns:
-          type: string
-        provider_web_link:
-          type: string
-        sex:
-          type: string
-        suffix:
-          type: string
-        terms_accepted:
-          type: boolean
-        terms_accepted_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        uses_tobacco:
-          type: boolean
-        account:
-          $ref: '#/components/schemas/Public.PatientBlueprint_account'
-        company:
-          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
-        emergency_contact:
-          $ref: '#/components/schemas/Common.EmergencyContactBlueprint_shared'
-        external_records:
-          $ref: '#/components/schemas/Public.ExternalRecordBlueprint_min'
-        known_practice:
-          $ref: '#/components/schemas/Public.KnownPracticeBlueprint_min'
-        lead_source:
-          $ref: '#/components/schemas/Public.LeadSourceBlueprint_one'
-        location:
-          $ref: '#/components/schemas/Public.LocationBlueprint_one'
         location_group:
           $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
-        membership_members:
-          $ref: '#/components/schemas/Public.MembershipMemberBlueprint_for_patient'
-        memberships:
-          $ref: '#/components/schemas/Public.MembershipPatientBlueprint_one'
-        merged_into:
-          $ref: '#/components/schemas/Public.PatientBlueprint_min'
-        phones:
-          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
-        practitioner:
-          $ref: '#/components/schemas/Public.PractitionerBlueprint_one'
-        practitioner_group:
-          $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
-        sponsorships:
-          $ref: '#/components/schemas/Public.CompanySponsorshipBlueprint_for_patient'
-        ssn:
-          $ref: '#/components/schemas/Common.SocialSecurityNumberBlueprint_masked'
-    Public.CompanySponsorshipBlueprint_for_patient:
+    SocialSecurityNumber:
+      title: Create_SSN
+      type: object
+      properties:
+        number:
+          type: string
+    Public.CompanyBlueprint_leaf:
       type: object
       properties:
         id:
           type: string
-        external_id:
+        name:
           type: string
-        is_subscriber:
-          type: boolean
-        type:
-          type: string
-        company:
-          $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
-        family:
-          $ref: '#/components/schemas/Public.CompanyAccountBlueprint_min'
     Common.PhoneBlueprint_shared:
       type: object
       properties:
@@ -2050,50 +1978,145 @@ components:
           type: string
         us_formattable:
           type: string
-    Public.MembershipMemberBlueprint_for_patient:
+    Public.CompanyAccountBlueprint_min:
       type: object
       properties:
         id:
           type: string
-        enrollment_status:
-          type: string
-        member_type:
-          type: string
-        status:
-          type: string
-        enrollment_requested_on:
-          type: string
-          format: date
-        start_date:
-          type: string
-          format: date
-        end_date:
-          type: string
-        membership:
-          $ref: '#/components/schemas/Public.MembershipBlueprint_min'
-    Provider.PatientsController.matching_body:
-      title: Match_Patients
+    Provider.PatientsController.create_body:
+      title: Create_Patient
       type: object
       properties:
         first_name:
           type: string
+          description: This should be the patients legal first name.
         last_name:
           type: string
+          description: This should be the patients legal last name.
         middle_name:
           type: string
+          description: This should be the patients middle name.
+        title:
+          type: string
+        suffix:
+          type: string
+        chosen_first_name:
+          type: string
+        chosen_last_name:
+          type: string
+        chosen_middle_name:
+          type: string
+        chosen_title:
+          type: string
+        chosen_suffix:
+          type: string
+        pronouns:
+          type: string
+          description: May be one of `He/Him/His`, `She/Her/Hers` or `They/Them/Theirs`. Other values sent will be stored as free text.
         email:
           type: string
+        sex:
+          type: string
+          description: May send `male`, `female`, or `intersex`.
+        gender:
+          type: string
+          description: This field will be deprecated on March 31st 2021.
+        gender_identity:
+          type: string
+          description: May send `man`, `woman`, `trans man`, `trans woman`, `nonbinary`, or `not listed`. If you send `not listed`, please include a description in the `gender_other` field.
+        gender_other:
+          type: string
+          description: Used to specify gender identity, when not listed.
         dob:
           type: string
           format: date
           description: Date must be formatted as YYYY-MM-DD.
+        lead_source:
+          $ref: '#/components/schemas/Association'
+        practitioner:
+          $ref: '#/components/schemas/Association'
+        location:
+          $ref: '#/components/schemas/Association'
+        emergency_contact:
+          $ref: '#/components/schemas/EmergencyContact'
         phones:
           type: array
           items:
             $ref: '#/components/schemas/PhoneNumber'
+        ssn:
+          $ref: '#/components/schemas/SocialSecurityNumber'
+        health_insurance_group_id:
+          type: string
+        health_insurance_member_id:
+          type: string
+        health_insurance_payer_name:
+          type: string
+        health_insurance_payer_id:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        address_country:
+          type: string
+        import_id:
+          type: string
+          description: (deprecated)
+        import_source:
+          type: string
+          description: (deprecated)
+        external_link_id:
+          type: string
+          description: (deprecated)
+        integration_record_id:
+          type: string
+        integration_error_message:
+          type: string
+        integration_web_link:
+          type: string
+        preferred_language:
+          type: string
+          description: May send `en` or `es`.
+        last_engagement_date:
+          type: string
+          format: date
+          description: Date must be formatted as YYYY-MM-DD.
+        electronic_communication_consent_accepted:
+          type: boolean
+        patient_agreement_accepted:
+          type: boolean
       required:
       - first_name
       - last_name
+    Public.MembershipMemberBlueprint_for_patient_2:
+      type: object
+      properties:
+        id:
+          type: string
+        end_date:
+          type: string
+        enrollment_requested_on:
+          type: string
+          format: date
+        enrollment_status:
+          type: string
+        member_type:
+          type: string
+        start_date:
+          type: string
+          format: date
+        status:
+          type: string
+        uses_tobacco:
+          type: boolean
+        membership:
+          $ref: '#/components/schemas/Public.MembershipBlueprint_min'
     Common.EmergencyContactBlueprint_shared_2:
       type: object
       properties:
@@ -2147,29 +2170,6 @@ components:
           required:
           - number
           - type
-    Public.MembershipMemberBlueprint_for_patient_2:
-      type: object
-      properties:
-        id:
-          type: string
-        end_date:
-          type: string
-        enrollment_requested_on:
-          type: string
-          format: date
-        enrollment_status:
-          type: string
-        member_type:
-          type: string
-        start_date:
-          type: string
-          format: date
-        status:
-          type: string
-        uses_tobacco:
-          type: boolean
-        membership:
-          $ref: '#/components/schemas/Public.MembershipBlueprint_min'
   securitySchemes:
     BearerAuth:
       type: http

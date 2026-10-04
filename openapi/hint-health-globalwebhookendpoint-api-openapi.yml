@@ -180,21 +180,6 @@ paths:
               $ref: '#/components/schemas/Platform.WebhookEndpointsController.update_body'
 components:
   schemas:
-    Platform.WebhookEndpointBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          created_at:
-            type: string
-          last_delivered_at:
-            type: string
-          updated_at:
-            type: string
-          webhook_url:
-            type: string
     Platform.WebhookEndpointsController.update_body:
       title: Update_WebhookEndpoint_Legacy
       type: object
@@ -214,6 +199,21 @@ components:
           type: string
         webhook_url:
           type: string
+    Platform.WebhookEndpointBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+          last_delivered_at:
+            type: string
+          updated_at:
+            type: string
+          webhook_url:
+            type: string
     Platform.WebhookEndpointsController.create_body:
       type: object
       properties:

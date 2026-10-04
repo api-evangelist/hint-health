@@ -293,6 +293,43 @@ components:
             type: string
           updated_at:
             type: string
+    Public.Appointment.AttendeeBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+          patient:
+            $ref: '#/components/schemas/Public.PatientBlueprint_min'
+          contact:
+            $ref: '#/components/schemas/Public.Appointment.ContactBlueprint_min'
+    Public.Appointment.ContactBlueprint_min:
+      type: object
+      properties:
+        first:
+          type: string
+        last:
+          type: string
+        email:
+          type: string
+    Public.UserBlueprint_shared:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        name:
+          type: string
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+        product_users:
+          $ref: '#/components/schemas/Public.PartnerAppUserBlueprint_leaf'
     Public.LocationBlueprint_shared:
       type: object
       properties:
@@ -319,29 +356,6 @@ components:
           type: string
         type:
           type: string
-    Public.ProductBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.Appointment.ContactBlueprint_min:
-      type: object
-      properties:
-        first:
-          type: string
-        last:
-          type: string
-        email:
-          type: string
-    Public.PatientBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.PartnerAppUserBlueprint_leaf:
       type: object
       properties:
@@ -351,17 +365,13 @@ components:
           type: string
         product:
           $ref: '#/components/schemas/Public.ProductBlueprint_leaf'
-    Public.Appointment.AttendeeBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          type:
-            type: string
-          patient:
-            $ref: '#/components/schemas/Public.PatientBlueprint_min'
-          contact:
-            $ref: '#/components/schemas/Public.Appointment.ContactBlueprint_min'
+    Public.PatientBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     Public.AppointmentBlueprint_all:
       type: array
       items:
@@ -406,23 +416,13 @@ components:
             $ref: '#/components/schemas/Public.LocationBlueprint_shared'
           attendees:
             $ref: '#/components/schemas/Public.Appointment.AttendeeBlueprint_all'
-    Public.UserBlueprint_shared:
+    Public.ProductBlueprint_leaf:
       type: object
       properties:
         id:
           type: string
-        email:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
         name:
           type: string
-        phones:
-          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
-        product_users:
-          $ref: '#/components/schemas/Public.PartnerAppUserBlueprint_leaf'
   securitySchemes:
     hint_api_key:
       type: apiKey

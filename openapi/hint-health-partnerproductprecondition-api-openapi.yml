@@ -142,15 +142,17 @@ paths:
           description: Successful response
 components:
   schemas:
-    Public.PartnerProductPreconditionBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        url:
-          type: string
+    Public.PartnerProductPreconditionBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          type:
+            type: string
+          url:
+            type: string
     ProductPreconditionSanitizer:
       type: object
       properties:
@@ -167,17 +169,15 @@ components:
       required:
       - type
       - url
-    Public.PartnerProductPreconditionBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          type:
-            type: string
-          url:
-            type: string
+    Public.PartnerProductPreconditionBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
   securitySchemes:
     hint_api_key:
       type: apiKey

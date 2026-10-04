@@ -268,109 +268,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    PhoneNumber:
-      type: object
-      properties:
-        id:
-          type: string
-        number:
-          type: number
-        type:
-          type: string
-        us_formattable:
-          type: boolean
-          description: Make this false if your number is not exactly 10 digits
-      required:
-      - number
-      - type
-    CompanyUpdateSanitizer:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        phones:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumber'
-    Public.AddressBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        city:
-          type: string
-        country:
-          type: string
-        line1:
-          type: string
-        line2:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        latitude:
-          type: number
-          format: float
-        longitude:
-          type: number
-          format: float
-    CompanyCreateSanitizer:
-      type: object
-      properties:
-        default_plan:
-          $ref: '#/components/schemas/Association'
-          description: You must use plans of type "company"
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        phones:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumber'
-    Public.PhoneBlueprint_leaf:
-      type: object
-      properties:
-        number:
-          type: string
-        type:
-          type: string
-    Public.PlanBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        plan_type:
-          type: string
-    Public.CompanyBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        employee_divisions_count:
-          type: integer
-          format: int32
-        name:
-          type: string
-        status:
-          type: string
-        address:
-          $ref: '#/components/schemas/Public.AddressBlueprint_leaf'
-        default_location:
-          $ref: '#/components/schemas/Public.LocationBlueprint_min'
-        default_plan:
-          $ref: '#/components/schemas/Public.PlanBlueprint_min'
-        default_practitioner:
-          $ref: '#/components/schemas/Public.PractitionerBlueprint_min'
-        employee_divisions:
-          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
-        phones:
-          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
     Association:
       type: object
       properties:
@@ -378,13 +275,6 @@ components:
           type: string
       required:
       - id
-    Public.EmployeeDivisionBlueprint_leaf:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.CompanyBlueprint_all:
       type: array
       items:
@@ -411,12 +301,129 @@ components:
             $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
           phones:
             $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+    Public.LocationBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.CompanyBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        employee_divisions_count:
+          type: integer
+          format: int32
+        name:
+          type: string
+        status:
+          type: string
+        address:
+          $ref: '#/components/schemas/Public.AddressBlueprint_leaf'
+        default_location:
+          $ref: '#/components/schemas/Public.LocationBlueprint_min'
+        default_plan:
+          $ref: '#/components/schemas/Public.PlanBlueprint_min'
+        default_practitioner:
+          $ref: '#/components/schemas/Public.PractitionerBlueprint_min'
+        employee_divisions:
+          $ref: '#/components/schemas/Public.EmployeeDivisionBlueprint_leaf'
+        phones:
+          $ref: '#/components/schemas/Public.PhoneBlueprint_leaf'
+    Public.AddressBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+    Public.PlanBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        plan_type:
+          type: string
+    PhoneNumber:
+      type: object
+      properties:
+        id:
+          type: string
+        number:
+          type: number
+        type:
+          type: string
+        us_formattable:
+          type: boolean
+          description: Make this false if your number is not exactly 10 digits
+      required:
+      - number
+      - type
+    CompanyUpdateSanitizer:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+    Public.EmployeeDivisionBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     Public.PractitionerBlueprint_min:
       type: object
       properties:
         id:
           type: string
         name:
+          type: string
+    CompanyCreateSanitizer:
+      type: object
+      properties:
+        default_plan:
+          $ref: '#/components/schemas/Association'
+          description: You must use plans of type "company"
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+    Public.PhoneBlueprint_leaf:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
           type: string
     Address:
       type: object
@@ -438,13 +445,6 @@ components:
       - city
       - state
       - zip
-    Public.LocationBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
   securitySchemes:
     BearerAuth:
       type: http

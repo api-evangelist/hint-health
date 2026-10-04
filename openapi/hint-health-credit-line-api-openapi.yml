@@ -69,6 +69,13 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Public.Payable.OwnerBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
     Public.CreditLineBlueprint_all:
       type: array
       items:
@@ -91,13 +98,6 @@ components:
             $ref: '#/components/schemas/Public.CreditBlueprint_min'
           invoice:
             $ref: '#/components/schemas/Public.Payable.InvoiceBlueprint_min_with_owner'
-    Public.Payable.OwnerBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
     Public.Payable.InvoiceBlueprint_min_with_owner:
       type: object
       properties:

@@ -171,7 +171,32 @@ paths:
                 type: integer
 components:
   schemas:
-    Public.CompanyBlueprint_leaf:
+    Public.AffiliateAncillaryChargeBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          status:
+            type: string
+            enum:
+            - pending
+            - approved
+          created_at:
+            type: string
+            format: date-time
+          sponsor:
+            $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
+          affiliate:
+            $ref: '#/components/schemas/Public.AffiliationBlueprint_leaf'
+          affiliate_practice:
+            $ref: '#/components/schemas/Public.PracticeBlueprint_min'
+          charge:
+            $ref: '#/components/schemas/Public.ChargeBlueprint_for_affiliate_ancillary_charge'
+          sponsor_charge:
+            $ref: '#/components/schemas/Public.ChargeBlueprint_for_affiliate_ancillary_charge'
+    Public.PracticeBlueprint_min:
       type: object
       properties:
         id:
@@ -190,6 +215,29 @@ components:
           format: date-time
         default_for_memberships:
           type: boolean
+    Public.AffiliationBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.CompanyBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.Payable.InvoiceBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        invoice_number:
+          type: string
+        type:
+          type: string
     Public.ChargeBlueprint_for_affiliate_ancillary_charge:
       type: object
       properties:
@@ -220,55 +268,7 @@ components:
           $ref: '#/components/schemas/Public.CategoryBlueprint_one'
         invoice:
           $ref: '#/components/schemas/Public.Payable.InvoiceBlueprint_min'
-    Public.Payable.InvoiceBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        invoice_number:
-          type: string
-        type:
-          type: string
     Public.PatientBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.PracticeBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.AffiliateAncillaryChargeBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          status:
-            type: string
-            enum:
-            - pending
-            - approved
-          created_at:
-            type: string
-            format: date-time
-          sponsor:
-            $ref: '#/components/schemas/Public.CompanyBlueprint_leaf'
-          affiliate:
-            $ref: '#/components/schemas/Public.AffiliationBlueprint_leaf'
-          affiliate_practice:
-            $ref: '#/components/schemas/Public.PracticeBlueprint_min'
-          charge:
-            $ref: '#/components/schemas/Public.ChargeBlueprint_for_affiliate_ancillary_charge'
-          sponsor_charge:
-            $ref: '#/components/schemas/Public.ChargeBlueprint_for_affiliate_ancillary_charge'
-    Public.AffiliationBlueprint_leaf:
       type: object
       properties:
         id:

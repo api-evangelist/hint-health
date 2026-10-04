@@ -124,20 +124,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.FormResponseBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        form:
-          $ref: '#/components/schemas/Public.FormBlueprint_leaf'
-        form_response_items:
-          $ref: '#/components/schemas/Public.FormResponseItemBlueprint_leaf'
-        subject:
-          $ref: '#/components/schemas/Common.RecordBlueprint_min'
     Public.FormItemBlueprint_leaf:
       type: object
       properties:
@@ -151,27 +137,6 @@ components:
           type: string
         title:
           type: string
-    Common.RecordBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-    Public.FormResponseBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          created_at:
-            type: string
-            format: date-time
-          form:
-            $ref: '#/components/schemas/Public.FormBlueprint_leaf'
-          form_response_items:
-            $ref: '#/components/schemas/Public.FormResponseItemBlueprint_leaf'
-          subject:
-            $ref: '#/components/schemas/Common.RecordBlueprint_min'
     Public.FormResponseItemBlueprint_leaf:
       type: object
       properties:
@@ -195,6 +160,41 @@ components:
           format: date-time
         form_items:
           $ref: '#/components/schemas/Public.FormItemBlueprint_leaf'
+    Public.FormResponseBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          form:
+            $ref: '#/components/schemas/Public.FormBlueprint_leaf'
+          form_response_items:
+            $ref: '#/components/schemas/Public.FormResponseItemBlueprint_leaf'
+          subject:
+            $ref: '#/components/schemas/Common.RecordBlueprint_min'
+    Common.RecordBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+    Public.FormResponseBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        form:
+          $ref: '#/components/schemas/Public.FormBlueprint_leaf'
+        form_response_items:
+          $ref: '#/components/schemas/Public.FormResponseItemBlueprint_leaf'
+        subject:
+          $ref: '#/components/schemas/Common.RecordBlueprint_min'
   securitySchemes:
     BearerAuth:
       type: http

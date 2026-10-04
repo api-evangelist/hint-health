@@ -225,18 +225,6 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Provider.CompanySponsorshipsController.update_body:
-      title: Update_Sponsorship
-      type: object
-      description: Subscribers type can not be updated.
-      properties:
-        type:
-          type: string
-          description: May be one of "spouse", or "child"
-        external_id:
-          type: string
-      required:
-      - type
     Association:
       type: object
       properties:
@@ -265,6 +253,18 @@ components:
       - is_subscriber
       - type
       - patient
+    Provider.CompanySponsorshipsController.update_body:
+      title: Update_Sponsorship
+      type: object
+      description: Subscribers type can not be updated.
+      properties:
+        type:
+          type: string
+          description: May be one of "spouse", or "child"
+        external_id:
+          type: string
+      required:
+      - type
   securitySchemes:
     BearerAuth:
       type: http

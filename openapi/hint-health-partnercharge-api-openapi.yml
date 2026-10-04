@@ -113,6 +113,22 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    Public.PartnerChargeBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        amount_in_cents:
+          type: string
+        description:
+          type: string
     Provider.PartnerChargesController.create_body:
       title: Create_PartnerCharge
       type: object
@@ -137,6 +153,17 @@ components:
       - amount_in_cents
       - description
       - integration_record_id
+    Public.PartnerChargeBlueprint_all:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          amount_in_cents:
+            type: string
+          description:
+            type: string
     PartnerChargeLine:
       type: object
       properties:
@@ -178,33 +205,6 @@ components:
       required:
       - id
       - type
-    Public.PartnerChargeBlueprint_all:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          amount_in_cents:
-            type: string
-          description:
-            type: string
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Public.PartnerChargeBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        amount_in_cents:
-          type: string
-        description:
-          type: string
     PartnerChargeLine_2:
       type: object
       properties:

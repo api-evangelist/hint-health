@@ -148,20 +148,6 @@ paths:
           description: Successful response
 components:
   schemas:
-    Public.PartnerProductHighlightBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        description:
-          type: string
-        image_url:
-          type: string
-        position:
-          type: integer
-          format: int32
-        title:
-          type: string
     ProductHighlightSanitizer:
       type: object
       properties:
@@ -178,6 +164,20 @@ components:
           type: integer
           format: int32
           description: Display order. Optional — defaults to the next position via `acts_as_list`.
+    Public.PartnerProductHighlightBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        image_url:
+          type: string
+        position:
+          type: integer
+          format: int32
+        title:
+          type: string
     Public.PartnerProductHighlightBlueprint_all:
       type: array
       items:

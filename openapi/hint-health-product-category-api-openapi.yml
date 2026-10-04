@@ -141,13 +141,6 @@ components:
         name:
           type: string
           description: Category name. Free-form — pick from the list returned by `GET /partner/products/categories` to match an existing category, or supply a new name to create one. Most marketplace listings have 1–3 categories.
-    Public.ProductCategoryBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     Public.ProductCategoryBlueprint_all:
       type: array
       items:
@@ -157,6 +150,13 @@ components:
             type: string
           name:
             type: string
+    Public.ProductCategoryBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
   securitySchemes:
     hint_api_key:
       type: apiKey

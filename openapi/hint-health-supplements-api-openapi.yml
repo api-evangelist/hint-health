@@ -259,6 +259,21 @@ paths:
       description: Sandbox
 components:
   schemas:
+    Public.SupplementBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        product_name:
+          type: string
+        quantity:
+          type: string
+        sig_text:
+          type: string
+        strength:
+          type: string
+        strength_uom:
+          type: string
     Provider.Patients.SupplementsController.create_body:
       title: Create_Supplement
       type: object
@@ -304,21 +319,6 @@ components:
             type: string
           strength_uom:
             type: string
-    Public.SupplementBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        product_name:
-          type: string
-        quantity:
-          type: string
-        sig_text:
-          type: string
-        strength:
-          type: string
-        strength_uom:
-          type: string
     Provider.Patients.SupplementsController.update_body:
       title: Update_Supplement
       type: object

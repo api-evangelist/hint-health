@@ -208,32 +208,6 @@ paths:
                   name: Default
 components:
   schemas:
-    Public.BackendBlueprint_min:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    Public.ProductBlueprint_one:
-      type: object
-      properties:
-        id:
-          type: string
-        built_by_name:
-          type: string
-        built_by_url:
-          type: string
-        icon_url:
-          type: string
-        name:
-          type: string
-        slug:
-          type: string
-        summary:
-          type: string
-        partner_backend:
-          $ref: '#/components/schemas/Public.BackendBlueprint_min'
     Public.ProductBlueprint_all:
       type: array
       items:
@@ -283,6 +257,32 @@ components:
         icon:
           type: string
           description: Listing icon as a base64 data URI (e.g. "data:image/png;base64,..."). **Note the field-name asymmetry:** the request field is `icon` (data URI input); the GET response surfaces the uploaded image as `icon_url` (hosted URL). Sending `icon_url` as a request field is silently ignored. The listing icon is distinct from the Core Page sidebar icon (`surface.core_page_icon`) — see the surface endpoints for that.
+    Public.BackendBlueprint_min:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Public.ProductBlueprint_one:
+      type: object
+      properties:
+        id:
+          type: string
+        built_by_name:
+          type: string
+        built_by_url:
+          type: string
+        icon_url:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        summary:
+          type: string
+        partner_backend:
+          $ref: '#/components/schemas/Public.BackendBlueprint_min'
   securitySchemes:
     hint_api_key:
       type: apiKey

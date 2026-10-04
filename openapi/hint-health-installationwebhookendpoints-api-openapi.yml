@@ -218,34 +218,13 @@ paths:
           description: Successful response
 components:
   schemas:
-    Partner.Installations.WebhookEndpointsController.update_body:
-      type: object
-      properties:
-        webhook_url:
-          type: string
-    Partner.Installations.WebhookEndpointsController.create_body:
-      title: Create_InstallationWebhookEndpoint
-      type: object
-      properties:
-        webhook_url:
-          type: string
-      required:
-      - webhook_url
-    Public.WebhookEndpointBlueprint_one:
+    Public.BackendBlueprint_min:
       type: object
       properties:
         id:
           type: string
-        created_at:
+        name:
           type: string
-        last_delivered_at:
-          type: string
-        updated_at:
-          type: string
-        webhook_url:
-          type: string
-        partner_backend:
-          $ref: '#/components/schemas/Public.BackendBlueprint_min'
     Public.WebhookEndpointBlueprint_all:
       type: array
       items:
@@ -263,12 +242,33 @@ components:
             type: string
           partner_backend:
             $ref: '#/components/schemas/Public.BackendBlueprint_min'
-    Public.BackendBlueprint_min:
+    Public.WebhookEndpointBlueprint_one:
       type: object
       properties:
         id:
           type: string
-        name:
+        created_at:
+          type: string
+        last_delivered_at:
+          type: string
+        updated_at:
+          type: string
+        webhook_url:
+          type: string
+        partner_backend:
+          $ref: '#/components/schemas/Public.BackendBlueprint_min'
+    Partner.Installations.WebhookEndpointsController.create_body:
+      title: Create_InstallationWebhookEndpoint
+      type: object
+      properties:
+        webhook_url:
+          type: string
+      required:
+      - webhook_url
+    Partner.Installations.WebhookEndpointsController.update_body:
+      type: object
+      properties:
+        webhook_url:
           type: string
   securitySchemes:
     hint_api_key:

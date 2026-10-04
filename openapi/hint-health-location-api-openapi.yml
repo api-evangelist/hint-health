@@ -231,21 +231,13 @@ paths:
       description: Sandbox
 components:
   schemas:
-    Public.LocationGroupBlueprint_leaf:
+    Association:
       type: object
       properties:
         id:
           type: string
-        created_at:
-          type: string
-          format: date-time
-        integration_record_id:
-          type: string
-        name:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
+      required:
+      - id
     Public.LocationBlueprint_all:
       type: array
       items:
@@ -281,38 +273,6 @@ components:
             type: boolean
           location_group:
             $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    Provider.LocationsController.update_body:
-      type: object
-      properties:
-        name:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_city:
-          type: string
-        address_state:
-          type: string
-        address_zip:
-          type: string
-        address_country:
-          type: string
-        phone_number:
-          type: string
-        virtual:
-          type: boolean
-        location_group:
-          $ref: '#/components/schemas/Association'
-      required:
-      - name
     Public.LocationBlueprint_one:
       type: object
       properties:
@@ -347,6 +307,46 @@ components:
         location_group:
           $ref: '#/components/schemas/Public.LocationGroupBlueprint_leaf'
     Provider.LocationsController.create_body:
+      type: object
+      properties:
+        name:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        address_country:
+          type: string
+        phone_number:
+          type: string
+        virtual:
+          type: boolean
+        location_group:
+          $ref: '#/components/schemas/Association'
+      required:
+      - name
+    Public.LocationGroupBlueprint_leaf:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        integration_record_id:
+          type: string
+        name:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    Provider.LocationsController.update_body:
       type: object
       properties:
         name:
