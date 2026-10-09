@@ -176,3 +176,54 @@ transactionFees:
   - type: ACH Return
     flat: 1.00
     currency: USD
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units:
+  - period
+  plans:
+  - name: Core Growth
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - period
+    periods: []
+  - name: Core Scale
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - period
+    periods: []
+  - name: Core Enterprise
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - period
+    periods: []
+  - name: Clinical
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - period
+    periods: []
+  - name: Clinical Growth
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - period
+    periods: []
+  - name: Clinical Scale
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - period
+    periods: []
